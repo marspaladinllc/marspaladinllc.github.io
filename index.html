@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mars Paladin LLC</title>
+<meta name="description" content="Mars Paladin LLC — independent game studio. Maker of Westward Dash (齐天大冲刺), a Journey-to-the-West party board game coming to Steam in August 2026.">
+<style>
+  :root {
+    --ink: #e8e2d4;
+    --dim: #9a927f;
+    --ground: #16130e;
+    --panel: #201b13;
+    --gold: #d9a441;
+    --line: #3a3222;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 17px/1.7 Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  main { max-width: 620px; width: 100%; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 56px 48px;
+  }
+  .studio {
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  h1 {
+    font-size: 40px;
+    line-height: 1.15;
+    margin: 18px 0 6px;
+    text-wrap: balance;
+  }
+  .han { color: var(--dim); font-size: 20px; }
+  p.tag { margin: 22px 0 0; color: var(--ink); }
+  p.sub { margin: 10px 0 0; color: var(--dim); font-size: 15.5px; }
+  .rule { height: 1px; background: var(--line); margin: 36px 0 28px; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; font-size: 15.5px; }
+  dt { color: var(--dim); font-family: "Trebuchet MS", Verdana, sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 3px; }
+  dd a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line); }
+  dd a:focus, dd a:hover { border-bottom-color: var(--gold); outline: none; }
+  footer { margin-top: 22px; text-align: center; color: var(--dim); font-size: 13px; }
+  @media (max-width: 520px) { .card { padding: 40px 26px; } h1 { font-size: 32px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <div class="studio">Mars Paladin LLC</div>
+    <h1>Westward Dash <span class="han">齐天大冲刺</span></h1>
+    <p class="tag">A Journey-to-the-West party board game — 2–8 pilgrims race, gamble, and scheme across 100 cells to reach the Western Summit first.</p>
+    <p class="sub">Online multiplayer &middot; 17 languages &middot; coming to Steam, August 2026.</p>
+    <div class="rule"></div>
+    <dl>
+      <dt>Studio</dt><dd>Mars Paladin LLC — independent game studio, United States</dd>
+      <dt>Contact</dt><dd><a href="mailto:admin@xiaoyaoworm.com">admin@xiaoyaoworm.com</a></dd>
+    </dl>
+  </div>
+  <footer>&copy; 2026 Mars Paladin LLC. All rights reserved.</footer>
+</main>
+</body>
+</html>
