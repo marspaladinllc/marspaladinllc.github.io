@@ -151,7 +151,7 @@
       transform-origin: 50% 90%;
       font-size: 16px;
     }
-    /* 优雅摇动动效，而非360度旋转 */
+    /* 优雅摇摆动效 */
     .btn-music-toggle.playing .music-icon-sway {
       animation: pipaGentleSway 1.8s ease-in-out infinite;
     }
@@ -635,44 +635,7 @@
       line-height: 1.8;
     }
 
-    /* 18 Languages Calligraphy Interactive Row */
-    .languages-quick-bar {
-      background: rgba(10, 8, 6, 0.85);
-      border: 1px solid var(--silk-border);
-      border-radius: 14px;
-      padding: 22px;
-      text-align: center;
-    }
-    .languages-quick-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--gold-light);
-      margin-bottom: 14px;
-    }
-    .flags-pills-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-    .flag-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .flag-pill:hover, .flag-pill.active {
-      border-color: var(--gold);
-      background: rgba(223, 178, 86, 0.2);
-      color: var(--gold-bright);
-    }
-
-    /* About 4 Tiles Navigation & Stage (四项全部大图放最左，文字放右) */
+    /* About 4 Tiles Navigation & Stage (四项全部大图置于最左侧，故事在右侧) */
     .about-tiles-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1021,29 +984,27 @@
             </div>
           </div>
 
-
-
         </div>
 
-        <!-- PANE 2: 关于 (About: 4 Sub-Tiles 全大图置于最左侧，故事在右侧) -->
+        <!-- PANE 2: 关于 (About: 4 Sub-Tiles 全大图置于最左侧，故事在右侧，18 语完整本土化) -->
         <div id="pane-2" class="tab-pane">
           
           <div class="about-tiles-grid">
             <div class="about-tile-btn active" onclick="switchAboutTile(0, this)">
               <div class="about-tile-icon">📜</div>
-              <div class="about-tile-title">西游记</div>
+              <div class="about-tile-title" id="aboutTileTitle0">西游记</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(1, this)">
               <div class="about-tile-icon">🪕</div>
-              <div class="about-tile-title">琵琶原声</div>
+              <div class="about-tile-title" id="aboutTileTitle1">琵琶原声</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(2, this)">
               <div class="about-tile-icon">🎮</div>
-              <div class="about-tile-title">独立创作</div>
+              <div class="about-tile-title" id="aboutTileTitle2">独立创作</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(3, this)">
               <div class="about-tile-icon">🙏</div>
-              <div class="about-tile-title">真情鸣谢</div>
+              <div class="about-tile-title" id="aboutTileTitle3">真情鸣谢</div>
             </div>
           </div>
 
@@ -1083,7 +1044,7 @@
   </footer>
 
   <script>
-    // Complete 18 Languages Localization Dictionary
+    // Complete 18 Languages Full Localization Dictionary
     const i18n = {
       zh: {
         flag: "🇨🇳", name: "简体中文", gameTitle: "齐天大冲刺", titleImg: "assets/TitleZh.png",
@@ -1104,7 +1065,8 @@
         feat1: { title: "🎲 见好就收，险中求胜", desc: "每回合前进后触发冲刺抉择：冲过安全点额外步数助你一飞冲天；冲砸了承受路途惩罚。终点前的最后冲刺，正是落后者的绝地反击机会！" },
         feat2: { title: "👹 十大妖王拦路，各怀绝技", desc: "三道险关守关妖王随机降临！有的逼你掷小，有的只认中庸，有的平局占优。白骨精更会连变两重化身——输了？那就重整旗鼓再走一趟！" },
         feat3: { title: "🌏 天涯若比邻，同桌各读母语", desc: "全面支持 18 种语言同桌畅玩！一键快速匹配全球玩家，或三两好友围坐一台电脑轮流掷骰，随时随地 1~8 人轻松开局，每个人读到的都是自己的母语。" },
-        feat4: { title: "⚙️ 十九个旋钮，打造专属房规", desc: "经典竞速、冲刺博弈、气势滚雪球、蓄气腾云，更有 19 个深度旋钮的自定义模式，内置地狱西行、闪电局、抽一签等现成风味！" }
+        feat4: { title: "⚙️ 十九个旋钮，打造专属房规", desc: "经典竞速、冲刺博弈、气势滚雪球、蓄气腾云，更有 19 个深度旋钮的自定义模式，内置地狱西行、闪电局、抽一签等现成风味！" },
+        aboutTiles: ["西游记", "琵琶原声", "独立创作", "真情鸣谢"]
       },
 
       tc: {
@@ -1126,7 +1088,8 @@
         feat1: { title: "🎲 見好就收，險中求勝", desc: "每回合前進後觸發衝刺抉擇：衝過安全點額外步數助你一飛衝天；衝砸了承受路途懲罰。終點前的最後衝刺，正是落後者的絕地反擊機會！" },
         feat2: { title: "👹 十大妖王攔路，各懷絕技", desc: "三道險關守關妖王隨機降臨！有的逼你擲小，有的只認中庸，有的平局佔優。白骨精更會連變兩重化身——輸了？那就重整旗鼓再走一趟！" },
         feat3: { title: "🌏 天涯若比鄰，同桌各讀母語", desc: "全面支援 18 種語言同桌暢玩！一鍵快速配對全球玩家，或三兩好友圍坐一台電腦輪流擲骰，隨時隨地 1~8 人輕鬆開局，每個人讀到的都是自己的母語。" },
-        feat4: { title: "⚙️ 十九個旋鈕，打造專屬房規", desc: "經典競速、衝刺博弈、氣勢滾雪球、蓄氣騰雲，更有 19 個深度旋鈕的自訂模式，內建地獄西行、閃電局、抽一籤等現成風味！" }
+        feat4: { title: "⚙️ 十九個旋鈕，打造專屬房規", desc: "經典競速、衝刺博弈、氣勢滾雪球、蓄氣騰雲，更有 19 個深度旋鈕的自訂模式，內建地獄西行、閃電局、抽一籤等現成風味！" },
+        aboutTiles: ["西遊記", "琵琶原聲", "獨立創作", "真情鳴謝"]
       },
 
       en: {
@@ -1148,7 +1111,8 @@
         feat1: { title: "🎲 Push Your Luck, Turn the Tide", desc: "After each move, take a gamble on a second die! Clearing safe spots catapults you forward; busting triggers penalties. The final stretch to Thunderclap Summit gives trailing players their ultimate comeback chance!" },
         feat2: { title: "👹 10 Mythical Demon Kings", desc: "Three perilous gates guarded by random demon lords who twist the dice rules. White Bone Demon even resurrects through two deceptive incarnations!" },
         feat3: { title: "🌏 18 Languages at One Table", desc: "Full native support for 18 languages! Quick matchmaking with worldwide players or local pass-around parties for 1–8 players, where everyone reads their native tongue." },
-        feat4: { title: "⚙️ 19 Custom Dials & Presets", desc: "Classic Race, Push-Your-Luck, Momentum Snowball, Qi Surge, and a 19-dial Custom Mode with presets like Hell Road West, Blitz Run, and Draw a Lot!" }
+        feat4: { title: "⚙️ 19 Custom Dials & Presets", desc: "Classic Race, Push-Your-Luck, Momentum Snowball, Qi Surge, and a 19-dial Custom Mode with presets like Hell Road West, Blitz Run, and Draw a Lot!" },
+        aboutTiles: ["Journey to West", "Live Pipa OST", "Solo Indie Dev", "Heartfelt Thanks"]
       },
 
       ja: {
@@ -1170,7 +1134,8 @@
         feat1: { title: "🎲 引き際か、それとも勝負か？", desc: "安全目を越えればボーナスで一気に大跳躍！欲をかいて失敗すれば手痛いペナルティ。ゴール直前のラストスパートは、逆転勝利を狙う最大のチャンス！" },
         feat2: { title: "👹 立ちはだかる十柱の大妖怪", desc: "三つの難関には十大妖王がランダムで出現し、サイコロのルールを歪めます。白骨精は二度の変身で執拗に立ちふさがります！" },
         feat3: { title: "🌏 18言語で世界中の仲間と同卓", desc: "18言語に完全対応！世界中のプレイヤーと瞬時に対戦、または1台のPCを囲んで1〜8人で母国語のまま楽しめます。" },
-        feat4: { title: "⚙️ 19のツマミで自由なハウスルール", desc: "王道レース、ハイリスクダッシュ、連勝ブースト、19のノブで設定できるカスタムモードを搭載！" }
+        feat4: { title: "⚙️ 19のツマミで自由なハウスルール", desc: "王道レース、ハイリスクダッシュ、連勝ブースト、19のノブで設定できるカスタムモードを搭載！" },
+        aboutTiles: ["西遊記の記憶", "琵琶の生演奏", "個人インディー", "感謝と献辞"]
       },
 
       ko: {
@@ -1192,307 +1157,910 @@
         feat1: { title: "🎲 멈출 것인가, 모험할 것인가?", desc: "안전 칸을 넘기면 폭풍 질주, 무리하면 페널티! 결승점 앞의 마지막 질주는 꼴찌에게 주어지는 짜릿한 역전의 기회입니다." },
         feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사위 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
         feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모국어로 함께 즐길 수 있습니다." },
-        feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" }
+        feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" },
+        aboutTiles: ["서유기 추억", "비파 실록", "1인 인디 개발", "진심 어린 감사"]
       },
 
-      fr: { flag: "🇫🇷", name: "Français", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleFR.png", nav: { wishlist: "★ Liste de Souhaits" }, hero: { tag: "🎲 Jeu de Plateau & Course à l'Encre pour 1–8 Joueurs · Solo & En Ligne", desc: "1 à 8 joueurs dans une course trépidante à l'encre de Chine inspirée du Pèlerinage vers l'Ouest !", wishlist: "★ Ajouter à la Liste de Souhaits Steam", explore: "Explorer les Pèlerins et Règles ↓", tags: ["🎲 Jeu de Plateau", "⚔️ Stratégie PvP", "🖌️ Encre de Chine", "🌐 18 Langues"], platform: "Plateforme : <strong>Steam (PC & Mac)</strong>", release: "Sortie : <strong>Automne 2026</strong>" }, pills: { chars: "8 Pèlerins", rules: "Modes", about: "À Propos" }, music: { playing: "Pipa OST (Lecture)", paused: "Musique Pipa" }, pilgrimsHeader: { title: "Huit Pèlerins aux Pouvoirs Uniques", sub: "Cliquez sur un pion en bois ci-dessous pour découvrir ses pouvoirs." }, featuresHeader: { title: "Compendium de l'Ouest · Règles et Modes", sub: "De la course classique aux 19 curseurs personnalisés." }, feat1: { title: "🎲 Tentez votre chance", desc: "Franchir les cases sécurisées vous propulse en avant !" }, feat2: { title: "👹 10 Rois Démons Mythiques", desc: "Trois portes périlleuses gardées par des rois démons." }, feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues." }, feat4: { title: "⚙️ 19 Curseurs Personnalisés", desc: "Créez vos propres règles de maison." } },
+      fr: {
+        flag: "🇫🇷", name: "Français", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleFR.png",
+        nav: { wishlist: "★ Liste de Souhaits" },
+        hero: {
+          tag: "🎲 Jeu de Plateau & Course à l'Encre pour 1–8 Joueurs · Solo & En Ligne",
+          desc: "La Pérégrination vers l'Ouest de votre enfance, autour d'une table. Course à l'encre, 1 à 8 joueurs : périls à chaque case, cœur battant à chaque partie ! Le bâton d'or balaie les démons, le dé de sprint renverse tout. Seul ou entre amis, tout se joue à la dernière case !",
+          wishlist: "★ Ajouter à la Liste de Souhaits Steam",
+          explore: "Explorer les Pèlerins et Règles ↓",
+          tags: ["🎲 Jeu de Plateau", "⚔️ Stratégie PvP", "🖌️ Encre de Chine", "🌐 18 Langues"],
+          platform: "Plateforme : <strong>Steam (PC & Mac)</strong>",
+          release: "Sortie : <strong>Automne 2026</strong>"
+        },
+        pills: { chars: "8 Pèlerins", rules: "Modes", about: "À Propos" },
+        music: { playing: "Pipa OST (Lecture)", paused: "Musique Pipa" },
+        pilgrimsHeader: { title: "Huit Pèlerins aux Pouvoirs Uniques", sub: "Cliquez sur un pion en bois ci-dessous pour découvrir ses pouvoirs." },
+        featuresHeader: { title: "Compendium de l'Ouest · Règles et Modes", sub: "De la course classique aux 19 curseurs personnalisés." },
+        feat1: { title: "🎲 S'arrêter ou tout risquer ?", desc: "À chaque tour, lancez un second dé pour une avance fulgurante, ou subissez les périls du chemin !" },
+        feat2: { title: "👹 10 Rois Démons Mythiques", desc: "Trois Portes gardées par des Rois Démons qui tordent les règles des dés à leur avantage." },
+        feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues pour jouer avec le monde entier dans votre langue maternelle." },
+        feat4: { title: "⚙️ 19 Curseurs Personnalisés", desc: "Créez vos propres règles de maison avec 19 curseurs et des modes préconfigurés." },
+        aboutTiles: ["Pérégrination", "Pipa Vivante", "Création Solo", "Remerciements"]
+      },
       
-      de: { flag: "🇩🇪", name: "Deutsch", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleDE.png", nav: { wishlist: "★ Wunschliste" }, hero: { tag: "🎲 Tuschmalerei-Brettspiel für 1–8 Spieler · Solo & Online", desc: "Erlebe nostalgische Brettspiel-Erinnerungen für 1–8 Spieler im stimmungsvollen Tuschmalerei-Stil der Reise nach Westen!", wishlist: "★ Auf Steam zur Wunschliste hinzufügen", explore: "Pilger & Regeln ansehen ↓", tags: ["🎲 Partyspiel", "⚔️ PvP-Strategie", "🖌️ Tuschmalerei", "🌐 18 Sprachen"], platform: "Plattform: <strong>Steam (PC & Mac)</strong>", release: "Erscheinungstermin: <strong>Herbst 2026</strong>" }, pills: { chars: "8 Pilger", rules: "Spielmodi", about: "Über das Spiel" }, music: { playing: "Pipa BGM (Aktiv)", paused: "Pipa Musik abspielen" }, pilgrimsHeader: { title: "Acht Pilger, unendliche Kräfte", sub: "Klicke auf eine Holzfigur, um Porträts und Fähigkeiten anzusehen." }, featuresHeader: { title: "Westliches Kompendium · Regeln & Modi", sub: "Vom klassischen Wettrennen bis zu 19 individuellen Reglern." }, feat1: { title: "🎲 Risiko oder Sicherheit?", desc: "Sichere Würfe katapultieren dich vorwärts!" }, feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." }, feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen." }, feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln." } },
+      de: {
+        flag: "🇩🇪", name: "Deutsch", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleDE.png",
+        nav: { wishlist: "★ Wunschliste" },
+        hero: {
+          tag: "🎲 Tuschmalerei-Brettspiel für 1–8 Spieler · Solo & Online",
+          desc: "Erlebe nostalgische Brettspiel-Erinnerungen für 1–8 Spieler im stimmungsvollen Tuschmalerei-Stil der Reise nach Westen! Bis zum letzten Feld ist nichts entschieden.",
+          wishlist: "★ Auf Steam zur Wunschliste hinzufügen",
+          explore: "Pilger & Regeln ansehen ↓",
+          tags: ["🎲 Partyspiel", "⚔️ PvP-Strategie", "🖌️ Tuschmalerei", "🌐 18 Sprachen"],
+          platform: "Plattform: <strong>Steam (PC & Mac)</strong>",
+          release: "Erscheinungstermin: <strong>Herbst 2026</strong>"
+        },
+        pills: { chars: "8 Pilger", rules: "Spielmodi", about: "Über das Spiel" },
+        music: { playing: "Pipa BGM (Aktiv)", paused: "Pipa Musik abspielen" },
+        pilgrimsHeader: { title: "Acht Pilger, unendliche Kräfte", sub: "Klicke auf eine Holzfigur, um Porträts und Fähigkeiten anzusehen." },
+        featuresHeader: { title: "Westliches Kompendium · Regeln & Modi", sub: "Vom klassischen Wettrennen bis zu 19 individuellen Reglern." },
+        feat1: { title: "🎲 Risiko oder Sicherheit?", desc: "Sichere Würfe katapultieren dich vorwärts; Fehltritte fordern ihren Tribut!" },
+        feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." },
+        feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen – lokal oder online mit der Welt." },
+        feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln für unvergessliche Spielabende." },
+        aboutTiles: ["Reise nach Westen", "Live-Pipa-OST", "Solo-Indie", "Danksagung"]
+      },
       
-      es: { flag: "🇪🇸", name: "Español", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleES.png", nav: { wishlist: "★ Lista de Deseos" }, hero: { tag: "🎲 Juego de Tablero al Estilo Aguada para 1–8 Jugadores · Solo y Online", desc: "¡Revive la emoción de los juegos de mesa de la infancia! Carreras de 1 a 8 jugadores con arte tradicional al estilo tinta china.", wishlist: "★ Añadir a la Lista de Deseos", explore: "Explorar Peregrinos y Modos ↓", tags: ["🎲 Juego de Mesa", "⚔️ Estrategia PvP", "🖌️ Arte en Tinta", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lanzamiento: <strong>Otoño de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Juego", about: "Acerca de" }, music: { playing: "Pipa OST (Sonando)", paused: "Reproducir Pipa OST" }, pilgrimsHeader: { title: "Ocho Peregrinos con Poderes Únicos", sub: "Haz clic en cualquier ficha de madera para ver su retrato en tinta." }, featuresHeader: { title: "Compendio del Oeste · Reglas y Modos", sub: "Desde carreras clásicas hasta 19 ajustes personalizados." }, feat1: { title: "🎲 ¿Asegurar o arriesgar?", desc: "Superar las casillas seguras te impulsa hacia adelante!" }, feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio." }, feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas." }, feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas." } },
+      es: {
+        flag: "🇪🇸", name: "Español", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleES.png",
+        nav: { wishlist: "★ Lista de Deseos" },
+        hero: {
+          tag: "🎲 Juego de Tablero al Estilo Aguada para 1–8 Jugadores · Solo y Online",
+          desc: "¡Revive la emoción de los juegos de mesa de la infancia! Carreras de 1 a 8 jugadores con arte tradicional al estilo tinta china. ¡La victoria no se decide hasta la última casilla!",
+          wishlist: "★ Añadir a la Lista de Deseos",
+          explore: "Explorar Peregrinos y Modos ↓",
+          tags: ["🎲 Juego de Mesa", "⚔️ Estrategia PvP", "🖌️ Arte en Tinta", "🌐 18 Idiomas"],
+          platform: "Plataforma: <strong>Steam (PC & Mac)</strong>",
+          release: "Lanzamiento: <strong>Otoño de 2026</strong>"
+        },
+        pills: { chars: "8 Peregrinos", rules: "Modos de Juego", about: "Acerca de" },
+        music: { playing: "Pipa OST (Sonando)", paused: "Reproducir Pipa OST" },
+        pilgrimsHeader: { title: "Ocho Peregrinos con Poderes Únicos", sub: "Haz clic en cualquier ficha de madera para ver su retrato en tinta." },
+        featuresHeader: { title: "Compendio del Oeste · Reglas y Modos", sub: "Desde carreras clásicas hasta 19 ajustes personalizados." },
+        feat1: { title: "🎲 ¿Asegurar o arriesgar?", desc: "Superar las casillas seguras te impulsa hacia adelante!" },
+        feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio." },
+        feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas." },
+        feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas." },
+        aboutTiles: ["Viaje al Oeste", "Pipa en Vivo", "Creación Indie", "Agradecimiento"]
+      },
       
-      it: { flag: "🇮🇹", name: "Italiano", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleIT.png", nav: { wishlist: "★ Wishlist" }, hero: { tag: "🎲 Gioco da Tavolo a Inchiostro per 1–8 Giocatori · Singolo e Online", desc: "Rivivi le memorie dei giochi da tavolo dell'infanzia con 1–8 giocatori in una corsa verso l'ovest dipinta a inchiostro!", wishlist: "★ Aggiungi alla Wishlist Steam", explore: "Esplora Pellegrini e Modalità ↓", tags: ["🎲 Gioco da Tavolo", "⚔️ Strategia", "🖌️ Inchiostro", "🌐 18 Lingue"], platform: "Piattaforma: <strong>Steam (PC & Mac)</strong>", release: "Uscita: <strong>Autunno 2026</strong>" }, pills: { chars: "8 Pellegrini", rules: "Modalità", about: "Informazioni" }, music: { playing: "Pipa OST (In riproduzione)", paused: "Musica Pipa" }, pilgrimsHeader: { title: "Otto Pellegrini, Poteri Infiniti", sub: "Clicca su una pedina di legno per vedere i dettagli." }, featuresHeader: { title: "Compendio dell'Ovest", sub: "Dalle corse classiche a 19 parametri personalizzabili." }, feat1: { title: "🎲 Tenta la sorte", desc: "Supera i punti sicuri o affronta le insidie del cammino!" }, feat2: { title: "👹 10 Re Demoni", desc: "Tre passi pericolosi difesi da possenti boss demoniaci." }, feat3: { title: "🌏 18 Lingue allo Stesso Tavolo", desc: "Supporto nativo per 18 lingue per giocare con tutto il mondo." }, feat4: { title: "⚙️ 19 Parametri Personalizzati", desc: "Crea le tue regole di casa ideali." } },
+      it: {
+        flag: "🇮🇹", name: "Italiano", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleIT.png",
+        nav: { wishlist: "★ Wishlist" },
+        hero: {
+          tag: "🎲 Gioco da Tavolo a Inchiostro per 1–8 Giocatori · Singolo e Online",
+          desc: "Rivivi le memorie dei giochi da tavolo dell'infanzia con 1–8 giocatori in una corsa verso l'ovest dipinta a inchiostro!",
+          wishlist: "★ Aggiungi alla Wishlist Steam",
+          explore: "Esplora Pellegrini e Modalità ↓",
+          tags: ["🎲 Gioco da Tavolo", "⚔️ Strategia", "🖌️ Inchiostro", "🌐 18 Lingue"],
+          platform: "Piattaforma: <strong>Steam (PC & Mac)</strong>",
+          release: "Uscita: <strong>Autunno 2026</strong>"
+        },
+        pills: { chars: "8 Pellegrini", rules: "Modalità", about: "Informazioni" },
+        music: { playing: "Pipa OST (In riproduzione)", paused: "Musica Pipa" },
+        pilgrimsHeader: { title: "Otto Pellegrini, Poteri Infiniti", sub: "Clicca su una pedina di legno per vedere i dettagli." },
+        featuresHeader: { title: "Compendio dell'Ovest", sub: "Dalle corse classiche a 19 parametri personalizzabili." },
+        feat1: { title: "🎲 Tenta la sorte", desc: "Supera i punti sicuri o affronta le insidie del cammino!" },
+        feat2: { title: "👹 10 Re Demoni", desc: "Tre passi pericolosi difesi da possenti boss demoniaci." },
+        feat3: { title: "🌏 18 Lingue allo Stesso Tavolo", desc: "Supporto nativo per 18 lingue per giocare con tutto il mondo." },
+        feat4: { title: "⚙️ 19 Parametri Personalizzati", desc: "Crea le tue regole di casa ideali." },
+        aboutTiles: ["Viaggio Ovest", "Pipa dal Vivo", "Sviluppo Solo", "Ringraziamenti"]
+      },
       
-      pt: { flag: "🇧🇷", name: "Português", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePT.png", nav: { wishlist: "★ Lista de Desejos" }, hero: { tag: "🎲 Jogo de Tabuleiro em Arte Nanquim para 1–8 Jogadores", desc: "Reviva a nostalgia dos jogos de tabuleiro de infância com 1 a 8 jogadores em uma eletrizante corrida ao estilo Jornada ao Oeste!", wishlist: "★ Adicionar à Lista de Desejos Steam", explore: "Explorar Peregrinos e Modos ↓", tags: ["🎲 Jogo de Tabuleiro", "⚔️ Estratégia", "🖌️ Arte Nanquim", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lançamento: <strong>Primavera de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Jogo", about: "Sobre" }, music: { playing: "Pipa OST (Tocando)", paused: "Tocar Música Pipa" }, pilgrimsHeader: { title: "Oito Peregrinos com Habilidades Únicas", sub: "Clique em uma peça de madeira para ver os poderes." }, featuresHeader: { title: "Compêndio do Oeste", sub: "De corridas clássicas a 19 seletores personalizados." }, feat1: { title: "🎲 Arrisque ou Jogue Seguro", desc: "Avance com audácia para alcançar a vitória!" }, feat2: { title: "👹 10 Reis Demônios Míticos", desc: "Três passagens perigosas guardadas por chefes lendários." }, feat3: { title: "🌏 18 Idiomas na Mesma Mesa", desc: "Suporte completo a 18 línguas." }, feat4: { title: "⚙️ 19 Seletores Personalizados", desc: "Crie regras exclusivas para sua mesa de jogo." } },
+      pt: {
+        flag: "🇧🇷", name: "Português", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePT.png",
+        nav: { wishlist: "★ Lista de Desejos" },
+        hero: {
+          tag: "🎲 Jogo de Tabuleiro em Arte Nanquim para 1–8 Jogadores",
+          desc: "Reviva a nostalgia dos jogos de tabuleiro de infância com 1 a 8 jogadores em uma eletrizante corrida ao estilo Jornada ao Oeste!",
+          wishlist: "★ Adicionar à Lista de Desejos Steam",
+          explore: "Explorar Peregrinos e Modos ↓",
+          tags: ["🎲 Jogo de Tabuleiro", "⚔️ Estratégia", "🖌️ Arte Nanquim", "🌐 18 Idiomas"],
+          platform: "Plataforma: <strong>Steam (PC & Mac)</strong>",
+          release: "Lançamento: <strong>Primavera de 2026</strong>"
+        },
+        pills: { chars: "8 Peregrinos", rules: "Modos de Jogo", about: "Sobre" },
+        music: { playing: "Pipa OST (Tocando)", paused: "Tocar Música Pipa" },
+        pilgrimsHeader: { title: "Oito Peregrinos com Habilidades Únicas", sub: "Clique em uma peça de madeira para ver os poderes." },
+        featuresHeader: { title: "Compêndio do Oeste", sub: "De corridas clássicas a 19 seletores personalizados." },
+        feat1: { title: "🎲 Arrisque ou Jogue Seguro", desc: "Avance com audácia para alcançar a vitória!" },
+        feat2: { title: "👹 10 Reis Demônios Míticos", desc: "Três passagens perigosas guardadas por chefes lendários." },
+        feat3: { title: "🌏 18 Idiomas na Mesma Mesa", desc: "Suporte completo a 18 línguas." },
+        feat4: { title: "⚙️ 19 Seletores Personalizados", desc: "Crie regras exclusivas para sua mesa de jogo." },
+        aboutTiles: ["Jornada Oeste", "Pipa ao Vivo", "Criação Solo", "Agradecimentos"]
+      },
       
-      ru: { flag: "🇷🇺", name: "Русский", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleRU.png", nav: { wishlist: "★ В список желаемого" }, hero: { tag: "🎲 Настольная гонка в стиле тушевой живописи для 1–8 игроков", desc: "Окунитесь в воспоминания детства с настольной гонкой по мотивам «Путешествия на Запад» для 1–8 игроков!", wishlist: "★ В список желаемого Steam", explore: "Паломники и правила ↓", tags: ["🎲 Настольная игра", "⚔️ PvP-стратегия", "🖌️ Живопись тушью", "🌐 18 языков"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Выход: <strong>Осень 2026</strong>" }, pills: { chars: "8 Паломников", rules: "Режимы игры", about: "Об игре" }, music: { playing: "Музыка пипы (Играет)", paused: "Включить музыку" }, pilgrimsHeader: { title: "Восемь паломников с уникальными способностями", sub: "Нажмите на деревянную фигурку для просмотра навыков." }, featuresHeader: { title: "Западный свод · Правила и режимы", sub: "От классических гонок до 19 глубоких параметров настройки." }, feat1: { title: "🎲 Рискнуть или остановиться?", desc: "Успешный рывок продвигает далеко вперед!" }, feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов." }, feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры со всем миром." }, feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила." } },
+      ru: {
+        flag: "🇷🇺", name: "Русский", gameTitle: "Бросок на Запад", titleImg: "assets/TitleRU.png",
+        nav: { wishlist: "★ В список желаемого" },
+        hero: {
+          tag: "🎲 Настольная гонка в стиле тушевой живописи для 1–8 игроков",
+          desc: "Окунитесь в воспоминания детства с настольной гонкой по мотивам «Путешествия на Запад» для 1–8 игроков!",
+          wishlist: "★ В список желаемого Steam",
+          explore: "Паломники и правила ↓",
+          tags: ["🎲 Настольная игра", "⚔️ PvP-стратегия", "🖌️ Живопись тушью", "🌐 18 языков"],
+          platform: "Платформа: <strong>Steam (PC & Mac)</strong>",
+          release: "Выход: <strong>Осень 2026</strong>"
+        },
+        pills: { chars: "8 Паломников", rules: "Режимы игры", about: "Об игре" },
+        music: { playing: "Музыка пипы (Играет)", paused: "Включить музыку" },
+        pilgrimsHeader: { title: "Восемь паломников с уникальными способностями", sub: "Нажмите на деревянную фигурку для просмотра навыков." },
+        featuresHeader: { title: "Западный свод · Правила и режимы", sub: "От классических гонок до 19 глубоких параметров настройки." },
+        feat1: { title: "🎲 Рискнуть или остановиться?", desc: "Успешный рывок продвигает далеко вперед!" },
+        feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов." },
+        feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры со всем миром." },
+        feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила." },
+        aboutTiles: ["Путешествие", "Живая пипа", "Инди-проект", "Благодарность"]
+      },
       
-      pl: { flag: "🇵🇱", name: "Polski", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePL.png", nav: { wishlist: "★ Lista Życzeń" }, hero: { tag: "🎲 Gra planszowa w stylu tuszu dla 1–8 graczy · Solo i Online", desc: "Przeżyj wspomnienia z dzieciństwa w wyścigu planszowym dla 1–8 graczy w klimacie Wędrówki na Zachód!", wishlist: "★ Dodaj do Listy Życzeń Steam", explore: "Zobacz Pielgrzymów i Zasady ↓", tags: ["🎲 Gra Planszowa", "⚔️ Strategia", "🖌️ Tusz", "🌐 18 Języków"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Premiera: <strong>Jesień 2026</strong>" }, pills: { chars: "8 Pielgrzymów", rules: "Tryby Gry", about: "O Grze" }, music: { playing: "Muzyka Pipa (Odtwarzanie)", paused: "Włącz Muzykę Pipa" }, pilgrimsHeader: { title: "Ośmiu Pielgrzymów o Niezwykłych Mocach", sub: "Kliknij drewniany pionek, aby poznać umiejętności." }, featuresHeader: { title: "Kompendium Zachodu", sub: "Od klasycznych wyścigów po 19 suwaków personalizacji." }, feat1: { title: "🎲 Zaryzykuj lub Graj Bezpiecznie", desc: "Pokonuj bezpieczne pola i pędź do przodu!" }, feat2: { title: "👹 10 Mitycznych Królów Demonów", desc: "Trzy niebezpieczne bramy strzeżone przez potężne demony." }, feat3: { title: "🌏 18 Języków przy Jednym Stole", desc: "Graj z całym światem we własnym języku ojczystym." }, feat4: { title: "⚙️ 19 Suwaków Własnych Zasad", desc: "Dostosuj reguły gry idealnie pod swoją ekipę." } },
+      pl: {
+        flag: "🇵🇱", name: "Polski", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePL.png",
+        nav: { wishlist: "★ Lista Życzeń" },
+        hero: {
+          tag: "🎲 Gra planszowa w stylu tuszu dla 1–8 graczy · Solo i Online",
+          desc: "Przeżyj wspomnienia z dzieciństwa w wyścigu planszowym dla 1–8 graczy w klimacie Wędrówki na Zachód!",
+          wishlist: "★ Dodaj do Listy Życzeń Steam",
+          explore: "Zobacz Pielgrzymów i Zasady ↓",
+          tags: ["🎲 Gra Planszowa", "⚔️ Strategia", "🖌️ Tusz", "🌐 18 Języków"],
+          platform: "Platforma: <strong>Steam (PC & Mac)</strong>",
+          release: "Premiera: <strong>Jesień 2026</strong>"
+        },
+        pills: { chars: "8 Pielgrzymów", rules: "Tryby Gry", about: "O Grze" },
+        music: { playing: "Muzyka Pipa (Odtwarzanie)", paused: "Włącz Muzykę Pipa" },
+        pilgrimsHeader: { title: "Ośmiu Pielgrzymów o Niezwykłych Mocach", sub: "Kliknij drewniany pionek, aby poznać umiejętności." },
+        featuresHeader: { title: "Kompendium Zachodu", sub: "Od klasycznych wyścigów po 19 suwaków personalizacji." },
+        feat1: { title: "🎲 Zaryzykuj lub Graj Bezpiecznie", desc: "Pokonuj bezpieczne pola i pędź do przodu!" },
+        feat2: { title: "👹 10 Mitycznych Królów Demonów", desc: "Trzy niebezpieczne bramy strzeżone przez potężne demony." },
+        feat3: { title: "🌏 18 Języków przy Jednym Stole", desc: "Graj z całym światem we własnym języku ojczystym." },
+        feat4: { title: "⚙️ 19 Suwaków Własnych Zasad", desc: "Dostosuj reguły gry idealnie pod swoją ekipę." },
+        aboutTiles: ["Wędrówka", "Pipa na Żywo", "Twórca Solo", "Podziękowania"]
+      },
       
-      cs: { flag: "🇨🇿", name: "Čeština", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleCS.png", nav: { wishlist: "★ Seznam Přání" }, hero: { tag: "🎲 Desková závodní hra v tušovém stylu pro 1–8 hráčů", desc: "Oživte vzpomínky na deskové hry z dětství v závodní tušové hře pro 1 až 8 hráčů inspirované Putováním na západ!", wishlist: "★ Přidat do Seznamu Přání Steam", explore: "Prozkoumat Poutníky a Pravidla ↓", tags: ["🎲 Desková Hra", "⚔️ Strategie", "🖌️ Tušová Malba", "🌐 18 Jazyků"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Vydání: <strong>Podzim 2026</strong>" }, pills: { chars: "8 Poutníků", rules: "Herní Módy", about: "O Hře" }, music: { playing: "Pipa OST (Hraje)", paused: "Přehrát Pipa OST" }, pilgrimsHeader: { title: "Osm Poutníků s Jedinečnými Schopnostmi", sub: "Klikněte na dřevěnou figurku pro zobrazení detailů." }, featuresHeader: { title: "Západní Kompendium", sub: "Od klasických závodů až po 19 vlastních nastavení." }, feat1: { title: "🎲 Riskujte nebo Hrajte na Jistotu", desc: "Bezpečné hody vás vynesou vpřed k vítězství!" }, feat2: { title: "👹 10 Mýtických Démonických Králů", desc: "Tři nebezpečné průsmyky hlídané mocnými démony." }, feat3: { title: "🌏 18 Jazyků u Jednoho Stolu", desc: "Plná podpora 18 jazyků pro hraní s celým světem." }, feat4: { title: "⚙️ 19 Vlastních Posuvníků", desc: "Vytvořte si vlastní domácí pravidla." } },
+      cs: {
+        flag: "🇨🇿", name: "Čeština", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleCS.png",
+        nav: { wishlist: "★ Seznam Přání" },
+        hero: {
+          tag: "🎲 Desková závodní hra v tušovém stylu pro 1–8 hráčů",
+          desc: "Oživte vzpomínky na deskové hry z dětství v závodní tušové hře pro 1 až 8 hráčů inspirované Putováním na západ!",
+          wishlist: "★ Přidat do Seznamu Přání Steam",
+          explore: "Prozkoumat Poutníky a Pravidla ↓",
+          tags: ["🎲 Desková Hra", "⚔️ Strategie", "🖌️ Tušová Malba", "🌐 18 Jazyků"],
+          platform: "Platforma: <strong>Steam (PC & Mac)</strong>",
+          release: "Vydání: <strong>Podzim 2026</strong>"
+        },
+        pills: { chars: "8 Poutníků", rules: "Herní Módy", about: "O Hře" },
+        music: { playing: "Pipa OST (Hraje)", paused: "Přehrát Pipa OST" },
+        pilgrimsHeader: { title: "Osm Poutníků s Jedinečnými Schopnostmi", sub: "Klikněte na dřevěnou figurku pro zobrazení detailů." },
+        featuresHeader: { title: "Západní Kompendium", sub: "Od klasických závodů až po 19 vlastních nastavení." },
+        feat1: { title: "🎲 Riskujte nebo Hrajte na Jistotu", desc: "Bezpečné hody vás vynesou vpřed k vítězství!" },
+        feat2: { title: "👹 10 Mýtických Démonických Králů", desc: "Tři nebezpečné průsmyky hlídané mocnými démony." },
+        feat3: { title: "🌏 18 Jazyků u Jednoho Stolu", desc: "Plná podpora 18 jazyků pro hraní s celým světem." },
+        feat4: { title: "⚙️ 19 Vlastních Posuvníků", desc: "Vytvořte si vlastní domácí pravidla." },
+        aboutTiles: ["Putování", "Živá Pipa", "Sólo Tvorba", "Poděkování"]
+      },
       
-      uk: { flag: "🇺🇦", name: "Українська", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleUK.png", nav: { wishlist: "★ Список Бажаного" }, hero: { tag: "🎲 Настільні перегони в тушовому стилі для 1–8 гравців", desc: "Пориньте у спогади дитинства з настільними перегонами за мотивами «Подорожі на Захід» для 1–8 гравців!", wishlist: "★ Додати до Списку Бажаного Steam", explore: "Переглянути Паломників і Правила ↓", tags: ["🎲 Настільна Гра", "⚔️ Стратегія", "🖌️ Туш", "🌐 18 Мов"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Реліз: <strong>Осінь 2026</strong>" }, pills: { chars: "8 Паломників", rules: "Режими Гри", about: "Про Гру" }, music: { playing: "Піпа OST (Грає)", paused: "Увімкнути музику" }, pilgrimsHeader: { title: "Вісім Паломників з Унікальними Здібностями", sub: "Натисніть на дерев'яну фігурку, щоб побачити навички." }, featuresHeader: { title: "Західне Зведення", sub: "Від класичних перегонів до 19 параметрів налаштування." }, feat1: { title: "🎲 Ризикнути чи Зупинитися?", desc: "Успішний ривок наближає вас до священної вершини!" }, feat2: { title: "👹 10 Міфічних Царів Демонів", desc: "Три небезпечні застави охороняються владиками демонів." }, feat3: { title: "🌏 18 Мов за Одним Столом", desc: "Повна підтримка 18 мов для гри з усім світом." }, feat4: { title: "⚙️ 19 Власних Параметрів", desc: "Створюйте власні правила." } },
+      uk: {
+        flag: "🇺🇦", name: "Українська", gameTitle: "Кидок на Захід", titleImg: "assets/TitleUK.png",
+        nav: { wishlist: "★ Список Бажаного" },
+        hero: {
+          tag: "🎲 Настільні перегони в тушовому стилі для 1–8 гравців",
+          desc: "Пориньте у спогади дитинства з настільними перегонами за мотивами «Подорожі на Захід» для 1–8 гравців!",
+          wishlist: "★ Додати до Списку Бажаного Steam",
+          explore: "Переглянути Паломників і Правила ↓",
+          tags: ["🎲 Настільна Гра", "⚔️ Стратегія", "🖌️ Туш", "🌐 18 Мов"],
+          platform: "Платформа: <strong>Steam (PC & Mac)</strong>",
+          release: "Реліз: <strong>Осінь 2026</strong>"
+        },
+        pills: { chars: "8 Паломників", rules: "Режими Гри", about: "Про Гру" },
+        music: { playing: "Піпа OST (Грає)", paused: "Увімкнути музику" },
+        pilgrimsHeader: { title: "Вісім Паломників з Унікальними Здібностями", sub: "Натисніть на дерев'яну фігурку, щоб побачити навички." },
+        featuresHeader: { title: "Західне Зведення", sub: "Від класичних перегонів до 19 параметрів налаштування." },
+        feat1: { title: "🎲 Ризикнути чи Зупинитися?", desc: "Успішний ривок наближає вас до священної вершини!" },
+        feat2: { title: "👹 10 Міфічних Царів Демонів", desc: "Три небезпечні застави охороняються владиками демонів." },
+        feat3: { title: "🌏 18 Мов за Одним Столом", desc: "Повна підтримка 18 мов для гри з усім світом." },
+        feat4: { title: "⚙️ 19 Власних Параметрів", desc: "Створюйте власні правила." },
+        aboutTiles: ["Подорож", "Жива піпа", "Соло-проєкт", "Подяка"]
+      },
       
-      tr: { flag: "🇹🇷", name: "Türkçe", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTR.png", nav: { wishlist: "★ İstek Listesi" }, hero: { tag: "🎲 1–8 Oyunculu Mürekkep Sanatı Masa Yarışı · Tek ve Çevrimiçi", desc: "Çocukluk kutu oyunu anılarınızı 1–8 oyuncuyla Batıya Yolculuk temalı geleneksel mürekkep yarışında yeniden yaşayın!", wishlist: "★ Steam İstek Listesine Ekle", explore: "Yolcuları ve Kuralları Keşfet ↓", tags: ["🎲 Kutu Oyunu", "⚔️ Strateji", "🖌️ Mürekkep Sanatı", "🌐 18 Dil"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Çıkış: <strong>Sonbahar 2026</strong>" }, pills: { chars: "8 Yolcu", rules: "Oyun Modları", about: "Hakkında" }, music: { playing: "Pipa Müziği (Çalıyor)", paused: "Pipa Müziğini Çal" }, pilgrimsHeader: { title: "Benzersiz Güçlere Sahip Sekiz Yolcu", sub: "Yetenekleri görmek için ahşap taşlara tıklayın." }, featuresHeader: { title: "Batı Rehberi", sub: "Klasik yarıştan 19 özel ayara kadar sınırsız eğlence." }, feat1: { title: "🎲 Şansını Dene veya Güvenli Oyna", desc: "Güvenli adımları aşarak zafere doğru hızla koşun!" }, feat2: { title: "👹 10 Efsanevi İblis Kralı", desc: "Zar kurallarını büken güçlü bölüm sonu canavarları." }, feat3: { title: "🌏 Aynı Masada 18 Dil Desteği", desc: "Tüm dünyayla kendi ana dilinizde oynayın." }, feat4: { title: "⚙️ 19 Özel Kural Ayarı", desc: "Kendi masa kurallarınızı oluşturun." } },
+      tr: {
+        flag: "🇹🇷", name: "Türkçe", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTR.png",
+        nav: { wishlist: "★ İstek Listesi" },
+        hero: {
+          tag: "🎲 1–8 Oyunculu Mürekkep Sanatı Masa Yarışı · Tek ve Çevrimiçi",
+          desc: "Çocukluk kutu oyunu anılarınızı 1–8 oyuncuyla Batıya Yolculuk temalı geleneksel mürekkep yarışında yeniden yaşayın!",
+          wishlist: "★ Steam İstek Listesine Ekle",
+          explore: "Yolcuları ve Kuralları Keşfet ↓",
+          tags: ["🎲 Kutu Oyunu", "⚔️ Strateji", "🖌️ Mürekkep Sanatı", "🌐 18 Dil"],
+          platform: "Platform: <strong>Steam (PC & Mac)</strong>",
+          release: "Çıkış: <strong>Sonbahar 2026</strong>"
+        },
+        pills: { chars: "8 Yolcu", rules: "Oyun Modları", about: "Hakkında" },
+        music: { playing: "Pipa Müziği (Çalıyor)", paused: "Pipa Müziğini Çal" },
+        pilgrimsHeader: { title: "Benzersiz Güçlere Sahip Sekiz Yolcu", sub: "Yetenekleri görmek için ahşap taşlara tıklayın." },
+        featuresHeader: { title: "Batı Rehberi", sub: "Klasik yarıştan 19 özel ayara kadar sınırsız eğlence." },
+        feat1: { title: "🎲 Şansını Dene veya Güvenli Oyna", desc: "Güvenli adımları aşarak zafere doğru hızla koşun!" },
+        feat2: { title: "👹 10 Efsanevi İblis Kralı", desc: "Zar kurallarını büken güçlü bölüm sonu canavarları." },
+        feat3: { title: "🌏 Aynı Masada 18 Dil Desteği", desc: "Tüm dünyayla kendi ana dilinizde oynayın." },
+        feat4: { title: "⚙️ 19 Özel Kural Ayarı", desc: "Kendi masa kurallarınızı oluşturun." },
+        aboutTiles: ["Batıya Yolculuk", "Canlı Pipa", "Bağımsız Yapım", "Teşekkürler"]
+      },
       
-      th: { flag: "🇹🇭", name: "ไทย", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTH.png", nav: { wishlist: "★ รายการสิ่งที่อยากได้" }, hero: { tag: "🎲 บอร์ดเกมแข่งวิ่งสไตล์ภาพวาดพู่กันจีนสำหรับ 1–8 คน", desc: "ย้อนรอยความทรงจำในวัยเด็กกับเกมกระดานไซอิ๋วสไตล์ภาพวาดพู่กันจีนสำหรับ 1-8 คน!", wishlist: "★ เพิ่มในรายการสิ่งที่อยากได้ Steam", explore: "ดูตัวละครและกติกา ↓", tags: ["🎲 บอร์ดเกม", "⚔️ กลยุทธ์", "🖌️ พู่กันจีน", "🌐 18 ภาษา"], platform: "แพลตฟอร์ม: <strong>Steam (PC & Mac)</strong>", release: "กำหนดวางจำหน่าย: <strong>ฤดูใบไม้ร่วง 2026</strong>" }, pills: { chars: "8 ผู้แสวงบุญ", rules: "โหมดเกม", about: "เกี่ยวกับเกม" }, music: { playing: "เพลงผีผา (กำลังเล่น)", paused: "เล่นเพลงผีผา" }, pilgrimsHeader: { title: "แปดผู้แสวงบุญพร้อมอิทธิฤทธิ์อันไร้ขอบเขต", sub: "คลิกที่ตัวหมากไม้เพื่อดูพลังพิเศษ" }, featuresHeader: { title: "คัมภีร์ตะวันตก", sub: "ตั้งแต่การแข่งขันคลาสสิกไปจนถึงการปรับแต่ง 19 แบบ" }, feat1: { title: "🎲 เสี่ยงโชคหรือพอแค่นี้?", desc: "ก้าวผ่านจุดปลอดภัยเพื่อพุ่งทะยานสู่ชัยชนะ!" }, feat2: { title: "👹 10 พญามารในตำนาน", desc: "สามด่านอันตรายที่มีราชาปีศาจคอยบิดเบือนกฎลูกเต๋า" }, feat3: { title: "🌏 18 ภาษาในโต๊ะเดียวกัน", desc: "รองรับ 18 ภาษาให้ทุกคนสนุกไปด้วยกันในภาษาแม่" }, feat4: { title: "⚙️ 19 ปุ่มปรับแต่งกฎเฉพาะตัว", desc: "สร้างกฎประจำบ้านของคุณเองได้อย่างอิสระ" } },
+      th: {
+        flag: "🇹🇭", name: "ไทย", gameTitle: "ตะลุยไซอิ๋ว", titleImg: "assets/TitleTH.png",
+        nav: { wishlist: "★ รายการสิ่งที่อยากได้" },
+        hero: {
+          tag: "🎲 บอร์ดเกมแข่งวิ่งสไตล์ภาพวาดพู่กันจีนสำหรับ 1–8 คน",
+          desc: "ย้อนรอยความทรงจำในวัยเด็กกับเกมกระดานไซอิ๋วสไตล์ภาพวาดพู่กันจีนสำหรับ 1-8 คน!",
+          wishlist: "★ เพิ่มในรายการสิ่งที่อยากได้ Steam",
+          explore: "ดูตัวละครและกติกา ↓",
+          tags: ["🎲 บอร์ดเกม", "⚔️ กลยุทธ์", "🖌️ พู่กันจีน", "🌐 18 ภาษา"],
+          platform: "แพลตฟอร์ม: <strong>Steam (PC & Mac)</strong>",
+          release: "กำหนดวางจำหน่าย: <strong>ฤดูใบไม้ร่วง 2026</strong>"
+        },
+        pills: { chars: "8 ผู้แสวงบุญ", rules: "โหมดเกม", about: "เกี่ยวกับเกม" },
+        music: { playing: "เพลงผีผา (กำลังเล่น)", paused: "เล่นเพลงผีผา" },
+        pilgrimsHeader: { title: "แปดผู้แสวงบุญพร้อมอิทธิฤทธิ์อันไร้ขอบเขต", sub: "คลิกที่ตัวหมากไม้เพื่อดูพลังพิเศษ" },
+        featuresHeader: { title: "คัมภีร์ตะวันตก", sub: "ตั้งแต่การแข่งขันคลาสสิกไปจนถึงการปรับแต่ง 19 แบบ" },
+        feat1: { title: "🎲 เสี่ยงโชคหรือพอแค่นี้?", desc: "ก้าวผ่านจุดปลอดภัยเพื่อพุ่งทะยานสู่ชัยชนะ!" },
+        feat2: { title: "👹 10 พญามารในตำนาน", desc: "สามด่านอันตรายที่มีราชาปีศาจคอยบิดเบือนกฎลูกเต๋า" },
+        feat3: { title: "🌏 18 ภาษาในโต๊ะเดียวกัน", desc: "รองรับ 18 ภาษาให้ทุกคนสนุกไปด้วยกันในภาษาแม่" },
+        feat4: { title: "⚙️ 19 ปุ่มปรับแต่งกฎเฉพาะตัว", desc: "สร้างกฎประจำบ้านของคุณเองได้อย่างอิสระ" },
+        aboutTiles: ["ความทรงจำไซอิ๋ว", "ดนตรีผีผาสด", "ผู้สร้างเดี่ยว", "คำขอบคุณ"]
+      },
       
-      vi: { flag: "🇻🇳", name: "Tiếng Việt", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleVI.png", nav: { wishlist: "★ Danh Sách Ước" }, hero: { tag: "🎲 Cờ Đua Thủy Mặc Tây Du Ký Cho 1–8 Người Chơi", desc: "Tái hiện ký ức tuổi thơ cùng 1–8 người chơi trong cuộc đua Tây Du Ký phong cách tranh thủy mặc sống động!", wishlist: "★ Thêm Vào Danh Sách Ước Steam", explore: "Khám Phá Nhân Vật & Luật Chơi ↓", tags: ["🎲 Cờ Bàn", "⚔️ Chiến Thuật", "🖌️ Thủy Mặc", "🌐 18 Ngôn Ngữ"], platform: "Nền tảng: <strong>Steam (PC & Mac)</strong>", release: "Phát hành: <strong>Mùa Thu 2026</strong>" }, pills: { chars: "8 Hành Giả", rules: "Luật Chơi", about: "Giới Thiệu" }, music: { playing: "Nhạc Tỳ Bà (Đang phát)", paused: "Phát Nhạc Tỳ Bà" }, pilgrimsHeader: { title: "Tám Vị Hành Giả Với Thần Thông Quảng Đại", sub: "Nhấp vào quân cờ gỗ để xem tuyệt kỹ và cốt truyện." }, featuresHeader: { title: "Tây Hành Thông Giám", sub: "Từ đua tốc độ thuần túy đến 19 núm xoay tùy chỉnh sâu sắc." }, feat1: { title: "🎲 Thừa Thắng Xông Lên Hay Giữ An Toàn", desc: "Vượt qua ô an toàn để bứt tốc thần tốc về đích!" }, feat2: { title: "👹 10 Yêu Vương Thần Thoại Chặn Đường", desc: "Ba ải hiểm trở trấn giữ bởi các đại yêu vương." }, feat3: { title: "🌏 18 Ngôn Ngữ Cùng Bàn Chơi", desc: "Hỗ trợ 18 ngôn ngữ bản địa hóa hoàn chỉnh." }, feat4: { title: "⚙️ 19 Tùy Chỉnh Luật Riêng", desc: "Tự do thiết lập phòng chơi độc nhất vô nhị." } },
+      vi: {
+        flag: "🇻🇳", name: "Tiếng Việt", gameTitle: "Tây Du Đại Xung Phong", titleImg: "assets/TitleVI.png",
+        nav: { wishlist: "★ Danh Sách Ước" },
+        hero: {
+          tag: "🎲 Cờ Đua Thủy Mặc Tây Du Ký Cho 1–8 Người Chơi",
+          desc: "Tái hiện ký ức tuổi thơ cùng 1–8 người chơi trong cuộc đua Tây Du Ký phong cách tranh thủy mặc sống động!",
+          wishlist: "★ Thêm Vào Danh Sách Ước Steam",
+          explore: "Khám Phá Nhân Vật & Luật Chơi ↓",
+          tags: ["🎲 Cờ Bàn", "⚔️ Chiến Thuật", "🖌️ Thủy Mặc", "🌐 18 Ngôn Ngữ"],
+          platform: "Nền tảng: <strong>Steam (PC & Mac)</strong>",
+          release: "Phát hành: <strong>Mùa Thu 2026</strong>"
+        },
+        pills: { chars: "8 Hành Giả", rules: "Luật Chơi", about: "Giới Thiệu" },
+        music: { playing: "Nhạc Tỳ Bà (Đang phát)", paused: "Phát Nhạc Tỳ Bà" },
+        pilgrimsHeader: { title: "Tám Vị Hành Giả Với Thần Thông Quảng Đại", sub: "Nhấp vào quân cờ gỗ để xem tuyệt kỹ và cốt truyện." },
+        featuresHeader: { title: "Tây Hành Thông Giám", sub: "Từ đua tốc độ thuần túy đến 19 núm xoay tùy chỉnh sâu sắc." },
+        feat1: { title: "🎲 Thừa Thắng Xông Lên Hay Giữ An Toàn", desc: "Vượt qua ô an toàn để bứt tốc thần tốc về đích!" },
+        feat2: { title: "👹 10 Yêu Vương Thần Thoại Chặn Đường", desc: "Ba ải hiểm trở trấn giữ bởi các đại yêu vương." },
+        feat3: { title: "🌏 18 Ngôn Ngữ Cùng Bàn Chơi", desc: "Hỗ trợ 18 ngôn ngữ bản địa hóa hoàn chỉnh." },
+        feat4: { title: "⚙️ 19 Tùy Chỉnh Luật Riêng", desc: "Tự do thiết lập phòng chơi độc nhất vô nhị." },
+        aboutTiles: ["Tây Du Tuổi Thơ", "Tỳ Bà Trực Tiếp", "Tác Phẩm Độc Lập", "Lời Tri Ân"]
+      },
       
-      id: { flag: "🇮🇩", name: "Bahasa Indonesia", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleID.png", nav: { wishlist: "★ Wishlist Steam" }, hero: { tag: "🎲 Balapan Papan Seni Tinta Lukis untuk 1–8 Pemain", desc: "Kenang kembali memori masa kecil bersama 1–8 pemain dalam balapan papan bertema Perjalanan ke Barat bergaya lukisan tinta!", wishlist: "★ Tambah ke Wishlist Steam", explore: "Jelajahi Peziarah & Mode ↓", tags: ["🎲 Permainan Papan", "⚔️ Strategi", "🖌️ Lukisan Tinta", "🌐 18 Bahasa"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Rilis: <strong>Musim Gugur 2026</strong>" }, pills: { chars: "8 Peziarah", rules: "Mode Permainan", about: "Tentang Game" }, music: { playing: "Musik Pipa (Memutar)", paused: "Putar Musik Pipa" }, pilgrimsHeader: { title: "Delapan Peziarah dengan Kesaktian Luar Biasa", sub: "Klik bidak kayu di bawah untuk melihat keahlian." }, featuresHeader: { title: "Kompendium Barat", sub: "Dari balapan klasik hingga 19 tombol penyesuaian aturan." }, feat1: { title: "🎲 Uji Keberuntungan atau Main Aman", desc: "Lewati titik aman untuk melesat cepat ke garis akhir!" }, feat2: { title: "👹 10 Raja Iblis Legendaris", desc: "Tiga gerbang berbahaya yang dijaga oleh raja siluman sakti." }, feat3: { title: "🌏 18 Bahasa di Satu Meja", desc: "Dukungan penuh 18 bahasa." }, feat4: { title: "⚙️ 19 Tombol Pengaturan Khusus", desc: "Ciptakan aturan main khas meja Anda sendiri." } }
+      id: {
+        flag: "🇮🇩", name: "Bahasa Indonesia", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleID.png",
+        nav: { wishlist: "★ Wishlist Steam" },
+        hero: {
+          tag: "🎲 Balapan Papan Seni Tinta Lukis untuk 1–8 Pemain",
+          desc: "Kenang kembali memori masa kecil bersama 1–8 pemain dalam balapan papan bertema Perjalanan ke Barat bergaya lukisan tinta!",
+          wishlist: "★ Tambah ke Wishlist Steam",
+          explore: "Jelajahi Peziarah & Mode ↓",
+          tags: ["🎲 Permainan Papan", "⚔️ Strategi", "🖌️ Lukisan Tinta", "🌐 18 Bahasa"],
+          platform: "Platform: <strong>Steam (PC & Mac)</strong>",
+          release: "Rilis: <strong>Musim Gugur 2026</strong>"
+        },
+        pills: { chars: "8 Peziarah", rules: "Mode Permainan", about: "Tentang Game" },
+        music: { playing: "Musik Pipa (Memutar)", paused: "Putar Musik Pipa" },
+        pilgrimsHeader: { title: "Delapan Peziarah dengan Kesaktian Luar Biasa", sub: "Klik bidak kayu di bawah untuk melihat keahlian." },
+        featuresHeader: { title: "Kompendium Barat", sub: "Dari balapan klasik hingga 19 tombol penyesuaian aturan." },
+        feat1: { title: "🎲 Uji Keberuntungan atau Main Aman", desc: "Lewati titik aman untuk melesat cepat ke garis akhir!" },
+        feat2: { title: "👹 10 Raja Iblis Legendaris", desc: "Tiga gerbang berbahaya yang dijaga oleh raja siluman sakti." },
+        feat3: { title: "🌏 18 Bahasa di Satu Meja", desc: "Dukungan penuh 18 bahasa." },
+        feat4: { title: "⚙️ 19 Tombol Pengaturan Khusus", desc: "Ciptakan aturan main khas meja Anda sendiri." },
+        aboutTiles: ["Perjalanan Barat", "Pipa Langsung", "Karya Solo Indie", "Terima Kasih"]
+      }
     };
 
-    // Complete 8 Pilgrims Full Data
+    // Complete 8 Pilgrims Full Data (涵盖 18 种语言原生翻译)
     const pilgrimsData = [
       {
         id: 0, en: "MONKEY KING",
-        names: { zh: "孙悟空", tc: "孫悟空", en: "Monkey King", ja: "孫悟空", ko: "손오공", fr: "Roi Singe", de: "Affenkönig", es: "Rey Mono", ru: "Царь Обезьян" },
-        taglines: { zh: "火眼金睛 · 威震群妖", tc: "火眼金睛 · 威震群妖", en: "Dauntless Sage · Demon Bane", ja: "火眼金睛 · 妖魔を圧倒", ko: "화안금정 · 요괴를 제압" },
+        names: { zh: "孙悟空", tc: "孫悟空", en: "Monkey King", ja: "孫悟空", ko: "손오공", fr: "Sun Wukong", de: "Sun Wukong", es: "Sun Wukong", it: "Sun Wukong", pt: "Sun Wukong", ru: "Сунь Укун", pl: "Sun Wukong", cs: "Sun Wu-kchung", uk: "Сунь Укун", tr: "Sun Wukong", th: "ซุนหงอคง", vi: "Tôn Ngộ Không", id: "Sun Wukong" },
+        taglines: { zh: "火眼金睛 · 威震群妖", tc: "火眼金睛 · 威震群妖", en: "Dauntless Sage · Demon Bane", ja: "火眼金睛 · 妖魔を圧倒", ko: "화안금정 · 요괴를 제압", fr: "Yeux de Feu · Fléau des Démons", de: "Feueraugen · Dämonenschreck", es: "Ojos de Fuego · Terror de Demonios", it: "Occhi di Fuoco · Flagello dei Demoni", pt: "Olhos de Fogo · Terror dos Demônios", ru: "Огненный взор · Гроза демонов", pl: "Ogniste Oczy · Postrach Demonów", cs: "Ohnivý zrak · Postrach démonů", uk: "Вогненний погляд · Гроза демонів", tr: "Ateş Gözler · İblis Avcısı", th: "ดวงตาเพลิง · ปราบอสูร", vi: "Hỏa Nhãn Kim Tinh · Uy Chấn Quần Yêu", id: "Mata Api · Penakluk Iblis" },
         lores: {
           zh: "一眼看破妖法，金箍棒横扫千军。自带对妖王战力加成，被直接攻击时强力还击，是西行路上一往无前的开路先锋。",
           tc: "一眼看破妖法，金箍棒橫掃千軍。自帶對妖王戰力加成，被直接攻擊時強力還擊，是西行路上一往無前的開路先鋒。",
           en: "Sees through all illusions with piercing golden eyes. Boasts built-in edge against demon lords and counter-attacks when assaulted.",
           ja: "妖術を一目で見破り、如意棒で群がる敵を討ち払う。妖怪との勝負に強く、直接攻撃を受けると手痛い反撃を見舞う。",
-          ko: "요술을 한눈에 간파하고 여의봉으로 요괴를 쓸어버립니다. 요왕과의 대결에 유리하며 직접 공격을 받으면 강력하게 반격합니다."
+          ko: "요술을 한눈에 간파하고 여의봉으로 요괴를 쓸어버립니다. 요왕과의 대결에 유리하며 직접 공격을 받으면 강력하게 반격합니다.",
+          fr: "Les yeux de feu percent les sortilèges des démons au premier regard. Il bénéficie d'un bonus contre les rois démons et contre-attaque vigoureusement.",
+          de: "Durchschaut Dämonenzauber sofort mit feurigen Augen und schlägt bei Angriffen kraftvoll zurück.",
+          es: "Traspasa cualquier ilusión con sus ojos de fuego y contrataca con fuerza arrolladora al ser atacado.",
+          it: "Vede attraverso ogni illusione e contrattacca duramente quando viene assalito dai nemici.",
+          pt: "Enxerga através de ilusões e contra-ataca com fúria ao sofrer investidas diretas.",
+          ru: "Видит демонов насквозь и наносит сокрушительный контрудар при нападении.",
+          pl: "Przenika iluzje swym ognistym wzrokiem i potężnie kontratakuje przy każdym ataku.",
+          cs: "Okamžitě prokoukne lsti démonů a tvrdě vrací každý přímý útok.",
+          uk: "Бачить крізь демонічні ілюзії та завдає нищівного удару у відповідь.",
+          tr: "Büyüleri anında fark eder ve saldırıya uğradığında güçlü bir karşı darbe indirir.",
+          th: "มองทะลุภาพลวงตาของเหล่าปีศาจ และตอบโต้อย่างรุนแรงเมื่อถูกโจมตี",
+          vi: "Nhìn thấu mọi yêu thuật, thiết bảng quét sạch yêu ma và phản đòn cực mạnh khi bị tấn công.",
+          id: "Menembus segala ilusi siluman dan melancarkan serangan balasan yang dahsyat."
         },
-        skill1Title: { zh: "【绝技】威震群妖", tc: "【絕技】威震群妖", en: "【Skill】Dauntless Sage", ja: "【絶技】威震群妖", ko: "【절기】위진군요" },
+        skill1Title: { zh: "【绝技】威震群妖", tc: "【絕技】威震群妖", en: "【Skill】Dauntless Sage", ja: "【絶技】威震群妖", ko: "【절기】위진군요", fr: "【Prodige】Fléau des Démons", de: "【Fähigkeit】Dämonenschreck", es: "【Habilidad】Terror Demoníaco", ru: "【Навык】Гроза демонов", vi: "【Tuyệt Kỹ】Uy Chấn Quần Yêu" },
         skill1Desc: {
           zh: "遭遇精怪与守关妖王时自动看破破绽，胜率天然拔高，绝不易在险关翻车。",
           tc: "遭遇精怪與守關妖王時自動看破破綻，勝率天然拔高，絕不易在險關翻車。",
           en: "Automatically exploits demon weaknesses at perils, significantly boosting victory odds against all bosses.",
           ja: "道中の妖怪やボスの隙を突き、勝率が大幅に上昇して難関を突破しやすくなります。",
-          ko: "요괴 및 관문 요왕과의 조우 시 약점을 간파하여 승률이 대폭 상승합니다."
+          ko: "요괴 및 관문 요왕과의 조우 시 약점을 간파하여 승률이 대폭 상승합니다.",
+          fr: "Détecte automatiquement les failles des démons et augmente grandement les chances de victoire.",
+          de: "Erhöht die Erfolgschancen gegen Dämonenbosse drastisch.",
+          es: "Aprovecha las debilidades demoníacas aumentando drásticamente la probabilidad de victoria.",
+          ru: "Повышает шансы на победу во всех битвах с демонами-боссами.",
+          vi: "Tự động phát hiện điểm yếu của yêu ma, gia tăng tỷ lệ chiến thắng ải hiểm trở."
         },
-        skill2Title: { zh: "【被动】一棒还击", tc: "【被動】一棒還擊", en: "【Passive】Counter Strike", ja: "【パッシブ】一撃の反撃", ko: "【패시브】일봉반격" },
+        skill2Title: { zh: "【被动】一棒还击", tc: "【被動】一棒還擊", en: "【Passive】Counter Strike", ja: "【パッシブ】一撃の反撃", ko: "【패시브】일봉반격", fr: "【Passif】Riposte Fulgurante", de: "【Passiv】Gegenschlag", es: "【Pasiva】Contraataque", ru: "【Пассив】Ответный удар", vi: "【Bị Động】Nhất Bổng Phản Kích" },
         skill2Desc: {
           zh: "遭受对手直接攻击法宝或道具袭击时自动反震，将袭击者击退 2 格。",
           tc: "遭受對手直接攻擊法寶或道具襲擊時自動反震，將襲擊者擊退 2 格。",
           en: "When hit directly by an offensive relic or item, shocks the attacker and knocks them back 2 tiles.",
           ja: "相手から直接攻撃の法宝やアイテムを受けた際、衝撃波で相手を2マス後退させます。",
-          ko: "상대방의 직접 공격 아이템이나 법보에 피격당할 시 공격자를 2칸 밀어냅니다."
+          ko: "상대방의 직접 공격 아이템이나 법보에 피격당할 시 공격자를 2칸 밀어냅니다.",
+          fr: "Repousse l'attaquant de 2 cases lorsqu'il subit une attaque directe.",
+          de: "Wirft Angreifer bei direkten Treffern um 2 Felder zurück.",
+          es: "Repele al atacante haciéndole retroceder 2 casillas al recibir un impacto directo.",
+          ru: "Отбрасывает атаковавшего противника на 2 клетки назад при прямом ударе.",
+          vi: "Khi bị tấn công trực diện, lập tức đánh bật kẻ địch lùi lại 2 ô."
         }
       },
       {
         id: 1, en: "PIGSY",
-        names: { zh: "猪八戒", tc: "豬八戒", en: "Pigsy", ja: "猪八戒", ko: "저팔계", fr: "Pigsy", de: "Pigsy", es: "Pigsy", ru: "Чжу Бацзе" },
-        taglines: { zh: "逢宴必饱 · 大智若愚", tc: "逢宴必飽 · 大智若愚", en: "Glutton's Feast · Carefree Stride", ja: "宴会満腹 · 大智若愚", ko: "봉연필포 · 대지원우" },
+        names: { zh: "猪八戒", tc: "豬八戒", en: "Pigsy", ja: "猪八戒", ko: "저팔계", fr: "Zhu Bajie", de: "Zhu Bajie", es: "Zhu Bajie", it: "Zhu Bajie", pt: "Zhu Bajie", ru: "Чжу Бацзе", pl: "Zhu Bajie", cs: "Ču Pa-ťie", uk: "Чжу Бацзе", tr: "Zhu Bajie", th: "ตือโป๊ยก่าย", vi: "Trư Bát Giới", id: "Zhu Bajie" },
+        taglines: { zh: "逢宴必饱 · 大智若愚", tc: "逢宴必飽 · 大智若愚", en: "Glutton's Feast · Carefree Stride", ja: "宴会満腹 · 大智若愚", ko: "봉연필포 · 대지원우", fr: "Grand Banquet · Bon Vivant", de: "Schlemmermahl · Schlaue Trägheit", es: "Festín Abundante · Gran Sabiduría", ru: "Праздный пир · Мнимая простота", vi: "Phùng Yến Tất No · Đại Trí Nhược Ngu" },
         lores: {
           zh: "走到哪吃到哪，逢宴必多吃一口。看似步调懒散荒诞，却能在一次次饱腹与大快朵颐中化劣势为胜机。",
           tc: "走到哪吃到哪，逢宴必多吃一口。看似步調懶散荒誕，卻能在一次次飽腹與大快朵頤中化劣勢為勝機。",
           en: "Eats to his heart's content wherever he goes. Turns hearty banquets into extra momentum and shrugs off setbacks with thick skin.",
           ja: "どこへ行っても食べ歩き、宴会があれば人一倍食べる。怠け者に見えて、満腹の力を借りて不利を覆す。",
-          ko: "발길 닿는 곳마다 배를 채우는 먹보. 느긋해 보이지만 잔치에서 얻은 기운으로 판세를 뒤집습니다."
+          ko: "발길 닿는 곳마다 배를 채우는 먹보. 느긋해 보이지만 잔치에서 얻은 기운으로 판세를 뒤집습니다.",
+          fr: "Zhu Bajie mange partout où il passe et reprend une bouchée à chaque banquet. Il transforme les festins en élan irrésistible.",
+          de: "Nutzt Festmahle als Energieschub und steckt Rückschläge dank robuster Natur gelassen weg.",
+          es: "Convierte cada banquete en velocidad extra y supera los contratiempos con gran resistencia.",
+          ru: "Превращает каждое угощение в дополнительную скорость и стойко переносит невзгоды.",
+          vi: "Đi đến đâu ăn no đến đó, biến các bữa tiệc thành lợi thế bứt tốc ngoạn mục."
         },
-        skill1Title: { zh: "【绝技】逢宴必饱", tc: "【絕技】逢宴必飽", en: "【Skill】Glutton's Feast", ja: "【絶技】宴会満腹", ko: "【절기】봉연필포" },
+        skill1Title: { zh: "【绝技】逢宴必饱", tc: "【絕技】逢宴必飽", en: "【Skill】Glutton's Feast", ja: "【絶技】宴会満腹", ko: "【절기】봉연필포", fr: "【Prodige】Grand Banquet", de: "【Fähigkeit】Schlemmerfest", es: "【Habilidad】Banquete Voraz", ru: "【Навык】Сытный пир", vi: "【Tuyệt Kỹ】Phùng Yến Tất No" },
         skill1Desc: {
           zh: "路过盛宴格与仙桃点位额外获得前进点数，吃得越多跑得越快。",
           tc: "路過盛宴格與仙桃點位額外獲得前進點數，吃得越多跑得越快。",
           en: "Gains bonus advance tiles when landing on or passing feast and peach cells.",
           ja: "宴会や仙桃のマスを通過する際、追加の一歩を獲得して加速します。",
-          ko: "연회 칸이나 선도 복숭아 칸을 지날 때 추가 이동 보너스를 획득합니다."
+          ko: "연회 칸이나 선도 복숭아 칸을 지날 때 추가 이동 보너스를 획득합니다.",
+          fr: "Gagne des pas supplémentaires en passant sur les cases de banquet et de pêches divines.",
+          de: "Erhält zusätzliche Vorwärtsfelder beim Erreichen von Fest- und Pfirsichfeldern.",
+          es: "Gana casillas de avance adicionales al pasar por banquetes y melocotones sagrados.",
+          ru: "Получает бонусное продвижение на клетках пиров и персиков бессмертия.",
+          vi: "Nhận thêm bước tiến khi đi qua các ô đại tiệc và đào tiên."
         },
-        skill2Title: { zh: "【被动】随遇而安", tc: "【被動】隨遇而安", en: "【Passive】Thick Skin", ja: "【パッシブ】能天気", ko: "【패시브】수우이安" },
+        skill2Title: { zh: "【被动】随遇而安", tc: "【被動】隨遇而安", en: "【Passive】Thick Skin", ja: "【パッシブ】能天気", ko: "【패시브】수우이안", fr: "【Passif】Cuir Épais", de: "【Passiv】Dickhäuter", es: "【Pasiva】Piel Dura", ru: "【Пассив】Толстая кожа", vi: "【Bị Động】Tùy Ngộ Nhi An" },
         skill2Desc: {
           zh: "受部分路途险阻与后退事件影响大幅减轻，皮糙肉厚，百折不挠。",
           tc: "受部分路途險阻與後退事件影響大幅減輕，皮糙肉厚，百折不撓。",
           en: "Significantly cushions penalty setbacks from trail hazards and misfortune events.",
           ja: "道のりの罠や後退イベントによる影響を大幅に軽減し、タフに進み続けます。",
-          ko: "도로의 험난한 함정이나 후퇴 이벤트로 인한 패널티를 크게 완화합니다."
+          ko: "도로의 험난한 함정이나 후퇴 이벤트로 인한 패널티를 크게 완화합니다.",
+          fr: "Atténue fortement les pénalités de recul et les pièges sur le parcours.",
+          de: "Mildert Strafen und Rückschläge auf dem Pfad deutlich ab.",
+          es: "Reduce considerablemente las penalizaciones por trampas y retrocesos.",
+          ru: "Существенно смягчает штрафные эффекты ловушек и неудач.",
+          vi: "Giảm thiểu đáng kể các hình phạt lùi bước và cạm bẫy dọc đường."
         }
       },
       {
         id: 2, en: "SANDY",
-        names: { zh: "沙僧", tc: "沙僧", en: "Sandy", ja: "沙悟浄", ko: "사오정", fr: "Sandy", de: "Sandy", es: "Sandy", ru: "Шасэн" },
-        taglines: { zh: "负重前行 · 铁骨铮铮", tc: "負重前行 · 鐵骨錚錚", en: "Iron Porter · Unyielding Base", ja: "重荷前進 · 堅実無比", ko: "부중전행 · 철골정정" },
+        names: { zh: "沙僧", tc: "沙僧", en: "Sandy", ja: "沙悟浄", ko: "사오정", fr: "Sha Wujing", de: "Sha Wujing", es: "Sha Wujing", it: "Sha Wujing", pt: "Sha Wujing", ru: "Шасэн", pl: "Sha Wujing", cs: "Ša Wu-ťing", uk: "Ша Вуцзін", tr: "Sha Wujing", th: "ซัวเจ๋ง", vi: "Sa Tăng", id: "Sha Wujing" },
+        taglines: { zh: "负重前行 · 铁骨铮铮", tc: "負重前行 · 鐵骨錚錚", en: "Iron Porter · Unyielding Base", ja: "重荷前進 · 堅実無比", ko: "부중전행 · 철골정정", fr: "Porteur Infatigable · Roc Inébranlable", de: "Eiserner Träger · Felsenfest", es: "Porteador de Hierro · Pilar Firme", ru: "Железная поступь · Несгибаемый оплот", vi: "Phụ Trọng Tiền Hành · Thiết Cốt Tranh Tranh" },
         lores: {
           zh: "挑着担子默默走在最前面。性情沉稳，总能扛下别人吃不消的重击，永远是整个队伍最坚如磐石的后盾。",
           tc: "挑著擔子默默走在最前面。性情沉穩，總能扛下別人吃不消的重擊，永遠是整個隊伍最堅如磐石的後盾。",
           en: "Quietly carries the heavy luggage. Incredibly steady and resilient, bouncing back stronger from harsh setbacks.",
           ja: "重い荷物を背負い黙々と歩む。堅実で打たれ強く、仲間が耐えられない打撃も受け止める頼れる盾。",
-          ko: "묵묵히 짐을 메고 행렬을 이끕니다. 묵직하고 흔들림 없어 팀의 가장 든든한 버팀목이 됩니다."
+          ko: "묵묵히 짐을 메고 행렬을 이끕니다. 묵직하고 흔들림 없어 팀의 가장 든든한 버팀목이 됩니다.",
+          fr: "D'un calme à toute épreuve, Sha Wujing encaisse des coups qui briseraient n'importe qui d'autre.",
+          de: "Trägt geduldig die Lasten und hält selbst den schwersten Angriffen standhaft die Treue.",
+          es: "Resistente e inquebrantable, absorbe golpes devastadores y rebota con más fuerza.",
+          ru: "Непоколебимо несет ношу и стойко выдерживает любые удары судьбы.",
+          vi: "Trầm tĩnh gánh vác hành lý, là chỗ dựa kiên cố nhất cho toàn đội trước mọi đòn giáng hiểm hóc."
         },
-        skill1Title: { zh: "【绝技】负重前行", tc: "【絕技】負重前行", en: "【Skill】Iron Porter", ja: "【絶技】重荷前進", ko: "【절기】부중전행" },
+        skill1Title: { zh: "【绝技】负重前行", tc: "【絕技】負重前行", en: "【Skill】Iron Porter", ja: "【絶技】重荷前進", ko: "【절기】부중전행", fr: "【Prodige】Endurance de Fer", de: "【Fähigkeit】Eiserner Schritt", es: "【Habilidad】Carga Imparable", ru: "【Навык】Стойкий рывок", vi: "【Tuyệt Kỹ】Phụ Trọng Tiền Hành" },
         skill1Desc: {
           zh: "遭遇大退步或严重挫折时触发坚韧反弹，绝不一蹶不振。",
           tc: "遭遇大退步或嚴重挫折時觸發堅韌反彈，絕不一蹶不振。",
           en: "Whenever suffering severe setbacks or forced retreats, triggers a resolute counter-rebound forward.",
           ja: "大きな後退や重い挫折に見舞われた際、粘り強い反動で前進を取り戻します。",
-          ko: "치명적인 후퇴나 큰 패널티를 겪을 때 불굴의 탄력으로 반등합니다."
+          ko: "치명적인 후퇴나 큰 패널티를 겪을 때 불굴의 탄력으로 반등합니다.",
+          fr: "Rebondit vaillamment vers l'avant lorsqu'il subit un revers ou un recul forcé.",
+          de: "Federt schwere Rückschläge ab und wandelt sie in Vorwärtsimpulse um.",
+          es: "Rebota hacia adelante con gran determinación tras sufrir contratiempos severos.",
+          ru: "Совершает отскок вперед при получении критического отката.",
+          vi: "Kích hoạt phản chấn bật tiến lên phía trước khi chịu đòn lùi nghiêm trọng."
         },
-        skill2Title: { zh: "【被动】金身稳步", tc: "【被動】金身穩步", en: "【Passive】Indomitable Step", ja: "【パッシブ】金身の歩み", ko: "【패시브】금신온보" },
+        skill2Title: { zh: "【被动】金身稳步", tc: "【被動】金身穩步", en: "【Passive】Indomitable Step", ja: "【パッシブ】金身の歩み", ko: "【패시브】금신온보", fr: "【Passif】Pas d'Airain", de: "【Passiv】Fester Stand", es: "【Pasiva】Paso Inquebrantable", ru: "【Пассив】Твердая поступь", vi: "【Bị Động】Kim Thân Ổn Bộ" },
         skill2Desc: {
           zh: "步伐坚实稳健，对突发陷阱与路障具有极高抵抗力。",
           tc: "步伐堅實穩健，對突發陷阱與路障具有極高抵抗力。",
           en: "Possesses natural resilience against sudden hazard cells and roadblocks.",
           ja: "一歩一歩が揺るぎなく、突発的な罠や障害物に対して高い耐性を発揮します。",
-          ko: "발걸음이 묵직하여 돌발 함정과 장애물에 높은 저항력을 발휘합니다."
+          ko: "발걸음이 묵직하여 돌발 함정과 장애물에 높은 저항력을 발휘합니다.",
+          fr: "Forte résistance naturelle contre les pièges soudains et les barrages.",
+          de: "Hohe Resistenz gegen überraschende Fallen und Hindernisse.",
+          es: "Resistencia natural contra trampas imprevistas y bloqueos de camino.",
+          ru: "Высокая устойчивость к внезапным ловушкам и дорожным завалам.",
+          vi: "Kháng cự mạnh mẽ trước các cạm bẫy bất ngờ và chướng ngại vật."
         }
       },
       {
         id: 3, en: "TRIPITAKA",
-        names: { zh: "唐僧", tc: "唐僧", en: "Tripitaka", ja: "三蔵法師", ko: "삼장법사", fr: "Tripitaka", de: "Tripitaka", es: "Tripitaka", ru: "Сюаньцзан" },
-        taglines: { zh: "佛光普照 · 慈悲为怀", tc: "佛光普照 · 慈悲為懷", en: "Holy Ward · Resilient Zen", ja: "佛光普照 · 慈悲の心", ko: "불광보조 · 자비위회" },
+        names: { zh: "唐僧", tc: "唐僧", en: "Tripitaka", ja: "三蔵法師", ko: "삼장법사", fr: "Tang Sanzang", de: "Tang Sanzang", es: "Tang Sanzang", it: "Tang Sanzang", pt: "Tang Sanzang", ru: "Сюаньцзан", pl: "Tang Sanzang", cs: "Tchang San-cang", uk: "Сюаньцзан", tr: "Tang Sanzang", th: "พระถังซัมจั๋ง", vi: "Đường Tăng", id: "Tang Sanzang" },
+        taglines: { zh: "佛光普照 · 慈悲为怀", tc: "佛光普照 · 慈悲為懷", en: "Holy Ward · Resilient Zen", ja: "佛光普照 · 慈悲の心", ko: "불광보조 · 자비위회", fr: "Aura Sacrée · Cœur Compassionnel", de: "Heiliger Schutz · Reines Zen", es: "Aura Sagrada · Piedad Eterna", ru: "Священный покров · Свет дхармы", vi: "Phật Quang Phổ Chiếu · Từ Bi Vi Hoài" },
         lores: {
           zh: "即便遭遇险阻也能化险为夷，以坚韧的禅心稳步向西行进。袈裟在身，妖邪退避，逢凶化吉。",
           tc: "即便遭遇險阻也能化險為夷，以堅韌的禪心穩步向西行進。袈裟在身，妖邪退避，逢凶化吉。",
           en: "Turns disasters into blessings through steadfast Zen faith. The sacred kasaya wards off deadly strikes from evil spirits.",
           ja: "どんな苦難にも動じず、揺るがぬ禅の心で西を目指す。袈裟をまとい、魔を退け福を招く。",
-          ko: "위기 속에서도 침착함을 잃지 않는 고결한 스님. 가사의 가호로 요괴의 위협을 물리칩니다."
+          ko: "위기 속에서도 침착함을 잃지 않는 고결한 스님. 가사의 가호로 요괴의 위협을 물리칩니다.",
+          fr: "Transforme les embûches en bénédictions grâce à une foi inébranlable et sa sainte kāsāya.",
+          de: "Verwandelt Gefahren in Segen und wehrt tödliche Dämonenübergriffe mit heiliger Robe ab.",
+          es: "Convierte el peligro en fortuna con su manto sagrado que repele la oscuridad.",
+          ru: "Превращает невзгоды в благословения благодаря несокрушимой вере и защите сутр.",
+          vi: "Biến nguy thành an nhờ tâm thiền vững chãi và tấm cà sa trừ tà linh nghiệm."
         },
-        skill1Title: { zh: "【绝技】袈裟护体", tc: "【絕技】袈裟護體", en: "【Skill】Holy Ward", ja: "【絶技】袈裟の加護", ko: "【절기】가사호체" },
+        skill1Title: { zh: "【绝技】袈裟护体", tc: "【絕技】袈裟護體", en: "【Skill】Holy Ward", ja: "【絶技】袈裟の加護", ko: "【절기】가사호체", fr: "【Prodige】Kāsāya Sacrée", de: "【Fähigkeit】Heilige Robe", es: "【Habilidad】Manto Sagrado", ru: "【Навык】Оберег сутры", vi: "【Tuyệt Kỹ】Cà Sa Hộ Thể" },
         skill1Desc: {
           zh: "佛光护佑，抵挡一次致命的妖王重击或毁灭性负面状态。",
           tc: "佛光護佑，抵擋一次致命的妖王重擊或毀滅性負面狀態。",
           en: "Summons divine light to completely absorb a lethal boss strike or devastating negative effect.",
           ja: "仏の光が体を包み込み、致命的な妖怪の一撃や危険なデバフを一度完全に無効化します。",
-          ko: "부처의 가호로 치명적인 요왕의 일격이나 파멸적인 디버프를 1회 막아냅니다."
+          ko: "부처의 가호로 치명적인 요왕의 일격이나 파멸적인 디버프를 1회 막아냅니다.",
+          fr: "Bloque intégralement une attaque mortelle de démon ou un malus destructeur.",
+          de: "Absorbiert einen tödlichen Bosstreffer oder einen fatalen Statuseffekt komplett.",
+          es: "Bloquea por completo un golpe letal de un jefe o un efecto negativo crítico.",
+          ru: "Полностью поглощает один смертельный удар босса или губительный дебафф.",
+          vi: "Hóa giải hoàn toàn một đòn chí mạng từ yêu vương hoặc hiệu ứng xấu."
         },
-        skill2Title: { zh: "【被动】禅心向西", tc: "【被動】禪心向西", en: "【Passive】Zen Grace", ja: "【パッシブ】西への祈り", ko: "【패시브】선심향서" },
+        skill2Title: { zh: "【被动】禅心向西", tc: "【被動】禪心向西", en: "【Passive】Zen Grace", ja: "【パッシブ】西への祈り", ko: "【패시브】선심향서", fr: "【Passif】Grâce Zen", de: "【Passiv】Zen-Gnade", es: "【Pasiva】Gracia Zen", ru: "【Пассив】Благодать дзен", vi: "【Bị Động】Thiền Tâm Hướng Tây" },
         skill2Desc: {
           zh: "身处后方梯队时获得额外行进福报，落后时更容易迎头赶上。",
           tc: "身處後方梯隊時獲得額外行進福報，落後時更容易迎頭趕上。",
           en: "Receives spiritual blessings and bonus stride when trailing in the back ranks.",
           ja: "後方に遅れている時、仏の導きを受けて追加の前進ボーナスを得やすくなります。",
-          ko: "후방에 뒤처져 있을 때 은혜를 받아 선두를 추격하기 쉬워집니다."
+          ko: "후방에 뒤처져 있을 때 은혜를 받아 선두를 추격하기 쉬워집니다.",
+          fr: "Reçoit une bénédiction d'accélération spirituelle lorsqu'il est distancé en queue de course.",
+          de: "Erhält spirituelle Tempoboni, wenn er im hinteren Feld zurückliegt.",
+          es: "Recibe bendiciones de velocidad espiritual cuando se encuentra rezagado.",
+          ru: "Получает благословение на ускорение при отставании от лидеров.",
+          vi: "Nhận thêm phúc báo gia tốc để nhanh chóng đuổi kịp đội ngũ khi bị tụt lại phía sau."
         }
       },
       {
         id: 4, en: "WHITE DRAGON HORSE",
-        names: { zh: "白龙马", tc: "白龍馬", en: "White Dragon Horse", ja: "白竜馬", ko: "백룡마", fr: "Cheval-Dragon", de: "Drachenpferd", es: "Caballo Dragón", ru: "Белый Дракон-Конь" },
-        taglines: { zh: "龙驹腾跃 · 瞬息千里", tc: "龍駒騰躍 · 瞬息千里", en: "Dragon Gallop · Wind Rider", ja: "竜駒飛翔 · 瞬息千里", ko: "용구등약 · 순식천리" },
+        names: { zh: "白龙马", tc: "白龍馬", en: "Dragon Horse", ja: "白竜馬", ko: "백룡마", fr: "Cheval-Dragon", de: "Drachenpferd", es: "Caballo Dragón", it: "Cavallo Dragone", pt: "Cavalo Dragão", ru: "Дракон-Конь", pl: "Smoczy Koń", cs: "Dračí kůň", uk: "Дракон-Кінь", tr: "Ejder Atı", th: "ม้ามังกรขาว", vi: "Bạch Long Mã", id: "Kuda Naga" },
+        taglines: { zh: "龙驹腾跃 · 瞬息千里", tc: "龍駒騰躍 · 瞬息千里", en: "Dragon Gallop · Wind Rider", ja: "竜駒飛翔 · 瞬息千里", ko: "용구등약 · 순식천리", fr: "Galop Draconique · Fendeur de Vent", de: "Drachensprung · Windreiter", es: "Galope de Dragón · Veloz como el Viento", ru: "Полет дракона · Быстрее ветра", vi: "Long Câu Đằng Dược · Thuấn Tức Thiên Lý" },
         lores: {
           zh: "西海龙王三太子化身，腾云驾雾，龙行天下。在开阔平原与顺风局中速度无可匹敌，能一跃跨越天堑。",
           tc: "西海龍王三太子化身，騰雲駕霧，龍行天下。在開闊平原與順風局中速度無可匹敵，能一躍跨越天塹。",
           en: "The transformed dragon prince of the West Sea. Blazes across plains like lightning and leaps over chasm perils with unmatched speed.",
           ja: "西海竜王の三太子が変じた白馬。雲を呼び風を操り、平原や追い風の局面では圧倒的な走力を誇る。",
-          ko: "서해 용왕 셋째 태자의 화신. 거침없는 질주로 평원과 순풍에서 독보적인 기동력을 자랑합니다."
+          ko: "서해 용왕 셋째 태자의 화신. 거침없는 질주로 평원과 순풍에서 독보적인 기동력을 자랑합니다.",
+          fr: "Le prince dragon transformé fend les plaines tel l'éclair et franchit les ravins d'un bond prodigieux.",
+          de: "Der verwandelte Drachenprinz rast wie der Blitz über Ebenen und überspringt Abgründe mühelos.",
+          es: "El príncipe dragón transformado cruza las llanuras como un rayo saltando abismos sin esfuerzo.",
+          ru: "Принц-дракон мчит сквозь равнины подобно молнии, легко перепрыгивая пропасти.",
+          vi: "Thái tử rồng Tây Hải phi nước đại như tia chớp, dễ dàng vượt qua muôn trùng hiểm trở."
         },
-        skill1Title: { zh: "【绝技】龙驹腾跃", tc: "【絕技】龍駒騰躍", en: "【Skill】Dragon Gallop", ja: "【絶技】竜駒飛翔", ko: "【절기】용구등약" },
+        skill1Title: { zh: "【绝技】龙驹腾跃", tc: "【絕技】龍駒騰躍", en: "【Skill】Dragon Gallop", ja: "【絶技】竜駒飛翔", ko: "【절기】용구등약", fr: "【Prodige】Galop Céleste", de: "【Fähigkeit】Drachengalopp", es: "【Habilidad】Salto de Dragón", ru: "【Навык】Прыжок дракона", vi: "【Tuyệt Kỹ】Long Câu Đằng Dược" },
         skill1Desc: {
           zh: "顺风与连胜时触发极速飞驰，直接跨越前方的恶劣地貌与险境。",
           tc: "順風與連勝時觸發極速飛馳，直接跨越前方的話劣地貌與險境。",
           en: "Triggers lightning dash during win streaks, flying directly over dangerous terrain tiles.",
-          ja: "連勝時や追い風に乗った際、前方的危険な地形や罠を飛び越えて激走します。",
-          ko: "연승이나 순풍 시 폭발적인 도약으로 험난한 지형을 단숨에 뛰어넘습니다."
+          ja: "連勝時や追い風に乗った際、前方の危険な地形や罠を飛び越えて激走します。",
+          ko: "연승이나 순풍 시 폭발적인 도약으로 험난한 지형을 단숨에 뛰어넘습니다.",
+          fr: "Déclenche un sprint fulgurant lors des séries de victoires, survolant les pièges au sol.",
+          de: "Startet bei Siegesserien einen Sturzflug über gefährliche Geländefelder.",
+          es: "Vuela sobre terrenos peligrosos y trampas al encadenar victorias consecutivas.",
+          ru: "Взлетает над опасными клетками местности при череде побед.",
+          vi: "Phi nước đại vượt qua mọi cạm bẫy địa hình hiểm hóc khi đang trên đà thắng lợi."
         },
-        skill2Title: { zh: "【被动】踏水无痕", tc: "【被動】踏水無痕", en: "【Passive】Water Stride", ja: "【パッシブ】水上疾走", ko: "【패시브】답수무흔" },
+        skill2Title: { zh: "【被动】踏水无痕", tc: "【被動】踏水無痕", en: "【Passive】Water Stride", ja: "【パッシブ】水上疾走", ko: "【패시브】답수무흔", fr: "【Passif】Course Aquatique", de: "【Passiv】Wasserlauf", es: "【Pasiva】Paso Acuático", ru: "【Пассив】Бег по воде", vi: "【Bị Động】Đạp Thủy Vô Ngân" },
         skill2Desc: {
           zh: "免疫河流与泥泞等减速地貌，步履如风。",
           tc: "免疫河流與泥濘等減速地貌，步履如風。",
           en: "Completely immune to slow penalties on river, bog, and swamp cells.",
           ja: "川や泥沼などの減速トラップを完全に無視し、風のように軽やかに駆け抜けます。",
-          ko: "강이나 진흙 등 감속을 유발하는 지형을 무시하고 신속하게 달립니다."
+          ko: "강이나 진흙 등 감속을 유발하는 지형을 무시하고 신속하게 달립니다.",
+          fr: "Totalement immunisé contre les ralentissements dans l'eau, les fleuves et la boue.",
+          de: "Vollkommen immun gegen Verlangsamungseffekte auf Fluss- und Sumpffeldern.",
+          es: "Inmune a penalizaciones de ralentización en casillas de ríos y ciénagas.",
+          ru: "Полный иммунитет к замедлению на реках, болотах и топях.",
+          vi: "Miễn nhiễm hoàn toàn trước các địa hình sông nước và đầm lầy làm chậm."
         }
       },
       {
         id: 5, en: "WU CHENG'EN",
-        names: { zh: "吴承恩", tc: "吳承恩", en: "Wu Cheng'en", ja: "呉承恩", ko: "오승은", fr: "Wu Cheng'en", de: "Wu Cheng'en", es: "Wu Cheng'en", ru: "У Чэнъэнь" },
-        taglines: { zh: "妙笔生花 · 著书立说", tc: "妙筆生花 · 著書立說", en: "Author's Quill · Master Plotter", ja: "妙筆生花 · 奇書執筆", ko: "묘필생화 · 저서립설" },
+        names: { zh: "吴承恩", tc: "吳承恩", en: "Wu Cheng'en", ja: "呉承恩", ko: "오승은", fr: "Wu Cheng'en", de: "Wu Cheng'en", es: "Wu Cheng'en", it: "Wu Cheng'en", pt: "Wu Cheng'en", ru: "У Чэнъэнь", pl: "Wu Cheng'en", cs: "Wu Čcheng-en", uk: "У Чен'ень", tr: "Wu Cheng'en", th: "อู๋เฉิงเอิน", vi: "Ngô Thừa Ân", id: "Wu Cheng'en" },
+        taglines: { zh: "妙笔生花 · 著书立说", tc: "妙筆生花 · 著書立說", en: "Author's Quill · Master Plotter", ja: "妙筆生花 · 奇書執筆", ko: "묘필생화 · 저서립설", fr: "Plume de l'Auteur · Maître du Destin", de: "Magische Feder · Schicksalsschreiber", es: "Pluma Maestra · Guionista del Destino", ru: "Перо автора · Вершитель сюжета", vi: "Diệu Bút Sinh Hoa · Trứ Thư Lập Thuyết" },
         lores: {
           zh: "西游记原著之执笔者。手中墨笔翻转乾坤，随手写下的一笔奇遇，就能瞬间改写整盘桌游的宿命走向。",
           tc: "西遊記原著之執筆者。手中墨筆翻轉乾坤，隨手寫下的一筆奇遇，就能瞬間改寫整盤桌遊的宿命走向。",
           en: "The visionary master who penned Journey to the West. Alters destiny with ink and quill, turning the board into his own narrative.",
           ja: "『西遊記』の生みの親。その手にある筆は運命を紡ぎ、自ら描いた筋書きで盤上の波乱を操る。",
-          ko: "서유기의 원작 작가. 붓끝 하나로 운명을 쥐락펴락하며 자신만의 이야기로 판을 지배합니다."
+          ko: "서유기의 원작 작가. 붓끝 하나로 운명을 쥐락펴락하며 자신만의 이야기로 판을 지배합니다.",
+          fr: "L'illustre auteur qui a rédigé la Pérégrination vers l'Ouest. Sa plume trempée d'encre réécrit le destin du plateau.",
+          de: "Der visionäre Autor der Reise nach Westen verändert das Schicksal auf dem Spielbrett mit Feder und Tinte.",
+          es: "El autor de la obra original reescribe los giros de la partida con cada trazo de tinta.",
+          ru: "Великий автор «Путешествия на Запад», меняющий ход игры взмахом своего пера.",
+          vi: "Tác giả nguyên tác Tây Du Ký, dùng bút mực xoay chuyển càn khôn và định đoạt cục diện bàn cờ."
         },
-        skill1Title: { zh: "【绝技】妙笔生花", tc: "【絕技】妙筆生花", en: "【Skill】Author's Quill", ja: "【絶技】妙筆生花", ko: "【절기】묘필생화" },
+        skill1Title: { zh: "【绝技】妙笔生花", tc: "【絕技】妙筆生花", en: "【Skill】Author's Quill", ja: "【絶技】妙筆生花", ko: "【절기】묘필생화", fr: "【Prodige】Trait de Plume", de: "【Fähigkeit】Genialer Federstrich", es: "【Habilidad】Pluma Sagrada", ru: "【Навык】Взмах пера", vi: "【Tuyệt Kỹ】Diệu Bút Sinh Hoa" },
         skill1Desc: {
           zh: "每隔数回合灵感涌现，随身自备法宝锦囊，运筹帷幄。",
           tc: "每隔數回合靈感湧現，隨身自備法寶錦囊，運籌帷幄。",
           en: "Gains bursts of inspiration every few turns, continuously generating useful secret relics.",
           ja: "数ターンごとに閃きが湧き、強力な錦嚢法宝を自給自足して戦略の幅を広げます。",
-          ko: "주기적으로 영감이 번뜩여 유용한 비책과 법보를 스스로 조달합니다."
+          ko: "주기적으로 영감이 번뜩여 유용한 비책과 법보를 스스로 조달합니다.",
+          fr: "Génère périodiquement des inspirations spontanées qui lui octroient de puissantes reliques secrètes.",
+          de: "Erhält alle paar Runden Inspirationen und generiert nützliche Geheimartefakte.",
+          es: "Genera chispas de inspiración cada pocos turnos otorgándole valiosos artefactos.",
+          ru: "Периодически черпает вдохновение, создавая полезные секретные реликвии.",
+          vi: "Cứ sau vài hiệp lại nảy sinh linh cảm kỳ diệu, tự tạo thêm bảo bối thần bí."
         },
-        skill2Title: { zh: "【被动】乾坤在握", tc: "【被動】乾坤在握", en: "【Passive】Plot Armor", ja: "【パッシブ】盤上の筋書き", ko: "【패시브】건곤재악" },
+        skill2Title: { zh: "【被动】乾坤在握", tc: "【被動】乾坤在握", en: "【Passive】Plot Armor", ja: "【パッシブ】盤上の筋書き", ko: "【패시브】건곤재악", fr: "【Passif】Armure du Récit", de: "【Passiv】Handlungsfaden", es: "【Pasiva】Guion Maestro", ru: "【Пассив】Сюжетная броня", vi: "【Bị Động】Càn Khôn Tại Ác" },
         skill2Desc: {
           zh: "开局享有更丰富的奇遇与法宝储备，擅长在复杂局面中破局。",
           tc: "開局享有更豐富的奇遇與法寶儲備，擅長在複雜局面中破局。",
           en: "Begins the match with extra relic reserves and flexibility in tight dice duels.",
           ja: "開始時から豊富なアイテムを持ち、緊迫したダイス勝負でも柔軟に対応できます。",
-          ko: "시작부터 풍부한 자원을 지니고 출발하여 위기 상황에서 유연하게 대처합니다."
+          ko: "시작부터 풍부한 자원을 지니고 출발하여 위기 상황에서 유연하게 대처합니다.",
+          fr: "Commence la partie avec des reliques supplémentaires et une grande flexibilité tactique.",
+          de: "Startet mit zusätzlichen Relikten und meistert knifflige Duelle souverän.",
+          es: "Inicia la partida con reservas adicionales de reliquias para romper bloqueos.",
+          ru: "Начинает игру с дополнительными реликвиями для легкого преодоления тупиков.",
+          vi: "Bắt đầu trận đấu với túi bảo vật dồi dào, linh hoạt phá giải mọi thế cờ nan giải."
         }
       },
       {
         id: 6, en: "EARTH GOD",
-        names: { zh: "土地公", tc: "土地公", en: "Earth God", ja: "土地神", ko: "토지신", fr: "Dieu du Sol", de: "Erdgott", es: "Dios de la Tierra", ru: "Бог Земли" },
-        taglines: { zh: "缩地成寸 · 地行神通", tc: "縮地成寸 · 地行神通", en: "Earth Shortcut · Spirit Guide", ja: "縮地成寸 · 地脈の主", ko: "축지성촌 · 지행신通" },
+        names: { zh: "土地公", tc: "土地公", en: "Earth God", ja: "土地神", ko: "토지신", fr: "Dieu du Sol", de: "Erdgott", es: "Dios de la Tierra", it: "Dio della Terra", pt: "Deus da Terra", ru: "Бог Земли", pl: "Bóstwo Ziemi", cs: "Bůh země", uk: "Бог Землі", tr: "Toprak Tanrısı", th: "พระภูมิเจ้าที่", vi: "Thổ Địa", id: "Dewa Bumi" },
+        taglines: { zh: "缩地成寸 · 地行神通", tc: "縮地成寸 · 地行神通", en: "Earth Shortcut · Spirit Guide", ja: "縮地成寸 · 地脈の主", ko: "축지성촌 · 지행신통", fr: "Raccourci Terrestre · Guide des Lieux", de: "Erdkürzung · Hüter der Pfade", es: "Atajo Terrestre · Guía Espiritual", ru: "Сжатие пространства · Дух земли", vi: "Súc Địa Thành Thốn · Thổ Địa Thần Thông" },
         lores: {
           zh: "掌管一方水土的小神仙。对西行路上的每一寸土地、每一条暗道都了如指掌，总能在绝境中钻出一条捷径。",
           tc: "掌管一方水土的小神仙。對西行路上的每一寸土地、每一條暗道都了如指掌，總能在絕境中鑽出一條捷徑。",
           en: "The humble guardian deity of the soil. Knows every secret burrow and mountain path, sneaking through shortcuts when trailing behind.",
           ja: "その土地を知り尽くした仙人。隠し通路や地脈に精通し、絶体絶命のピンチでも抜け道を見つけ出す。",
-          ko: "서행길 구석구석을 꿰뚫고 있는 토착 신선. 벼랑 끝에서도 비밀 샛길을 찾아냅니다."
+          ko: "서행길 구석구석을 꿰뚫고 있는 토착 신선. 벼랑 끝에서도 비밀 샛길을 찾아냅니다.",
+          fr: "Le gardien des sols connaît chaque terrier et sentier dérobé, ouvrant des raccourcis en cas de retard.",
+          de: "Der Hüter der Erde kennt jeden geheimen Pfad und führt aus brenzligen Lagen stets auf Abkürzungen heraus.",
+          es: "Conoce cada sendero secreto de la montaña y ataja distancias cuando se queda atrás.",
+          ru: "Местный дух-хранитель знает каждую тропу и находит короткие пути в трудный момент.",
+          vi: "Thần Thổ Địa thông thuộc từng tấc đất, luôn tìm ra những lối tắt bí mật khi bị tụt lại."
         },
-        skill1Title: { zh: "【绝技】缩地成寸", tc: "【絕技】縮地成寸", en: "【Skill】Earth Shortcut", ja: "【絶技】縮地成寸", ko: "【절기】축지성촌" },
+        skill1Title: { zh: "【绝技】缩地成寸", tc: "【絕技】縮地成寸", en: "【Skill】Earth Shortcut", ja: "【絶技】縮地成寸", ko: "【절기】축지성촌", fr: "【Prodige】Raccourci Terrestre", de: "【Fähigkeit】Erdabkürzung", es: "【Habilidad】Atajo de Tierra", ru: "【Навык】Сжатие пути", vi: "【Tuyệt Kỹ】Súc Địa Thành Thốn" },
         skill1Desc: {
           zh: "身处落后梯队时有概率发现地脉秘道，直接抄近路大幅赶超大部队。",
           tc: "身處落後梯隊時有概率發現地脈秘道，直接抄近路大幅趕超大部隊。",
           en: "When trailing behind, uncovers secret underground passages to warp forward.",
           ja: "遅れをとっている時、秘密の地下道を掘り当てて一気に先頭集団へ追いつきます。",
-          ko: "뒤처져 있을 때 지맥의 샛길을 발견하여 선두 그룹으로 단숨에 도약합니다."
+          ko: "뒤처져 있을 때 지맥의 샛길을 발견하여 선두 그룹으로 단숨에 도약합니다.",
+          fr: "Révèle des passages secrets sous terre pour rattraper la tête de course quand il est distancé.",
+          de: "Findet geheime Tunnel, um bei Rückstand sofort zur Spitzengruppe aufzuschließen.",
+          es: "Encuentra atajos subterráneos secretos para alcanzar al grupo principal.",
+          ru: "Находит подземные тайные ходы, позволяющие нагнать группу лидеров.",
+          vi: "Phát hiện địa đạo bí mật để đốt cháy giai đoạn bắt kịp đoàn đua."
         },
-        skill2Title: { zh: "【被动】灵验庇佑", tc: "【被動】靈驗庇佑", en: "【Passive】Local Blessing", ja: "【パッシブ】祠の恵み", ko: "【패시브】영험비우" },
+        skill2Title: { zh: "【被动】灵验庇佑", tc: "【被動】靈驗庇佑", en: "【Passive】Local Blessing", ja: "【パッシブ】祠の恵み", ko: "【패시브】영험비우", fr: "【Passif】Bénédiction du Temple", de: "【Passiv】Schreingunst", es: "【Pasiva】Bendición del Altar", ru: "【Пассив】Благословение кумирни", vi: "【Bị Động】Linh Nghiệm Tí Hữu" },
         skill2Desc: {
           zh: "在土地庙、神龛与祈福格获得双倍福报与补给收益。",
           tc: "在土地廟、神龕與祈福格獲得雙倍福報與補給收益。",
           en: "Earns doubled blessings and rewards whenever visiting shrine and altar cells.",
           ja: "祠や神殿のマスに止まった際、2倍の祝福やアイテム報酬を得られます。",
-          ko: "사당이나 제단 칸에 도달했을 때 2倍의 축복과 보급품을 획득합니다."
+          ko: "사당이나 제단 칸에 도달했을 때 2배의 축복과 보급품을 획득합니다.",
+          fr: "Double les récompenses et bénédictions sur les cases d'autel et de temple.",
+          de: "Verdoppelt Belohnungen und Boni auf allen Schrein- und Altarkacheln.",
+          es: "Duplica recompensas y bendiciones en casillas de templos y santuarios.",
+          ru: "Удваивает награды на клетках алтарей и святилищ.",
+          vi: "Nhân đôi phần thưởng và phúc lành khi ghé thăm các miếu thổ địa và đền thờ."
         }
       },
       {
         id: 7, en: "LITTLE IMP",
-        names: { zh: "小钻风", tc: "小鑽風", en: "Little Imp", ja: "小鑽風", ko: "소찬풍", fr: "Petit Démon", de: "Kleiner Kobold", es: "Pequeño Imp", ru: "Маленький Бес" },
-        taglines: { zh: "巡山鸣锣 · 狐假虎威", tc: "巡山鳴鑼 · 狐假虎威", en: "Mountain Patrol · Cunning Scout", ja: "巡山鳴鑼 · 虎の威を借る", ko: "순산명라 · 호가호위" },
+        names: { zh: "小钻风", tc: "小鑽風", en: "Little Imp", ja: "小鑽風", ko: "소찬풍", fr: "Lutin Patrouilleur", de: "Kleiner Späher", es: "Pequeño Imp", it: "Piccolo Diavoletto", pt: "Pequeno Imp", ru: "Маленький Бес", pl: "Mały Bies", cs: "Malý Diblík", uk: "Малий Біс", tr: "Küçük İblis", th: "ปีศาจน้อยตรวจตรา", vi: "Tiểu Toản Phong", id: "Imp Kecil" },
+        taglines: { zh: "巡山鸣锣 · 狐假虎威", tc: "巡山鳴鑼 · 狐假虎威", en: "Mountain Patrol · Cunning Scout", ja: "巡山鳴鑼 · 虎の威を借る", ko: "순산명라 · 호가호위", fr: "Gong de Ronde · Ruse Diabolique", de: "Berggong · Schlaue Flucht", es: "Gong de Patrulla · Astucia Pícara", ru: "Дозорный гонг · Хитрая лиса", vi: "Tuần Sơn Minh La · Hồ Giả Hổ Uy" },
         lores: {
           zh: "大王叫我来巡山！敲起铜锣狐假虎威，虽然胆小却精明滑头，总能在妖王与行者的夹缝中偷生得利。",
           tc: "大王叫我來巡山！敲起銅鑼狐假虎威，雖然膽小卻精明滑頭，總能在妖王與行者的夾縫中偷生得利。",
           en: "Patrols the mountain banging his brass gong! Small and cowardly yet remarkably cunning at slipping past harsh boss retributions.",
           ja: "「大王の命で山回り！」銅鑼を鳴らして威張り散らすが、要領よく妖怪と旅人の間をすり抜ける。",
-          ko: "징을 울리며 산을 순찰하는 꾀돌이 요괴. 겁은 많지만 기회주의적인 영민함으로 위기를 모면합니다."
+          ko: "징을 울리며 산을 순찰하는 꾀돌이 요괴. 겁은 많지만 기회주의적인 영민함으로 위기를 모면합니다.",
+          fr: "Le Lutin Patrouilleur frappe son gong de cuivre ! Plus il est distancé, plus il devient coriace et rusé.",
+          de: "Schlägt die Alarmtrommel und entwischt Gefahren dank unvergleichlicher Wendigkeit.",
+          es: "Toca su gong de montaña y se desliza hábilmente entre peligros esquivando castigos.",
+          ru: "Бьет в дозорный гонг и умудряется извлекать выгоду из хаоса между демонами и путниками.",
+          vi: "Đánh thanh la tuần núi rộn rã, nhanh trí né tránh đòn trừng phạt khốc liệt từ yêu vương."
         },
-        skill1Title: { zh: "【绝技】巡山鸣锣", tc: "【絕技】巡山鳴鑼", en: "【Skill】Mountain Patrol", ja: "【絶技】巡山鳴鑼", ko: "【절기】순산명라" },
+        skill1Title: { zh: "【绝技】巡山鸣锣", tc: "【絕技】巡山鳴鑼", en: "【Skill】Mountain Patrol", ja: "【絶技】巡山鳴鑼", ko: "【절기】순산명라", fr: "【Prodige】Gong de Patrouille", de: "【Fähigkeit】Gong-Alarm", es: "【Habilidad】Gong de Ronda", ru: "【Навык】Дозорный набат", vi: "【Tuyệt Kỹ】Tuần Sơn Minh La" },
         skill1Desc: {
           zh: "敲响铜锣制造混乱，扰乱周围对手的前进步伐与掷骰节奏。",
           tc: "敲響銅鑼製造混亂，擾亂周圍對手的前進步伐與擲骰節奏。",
           en: "Bangs the loud patrol gong to sow confusion and disrupt nearby opponents' dice pace.",
           ja: "銅鑼を打ち鳴らして周囲を混乱させ、近くの対戦相手の進行ペースを狂わせます。",
-          ko: "징을 울려 소란을 피우고 주변 경쟁자들의 이동 리듬을 흐트러뜨립니다."
+          ko: "징을 울려 소란을 피우고 주변 경쟁자들의 이동 리듬을 흐트러뜨립니다.",
+          fr: "Fait résonner son gong pour semer la pagaille et troubler le rythme des dés adverses.",
+          de: "Stiftet mit lautem Gong Wirbel und stört das Würfeltempo der Konkurrenten.",
+          es: "Hace sonar el gong para sembrar confusión en el ritmo de tiradas de los oponentes.",
+          ru: "Бьет в гонг, сея смуту и сбивая темп бросков соперников.",
+          vi: "Gõ vang thanh la gây hỗn loạn, làm gián đoạn nhịp đổ xúc xắc của đối thủ lân cận."
         },
-        skill2Title: { zh: "【被动】见机溜号", tc: "【被動】見機溜號", en: "【Passive】Scout's Dodge", ja: "【パッシブ】素早い逃げ足", ko: "【패시브】견기유호" },
+        skill2Title: { zh: "【被动】见机溜号", tc: "【被動】見機溜號", en: "【Passive】Scout's Dodge", ja: "【パッシブ】素早い逃げ足", ko: "【패시브】견기유호", fr: "【Passif】Esquive Rusée", de: "【Passiv】Schneller Abgang", es: "【Pasiva】Huida Oportuna", ru: "【Пассив】Ловкий уход", vi: "【Bị Động】Kiến Cơ Lưu Hào" },
         skill2Desc: {
           zh: "遭遇妖王或险关时脚底抹油，极易避开最严厉的惩罚打击。",
           tc: "遭遇妖王或險關時腳底抹油，極易避開最嚴厲的懲罰打擊。",
           en: "Scurries away at perils, easily slipping past catastrophic boss penalties.",
           ja: "強大なボスや難関に遭遇した際、いち早く逃げ出して重いペナルティを回避します。",
-          ko: "위험한 관문이나 요왕을 마주쳤을 때 재빠르게 도망쳐 엄중한 처벌을 피합니다."
+          ko: "위험한 관문이나 요왕을 마주쳤을 때 재빠르게 도망쳐 엄중한 처벌을 피합니다.",
+          fr: "Se faufile habilement pour éviter les pénalités les plus dévastatrices des boss.",
+          de: "Schlüpft bei Boss-Gefahren blitzschnell durch und entgeht schweren Strafen.",
+          es: "Escabulle hábilmente eludiendo los castigos más severos de los jefes.",
+          ru: "Ускользает от тяжелых ударов боссов, избегая суровых наказаний.",
+          vi: "Nhanh chân chuồn lẹ trước yêu vương, dễ dàng né tránh các hình phạt nặng nề nhất."
         }
       }
     ];
 
-    // About 4 Tiles Data (西游记 / 琵琶 / 制作 / 鸣谢) — 全部配大图置于最左侧
+    // About 4 Tiles Full 18-Language Datasets (西游记 / 琵琶 / 制作 / 鸣谢)
     const aboutTilesData = [
       {
-        title: "一张泛黄磨破的棋盘纸",
-        desc1: "“一张画着西游记的简陋图纸，放学后几个小伙伴围坐在桌前丢骰子，从第 1 格一路抢跑到第 100 格。路上有冷不丁跳出来的妖精一把将你打回原地，有驾着筋斗云腾空飞跃十几格的欢呼，也有被小鬼缠住动弹不得的懊恼。”",
-        desc2: "当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。很多年后，我凭着这份念想，把它亲手做成了电子游戏。",
-        author: "— 逍遥子 (Mars Paladin)",
-        badgeTitle: "经典西游童年桌游",
-        badgeSub: "Journey to the West Nostalgia",
-        img: "assets/cover.png"
+        img: "assets/cover.png",
+        titles: {
+          zh: "一张泛黄磨破的棋盘纸",
+          tc: "一張泛黃磨破的棋盤紙",
+          en: "A Faded Board Game Sheet",
+          ja: "一枚の黄ばんだ双六の紙",
+          ko: "누렇게 바랜 종이 판",
+          fr: "Une simple feuille jaunie par le temps",
+          de: "Ein vergilbtes Brettspielblatt",
+          es: "Un tablero de papel desgastado",
+          it: "Un foglio ingiallito dal tempo",
+          pt: "Um tabuleiro de papel envelhecido",
+          ru: "Пожелтевший лист настольной игры",
+          pl: "Pożółkła kartka z planszą",
+          cs: "Zažloutlý list papíru",
+          uk: "Пожовклий аркуш гри",
+          tr: "Zamanla sararmış bir oyun kâğıdı",
+          th: "แผ่นกระดานกระดาษที่ซีดจาง",
+          vi: "Tờ giấy vẽ cờ bàn ố vàng theo năm tháng",
+          id: "Selembar papan kertas yang usang"
+        },
+        desc1: {
+          zh: "“一张画着西游记的简陋图纸，放学后几个小伙伴围坐在桌前丢骰子，从第 1 格一路抢跑到第 100 格。路上有冷不丁跳出来的妖精一把将你打回原地，有驾着筋斗云腾空飞跃十几格的欢呼，也有被小鬼缠住动弹不得的懊恼。”",
+          tc: "“一張畫著西遊記的簡陋圖紙，放學後幾個小夥伴圍坐在桌前丟骰子，從第 1 格一路搶跑到第 100 格。路上有冷不丁跳出來的妖精一把將你打回原地，有駕著筋斗雲騰空飛躍十幾格的歡呼，也有被小鬼纏住動彈不得的懊惱。”",
+          en: "“A simple sheet of paper drawn with Journey to the West. After school, a few pals huddled around a desk rolling dice, racing from tile 1 to tile 100. Along the way, demons jumped out to send you back, Somersault Clouds carried you flying forward, and little imps trapped you in place.”",
+          ja: "「放課後、机を囲んでサイコロを振ったあの日の記憶。第1マスから100マスまで駆け抜け、妖精に振り出しに戻され、筋斗雲で一気に飛び越え、小鬼に足止めされて悔しがったあの日。」",
+          ko: "“서유기가 그려진 허름한 종이 한 장. 방과 후 친구 몇몇과 책상에 둘러앉아 주사위를 던지며 1번 칸에서 100번 칸까지 달렸습니다. 요괴에게 붙들려 제자리로 돌아가고, 근두운을 타고 날아오르던 그 환호.”",
+          fr: "« Une simple feuille de papier où l'on avait dessiné la Pérégrination vers l'Ouest. Après l'école, quelques copains se serraient autour de la table pour lancer les dés et foncer de la case 1 à la case 100. Les monstres vous renvoyaient au départ, le Nuage Cabriole vous faisait voler ! »",
+          de: "„Ein einfaches Blatt Papier mit der Reise nach Westen. Nach der Schule würfelten wir gemeinsam von Feld 1 bis 100, flogen mit Wolken voran und ärgerten uns über Dämonenfallen.“",
+          es: "«Una simple hoja con el Viaje al Oeste donde nos reuníamos al salir de clase para tirar dados del 1 al 100, volando en nubes mágicas y esquivando demonios traviesos.»",
+          ru: "«Простой лист бумаги с нарисованным “Путешествием на Запад”. После уроков мы бросали кубики, мчались с 1 по 100 клетку, летали на волшебных облаках и смеялись от души.»",
+          vi: "“Một tờ giấy đơn sơ vẽ hình Tây Du Ký, tan học mấy đứa bạn quây quần bên bàn đổ xúc xắc từ ô 1 tới ô 100, vừa reo hò cưỡi Cân Đẩu Vân vừa thót tim né yêu quái.”"
+        },
+        desc2: {
+          zh: "当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。很多年后，我凭着这份念想，把它亲手做成了电子游戏。",
+          tc: "當年那張泛黃磨破的棋盤紙早已不知所蹤，但圍著桌子丟骰子的那種純粹的快樂，卻在我的記憶裡留了一輩子。很多年後，我憑著這份念想，把它親手做成了電子遊戲。",
+          en: "That faded, worn sheet is long gone, but the pure joy of rolling dice around a table has stayed with me for a lifetime. Decades later, driven by that memory, I forged it into a video game.",
+          ja: "あの黄ばんで擦り切れた紙はとっくに消えてしまいましたが、みんなで机を囲んだ純粋な喜びは一生胸に残り、今こうしてゲームとして結実しました。",
+          ko: "누렇게 바랜 그 종이 판은 사라졌지만, 둘러앉아 주사위를 던지던 순수한 기쁨은 평생 남아 마침내 비디오 게임으로 다시 태어났습니다.",
+          fr: "Cette feuille usée a disparu depuis longtemps, mais la joie toute simple de lancer les dés autour d'une table est restée gravée en moi pour la vie.",
+          de: "Das vergilbte Blatt ist längst verschwunden, doch die pure Freude am gemeinsamen Würfeln blieb für immer lebendig.",
+          es: "Aquel papel desgastado desapareció hace mucho, pero la pura alegría de jugar juntos me acompañó toda la vida hasta convertirse en este videojuego.",
+          ru: "Тот ветхий лист давно потерян, но чистое счастье от игры за одним столом осталось со мной навсегда.",
+          vi: "Tờ giấy ố vàng năm xưa nay đã thất lạc, nhưng niềm vui thuần khiết khi quây quần bên bàn cờ đã theo tôi suốt đời và hóa thành tựa game này."
+        },
+        authors: {
+          zh: "— 逍遥子 (Mars Paladin)",
+          tc: "— 逍遙子 (Mars Paladin)",
+          en: "— Mars Paladin",
+          ja: "— 逍遥子 (Mars Paladin)",
+          ko: "— 소요자 (Mars Paladin)",
+          fr: "— Mars Paladin",
+          de: "— Mars Paladin",
+          es: "— Mars Paladin",
+          ru: "— Mars Paladin",
+          vi: "— Tiêu Dao Tử (Mars Paladin)"
+        }
       },
       {
-        title: "琵琶原声实录，真情伴奏",
-        desc1: "“游戏中你所能听到的所有悠扬动人的琵琶主旋律，全由我的妻子灵如酱亲自弹奏录制，并自学 AI 配合编曲完成。”",
-        desc2: "每一缕指尖拨动的琴弦声，都凝聚着我们对东方古典音乐与水墨神韵的热爱，希望这抹琴音能伴随你每一次的西行冒险。",
-        author: "— 灵如酱 & 逍遥子",
-        badgeTitle: "原创琵琶实录原声",
-        badgeSub: "Performed by 灵如酱",
-        img: "assets/Pipa.png"
+        img: "assets/Pipa.png",
+        titles: {
+          zh: "琵琶原声实录，真情伴奏",
+          tc: "琵琶原聲實錄，真情伴奏",
+          en: "Live Pipa Acoustic Recording",
+          ja: "妻による琵琶の生演奏録音",
+          ko: "아내가 연주해 녹음한 비파 선율",
+          fr: "Enregistrement authentique de pipa",
+          de: "Echte Pipa-Live-Aufnahme",
+          es: "Grabación acústica de pipa en vivo",
+          it: "Registrazione dal vivo di pipa",
+          pt: "Gravação ao vivo de pipa",
+          ru: "Живое исполнение на лютне пипа",
+          pl: "Autentyczne nagranie lutni pipa",
+          cs: "Živá nahrávka loutny pipa",
+          uk: "Живий запис на лютні піпа",
+          tr: "Canlı pipa enstrüman kaydı",
+          th: "บันทึกเสียงผีผาสดด้วยหัวใจ",
+          vi: "Đàn Tỳ Bà thực thu âm truyền cảm",
+          id: "Rekaman langsung instrumen pipa"
+        },
+        desc1: {
+          zh: "“游戏中你所能听到的所有悠扬动人的琵琶主旋律，全由我的妻子灵如酱亲自弹奏录制，并自学 AI 配合编曲完成。”",
+          tc: "“遊戲中你所能聽到的所有悠揚動人的琵琶主旋律，全由我的妻子靈如醬親自彈奏錄製，並自學 AI 配合編曲完成。”",
+          en: "“All the melodious pipa melodies in the game were recorded live by my wife, Lingru-chan, and arranged with self-taught AI assistance.”",
+          ja: "「ゲームの中で流れる琵琶の主旋律は、すべて妻リンルーちゃんが自ら演奏して録音し、AI編曲で仕上げたものです。」",
+          ko: "“게임 속에서 흐르는 비파 주선율은 모두 제 아내 링루짱이 직접 연주해 녹음하고 AI 편곡을 더해 완성했습니다.”",
+          fr: "« Toutes les douces mélodies de pipa ont été enregistrées en direct par mon épouse Lingru-chan, arrangées avec l'aide de l'IA. »",
+          de: "„Alle melodischen Pipa-Themen im Spiel wurden von meiner Frau Lingru-chan live eingespielt und liebevoll arrangiert.“",
+          es: "«Todas las hermosas melodías de pipa fueron tocadas en directo por mi esposa Lingru-chan con gran cariño.»",
+          ru: "«Все чарующие мелодии пипы в игре вживую записаны моей супругой Линжу-чан и бережно аранжированы.»",
+          vi: "“Tất cả những giai điệu tỳ bà du dương trong game đều do chính vợ tôi - Linh Như Tương trực tiếp gảy đàn thu âm.”"
+        },
+        desc2: {
+          zh: "每一缕指尖拨动的琴弦声，都凝聚着我们对东方古典音乐与水墨神韵的热爱，希望这抹琴音能伴随你每一次的西行冒险。",
+          tc: "每一縷指尖撥動的琴弦聲，都凝聚著我們對東方古典音樂與水墨神韻的熱愛，希望這抹琴音能伴隨你每一次的西行冒險。",
+          en: "Every acoustic pluck embodies our love for Eastern classical music and ink aesthetics. May these gentle chords accompany your every journey west.",
+          ja: "指先から紡ぎ出される一音一音に、伝統音楽と水墨への愛を込めました。この音色があなたの旅に寄り添いますように。",
+          ko: "현을 뜯는 손끝 하나하나에 동양 고전 음악의 정취를 담았습니다. 이 은은한 소리가 여러분의 여정에 함께하길 바랍니다.",
+          fr: "Chaque note pincée porte notre amour pour la musique classique orientale. Puisse cette musique accompagner votre route.",
+          de: "Jeder Zupfton spiegelt unsere Hingabe an fernöstliche Musik wider und begleitet eure Reise nach Westen.",
+          es: "Cada cuerda vibrante refleja nuestra pasión por la música oriental clásica. ¡Que os acompañe en cada partida!",
+          ru: "Каждая нота наполнена нашей любовью к восточной музыке. Пусть эти аккорды озаряют ваше путешествие.",
+          vi: "Từng tiếng tơ đàn ngân vang đều gửi gắm tình yêu sâu sắc với âm nhạc cổ phong phương Đông."
+        },
+        authors: {
+          zh: "— 灵如酱 & 逍遥子",
+          tc: "— 靈如醬 & 逍遙子",
+          en: "— Lingru-chan & Mars Paladin",
+          ja: "— リンルーちゃん & 逍遥子",
+          ko: "— 링루짱 & 소요자",
+          fr: "— Lingru-chan & Mars Paladin",
+          de: "— Lingru-chan & Mars Paladin",
+          es: "— Lingru-chan & Mars Paladin",
+          ru: "— Линжу-чан & Mars Paladin",
+          vi: "— Linh Như Tương & Tiêu Dao Tử"
+        }
       },
       {
-        title: "一人之力，AI 协作的独立作品",
-        desc1: "“这是我凭一个人的力量在 AI 协助下完成的第一款独立作品。从代码架构、水墨美术打磨，到多语言本地化与网络联机系统，倾注了无数个日夜的打磨。”",
-        desc2: "我想原汁原味地留住那份大家围坐在一起的心跳与欢笑，让每一次重新出发，都是一条截然不同的取经路。",
-        author: "— Mars Paladin LLC",
-        badgeTitle: "Mars Paladin LLC",
-        badgeSub: "Independent Game Studio",
-        img: "assets/marspaladin_logo.png"
+        img: "assets/marspaladin_logo.png",
+        titles: {
+          zh: "一人之力，AI 协作的独立作品",
+          tc: "一人之力，AI 協作的獨立作品",
+          en: "Solo Independent Studio with AI",
+          ja: "たったひとりのインディー制作",
+          ko: "1인의 힘으로 완성한 인디 작품",
+          fr: "Création indépendante en solo avec l'IA",
+          de: "Ein-Personen-Indie-Entwicklung mit KI",
+          es: "Creación indie en solitario con IA",
+          it: "Sviluppo indie in solitaria con IA",
+          pt: "Desenvolvimento indie solo com IA",
+          ru: "Инди-разработка в одиночку с ИИ",
+          pl: "Projekt jednoosobowy z pomocą AI",
+          cs: "Sólo nezávislá tvorba s AI",
+          uk: "Соло-розробка за підтримки ШІ",
+          tr: "Yapay zekâ destekli bağımsız yapım",
+          th: "ผลงานเกมอินดี้เดี่ยวร่วมกับ AI",
+          vi: "Tác phẩm độc lập do một người phát triển",
+          id: "Karya game indie solo bersama AI"
+        },
+        desc1: {
+          zh: "“这是我凭一个人的力量在 AI 协助下完成的第一款独立作品。从代码架构、水墨美术打磨，到多语言本地化与网络联机系统，倾注了无数个日夜的打磨。”",
+          tc: "“這是我憑一個人的力量在 AI 協助下完成的第一款獨立作品。從代碼架構、水墨美術打磨，到多語言本地化與網絡聯機系統，傾注了無數個日夜的打磨。”",
+          en: "“This is my first independent work crafted single-handedly with AI assistance. From code architecture and ink-wash art to 18-language localization and networking, every detail was polished over countless days and nights.”",
+          ja: "「これは私がひとりの力で、AIの助けを借りて完成させた初めてのインディー作品です。コード設計、水墨美術、18言語の翻訳からオンライン対戦まで、情熱を注ぎ込みました。」",
+          ko: "“이것은 제가 혼자 힘으로 AI의 도움을 받아 완성한 첫 인디 작품입니다. 코드 설계부터 수묵화 아트, 18개 언어 번역과 멀티플레이까지 수많은 밤을 새워 빚어냈습니다.”",
+          fr: "« C'est ma première œuvre indépendante, réalisée seul avec l'aide de l'IA. Architecture de code, direction artistique à l'encre, localisation en 18 langues et jeu en ligne : tout a été conçu avec passion. »",
+          de: "„Mein erstes unabhängiges Werk, allein mit KI-Unterstützung erschaffen. Von der Code-Architektur über die Tuschkunst bis zur 18-Sprachen-Lokalisierung steckt pures Herzblut darin.“",
+          es: "«Mi primera obra independiente creada en solitario con asistencia de IA, cuidando cada línea de código, pincelada de tinta y traducción a 18 idiomas.»",
+          ru: "«Мой первый инди-проект, созданный в одиночку при поддержке ИИ — от программного кода и живописи тушью до перевода на 18 языков и сетевой игры.»",
+          vi: "“Đây là tác phẩm độc lập đầu tiên do tôi tự tay hoàn thiện với sự trợ giúp của AI từ lập trình, mỹ thuật thủy mặc đến bản địa hóa 18 thứ tiếng.”"
+        },
+        desc2: {
+          zh: "我想原汁原味地留住那份大家围坐在一起的心跳与欢笑，让每一次重新出发，都是一条截然不同的取经路。",
+          tc: "我想原汁原味地留住那份大家圍坐在一起的心跳與歡笑，讓每一次重新出發，都是一條截然不同的取經路。",
+          en: "I wanted to preserve that authentic heart-pounding laughter around the table, ensuring that every new departure leads to an entirely fresh pilgrimage.",
+          ja: "みんなで机を囲んだあのドキドキと笑い声をそのまま残したい。そして再出発のたびに、まったく違う取経の道が広がるように。",
+          ko: "다 함께 둘러앉았던 그 두근거림과 웃음을 고스란히 담고 싶었고, 새로 출발할 때마다 전혀 다른 여정이 펼쳐지기를 바랐습니다.",
+          fr: "Je voulais préserver intacts ces battements de cœur et ces éclats de rire partagés autour de la table.",
+          de: "Ich wollte den Nervenkitzel und das herzliche Lachen am Tisch bewahren, damit jeder neue Start ein einzigartiges Erlebnis wird.",
+          es: "Quería preservar las risas y la emoción compartida alrededor de la mesa para que cada partida sea única.",
+          ru: "Я хотел сохранить тот восторг и смех за общим столом, чтобы каждое новое путешествие было неповторимым.",
+          vi: "Tôi muốn giữ vẹn nguyên niềm phấn khích và tiếng cười rộn rã bên bàn cờ, để mỗi lần xuất phát là một hành trình hoàn toàn mới."
+        },
+        authors: {
+          zh: "— Mars Paladin LLC",
+          tc: "— Mars Paladin LLC",
+          en: "— Mars Paladin LLC",
+          ja: "— Mars Paladin LLC",
+          ko: "— Mars Paladin LLC",
+          fr: "— Mars Paladin LLC",
+          de: "— Mars Paladin LLC",
+          es: "— Mars Paladin LLC",
+          ru: "— Mars Paladin LLC",
+          vi: "— Mars Paladin LLC"
+        }
       },
       {
-        title: "谨以此作，献给同行之人",
-        desc1: "“谨以此作，献给年少时曾陪我一起掷骰子的人，以及每一个心中依然保留着纯真童心的大朋友。”",
-        desc2: "无论你身在何方，无论你使用的是何种语言，愿这盘桌游能为你和身边的亲朋好友带来最纯粹的心跳与欢笑！",
-        author: "— 逍遥子 (Mars Paladin)",
-        badgeTitle: "18 种语言真情鸣谢",
-        badgeSub: "Dedicated to all Players",
-        img: "assets/thanks_wall.png"
+        img: "assets/thanks_wall.png",
+        titles: {
+          zh: "谨以此作，献给同行之人",
+          tc: "謹以此作，獻給同行之人",
+          en: "Dedicated to Fellow Travelers",
+          ja: "少年の日にともにサイコロを振った友へ",
+          ko: "함께 주사위를 던지던 이들에게",
+          fr: "Dédié à ceux qui ont partagé ma route",
+          de: "Gewidmet allen Weggefährten",
+          es: "Dedicado a quienes compartieron el camino",
+          it: "Dedicato ai compagni di viaggio",
+          pt: "Dedicado aos companheiros de jornada",
+          ru: "Посвящается попутчикам и игрокам",
+          pl: "Dedykowane towarzyszom podróży",
+          cs: "Věnováno mým společníkům na cestě",
+          uk: "Присвячується всім попутникам",
+          tr: "Yol arkadaşlarıma ve tüm oyunculara",
+          th: "ขอมอบผลงานนี้แด่เพื่อนร่วมทางทุกคน",
+          vi: "Kính tặng những người bạn đồng hành",
+          id: "Didedikasikan untuk sahabat seperjalanan"
+        },
+        desc1: {
+          zh: "“谨以此作，献给年少时曾陪我一起掷骰子的人，以及每一个心中依然保留着纯真童心的大朋友。”",
+          tc: "“謹以此作，獻給年少時曾陪我一起擲骰子的人，以及每一個心中依然保留著純真童心的大朋友。”",
+          en: "“I dedicate this game to those who rolled dice by my side in my youth, and to everyone who keeps a pure, youthful heart alive.”",
+          ja: "「この作品を、少年の日にともにサイコロを振ってくれた人へ、そして今も心に純粋な童心を抱き続けるすべての人へ捧げます。」",
+          ko: "“어린 날 저와 함께 주사위를 던져 주던 이들에게, 그리고 가슴속에 여전히 순수한 동심을 간직한 모든 분께 이 작품을 바칩니다.”",
+          fr: "« Je dédie ce jeu à ceux qui, dans ma jeunesse, lançaient les dés à mes côtés, et à tous ceux qui ont su garder leur âme d'enfant. »",
+          de: "„Dieses Spiel widme ich jenen, die in meiner Jugend mit mir die Würfel rollen ließen, und jedem, der sich ein kindliches Herz bewahrt hat.“",
+          es: "«Dedico este juego a quienes tiraron los dados a mi lado en la juventud y a todos los que conservan un corazón puro y soñador.»",
+          ru: "«Посвящаю эту игру тем, кто бросал со мной кубики в детстве, и каждому, кто сохранил в душе искреннее детское сердце.»",
+          vi: "“Kính tặng tựa game này tới những người bạn thuở nhỏ từng cùng tôi gieo xúc xắc, và tới tất cả những ai vẫn giữ trọn trái tim hồn nhiên.”"
+        },
+        desc2: {
+          zh: "无论你身在何方，无论你使用的是何种语言，愿这盘桌游能为你和身边的亲朋好友带来最纯粹的心跳与欢笑！",
+          tc: "無論你身在何方，無論你使用的是何種語言，願這盤桌遊能為你和身邊的親朋好友帶來最純粹的心跳與歡笑！",
+          en: "Wherever you are in the world, whatever language you speak, may this game bring you and your loved ones pure excitement and boundless joy!",
+          ja: "あなたがどこにいても、どの言葉を話していても、このゲームがあなたと仲間たちに最高のドキドキと笑顔を届けられますように！",
+          ko: "여러분이 어디에 있든, 어떤 언어를 쓰든, 이 보드게임이 곁의 소중한 사람들과 함께하는 가장 순수한 두근거림과 웃음이 되기를 바랍니다!",
+          fr: "Où que vous soyez dans le monde, quelle que soit votre langue, que ce jeu vous apporte la joie la plus pure !",
+          de: "Wo auch immer ihr seid und welche Sprache ihr sprecht – möge euch dieses Spiel unvergessliche Freude und Lachen schenken!",
+          es: "Estéis donde estéis e independientemente de vuestro idioma, ¡que este juego os regale momentos de pura emoción y diversión!",
+          ru: "Где бы вы ни находились и на каком бы языке ни говорили, пусть эта игра подарит вам и вашим близким искреннюю радость!",
+          vi: "Dù bạn ở bất cứ nơi đâu và nói thứ tiếng nào, nguyện chúc tựa game này mang lại cho bạn cùng người thân những tràng cười sảng khoái nhất!"
+        },
+        authors: {
+          zh: "— 逍遥子 (Mars Paladin)",
+          tc: "— 逍遙子 (Mars Paladin)",
+          en: "— Mars Paladin",
+          ja: "— 逍遥子 (Mars Paladin)",
+          ko: "— 소요자 (Mars Paladin)",
+          fr: "— Mars Paladin",
+          de: "— Mars Paladin",
+          es: "— Mars Paladin",
+          ru: "— Mars Paladin",
+          vi: "— Tiêu Dao Tử (Mars Paladin)"
+        }
       }
     ];
 
     // State
     let currentLang = 'zh';
     let currentPilgrim = 0;
+    let currentAboutTile = 0;
     let currentSection = 0;
     let isPlayingBgm = false;
 
@@ -1560,7 +2128,7 @@
       currentLang = langCode;
       const data = i18n[langCode];
 
-      // Update Nav & Buttons
+      // Update Nav & Buttons (所有语言左上角专属名字)
       document.getElementById('navLogoMain').textContent = data.gameTitle;
       document.getElementById('currentLangFlag').textContent = data.flag;
       document.getElementById('currentLangName').textContent = data.name;
@@ -1583,7 +2151,7 @@
       document.getElementById('metaPlatform').innerHTML = data.hero.platform;
       document.getElementById('metaRelease').innerHTML = data.hero.release;
 
-      // Update Right Capsule Image
+      // Update Right Capsule Image (简中繁中用中，其余用英)
       const isChinese = (langCode === 'zh' || langCode === 'tc');
       const capsuleEl = document.getElementById('heroCapsuleImg');
       if (capsuleEl) {
@@ -1611,6 +2179,14 @@
       document.getElementById('feat4Title').textContent = data.feat4.title;
       document.getElementById('feat4Desc').textContent = data.feat4.desc;
 
+      // Update About 4 Tile Buttons Labels
+      if (data.aboutTiles) {
+        for (let t = 0; t < 4; t++) {
+          const el = document.getElementById('aboutTileTitle' + t);
+          if (el && data.aboutTiles[t]) el.textContent = data.aboutTiles[t];
+        }
+      }
+
       // Update Token Labels
       for (let i = 0; i < 8; i++) {
         const p = pilgrimsData[i];
@@ -1618,10 +2194,9 @@
         if (el) el.textContent = p.names[langCode] || p.names['en'];
       }
 
-
-
-      // Refresh stage
+      // Refresh Stages
       refreshPilgrimStage();
+      refreshAboutStage();
 
       // Close menu
       document.getElementById('langMenu').classList.remove('show');
@@ -1677,15 +2252,21 @@
     }
 
     function switchAboutTile(idx, btn) {
+      currentAboutTile = idx;
       document.querySelectorAll('.about-tile-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
+      refreshAboutStage();
+    }
 
-      const item = aboutTilesData[idx];
-      document.getElementById('aboutStageTitle').textContent = item.title;
-      document.getElementById('aboutStageDesc1').textContent = item.desc1;
-      document.getElementById('aboutStageDesc2').textContent = item.desc2;
-      document.getElementById('aboutStageAuthor').textContent = item.author;
+    function refreshAboutStage() {
+      const item = aboutTilesData[currentAboutTile];
+      const lang = currentLang;
+
       document.getElementById('aboutStageImg').src = item.img;
+      document.getElementById('aboutStageTitle').textContent = item.titles[lang] || item.titles['en'] || item.titles['zh'];
+      document.getElementById('aboutStageDesc1').textContent = item.desc1[lang] || item.desc1['en'] || item.desc1['zh'];
+      document.getElementById('aboutStageDesc2').textContent = item.desc2[lang] || item.desc2['en'] || item.desc2['zh'];
+      document.getElementById('aboutStageAuthor').textContent = item.authors[lang] || item.authors['en'] || item.authors['zh'];
     }
 
     // Auto-detect browser language & trigger audio autoplay
