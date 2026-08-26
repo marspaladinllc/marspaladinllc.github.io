@@ -18,6 +18,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Noto+Serif+KR:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   
+  <!-- High Priority 0ms Preloads for Characters & About Stages -->
+  <link rel="preload" as="image" href="assets/player_0.png">
+  <link rel="preload" as="image" href="assets/player_1.png">
+  <link rel="preload" as="image" href="assets/player_2.png">
+  <link rel="preload" as="image" href="assets/player_3.png">
+  <link rel="preload" as="image" href="assets/player_4.png">
+  <link rel="preload" as="image" href="assets/player_5.png">
+  <link rel="preload" as="image" href="assets/player_6.png">
+  <link rel="preload" as="image" href="assets/player_7.png">
+  <link rel="preload" as="image" href="assets/cover.png">
+  <link rel="preload" as="image" href="assets/Pipa.png">
+  <link rel="preload" as="image" href="assets/marspaladin_logo.png">
+  <link rel="preload" as="image" href="assets/thanks_wall.png">
+  
   <style>
     :root {
       --bg-deep: #080605;
@@ -537,13 +551,24 @@
     .pilgrim-portrait-box {
       text-align: center;
       position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .pilgrim-portrait-img {
       width: 100%;
       max-height: 380px;
       object-fit: contain;
       filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.8));
-      transition: all 0.3s;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.15s ease-out;
+      will-change: opacity, transform;
+    }
+    .pilgrim-portrait-img.active {
+      display: block;
+      opacity: 1;
     }
     .pilgrim-details { text-align: left; }
     .pilgrim-name-row {
@@ -689,7 +714,14 @@
       max-height: 340px;
       object-fit: contain;
       filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.9));
-      transition: transform 0.3s ease;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.15s ease-out, transform 0.3s ease;
+      will-change: opacity, transform;
+    }
+    .about-stage-img.active {
+      display: block;
+      opacity: 1;
     }
     .about-visual-box:hover .about-stage-img {
       transform: scale(1.03);
@@ -932,7 +964,14 @@
           <!-- Detailed Active Pilgrim Showcase Stage -->
           <div class="pilgrim-showcase-stage">
             <div class="pilgrim-portrait-box">
-              <img id="pilgrimPortrait" src="assets/player_0.png" alt="立绘" class="pilgrim-portrait-img">
+              <img id="pilgrimPortrait0" src="assets/player_0.png" alt="孙悟空" class="pilgrim-portrait-img active" loading="eager">
+              <img id="pilgrimPortrait1" src="assets/player_1.png" alt="猪八戒" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait2" src="assets/player_2.png" alt="沙僧" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait3" src="assets/player_3.png" alt="唐僧" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait4" src="assets/player_4.png" alt="白龙马" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait5" src="assets/player_5.png" alt="吴承恩" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait6" src="assets/player_6.png" alt="土地公" class="pilgrim-portrait-img" loading="eager">
+              <img id="pilgrimPortrait7" src="assets/player_7.png" alt="小钻风" class="pilgrim-portrait-img" loading="eager">
             </div>
             <div class="pilgrim-details">
               <div class="pilgrim-name-row">
@@ -1011,7 +1050,10 @@
           <!-- About Showcase Stage: Image placed prominently on the Left, Story on the Right -->
           <div class="about-detail-stage">
             <div class="about-visual-box">
-              <img id="aboutStageImg" src="assets/cover.png" alt="视觉插画" class="about-stage-img">
+              <img id="aboutStageImg0" src="assets/cover.png" alt="西游记" class="about-stage-img active" loading="eager">
+              <img id="aboutStageImg1" src="assets/Pipa.png" alt="琵琶原声" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg2" src="assets/marspaladin_logo.png" alt="独立创作" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg3" src="assets/thanks_wall.png" alt="真情鸣谢" class="about-stage-img" loading="eager">
             </div>
 
             <div class="about-detail-text">
@@ -2318,7 +2360,11 @@
       const p = pilgrimsData[currentPilgrim];
       const lang = currentLang;
 
-      document.getElementById('pilgrimPortrait').src = "assets/player_" + currentPilgrim + ".png";
+      // 0ms Instant Pre-rendered Image Switch
+      document.querySelectorAll('.pilgrim-portrait-img').forEach((img, i) => {
+        img.classList.toggle('active', i === currentPilgrim);
+      });
+
       document.getElementById('pilgrimCnName').textContent = p.names[lang] || p.names['en'];
       document.getElementById('pilgrimEnName').textContent = p.en;
       document.getElementById('pilgrimTagline').textContent = p.taglines[lang] || p.taglines['en'];
@@ -2362,12 +2408,30 @@
       const item = aboutTilesData[currentAboutTile];
       const lang = currentLang;
 
-      document.getElementById('aboutStageImg').src = item.img;
+      // 0ms Instant Pre-rendered Image Switch
+      document.querySelectorAll('.about-stage-img').forEach((img, i) => {
+        img.classList.toggle('active', i === currentAboutTile);
+      });
+
       document.getElementById('aboutStageTitle').textContent = item.titles[lang] || item.titles['en'] || item.titles['zh'];
       document.getElementById('aboutStageDesc1').textContent = item.desc1[lang] || item.desc1['en'] || item.desc1['zh'];
       document.getElementById('aboutStageDesc2').textContent = item.desc2[lang] || item.desc2['en'] || item.desc2['zh'];
       document.getElementById('aboutStageAuthor').textContent = item.authors[lang] || item.authors['en'] || item.authors['zh'];
     }
+
+    // In-memory Image Cache Preloading
+    const ASSETS_TO_CACHE = [
+      'assets/player_0.png', 'assets/player_1.png', 'assets/player_2.png', 'assets/player_3.png',
+      'assets/player_4.png', 'assets/player_5.png', 'assets/player_6.png', 'assets/player_7.png',
+      'assets/token_0.png', 'assets/token_1.png', 'assets/token_2.png', 'assets/token_3.png',
+      'assets/token_4.png', 'assets/token_5.png', 'assets/token_6.png', 'assets/token_7.png',
+      'assets/cover.png', 'assets/Pipa.png', 'assets/marspaladin_logo.png', 'assets/thanks_wall.png',
+      'assets/capsule_zh.jpg', 'assets/capsule_en.jpg'
+    ];
+    ASSETS_TO_CACHE.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
 
     // Auto-detect browser language & trigger audio autoplay
     window.addEventListener('DOMContentLoaded', () => {
