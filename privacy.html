@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy, Support & Community — Mars Paladin LLC | Westward Dash</title>
-<meta name="description" content="Privacy Policy, Bug Reporting, Community Forum, and Player Feedback for Westward Dash (齐天大冲刺) by Mars Paladin LLC.">
+<title>Privacy Policy, Bug Reporting & Player Support — Mars Paladin LLC</title>
+<meta name="description" content="Official Privacy Policy, Bug Reporting, Community Forum, and Player Feedback for Westward Dash (齐天大冲刺) by Mars Paladin LLC.">
 <link rel="icon" type="image/png" href="assets/game_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Noto+Serif+KR:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
     --ink: #f5efe6;
-    --dim: #a89f8d;
+    --dim: #b8ac9a;
     --muted: #736856;
-    --ground: #0a0806;
+    --ground: #080605;
     --panel: #14100c;
-    --panel-hover: #1c1712;
+    --panel-hover: #1e1812;
     --gold: #dfb256;
     --gold-light: #fbe3a4;
+    --gold-bright: #ffe89e;
     --gold-dark: #8c631b;
     --vermilion: #cf3a24;
     --line: rgba(223, 178, 86, 0.28);
-    --glow: 0 0 24px rgba(223, 178, 86, 0.15);
+    --glow: 0 0 24px rgba(223, 178, 86, 0.16);
     --steam-gradient: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,22 +32,30 @@
     background: var(--ground);
     color: var(--ink);
     font-family: 'Noto Serif SC', 'Georgia', serif;
-    line-height: 1.8;
+    line-height: 1.85;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 40px 20px 60px;
-    background-image: radial-gradient(circle at 50% 10%, rgba(223, 178, 86, 0.08) 0%, transparent 60%);
+    padding: 30px 20px 60px;
+    background-image: radial-gradient(circle at 50% 10%, rgba(223, 178, 86, 0.09) 0%, transparent 65%);
   }
-  main { max-width: 780px; width: 100%; }
+  main { max-width: 820px; width: 100%; }
 
+  /* Top Navigation & Language Switcher Bar */
   .nav-back-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .nav-left-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   .btn-back {
     display: inline-flex;
@@ -65,9 +74,76 @@
   .btn-back:hover {
     background: rgba(223, 178, 86, 0.2);
     border-color: var(--gold);
-    transform: translateX(-3px);
+    transform: translateX(-2px);
   }
 
+  /* Language Selector Dropdown */
+  .lang-selector-box {
+    position: relative;
+  }
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 17, 12, 0.85);
+    border: 1px solid var(--line);
+    color: var(--gold-light);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .lang-btn:hover {
+    border-color: var(--gold);
+    background: rgba(35, 27, 19, 0.95);
+    box-shadow: 0 0 16px rgba(223, 178, 86, 0.25);
+  }
+  .lang-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #14100c;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
+    padding: 8px;
+    min-width: 240px;
+    max-height: 380px;
+    overflow-y: auto;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+  }
+  .lang-dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+  .lang-option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--dim);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+  }
+  .lang-option-item:hover {
+    background: rgba(223, 178, 86, 0.15);
+    color: var(--gold-bright);
+  }
+  .lang-option-item.active {
+    background: rgba(223, 178, 86, 0.25);
+    color: var(--gold-bright);
+    font-weight: 800;
+  }
+
+  /* Main Luxury Card */
   .card {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -77,34 +153,43 @@
     position: relative;
     overflow: hidden;
   }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('assets/BoardSilk.png') repeat center / 360px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
 
   .header-box {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     margin-bottom: 24px;
     border-bottom: 1px solid var(--line);
-    padding-bottom: 20px;
+    padding-bottom: 24px;
   }
   .header-icon {
-    width: 52px; height: 52px;
-    border-radius: 10px;
+    width: 60px; height: 60px;
+    border-radius: 12px;
     border: 1px solid var(--line);
     object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   }
   .header-text { flex: 1; }
   .studio {
     font-family: 'Cinzel', serif;
-    font-size: 13px;
-    letter-spacing: 0.24em;
+    font-size: 13.5px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
-    font-weight: 700;
+    font-weight: 800;
   }
   h1 {
-    font-size: 28px;
+    font-size: 26px;
     color: var(--gold-light);
-    line-height: 1.3;
+    line-height: 1.35;
     margin-top: 4px;
     font-weight: 900;
   }
@@ -122,10 +207,10 @@
     border-left: 3px solid var(--gold);
     padding-left: 10px;
   }
-  p { margin-bottom: 14px; font-size: 15.5px; color: var(--dim); line-height: 1.85; }
+  p { margin-bottom: 14px; font-size: 15px; color: var(--dim); line-height: 1.85; }
   p strong { color: var(--ink); }
 
-  /* Interactive Cards (Support & Forum & Feedback) */
+  /* 4 Support & Feedback Cards */
   .support-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -151,12 +236,13 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   }
   .support-card h3 {
-    font-size: 16px;
+    font-size: 15.5px;
     color: var(--gold-light);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 800;
   }
   .support-card p {
     font-size: 13.5px;
@@ -173,16 +259,16 @@
     gap: 6px;
   }
 
-  /* Buttons */
+  /* Action Buttons */
   .btn-steam-action {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: var(--steam-gradient);
     color: #fff !important;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13.5px;
     font-weight: 800;
     text-decoration: none !important;
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -194,20 +280,20 @@
   }
 
   .email-highlight {
-    background: rgba(223, 178, 86, 0.12);
+    background: rgba(223, 178, 86, 0.1);
     border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 14px 18px;
+    border-radius: 10px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 16px 0;
+    margin: 16px 0 28px;
   }
   .email-address {
     font-family: 'Plus Jakarta Sans', monospace;
     color: var(--gold-light);
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(223, 178, 86, 0.3); transition: all 0.2s; }
@@ -223,20 +309,58 @@
   footer a { color: var(--dim); border-bottom: none; }
   footer a:hover { color: var(--gold); }
 
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   @media (max-width: 640px) {
-    .card { padding: 30px 20px; }
+    .card { padding: 28px 18px; }
     .support-grid { grid-template-columns: 1fr; }
     .header-box { flex-direction: column; text-align: center; }
     .email-highlight { flex-direction: column; gap: 10px; text-align: center; }
+    .nav-back-bar { justify-content: center; }
   }
 </style>
 </head>
 <body>
 <main>
 
+  <!-- Navigation Bar with 18-Language Switcher -->
   <div class="nav-back-bar">
-    <a href="https://westwarddash.com" class="btn-back">← 返回官网 (Back to Official Site)</a>
-    <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-action">★ Steam 愿望单</a>
+    <div class="nav-left-actions">
+      <a href="https://westwarddash.com" class="btn-back" id="navBtnBack">← 返回官网</a>
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-action" id="navBtnWishlist">★ Steam 愿望单</a>
+    </div>
+
+    <!-- 18-Language Selector Dropdown -->
+    <div class="lang-selector-box">
+      <button class="lang-btn" onclick="toggleLangMenu(event)">
+        <span id="currentFlag">🇨🇳</span>
+        <span id="currentLangName">简体中文</span>
+        <span>▼</span>
+      </button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <div class="lang-option-item" onclick="setLang('zh')">🇨🇳 简体中文</div>
+        <div class="lang-option-item" onclick="setLang('tc')">🇭🇰 繁體中文</div>
+        <div class="lang-option-item" onclick="setLang('en')">🇺🇸 English</div>
+        <div class="lang-option-item" onclick="setLang('ja')">🇯🇵 日本語</div>
+        <div class="lang-option-item" onclick="setLang('ko')">🇰🇷 한국어</div>
+        <div class="lang-option-item" onclick="setLang('fr')">🇫🇷 Français</div>
+        <div class="lang-option-item" onclick="setLang('de')">🇩🇪 Deutsch</div>
+        <div class="lang-option-item" onclick="setLang('es')">🇪🇸 Español</div>
+        <div class="lang-option-item" onclick="setLang('pt')">🇧🇷 Português</div>
+        <div class="lang-option-item" onclick="setLang('it')">🇮🇹 Italiano</div>
+        <div class="lang-option-item" onclick="setLang('ru')">🇷🇺 Русский</div>
+        <div class="lang-option-item" onclick="setLang('pl')">🇵🇱 Polski</div>
+        <div class="lang-option-item" onclick="setLang('cs')">🇨🇿 Čeština</div>
+        <div class="lang-option-item" onclick="setLang('uk')">🇺🇦 Українська</div>
+        <div class="lang-option-item" onclick="setLang('tr')">🇹🇷 Türkçe</div>
+        <div class="lang-option-item" onclick="setLang('th')">🇹🇭 ไทย</div>
+        <div class="lang-option-item" onclick="setLang('vi')">🇻🇳 Tiếng Việt</div>
+        <div class="lang-option-item" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</div>
+      </div>
+    </div>
   </div>
 
   <div class="card">
@@ -244,110 +368,904 @@
     <div class="header-box">
       <img src="assets/game_icon.png" alt="Westward Dash" class="header-icon">
       <div class="header-text">
-        <div class="studio">Mars Paladin LLC</div>
-        <h1>Privacy Policy & Support (隐私政策与玩家服务)</h1>
-        <p class="updated">Last Updated: August 2026 · 《Westward Dash / 齐天大冲刺》</p>
+        <div class="studio" id="docStudio">Mars Paladin LLC</div>
+        <h1 id="docTitle">隐私政策、问题举报与社区支持</h1>
+        <p class="updated" id="docUpdated">最近更新：2026年8月 · 《齐天大冲刺》</p>
       </div>
     </div>
 
     <!-- Quick Action Hub for Bugs, Forum & Feedback -->
-    <h2>🛠️ 玩家支持、问题反馈与社区交流 (Support, Bugs & Community)</h2>
-    <p>
-      我们非常重视每一位玩家的游玩体验！无论是遇到游戏 <strong>Bug、闪退崩溃、联机问题</strong>，还是希望提出<strong>玩法建议、撰写评测</strong>，欢迎随时通过以下方式与我们联系或加入社区讨论：
+    <h2 id="supportHeader">🛠️ 玩家支持、问题反馈与社区交流</h2>
+    <p id="supportIntro">
+      我们非常重视每一位玩家的游玩体验！无论是遇到游戏 Bug、闪退崩溃、联机异常，还是希望提出玩法建议、撰写评测，欢迎随时通过以下方式与我们联系或加入社区讨论：
     </p>
 
     <div class="support-grid">
       <!-- Bug Report Card -->
       <a href="mailto:support@marsparadin.com?subject=Westward%20Dash%20Bug%20Report" class="support-card">
         <div>
-          <h3>🐛 举报问题 / 缺陷反馈</h3>
-          <p>遇到任何游戏 Bug、卡死或异常？欢迎发送邮件附上错误描述或截图，我们将第一时间排查修复。</p>
+          <h3 id="bugTitle">🐛 举报问题 / 缺陷反馈</h3>
+          <p id="bugDesc">遇到任何游戏 Bug、卡死或异常？欢迎发送邮件附上错误描述或截图，我们将第一时间排查修复。</p>
         </div>
-        <div class="support-action">发送邮件 report →</div>
+        <div class="support-action" id="bugBtn">发送邮件举报 →</div>
       </a>
 
       <!-- Forum Card -->
       <a href="https://steamcommunity.com/app/5029020/discussions/" target="_blank" class="support-card">
         <div>
-          <h3>💬 Steam 官方讨论区 / Forum</h3>
-          <p>加入 Steam 官方社区论坛，与全球玩家一起交流行者绝技、分享自订房规，参与最新版本讨论。</p>
+          <h3 id="forumTitle">💬 Steam 官方讨论区 / 论坛</h3>
+          <p id="forumDesc">加入 Steam 官方社区讨论区，与全球玩家一起交流行者绝技、分享自订房规，参与最新版本讨论。</p>
         </div>
-        <div class="support-action">进入官方论坛 →</div>
+        <div class="support-action" id="forumBtn">进入官方论坛 →</div>
       </a>
 
       <!-- Review Card -->
       <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="support-card">
         <div>
-          <h3>⭐ 玩家评测与反馈 / Reviews</h3>
-          <p>欢迎在 Steam 商店页面留下您的宝贵评测与 Feedback，您的每一条真诚建议都是我们持续打磨的动力！</p>
+          <h3 id="reviewTitle">⭐ 玩家评测与反馈</h3>
+          <p id="reviewDesc">欢迎在 Steam 商店页面留下您的宝贵评测与建议，您的每一条真诚反馈都是我们持续打磨的动力！</p>
         </div>
-        <div class="support-action">前往 Steam 商店 →</div>
+        <div class="support-action" id="reviewBtn">前往 Steam 商店 →</div>
       </a>
 
       <!-- Direct Contact Card -->
       <a href="mailto:support@marsparadin.com" class="support-card">
         <div>
-          <h3>✉️ 商务与综合支持</h3>
-          <p>媒体评测 Key 申请、多语言本地化建议或其他商务合作，均可直连工作室官方支持邮箱。</p>
+          <h3 id="contactTitle">✉️ 商务与综合支持</h3>
+          <p id="contactDesc">媒体评测 Key 申请、多语言本地化建议或其他商务合作，均可直连工作室官方支持邮箱。</p>
         </div>
-        <div class="support-action">support@marsparadin.com →</div>
+        <div class="support-action" id="contactBtn">support@marsparadin.com →</div>
       </a>
     </div>
 
     <div class="email-highlight">
       <div>
-        <div style="font-size:12px; color:var(--dim); text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">Official Support Email</div>
+        <div id="emailLabel" style="font-size:12px; color:var(--dim); text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">官方支持邮箱 (Support Email)</div>
         <div class="email-address">support@marsparadin.com</div>
       </div>
-      <a href="mailto:support@marsparadin.com" class="btn-steam-action" style="padding: 8px 18px; font-size:13px;">发邮件联系我们</a>
+      <a href="mailto:support@marsparadin.com" class="btn-steam-action" id="emailAction" style="padding: 8px 18px; font-size:13px;">发邮件联系我们</a>
     </div>
 
-    <!-- Official Privacy Policy -->
-    <h2>🔒 隐私保护声明 (Privacy Policy)</h2>
-    <p>
-      <strong>《Westward Dash》（齐天大冲刺）完全不收集任何个人隐私数据（Collects No Personal Data）。</strong>
-    </p>
-    <p>
-      游戏内部不设任何第三方数据追踪、不含任何广告插件、不收集设备指纹，也不进行任何外部数据分析。游戏客户端不会向 Mars Paladin LLC 发送任何包含个人身份信息的网络请求。
-    </p>
+    <!-- Official Privacy Policy Chapters -->
+    <h2 id="sec1Title">🔒 零个人隐私收集声明 (Zero Data Collection)</h2>
+    <p id="sec1Content"></p>
 
-    <h2>💾 本地数据与存档安全 (Local Device Storage)</h2>
-    <p>
-      您的游戏存档、游戏设置、角色解锁进度、本地成就与游戏运行日志仅保存在您自己的本地设备（PC / Mac）上，并通过 Steam 官方提供的 Steam Cloud 进行加密同步。删除本地游戏存档文件夹即可永久清除所有本地数据。我们没有您的存档副本，也无法获取您的本地数据。
-    </p>
+    <h2 id="sec2Title">💾 本地数据与存档安全 (Local Storage & Saves)</h2>
+    <p id="sec2Content"></p>
 
-    <h2>🌐 Steam 平台联机与服务 (Steam Platform Integration)</h2>
-    <p>
-      当您使用 Steam 平台游玩时，在线多人对战（Peer-to-Peer P2P 联机）及成就系统由 Valve 官方底层网络提供支持。使用这些功能时，Valve 会根据其官方《<a href="https://store.steampowered.com/privacy_agreement/" target="_blank">Steam 隐私政策协议</a>》处理必要的联机数据（如 Steam ID、当前房间 Lobby 信息等）。Mars Paladin LLC 不会截留或存储您的 Steam 账号敏感数据。单人离线模式完全无需联网即可畅玩。
-    </p>
+    <h2 id="sec3Title">🌐 Steam 平台联机与服务 (Steam Integration)</h2>
+    <p id="sec3Content"></p>
 
-    <h2>👶 未成年人保护 (Children's Privacy)</h2>
-    <p>
-      由于本游戏不收集任何用户的任何个人信息，因此绝不会收集或索取未成年人的个人数据。
-    </p>
+    <h2 id="sec4Title">👶 未成年人保护 (Children's Privacy)</h2>
+    <p id="sec4Content"></p>
 
-    <h2>📜 政策更新与联系 (Policy Changes & Contact)</h2>
-    <p>
-      若未来游戏更新引入任何需要用户知情的功能（例如可选的崩溃日志主动上报功能），我们将提前在本页面及 Steam 商店公告中予以明确说明并征得用户同意。
-    </p>
-    <p>
-      关于隐私政策、数据安全或游戏体验的任何疑问，请随时联系我们的官方技术支持团队：<br>
-      👉 <strong><a href="mailto:support@marsparadin.com">support@marsparadin.com</a></strong>
-    </p>
+    <h2 id="sec5Title">📜 政策更新与联系 (Changes & Contact)</h2>
+    <p id="sec5Content"></p>
 
     <div class="rule"></div>
     <p style="text-align: center; font-size: 13.5px; color: var(--muted); margin: 0;">
-      Mars Paladin LLC &middot; Westward Dash (齐天大冲刺) &middot; All Rights Reserved.
+      Mars Paladin LLC &middot; Westward Dash &middot; <span id="footerRights">保留所有权利。</span>
     </p>
 
   </div>
 
   <footer>
-    <a href="https://westwarddash.com">Westward Dash Official Website</a> &middot; 
-    <a href="https://store.steampowered.com/app/5029020/" target="_blank">Steam Store Page</a> &middot; 
+    <a href="https://westwarddash.com" id="footerSite">齐天大冲刺 官方网站</a> &middot; 
+    <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerStore">Steam 商店页面</a> &middot; 
     <a href="mailto:support@marsparadin.com">support@marsparadin.com</a>
   </footer>
 
 </main>
+
+<script>
+  const i18n = {
+  "zh": {
+    "flag": "🇨🇳",
+    "name": "简体中文",
+    "back": "← 返回官网",
+    "wishlist": "★ Steam 愿望单",
+    "studio": "Mars Paladin LLC",
+    "title": "隐私政策、问题举报与社区支持",
+    "updated": "最近更新：2026年8月 · 《齐天大冲刺》",
+    "supportHeader": "🛠️ 玩家支持、问题反馈与社区交流",
+    "supportIntro": "我们非常重视每一位玩家的游玩体验！无论是遇到游戏 Bug、闪退崩溃、联机异常，还是希望提出玩法建议、撰写评测，欢迎随时通过以下方式与我们联系或加入社区讨论：",
+    "bugTitle": "🐛 举报问题 / 缺陷反馈",
+    "bugDesc": "遇到任何游戏 Bug、卡死或异常？欢迎发送邮件附上错误描述或截图，我们将第一时间排查修复。",
+    "bugBtn": "发送邮件举报 →",
+    "forumTitle": "💬 Steam 官方讨论区 / 论坛",
+    "forumDesc": "加入 Steam 官方社区讨论区，与全球玩家一起交流行者绝技、分享自订房规，参与最新版本讨论。",
+    "forumBtn": "进入官方论坛 →",
+    "reviewTitle": "⭐ 玩家评测与反馈",
+    "reviewDesc": "欢迎在 Steam 商店页面留下您的宝贵评测与建议，您的每一条真诚反馈都是我们持续打磨的动力！",
+    "reviewBtn": "前往 Steam 商店 →",
+    "contactTitle": "✉️ 商务与综合支持",
+    "contactDesc": "媒体评测 Key 申请、多语言本地化建议或其他商务合作，均可直连工作室官方支持邮箱。",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "官方支持邮箱 (Support Email)",
+    "emailAction": "发邮件联系我们",
+    "sec1Title": "🔒 零个人隐私收集声明 (Zero Data Collection)",
+    "sec1Content": "<strong>《Westward Dash / 齐天大冲刺》完全不收集任何个人隐私数据。</strong><br>游戏内部不设任何第三方数据追踪、不含任何广告插件、不收集设备指纹，也不进行任何外部数据分析。游戏客户端绝不会向 Mars Paladin LLC 发送任何包含个人身份信息的网络请求。",
+    "sec2Title": "💾 本地数据与存档安全 (Local Storage & Saves)",
+    "sec2Content": "您的游戏存档、游戏设置、角色解锁进度、本地成就与游戏运行日志仅保存在您自己的本地设备上，并通过 Steam 官方提供的 Steam Cloud 进行加密同步。删除本地游戏存档文件夹即可永久清除所有本地数据。我们没有您的存档副本，也无法获取您的本地数据。",
+    "sec3Title": "🌐 Steam 平台联机与服务 (Steam Integration)",
+    "sec3Content": "当您使用 Steam 平台游玩时，在线多人对战（Peer-to-Peer P2P 联机）及成就系统由 Valve 官方底层网络提供支持。使用这些功能时，Valve 会根据其官方《<a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam 隐私政策协议</a>》处理必要的联机数据（如 Steam ID、当前房间 Lobby 信息等）。Mars Paladin LLC 不会截留或存储您的 Steam 账号敏感数据。单人模式支持完全纯离线游玩。",
+    "sec4Title": "👶 未成年人保护 (Children's Privacy)",
+    "sec4Content": "由于本游戏不收集任何用户的任何个人信息，因此绝不会收集或索取未成年人的个人数据。",
+    "sec5Title": "📜 政策更新与联系 (Changes & Contact)",
+    "sec5Content": "若未来游戏更新引入任何需要用户知情的功能（例如可选的崩溃日志主动上报功能），我们将提前在本页面及 Steam 商店公告中予以明确说明并征得用户同意。<br>关于隐私政策、数据安全或游戏体验的任何疑问，请随时联系我们的官方技术支持团队：<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "齐天大冲刺 官方网站",
+    "footerStore": "Steam 商店页面",
+    "rights": "保留所有权利。"
+  },
+  "tc": {
+    "flag": "🇭🇰",
+    "name": "繁體中文",
+    "back": "← 返回官網",
+    "wishlist": "★ Steam 願望單",
+    "studio": "Mars Paladin LLC",
+    "title": "隱私政策、問題回報與社群支援",
+    "updated": "最近更新：2026年8月 · 《齊天大衝刺》",
+    "supportHeader": "🛠️ 玩家支援、問題回報與社群交流",
+    "supportIntro": "我們非常重視每一位玩家的遊玩體驗！無論是遇到遊戲 Bug、當機閃退、連線異常，還是希望提出玩法建議、撰寫評測，歡迎隨時透過以下方式與我們聯繫或加入社群討論：",
+    "bugTitle": "🐛 回報問題 / 缺陷反饋",
+    "bugDesc": "遇到任何遊戲 Bug、卡死或異常？歡迎發送郵件附上錯誤描述或截圖，我們將第一時間排查修復。",
+    "bugBtn": "發送郵件回報 →",
+    "forumTitle": "💬 Steam 官方討論區 / 論壇",
+    "forumDesc": "加入 Steam 官方社群討論區，與全球玩家一起交流行者絕技、分享自訂房規，參與最新版本討論。",
+    "forumBtn": "進入官方論壇 →",
+    "reviewTitle": "⭐ 玩家評測與反饋",
+    "reviewDesc": "歡迎在 Steam 商店頁面留下您的寶貴評測與建議，您的每一條真誠反饋都是我們持續打磨的動力！",
+    "reviewBtn": "前往 Steam 商店 →",
+    "contactTitle": "✉️ 商務與綜合支援",
+    "contactDesc": "媒體評測 Key 申請、多語言本地化建議或其他商務合作，均可直連工作室官方支援郵箱。",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "官方支援郵箱 (Support Email)",
+    "emailAction": "發郵件聯繫我們",
+    "sec1Title": "🔒 零個人隱私收集聲明 (Zero Data Collection)",
+    "sec1Content": "<strong>《Westward Dash / 齊天大衝刺》完全不收集任何個人隱私數據。</strong><br>遊戲內部不設任何第三方數據追蹤、不含任何廣告插件、不收集設備指紋，亦不進行任何外部數據分析。遊戲客戶端絕不會向 Mars Paladin LLC 發送任何包含個人身分資訊的網路請求。",
+    "sec2Title": "💾 本地數據與存檔安全 (Local Storage & Saves)",
+    "sec2Content": "您的遊戲存檔、遊戲設定、角色解鎖進度、本地成就與遊戲運行日誌僅保存在您自己的本地設備上，並透過 Steam 官方提供的 Steam Cloud 進行加密同步。刪除本地遊戲存檔資料夾即可永久清除所有本地數據。我們沒有您的存檔副本，亦無法獲取您的本地數據。",
+    "sec3Title": "🌐 Steam 平台連線與服務 (Steam Integration)",
+    "sec3Content": "當您使用 Steam 平台遊玩時，線上多人對戰（Peer-to-Peer P2P 連線）及成就系統由 Valve 官方底層網路提供支援。使用這些功能時，Valve 會根據其官方《<a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam 隱私政策協議</a>》處理必要的連線數據（如 Steam ID、當前房間 Lobby 資訊等）。Mars Paladin LLC 不會截留或存儲您的 Steam 帳號敏感數據。單人模式支援完全純離線遊玩。",
+    "sec4Title": "👶 未成年人保護 (Children's Privacy)",
+    "sec4Content": "由於本遊戲不收集任何使用者的任何個人資訊，因此絕不會收集或索取未成年人的個人數據。",
+    "sec5Title": "📜 政策更新與聯繫 (Changes & Contact)",
+    "sec5Content": "若未來遊戲更新引入任何需要使用者知情的功能（例如可選的當機日誌主動上報功能），我們將提前在本頁面及 Steam 商店公告中予以明確說明並徵得使用者同意。<br>關於隱私政策、數據安全或遊戲體驗的任何疑問，請隨時聯繫我們的官方技術支援團隊：<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "齊天大衝刺 官方網站",
+    "footerStore": "Steam 商店頁面",
+    "rights": "保留所有權利。"
+  },
+  "en": {
+    "flag": "🇺🇸",
+    "name": "English",
+    "back": "← Back to Official Site",
+    "wishlist": "★ Steam Wishlist",
+    "studio": "Mars Paladin LLC",
+    "title": "Privacy Policy, Bug Reporting & Community Support",
+    "updated": "Last Updated: August 2026 · Westward Dash",
+    "supportHeader": "🛠️ Player Support, Bug Reports & Community Hub",
+    "supportIntro": "We deeply value every player's gaming experience! Whether you encounter bugs, crashes, or connection issues, or wish to share feedback and write reviews, we warmly welcome you to reach out or join our community discussions:",
+    "bugTitle": "🐛 Bug Reports & Technical Issues",
+    "bugDesc": "Encountered a glitch, freeze, or bug? Send us an email with details or screenshots, and our developer will investigate and patch it promptly.",
+    "bugBtn": "Send Bug Report Email →",
+    "forumTitle": "💬 Steam Community Discussions",
+    "forumDesc": "Join the official Steam Discussion Boards to chat about pilgrim abilities, share custom dial presets, and discuss game updates.",
+    "forumBtn": "Visit Steam Forum →",
+    "reviewTitle": "⭐ Steam Reviews & Feedback",
+    "reviewDesc": "We welcome your honest reviews and suggestions on our Steam Store Page. Your feedback directly shapes future patches and updates!",
+    "reviewBtn": "Visit Steam Store →",
+    "contactTitle": "✉️ Press & Business Inquiries",
+    "contactDesc": "For review keys, press inquiries, localization feedback, or partnerships, feel free to contact the studio directly.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Official Support Email",
+    "emailAction": "Send Email",
+    "sec1Title": "🔒 Zero Personal Data Collection",
+    "sec1Content": "<strong>Westward Dash (齐天大冲刺) collects no personal data of any kind.</strong><br>The game has no user accounts, no telemetry, no advertising plugins, no device fingerprinting, and no third-party tracking. The client makes zero network requests to Mars Paladin LLC — we operate no tracking servers and receive nothing from your copy of the game.",
+    "sec2Title": "💾 Local Storage & Save Files",
+    "sec2Content": "Your save files, settings, character unlocks, local achievements, and logs remain strictly on your own device (PC / Mac) and are encrypted via Valve's Steam Cloud. Deleting your local save folder removes them permanently. We possess no copies and have no way to access your device data.",
+    "sec3Title": "🌐 Steam Platform & Multiplayer Networking",
+    "sec3Content": "When playing via Steam, online multiplayer (Peer-to-Peer networking) and achievements are managed directly by Valve. Using these features means Valve processes necessary networking data under <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Valve's Privacy Policy</a>. Mars Paladin LLC does not receive or store your Steam account credentials. Single-player functions fully offline.",
+    "sec4Title": "👶 Children's Privacy",
+    "sec4Content": "Because Westward Dash collects zero personal information from any player, it collects nothing from children under any circumstances.",
+    "sec5Title": "📜 Policy Changes & Contact",
+    "sec5Content": "If a future update ever introduces optional telemetry (such as an opt-in crash log reporter), this page and Steam announcements will be updated beforehand.<br>Questions about this policy or game support? Reach us at:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Westward Dash Official Website",
+    "footerStore": "Steam Store Page",
+    "rights": "All rights reserved."
+  },
+  "ja": {
+    "flag": "🇯🇵",
+    "name": "日本語",
+    "back": "← 公式サイトに戻る",
+    "wishlist": "★ Steam ウィッシュリスト",
+    "studio": "Mars Paladin LLC",
+    "title": "プライバシーポリシー・不具合報告・コミュニティ",
+    "updated": "最終更新：2026年8月 · 『西遊記ダッシュ』",
+    "supportHeader": "🛠️ プレイヤーサポート・不具合報告・コミュニティ",
+    "supportIntro": "プレイヤーの皆様の体験を第一に考えています。バグや不具合の報告、プレイの感想やレビューなど、お気軽にお問い合わせやコミュニティへご参加ください：",
+    "bugTitle": "🐛 不具合・バグの報告",
+    "bugDesc": "ゲーム進行不能や表示の異常などが発生した場合は、詳細やスクリーンショットを添えてご連絡ください。速やかに調査・修正いたします。",
+    "bugBtn": "不具合を報告する →",
+    "forumTitle": "💬 Steam 公式掲示板 / フォーラム",
+    "forumDesc": "Steam コミュニティ掲示板で世界中のプレイヤーと行者の絶技やカスタムルールについて語り合いましょう。",
+    "forumBtn": "公式フォーラムへ →",
+    "reviewTitle": "⭐ レビューとフィードバック",
+    "reviewDesc": "Steam ストアページでのレビューやフィードバックを歓迎します。皆様のご意見が今後のアップデートの糧となります！",
+    "reviewBtn": "Steam ストアへ →",
+    "contactTitle": "✉️ 総合窓口・お問い合わせ",
+    "contactDesc": "プレスキット、メディアレビューキーの申請、ローカライズに関するご意見などのお問い合わせはこちら。",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "公式サポートメール",
+    "emailAction": "メールでお問い合わせ",
+    "sec1Title": "🔒 個人情報の非収集について (Zero Data)",
+    "sec1Content": "<strong>『西遊記ダッシュ』はプレイヤーの個人情報を一切収集しません。</strong><br>広告プラグイン、サードパーティ製トラッキング、デバイス情報の収集などは一切含まれていません。ゲームから Mars Paladin LLC のサーバーへ個人データを送信することはありません。",
+    "sec2Title": "💾 セーブデータとローカルストレージ",
+    "sec2Content": "セーブデータ、設定、アンロック状況などはすべてプレイヤーの端末内に保存され、Steam Cloud によって安全に同期されます。開発側がデータを取得することはありません。",
+    "sec3Title": "🌐 Steam ネットワークとマルチプレイ",
+    "sec3Content": "オンラインマルチプレイ（P2P）および実績は Valve の Steam インフラによって処理されます（<a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam プライバシーポリシー</a>に準拠）。シングルプレイは完全オフラインで動作します。",
+    "sec4Title": "👶 お子様のプライバシー保護",
+    "sec4Content": "本ゲームはすべてのユーザーから情報を収集しないため、お子様の個人情報も一切収集しません。",
+    "sec5Title": "📜 ポリシーの変更とお問い合わせ",
+    "sec5Content": "将来的に任意のクラッシュレポート送信などが導入される場合は、事前にお知らせします。<br>サポート窓口：<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "西遊記ダッシュ 公式サイト",
+    "footerStore": "Steam ストアページ",
+    "rights": "All rights reserved. 無断転載を禁じます。"
+  },
+  "ko": {
+    "flag": "🇰🇷",
+    "name": "한국어",
+    "back": "← 공식 사이트로 돌아가기",
+    "wishlist": "★ Steam 찜하기",
+    "studio": "Mars Paladin LLC",
+    "title": "개인정보 처리방침, 버그 제보 및 커뮤니티 지원",
+    "updated": "최종 수정일: 2026년 8월 · 《서유 대질주》",
+    "supportHeader": "🛠️ 플레이어 지원, 버그 제보 및 커뮤니티",
+    "supportIntro": "모든 플레이어의 게임 경험을 소중히 여깁니다! 게임 내 버그, 오류 제보부터 플레이 피드백과 평가까지 언제든 편하게 소통해 주세요:",
+    "bugTitle": "🐛 버그 및 오류 제보",
+    "bugDesc": "게임 도중 멈춤, 그래픽 이상 등 버그를 발견하셨나요? 스크린샷과 함께 메일을 보내주시면 신속히 확인하여 조치하겠습니다.",
+    "bugBtn": "버그 제보 메일 보내기 →",
+    "forumTitle": "💬 Steam 공식 토론장 / 포럼",
+    "forumDesc": "Steam 공식 커뮤니티에서 전 세계 플레이어들과 행자의 비기, 커스텀 룰을 공유하고 토론에 참여하세요.",
+    "forumBtn": "공식 토론장 바로가기 →",
+    "reviewTitle": "⭐ 플레이어 평가 및 피드백",
+    "reviewDesc": "Steam 상점 페이지에 소중한 리뷰와 피드백을 남겨주세요. 여러분의 의견은 향후 업데이트에 큰 힘이 됩니다!",
+    "reviewBtn": "Steam 상점 바로가기 →",
+    "contactTitle": "✉️ 비즈니스 및 일반 문의",
+    "contactDesc": "리뷰 키 신청, 번역 관련 제안 또는 기타 협업 문의는 공식 지원 메일로 연락 부탁드립니다.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "공식 지원 이메일",
+    "emailAction": "이메일 문의하기",
+    "sec1Title": "🔒 개인정보 무수집 원칙 (Zero Data)",
+    "sec1Content": "<strong>《서유 대질주》는 어떠한 개인정보도 수집하지 않습니다.</strong><br>타사 추적기, 광고 플러그인, 기기 식별자 수집 등이 일절 포함되어 있지 않으며 Mars Paladin LLC 서버로 개인정보를 전송하지 않습니다.",
+    "sec2Title": "💾 로컬 데이터 및 세이브 파일",
+    "sec2Content": "세이브 파일과 설정, 진행도는 사용자의 로컬 기기에만 저장되며 Steam Cloud를 통해 안전하게 동기화됩니다.",
+    "sec3Title": "🌐 Steam 멀티플레이 및 서비스",
+    "sec3Content": "온라인 멀티플레이(P2P) 및 도전 과제는 Valve의 네트워크를 통해 지원됩니다(<a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam 개인정보 처리방침</a> 준수). 싱글 플레이는 완전한 오프라인으로 작동합니다.",
+    "sec4Title": "👶 아동 개인정보 보호",
+    "sec4Content": "본 게임은 모든 사용자로부터 어떠한 정보도 수집하지 않으므로 아동의 개인정보 역시 수집되지 않습니다.",
+    "sec5Title": "📜 방침 변경 및 문의",
+    "sec5Content": "문의 사항은 아래 지원 메일로 언제든 편하게 연락해 주세요:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "서유 대질주 공식 웹사이트",
+    "footerStore": "Steam 상점 페이지",
+    "rights": "모든 권리 보유."
+  },
+  "fr": {
+    "flag": "🇫🇷",
+    "name": "Français",
+    "back": "← Retour au site officiel",
+    "wishlist": "★ Liste de souhaits Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Politique de Confidentialité, Signalement & Support",
+    "updated": "Dernière mise à jour : Août 2026 · Westward Dash",
+    "supportHeader": "🛠️ Support Joueur, Signalement de Bugs & Communauté",
+    "supportIntro": "Nous accordons une grande importance à votre expérience de jeu ! Que vous rencontriez un bug ou souhaitiez partager un retour :",
+    "bugTitle": "🐛 Signalement de Bugs",
+    "bugDesc": "Un problème en jeu ? Envoyez-nous un e-mail avec des détails ou captures d'écran, nous interviendrons rapidement.",
+    "bugBtn": "Signaler un bug →",
+    "forumTitle": "💬 Discussions Steam",
+    "forumDesc": "Rejoignez le forum officiel Steam pour échanger vos stratégies et astuces avec les joueurs du monde entier.",
+    "forumBtn": "Aller sur le forum Steam →",
+    "reviewTitle": "⭐ Évaluations & Retours",
+    "reviewDesc": "Laissez votre avis sur la page Steam. Vos retours nous aident directement à améliorer le jeu !",
+    "reviewBtn": "Voir la page Steam →",
+    "contactTitle": "✉️ Contact & Presse",
+    "contactDesc": "Pour toute demande de clé presse, retour sur la localisation ou partenariat, contactez notre studio.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "E-mail de support officiel",
+    "emailAction": "Envoyer un e-mail",
+    "sec1Title": "🔒 Aucune Collecte de Données Personnelles",
+    "sec1Content": "<strong>Westward Dash ne collecte aucune donnée personnelle.</strong><br>Le jeu ne comporte aucun traceur, aucun outil d'analyse et aucune publicité. Aucune requête réseau contenant des données personnelles n'est envoyée à Mars Paladin LLC.",
+    "sec2Title": "💾 Données Locales et Sauvegardes",
+    "sec2Content": "Vos sauvegardes et paramètres restent sur votre appareil et sont synchronisés de manière sécurisée via Steam Cloud.",
+    "sec3Title": "🌐 Intégration Steam et Multijoueur",
+    "sec3Content": "Le multijoueur en ligne (Peer-to-Peer) et les succès sont gérés par Valve sous sa <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>politique de confidentialité Steam</a>. Le mode solo fonctionne entièrement hors ligne.",
+    "sec4Title": "👶 Protection des Enfants",
+    "sec4Content": "Le jeu ne collectant aucune donnée, il ne collecte rien auprès des enfants.",
+    "sec5Title": "📜 Modifications & Contact",
+    "sec5Content": "Pour toute question, contactez notre équipe :<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Site officiel Westward Dash",
+    "footerStore": "Page Steam",
+    "rights": "Tous droits réservés."
+  },
+  "de": {
+    "flag": "🇩🇪",
+    "name": "Deutsch",
+    "back": "← Zurück zur offiziellen Website",
+    "wishlist": "★ Auf die Steam-Wunschliste",
+    "studio": "Mars Paladin LLC",
+    "title": "Datenschutzerklärung, Fehlermeldungen & Support",
+    "updated": "Zuletzt aktualisiert: August 2026 · Westward Dash",
+    "supportHeader": "🛠️ Spieler-Support, Fehlerberichte & Community",
+    "supportIntro": "Ihr Spielerlebnis liegt uns am Herzen! Bei Fehlern, Fragen oder Feedback stehen wir Ihnen jederzeit zur Verfügung:",
+    "bugTitle": "🐛 Fehler melden / Bug-Report",
+    "bugDesc": "Ein Problem im Spiel entdeckt? Senden Sie uns eine E-Mail mit Details – wir beheben es schnellstmöglich.",
+    "bugBtn": "Fehler melden →",
+    "forumTitle": "💬 Steam-Diskussionen / Forum",
+    "forumDesc": "Tauschen Sie sich im offiziellen Steam-Community-Forum mit Spielern weltweit über Taktiken und Regeln aus.",
+    "forumBtn": "Zum Steam-Forum →",
+    "reviewTitle": "⭐ Rezensionen & Feedback",
+    "reviewDesc": "Hinterlassen Sie gerne eine Bewertung auf Steam. Ihr Feedback hilft uns bei zukünftigen Updates!",
+    "reviewBtn": "Zum Steam-Shop →",
+    "contactTitle": "✉️ Kontakt & Presse",
+    "contactDesc": "Für Presseanfragen, Kooperationen oder Lokalisierungsfeedback wenden Sie sich direkt an unser Studio.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Offizielle Support-E-Mail",
+    "emailAction": "E-Mail senden",
+    "sec1Title": "🔒 Keine Erfassung personenbezogener Daten",
+    "sec1Content": "<strong>Westward Dash erfasst keinerlei personenbezogene Daten.</strong><br>Keine Tracker, keine Werbung, keine Analysen. Das Spiel sendet keine personenbezogenen Anfragen an Mars Paladin LLC.",
+    "sec2Title": "💾 Lokale Speicherung & Spielstände",
+    "sec2Content": "Ihre Spielstände und Einstellungen verbleiben lokal auf Ihrem Gerät und werden via Steam Cloud synchronisiert.",
+    "sec3Title": "🌐 Steam-Plattform & Mehrspieler",
+    "sec3Content": "Online-Mehrspieler (P2P) und Errungenschaften werden über das Valve-Netzwerk gemäß der <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam-Datenschutzerklärung</a> abgewickelt.",
+    "sec4Title": "👶 Schutz von Minderjährigen",
+    "sec4Content": "Da das Spiel keinerlei Daten sammelt, werden auch keine Daten von Kindern erfasst.",
+    "sec5Title": "📜 Änderungen & Kontakt",
+    "sec5Content": "Fragen zum Datenschutz oder Spiel? Kontaktieren Sie uns:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Westward Dash Offizielle Website",
+    "footerStore": "Steam-Shop-Seite",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "es": {
+    "flag": "🇪🇸",
+    "name": "Español",
+    "back": "← Volver al sitio oficial",
+    "wishlist": "★ Lista de deseados de Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Política de Privacidad, Reporte de Errores y Soporte",
+    "updated": "Última actualización: Agosto de 2026 · Westward Dash",
+    "supportHeader": "🛠️ Soporte al Jugador, Reporte de Errores y Comunidad",
+    "supportIntro": "¡Valoramos profundamente tu experiencia de juego! Si encuentras algún fallo o deseas dejarnos tus comentarios:",
+    "bugTitle": "🐛 Reportar Errores / Bugs",
+    "bugDesc": "¿Has encontrado algún problema? Envíanos un correo con los detalles o capturas de pantalla y lo solucionaremos pronto.",
+    "bugBtn": "Enviar reporte →",
+    "forumTitle": "💬 Foros de Discusión de Steam",
+    "forumDesc": "Únete a la comunidad de Steam para debatir estrategias, compartir reglas y charlar con jugadores de todo el mundo.",
+    "forumBtn": "Ir al foro de Steam →",
+    "reviewTitle": "⭐ Reseñas y Comentarios",
+    "reviewDesc": "¡Te invitamos a dejar tu reseña en la página de Steam! Tus opiniones impulsan nuestras futuras mejoras.",
+    "reviewBtn": "Ir a la tienda de Steam →",
+    "contactTitle": "✉️ Contacto y Prensa",
+    "contactDesc": "Para claves de prensa, sugerencias de traducción o consultas generales, escríbenos directamente.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Correo de soporte oficial",
+    "emailAction": "Enviar correo",
+    "sec1Title": "🔒 Cero Recopilación de Datos Personales",
+    "sec1Content": "<strong>Westward Dash no recopila ningún tipo de dato personal.</strong><br>El juego no incluye rastreadores de terceros, publicidad ni análisis. No se envían datos identificables a Mars Paladin LLC.",
+    "sec2Title": "💾 Almacenamiento Local y Partidas Guardadas",
+    "sec2Content": "Tus partidas guardadas y ajustes permanecen en tu propio dispositivo y se sincronizan mediante Steam Cloud.",
+    "sec3Title": "🌐 Plataforma Steam y Multijugador",
+    "sec3Content": "El multijugador en línea (P2P) y los logros son gestionados por Valve bajo la <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Política de Privacidad de Steam</a>. El modo individual funciona totalmente sin conexión.",
+    "sec4Title": "👶 Privacidad de Menores",
+    "sec4Content": "Dado que el juego no recopila información de nadie, tampoco recopila nada de menores de edad.",
+    "sec5Title": "📜 Cambios y Contacto",
+    "sec5Content": "¿Preguntas sobre la política o el juego? Contáctanos en:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Sitio web oficial de Westward Dash",
+    "footerStore": "Página de la tienda de Steam",
+    "rights": "Todos los derechos reservados."
+  },
+  "pt": {
+    "flag": "🇧🇷",
+    "name": "Português",
+    "back": "← Voltar ao site oficial",
+    "wishlist": "★ Lista de Desejos Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Política de Privacidade, Relato de Bugs e Suporte",
+    "updated": "Última atualização: Agosto de 2026 · Westward Dash",
+    "supportHeader": "🛠️ Suporte ao Jogador, Relato de Bugs e Comunidade",
+    "supportIntro": "Valorizamos muito a sua experiência! Se encontrar algum bug ou quiser enviar sugestões:",
+    "bugTitle": "🐛 Relatar Problemas e Bugs",
+    "bugDesc": "Encontrou um erro no jogo? Envie-nos um e-mail com detalhes ou capturas de tela e nós resolveremos rapidamente.",
+    "bugBtn": "Enviar relato de bug →",
+    "forumTitle": "💬 Fórum de Discussões Steam",
+    "forumDesc": "Participe do fórum oficial da Steam para trocar táticas e regras personalizadas com jogadores do mundo todo.",
+    "forumBtn": "Acessar fórum da Steam →",
+    "reviewTitle": "⭐ Análises e Avaliações",
+    "reviewDesc": "Deixe sua análise na página da Steam. Seu feedback nos ajuda a melhorar o jogo continuamente!",
+    "reviewBtn": "Ir para a Loja Steam →",
+    "contactTitle": "✉️ Contato e Imprensa",
+    "contactDesc": "Para chaves de imprensa, sugestões de localização ou parcerias, entre em contato direto com o estúdio.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "E-mail de suporte oficial",
+    "emailAction": "Enviar e-mail",
+    "sec1Title": "🔒 Zero Coleta de Dados Pessoais",
+    "sec1Content": "<strong>Westward Dash não coleta nenhum dado pessoal.</strong><br>Sem rastreadores, sem anúncios e sem análises de terceiros. Nenhum dado é enviado aos servidores da Mars Paladin LLC.",
+    "sec2Title": "💾 Armazenamento Local e Salvamento",
+    "sec2Content": "Seus arquivos de progresso e configurações ficam salvos localmente e sincronizados via Steam Cloud.",
+    "sec3Title": "🌐 Plataforma Steam e Multijogador",
+    "sec3Content": "O modo multijogador online (P2P) e as conquistas operam sob a <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Política de Privacidade da Steam</a>. O modo solo funciona 100% offline.",
+    "sec4Title": "👶 Privacidade de Menores",
+    "sec4Content": "Como o jogo não coleta informações de ninguém, também não coleta nada de crianças.",
+    "sec5Title": "📜 Contato de Suporte",
+    "sec5Content": "Dúvidas sobre o jogo ou políticas? Fale conosco:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Site oficial Westward Dash",
+    "footerStore": "Página na Loja Steam",
+    "rights": "Todos os direitos reservados."
+  },
+  "it": {
+    "flag": "🇮🇹",
+    "name": "Italiano",
+    "back": "← Torna al sito ufficiale",
+    "wishlist": "★ Lista dei desideri Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Informativa sulla Privacy, Segnalazione Bug e Supporto",
+    "updated": "Ultimo aggiornamento: Agosto 2026 · Westward Dash",
+    "supportHeader": "🛠️ Supporto Giocatori, Segnalazione Bug e Community",
+    "supportIntro": "Teniamo molto alla tua esperienza di gioco! Per qualsiasi segnalazione di bug, recensione o suggerimento:",
+    "bugTitle": "🐛 Segnala un Bug / Problema",
+    "bugDesc": "Hai riscontrato un errore? Inviaci un'e-mail con i dettagli o schermate e risolveremo il problema al più presto.",
+    "bugBtn": "Invia segnalazione bug →",
+    "forumTitle": "💬 Forum Discussioni Steam",
+    "forumDesc": "Unisciti alle discussioni della community di Steam per condividere tattiche e regole personalizzate.",
+    "forumBtn": "Vai al forum Steam →",
+    "reviewTitle": "⭐ Recensioni e Feedback",
+    "reviewDesc": "Lascia la tua recensione sulla pagina Steam. I tuoi commenti guidano i nostri aggiornamenti futuri!",
+    "reviewBtn": "Vai al Negozio Steam →",
+    "contactTitle": "✉️ Contatti e Stampa",
+    "contactDesc": "Per chiavi stampa, feedback sulla traduzione o collaborazioni, scrivi direttamente al nostro studio.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "E-mail di supporto ufficiale",
+    "emailAction": "Invia un'e-mail",
+    "sec1Title": "🔒 Zero Raccolta di Dati Personali",
+    "sec1Content": "<strong>Westward Dash non raccoglie alcun dato personale.</strong><br>Nessun tracciamento, nessuna pubblicità, nessuna analisi di terze parti. Nessun dato identificativo viene inviato a Mars Paladin LLC.",
+    "sec2Title": "💾 Salvataggi e Dati Locali",
+    "sec2Content": "I tuoi salvataggi e impostazioni rimangono sul tuo dispositivo e sono sincronizzati tramite Steam Cloud.",
+    "sec3Title": "🌐 Piattaforma Steam e Multigiocatore",
+    "sec3Content": "Il multigiocatore online (P2P) e gli achievement sono gestiti da Valve in conformità con l'<a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Informativa sulla Privacy di Steam</a>.",
+    "sec4Title": "👶 Tutela dei Minori",
+    "sec4Content": "Non raccogliendo dati da alcun utente, il gioco non raccoglie nulla dai minori.",
+    "sec5Title": "📜 Contatti di Supporto",
+    "sec5Content": "Hai domande sull'informativa o sul gioco? Scrivici a:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Sito ufficiale Westward Dash",
+    "footerStore": "Pagina Negozio Steam",
+    "rights": "Tutti i diritti riservati."
+  },
+  "ru": {
+    "flag": "🇷🇺",
+    "name": "Русский",
+    "back": "← На официальный сайт",
+    "wishlist": "★ В список желаемого Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Политика конфиденциальности, сообщения об ошибках и поддержка",
+    "updated": "Последнее обновление: Август 2026 · «Бросок на Запад»",
+    "supportHeader": "🛠️ Поддержка игроков, баг-репорты и сообщество",
+    "supportIntro": "Мы ценим каждого игрока! Если вы столкнулись с ошибкой в игре или хотите поделиться отзывом:",
+    "bugTitle": "🐛 Сообщить об ошибке / Баг-репорт",
+    "bugDesc": "Нашли баг или вылет? Отправьте нам письмо с описанием или скриншотом — мы оперативно всё исправим.",
+    "bugBtn": "Отправить баг-репорт →",
+    "forumTitle": "💬 Обсуждения в сообществе Steam",
+    "forumDesc": "Присоединяйтесь к форуму Steam, чтобы обсуждать тактики пилигримов и делиться своими правилами.",
+    "forumBtn": "Перейти на форум Steam →",
+    "reviewTitle": "⭐ Отзывы и предложения",
+    "reviewDesc": "Оставьте свой отзыв на странице игры в Steam. Ваше мнение напрямую помогает развивать проект!",
+    "reviewBtn": "В магазин Steam →",
+    "contactTitle": "✉️ Контакты и пресса",
+    "contactDesc": "Запросы ключей для обзоров, предложения по локализации и деловые вопросы направляйте на официальную почту.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Официальная почта поддержки",
+    "emailAction": "Написать на почту",
+    "sec1Title": "🔒 Полное отсутствие сбора личных данных",
+    "sec1Content": "<strong>«Бросок на Запад» (Westward Dash) не собирает никаких персональных данных.</strong><br>В игре нет сторонних трекеров, аналитики и рекламы. Клиент игры не отправляет личные данные на серверы Mars Paladin LLC.",
+    "sec2Title": "💾 Локальные данные и сохранения",
+    "sec2Content": "Все файлы сохранений и настройки хранятся исключительно на вашем устройстве и синхронизируются через Steam Cloud.",
+    "sec3Title": "🌐 Платформа Steam и сетевая игра",
+    "sec3Content": "Сетевая игра (P2P) и достижения работают через сеть Valve в рамках <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Политики конфиденциальности Steam</a>. Одиночный режим работает полностью офлайн.",
+    "sec4Title": "👶 Защита детей",
+    "sec4Content": "Поскольку игра не собирает информацию ни с кого, данные несовершеннолетних также не собираются.",
+    "sec5Title": "📜 Контакты и обновления",
+    "sec5Content": "Вопросы по игре или политике? Напишите нам:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Официальный сайт «Бросок на Запад»",
+    "footerStore": "Страница в Steam",
+    "rights": "Все права защищены."
+  },
+  "pl": {
+    "flag": "🇵🇱",
+    "name": "Polski",
+    "back": "← Wróć do strony głównej",
+    "wishlist": "★ Lista życzeń Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Polityka Prywatności, Zgłaszanie Błędów i Wsparcie",
+    "updated": "Ostatnia aktualizacja: Sierpień 2026 · Westward Dash",
+    "supportHeader": "🛠️ Wsparcie Graczy, Raporty Błędów i Społeczność",
+    "supportIntro": "Bardzo zależy nam na Waszych wrażeniach z gry! Wszelkie błędy, sugestie i opinie są mile widziane:",
+    "bugTitle": "🐛 Zgłaszanie Błędów / Bugów",
+    "bugDesc": "Napotkałeś problem w grze? Wyślij nam e-mail ze szczegółami lub zrzutem ekranu, a szybko się tym zajmiemy.",
+    "bugBtn": "Wyślij zgłoszenie błędu →",
+    "forumTitle": "💬 Forum Dyskusyjne Steam",
+    "forumDesc": "Dołącz do społeczności Steam, aby wymieniać się strategiami i tworzyć własne zasady gry.",
+    "forumBtn": "Przejdź do forum Steam →",
+    "reviewTitle": "⭐ Recenzje i Opinie",
+    "reviewDesc": "Zostaw swoją recenzję na Steamie. Twoje uwagi pomagają nam w kolejnych aktualizacjach!",
+    "reviewBtn": "Odwiedź Sklep Steam →",
+    "contactTitle": "✉️ Kontakt i Prasa",
+    "contactDesc": "W sprawie kluczy recenzenckich, tłumaczenia czy współpracy prosimy o kontakt ze studiem.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Oficjalny e-mail wsparcia",
+    "emailAction": "Wyślij wiadomość",
+    "sec1Title": "🔒 Brak Zbierania Danych Osobowych",
+    "sec1Content": "<strong>Westward Dash nie gromadzi żadnych danych osobowych.</strong><br>Gra nie zawiera modułów śledzących, analityki ani reklam. Żadne dane nie są przesyłane do Mars Paladin LLC.",
+    "sec2Title": "💾 Zapisy Gry i Pamięć Lokalna",
+    "sec2Content": "Pliki zapisu i ustawienia pozostają na Twoim urządzeniu i są bezpiecznie synchronizowane przez Steam Cloud.",
+    "sec3Title": "🌐 Integracja ze Steam i Tryb Wieloosobowy",
+    "sec3Content": "Rozgrywka online (P2P) i osiągnięcia są obsługiwane przez Valve zgodnie z <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Polityką Prywatności Steam</a>.",
+    "sec4Title": "👶 Ochrona Prywatności Dzieci",
+    "sec4Content": "Gra nie gromadzi żadnych danych od jakichkolwiek użytkowników, w tym dzieci.",
+    "sec5Title": "📜 Zmiany i Kontakt",
+    "sec5Content": "Pytania dotyczące gry lub polityki? Skontaktuj się z nami:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Oficjalna strona Westward Dash",
+    "footerStore": "Strona Sklepu Steam",
+    "rights": "Wszelkie prawa zastrzeżone."
+  },
+  "cs": {
+    "flag": "🇨🇿",
+    "name": "Čeština",
+    "back": "← Zpět na hlavní stránku",
+    "wishlist": "★ Seznam přání na Steamu",
+    "studio": "Mars Paladin LLC",
+    "title": "Zásady ochrany soukromí, hlášení chyb a podpora",
+    "updated": "Poslední aktualizace: Srpen 2026 · Westward Dash",
+    "supportHeader": "🛠️ Podpora hráčů, hlášení chyb a komunita",
+    "supportIntro": "Velmi si vážíme vašich herních zážitků! V případě jakýchkoli chyb či zpětné vazby jsme vám k dispozici:",
+    "bugTitle": "🐛 Hlášení chyb / Bug report",
+    "bugDesc": "Narazili jste na chybu ve hře? Pošlete nám e-mail s podrobnostmi a my problém prověříme a opravíme.",
+    "bugBtn": "Nahlásit chybu e-mailem →",
+    "forumTitle": "💬 Diskuzní fórum na Steamu",
+    "forumDesc": "Připojte se k diskuzi na Steamu a probírejte strategie a pravidla s hráči z celého světa.",
+    "forumBtn": "Přejít na fórum Steamu →",
+    "reviewTitle": "⭐ Recenze a zpětná vazba",
+    "reviewDesc": "Napište recenzi na stránce Steamu. Vaše názory nám pomáhají hru neustále vylepšovat!",
+    "reviewBtn": "Přejít do obchodu Steam →",
+    "contactTitle": "✉️ Kontakt a média",
+    "contactDesc": "Pro recenzní klíče, zpětnou vazbu k překladu či spolupráci nás neváhejte kontaktovat.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Oficiální e-mail podpory",
+    "emailAction": "Napsat e-mail",
+    "sec1Title": "🔒 Žádné shromažďování osobních údajů",
+    "sec1Content": "<strong>Hra Westward Dash neshromažďuje žádné osobní údaje.</strong><br>Žádné sledovací nástroje, žádné reklamy ani analytika třetích stran. Na servery Mars Paladin LLC se neodesílají žádná data.",
+    "sec2Title": "💾 Místní úložiště a uložené pozice",
+    "sec2Content": "Uložené pozice a nastavení zůstávají ve vašem zařízení a synchronizují se prostřednictvím služby Steam Cloud.",
+    "sec3Title": "🌐 Platforma Steam a hra pro více hráčů",
+    "sec3Content": "Online hra více hráčů (P2P) a úspěchy podléhají <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Zásadám ochrany soukromí služby Steam</a>. Hra pro jednoho hráče funguje plně offline.",
+    "sec4Title": "👶 Ochrana dětí",
+    "sec4Content": "Jelikož hra neshromažďuje údaje od nikoho, neshromažďuje ani údaje dětí.",
+    "sec5Title": "📜 Kontakt na podporu",
+    "sec5Content": "Máte dotazy k zásadám nebo ke hře? Napište nám na:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Oficiální web Westward Dash",
+    "footerStore": "Stránka obchodu Steam",
+    "rights": "Všechna práva vyhrazena."
+  },
+  "uk": {
+    "flag": "🇺🇦",
+    "name": "Українська",
+    "back": "← На головну сторінку",
+    "wishlist": "★ У список бажаного Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Політика конфіденційності, звіти про помилки та підтримка",
+    "updated": "Останнє оновлення: Серпень 2026 · «Кидок на Захід»",
+    "supportHeader": "🛠️ Підтримка гравців, звіти про баги та спільнота",
+    "supportIntro": "Ми дуже цінуємо кожного гравця! Якщо ви виявили помилку або бажаєте поділитися відгуком:",
+    "bugTitle": "🐛 Повідомити про помилку / Баг",
+    "bugDesc": "Знайшли помилку чи збій? Надішліть нам листа з описом або знімком екрана — ми все оперативно виправимо.",
+    "bugBtn": "Надіслати звіт про помилку →",
+    "forumTitle": "💬 Обговорення у спільноті Steam",
+    "forumDesc": "Долучайтеся до форуму Steam, щоб ділитися тактиками та обговорювати власні правила гри.",
+    "forumBtn": "Перейти на форум Steam →",
+    "reviewTitle": "⭐ Відгуки та пропозиції",
+    "reviewDesc": "Залиште свій відгук на сторінці Steam. Ваша думка безпосередньо впливає на розвиток гри!",
+    "reviewBtn": "У магазин Steam →",
+    "contactTitle": "✉️ Контакти та преса",
+    "contactDesc": "Щодо прес-ключів, зворотного зв'язку з локалізації або партнерства пишіть нашій студії.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Офіційна пошта підтримки",
+    "emailAction": "Написати листа",
+    "sec1Title": "🔒 Повна відсутність збору особистих даних",
+    "sec1Content": "<strong>«Кидок на Захід» (Westward Dash) не збирає жодних особистих даних.</strong><br>У грі немає сторонніх трекерів, аналітики чи реклами. Жодні дані не надсилаються до Mars Paladin LLC.",
+    "sec2Title": "💾 Локальні збереження та налаштування",
+    "sec2Content": "Файли збережень і налаштування зберігаються на вашому пристрої та синхронізуються через Steam Cloud.",
+    "sec3Title": "🌐 Мережева гра та сервіси Steam",
+    "sec3Content": "Мережева гра (P2P) та досягнення працюють через Valve відповідно до <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Політики конфіденційності Steam</a>.",
+    "sec4Title": "👶 Захист дітей",
+    "sec4Content": "Оскільки гра не збирає жодних даних від користувачів, дані дітей також не збираються.",
+    "sec5Title": "📜 Контакти підтримки",
+    "sec5Content": "Маєте запитання? Зв'яжіться з нашою командою:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Офіційний сайт «Кидок на Захід»",
+    "footerStore": "Сторінка у Steam",
+    "rights": "Усі права захищені."
+  },
+  "tr": {
+    "flag": "🇹🇷",
+    "name": "Türkçe",
+    "back": "← Resmi Siteye Dön",
+    "wishlist": "★ Steam İstek Listesi",
+    "studio": "Mars Paladin LLC",
+    "title": "Gizlilik Politikası, Hata Bildirimi ve Topluluk Desteği",
+    "updated": "Son Güncelleme: Ağustos 2026 · Westward Dash",
+    "supportHeader": "🛠️ Oyuncu Desteği, Hata Bildirimi ve Topluluk",
+    "supportIntro": "Oyuncularımızın deneyimine büyük önem veriyoruz! Bir hatayla karşılaştıysanız veya geri bildirimde bulunmak isterseniz:",
+    "bugTitle": "🐛 Hata / Sorun Bildirimi",
+    "bugDesc": "Oyunda bir sorun mu gördünüz? Detaylar veya ekran görüntüleriyle birlikte e-posta gönderin, hızlıca çözelim.",
+    "bugBtn": "Hata bildirimi gönder →",
+    "forumTitle": "💬 Steam Topluluk Tartışmaları",
+    "forumDesc": "Dünyanın dört bir yanındaki oyuncularla taktikleri ve özel kuralları tartışmak için Steam forumuna katılın.",
+    "forumBtn": "Steam forumuna git →",
+    "reviewTitle": "⭐ Oyuncu İncelemeleri ve Geri Bildirim",
+    "reviewDesc": "Steam sayfamıza samimi incelemelerinizi bırakabilirsiniz. Görüşleriniz gelecekteki güncellemeleri şekillendirir!",
+    "reviewBtn": "Steam Mağazasına git →",
+    "contactTitle": "✉️ İletişim ve Basın",
+    "contactDesc": "İnceleme anahtarları, yerelleştirme geri bildirimleri ve iş birlikleri için stüdyomuzla iletişime geçin.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Resmi Destek E-postası",
+    "emailAction": "E-posta Gönder",
+    "sec1Title": "🔒 Sıfır Kişisel Veri Toplama",
+    "sec1Content": "<strong>Westward Dash hiçbir kişisel veri toplamaz.</strong><br>Üçüncü taraf takipçiler, analiz araçları veya reklamlar içermez. Mars Paladin LLC sunucularına veri gönderilmez.",
+    "sec2Title": "💾 Yerel Depolama ve Kayıtlar",
+    "sec2Content": "Kayıt dosyalarınız ve ayarlarınız cihazınızda kalır ve Steam Cloud üzerinden güvenle senkronize edilir.",
+    "sec3Title": "🌐 Steam Platformu ve Çok Oyunculu",
+    "sec3Content": "Çevrim içi çok oyunculu mod (P2P) ve başarımlar, Valve'ın <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Steam Gizlilik Politikası</a> kapsamında çalışır. Tek oyunculu mod tamamen çevrim dışıdır.",
+    "sec4Title": "👶 Çocukların Gizliliği",
+    "sec4Content": "Oyun hiçbir kullanıcıdan bilgi toplamadığı için çocuklardan da hiçbir veri toplamaz.",
+    "sec5Title": "📜 Değişiklikler ve İletişim",
+    "sec5Content": "Sorularınız için bizimle her zaman iletişime geçebilirsiniz:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Westward Dash Resmi Sitesi",
+    "footerStore": "Steam Mağaza Sayfası",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "th": {
+    "flag": "🇹🇭",
+    "name": "ไทย",
+    "back": "← กลับสู่เว็บไซต์ทางการ",
+    "wishlist": "★ สิ่งที่อยากได้บน Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "นโยบายความเป็นส่วนตัว การรายงานปัญหา และการสนับสนุนชุมชน",
+    "updated": "อัปเดตล่าสุด: สิงหาคม 2026 · ตะลุยไซอิ๋ว (Westward Dash)",
+    "supportHeader": "🛠️ การสนับสนุนผู้เล่น รายงานบั๊ก และชุมชน",
+    "supportIntro": "เราให้ความสำคัญกับประสบการณ์การเล่นของทุกคนอย่างยิ่ง! หากคุณพบบั๊กหรือต้องการเสนอแนะข้อคิดเห็น:",
+    "bugTitle": "🐛 รายงานบั๊ก / ปัญหาในเกม",
+    "bugDesc": "พบบั๊กหรือข้อผิดพลาดในเกม? ส่งอีเมลพร้อมรายละเอียดหรือภาพหน้าจอ เราจะรีบดำเนินการแก้ไขโดยเร็วที่สุด",
+    "bugBtn": "ส่งอีเมลรายงานปัญหา →",
+    "forumTitle": "💬 กระดานสนทนาชุมชน Steam",
+    "forumDesc": "เข้าร่วมฟอรัมทางการของ Steam เพื่อพูดคุยเกี่ยวกับเคล็ดลับวิชาและกติกาพิเศษกับผู้เล่นทั่วโลก",
+    "forumBtn": "ไปที่ฟอรัม Steam →",
+    "reviewTitle": "⭐ รีวิวและข้อเสนอแนะ",
+    "reviewDesc": "ร่วมเขียนรีวิวบนหน้าร้านค้า Steam ความคิดเห็นของคุณคือแรงผลักดันสำคัญในการพัฒนาอัปเดตของเรา!",
+    "reviewBtn": "ไปที่หน้าร้านค้า Steam →",
+    "contactTitle": "✉️ ติดต่อและประชาสัมพันธ์",
+    "contactDesc": "ขอคีย์สำหรับสื่อ ข้อเสนอแนะด้านการแปลภาษา หรือติดต่อความร่วมมือ สามารถติดต่อสตูดิโอได้โดยตรง",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "อีเมลสนับสนุนทางการ",
+    "emailAction": "ส่งอีเมลหาเรา",
+    "sec1Title": "🔒 ไม่มีการเก็บรวบรวมข้อมูลส่วนบุคคล (Zero Data)",
+    "sec1Content": "<strong>เกมตะลุยไซอิ๋ว (Westward Dash) ไม่มีการเก็บรวบรวมข้อมูลส่วนบุคคลใดๆ ทั้งสิ้น</strong><br>ไม่มีระบบติดตามบุคคลที่สาม ไม่มีโฆษณา และไม่มีการวิเคราะห์พฤติกรรม ไม่มีการส่งคำขอที่ระบุตัวตนไปยัง Mars Paladin LLC",
+    "sec2Title": "💾 ข้อมูลในเครื่องและการบันทึกเกม",
+    "sec2Content": "ไฟล์เซฟและการตั้งค่าทั้งหมดจะถูกบันทึกไว้ในอุปกรณ์ของคุณ และซิงค์อย่างปลอดภัยผ่านระบบ Steam Cloud",
+    "sec3Title": "🌐 ระบบ Steam และการเล่นหลายคน",
+    "sec3Content": "โหมดผู้เล่นหลายคนออนไลน์ (P2P) และความสำเร็จ ดำเนินการผ่านโครงสร้างเครือข่ายของ Valve ภายใต้ <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>นโยบายความเป็นส่วนตัวของ Steam</a> โหมดเล่นคนเดียวสามารถเล่นแบบออฟไลน์ได้สมบูรณ์",
+    "sec4Title": "👶 ความเป็นส่วนตัวของเด็ก",
+    "sec4Content": "เนื่องจากเกมไม่มีการเก็บข้อมูลจากผู้ใช้ใดๆ จึงไม่มีการเก็บข้อมูลจากเด็กอย่างแน่นอน",
+    "sec5Title": "📜 ติดต่อเรา",
+    "sec5Content": "หากมีข้อสงสัยเกี่ยวกับนโยบายหรือตัวเกม ติดต่อทีมสนับสนุนได้ที่:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "เว็บไซต์ทางการ ตะลุยไซอิ๋ว",
+    "footerStore": "หน้าร้านค้า Steam",
+    "rights": "สงวนลิขสิทธิ์ทั้งหมด"
+  },
+  "vi": {
+    "flag": "🇻🇳",
+    "name": "Tiếng Việt",
+    "back": "← Quay Lại Trang Chủ",
+    "wishlist": "★ Danh Sách Ước Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Chính Sách Bảo Mật, Báo Lỗi & Hỗ Trợ Cộng Đồng",
+    "updated": "Cập nhật lần cuối: Tháng 8/2026 · Tây Du Đại Xung Phong",
+    "supportHeader": "🛠️ Hỗ Trợ Người Chơi, Báo Lỗi & Cộng Đồng",
+    "supportIntro": "Chúng tôi trân trọng trải nghiệm của từng người chơi! Nếu bạn gặp bất kỳ lỗi nào hoặc muốn đóng góp ý kiến:",
+    "bugTitle": "🐛 Báo Cáo Lỗi / Bug Game",
+    "bugDesc": "Gặp lỗi đứng game hoặc bất thường? Hãy gửi email kèm mô tả hoặc ảnh chụp màn hình, chúng tôi sẽ xử lý ngay.",
+    "bugBtn": "Gửi email báo lỗi →",
+    "forumTitle": "💬 Diễn Đàn Thảo Luận Steam",
+    "forumDesc": "Tham gia diễn đàn cộng đồng Steam để giao lưu tuyệt kỹ hành giả và chia sẻ luật chơi độc đáo.",
+    "forumBtn": "Vào diễn đàn Steam →",
+    "reviewTitle": "⭐ Đánh Giá & Góp Ý",
+    "reviewDesc": "Hãy để lại đánh giá của bạn trên trang Steam. Mọi phản hồi chân thành đều giúp chúng tôi hoàn thiện game tốt hơn!",
+    "reviewBtn": "Đến Cửa Hàng Steam →",
+    "contactTitle": "✉️ Liên Hệ & Truyền Thông",
+    "contactDesc": "Yêu cầu key trải nghiệm, góp ý bản dịch hoặc hợp tác, vui lòng liên hệ trực tiếp với studio.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Email Hỗ Trợ Chính Thức",
+    "emailAction": "Gửi Email Liên Hệ",
+    "sec1Title": "🔒 Cam Kết Không Thu Thập Dữ Liệu Cá Nhân",
+    "sec1Content": "<strong>Tây Du Đại Xung Phong (Westward Dash) hoàn toàn không thu thập bất kỳ dữ liệu cá nhân nào.</strong><br>Game không chứa công cụ theo dõi, không quảng cáo, không phân tích hành vi người dùng.",
+    "sec2Title": "💾 Dữ Liệu Cục Bộ & Lưu Game",
+    "sec2Content": "File lưu và cài đặt được lưu trữ an toàn trên thiết bị của bạn và đồng bộ hóa qua Steam Cloud.",
+    "sec3Title": "🌐 Nền Tảng Steam & Chơi Mạng",
+    "sec3Content": "Chế độ nhiều người chơi trực tuyến (P2P) và thành tựu do Valve vận hành theo <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Chính Sách Bảo Mật Steam</a>. Chế độ chơi đơn hỗ trợ hoàn toàn ngoại tuyến.",
+    "sec4Title": "👶 Bảo Vệ Trẻ Em",
+    "sec4Content": "Do trò chơi không thu thập thông tin từ bất kỳ ai, nên cũng không thu thập thông tin của trẻ em.",
+    "sec5Title": "📜 Liên Hệ Hỗ Trợ",
+    "sec5Content": "Mọi thắc mắc về chính sách hoặc tựa game, vui lòng liên hệ:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Trang Chủ Tây Du Đại Xung Phong",
+    "footerStore": "Cửa Hàng Steam",
+    "rights": "Bảo lưu mọi quyền."
+  },
+  "id": {
+    "flag": "🇮🇩",
+    "name": "Bahasa Indonesia",
+    "back": "← Kembali ke Situs Resmi",
+    "wishlist": "★ Wishlist Steam",
+    "studio": "Mars Paladin LLC",
+    "title": "Kebijakan Privasi, Laporan Bug & Dukungan Komunitas",
+    "updated": "Pembaruan Terakhir: Agustus 2026 · Westward Dash",
+    "supportHeader": "🛠️ Dukungan Pemain, Laporan Bug & Komunitas",
+    "supportIntro": "Kami sangat menghargai pengalaman bermain Anda! Jika Anda menemukan bug atau ingin memberi masukan:",
+    "bugTitle": "🐛 Laporkan Bug & Masalah",
+    "bugDesc": "Menemukan kendala atau error di dalam game? Kirimkan email berisi detail atau tangkapan layar, kami akan segera memperbaikinya.",
+    "bugBtn": "Kirim Laporan Bug →",
+    "forumTitle": "💬 Forum Diskusi Steam",
+    "forumDesc": "Bergabunglah dalam forum resmi Steam untuk berbagi strategi dan aturan khusus bersama pemain di seluruh dunia.",
+    "forumBtn": "Buka Forum Steam →",
+    "reviewTitle": "⭐ Ulasan & Masukan Pemain",
+    "reviewDesc": "Berikan ulasan Anda di halaman Toko Steam. Setiap masukan tulus Anda membantu penyempurnaan game ini!",
+    "reviewBtn": "Kunjungi Toko Steam →",
+    "contactTitle": "✉️ Kontak & Media",
+    "contactDesc": "Untuk permintaan kunci pers, masukan lokalisasi, atau kerja sama bisnis, hubungi kami langsung.",
+    "contactBtn": "support@marsparadin.com →",
+    "emailLabel": "Email Dukungan Resmi",
+    "emailAction": "Kirim Email",
+    "sec1Title": "🔒 Tanpa Pengumpulan Data Pribadi",
+    "sec1Content": "<strong>Westward Dash tidak mengumpulkan data pribadi apa pun.</strong><br>Game ini bebas dari pelacak pihak ketiga, tanpa iklan, dan tanpa analitik. Tidak ada data pribadi yang dikirim ke server Mars Paladin LLC.",
+    "sec2Title": "💾 Penyimpanan Lokal & File Simpanan",
+    "sec2Content": "File simpanan dan pengaturan Anda tersimpan di perangkat lokal dan disinkronkan secara aman melalui Steam Cloud.",
+    "sec3Title": "🌐 Integrasi Steam & Multipemain",
+    "sec3Content": "Multipemain daring (P2P) dan pencapaian dikelola oleh Valve di bawah <a href='https://store.steampowered.com/privacy_agreement/' target='_blank'>Kebijakan Privasi Steam</a>. Mode pemain tunggal berfungsi penuh secara luring.",
+    "sec4Title": "👶 Privasi Anak-anak",
+    "sec4Content": "Karena game ini tidak mengumpulkan data dari siapa pun, data anak-anak juga tidak dikumpulkan sama sekali.",
+    "sec5Title": "📜 Hubungi Kami",
+    "sec5Content": "Ada pertanyaan seputar kebijakan atau game? Hubungi kami di:<br>👉 <strong><a href='mailto:support@marsparadin.com'>support@marsparadin.com</a></strong>",
+    "footerSite": "Situs Resmi Westward Dash",
+    "footerStore": "Halaman Toko Steam",
+    "rights": "Hak cipta dilindungi undang-undang."
+  }
+};
+
+  let currentLang = 'zh';
+
+  function setLang(langCode) {
+    if (!i18n[langCode]) langCode = 'en';
+    currentLang = langCode;
+    const data = i18n[langCode];
+
+    document.getElementById('currentFlag').textContent = data.flag;
+    document.getElementById('currentLangName').textContent = data.name;
+
+    document.getElementById('navBtnBack').textContent = data.back;
+    document.getElementById('navBtnWishlist').textContent = data.wishlist;
+
+    document.getElementById('docStudio').textContent = data.studio;
+    document.getElementById('docTitle').textContent = data.title;
+    document.getElementById('docUpdated').textContent = data.updated;
+
+    document.getElementById('supportHeader').textContent = data.supportHeader;
+    document.getElementById('supportIntro').textContent = data.supportIntro;
+
+    document.getElementById('bugTitle').textContent = data.bugTitle;
+    document.getElementById('bugDesc').textContent = data.bugDesc;
+    document.getElementById('bugBtn').textContent = data.bugBtn;
+
+    document.getElementById('forumTitle').textContent = data.forumTitle;
+    document.getElementById('forumDesc').textContent = data.forumDesc;
+    document.getElementById('forumBtn').textContent = data.forumBtn;
+
+    document.getElementById('reviewTitle').textContent = data.reviewTitle;
+    document.getElementById('reviewDesc').textContent = data.reviewDesc;
+    document.getElementById('reviewBtn').textContent = data.reviewBtn;
+
+    document.getElementById('contactTitle').textContent = data.contactTitle;
+    document.getElementById('contactDesc').textContent = data.contactDesc;
+    document.getElementById('contactBtn').textContent = data.contactBtn;
+
+    document.getElementById('emailLabel').textContent = data.emailLabel;
+    document.getElementById('emailAction').textContent = data.emailAction;
+
+    document.getElementById('sec1Title').textContent = data.sec1Title;
+    document.getElementById('sec1Content').innerHTML = data.sec1Content;
+
+    document.getElementById('sec2Title').textContent = data.sec2Title;
+    document.getElementById('sec2Content').innerHTML = data.sec2Content;
+
+    document.getElementById('sec3Title').textContent = data.sec3Title;
+    document.getElementById('sec3Content').innerHTML = data.sec3Content;
+
+    document.getElementById('sec4Title').textContent = data.sec4Title;
+    document.getElementById('sec4Content').innerHTML = data.sec4Content;
+
+    document.getElementById('sec5Title').textContent = data.sec5Title;
+    document.getElementById('sec5Content').innerHTML = data.sec5Content;
+
+    document.getElementById('footerRights').textContent = data.rights;
+    document.getElementById('footerSite').textContent = data.footerSite;
+    document.getElementById('footerStore').textContent = data.footerStore;
+
+    // Highlight active option in menu
+    document.querySelectorAll('.lang-option-item').forEach(item => {
+      const isSelected = item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + langCode + "'");
+      item.classList.toggle('active', isSelected);
+    });
+
+    // Close menu
+    document.getElementById('langMenu').classList.remove('show');
+  }
+
+  function toggleLangMenu(e) {
+    e.stopPropagation();
+    document.getElementById('langMenu').classList.toggle('show');
+  }
+
+  document.addEventListener('click', () => {
+    document.getElementById('langMenu').classList.remove('show');
+  });
+
+  // Auto-detect browser language on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+      setLang('tc');
+    } else if (userLang.startsWith('ja')) {
+      setLang('ja');
+    } else if (userLang.startsWith('ko')) {
+      setLang('ko');
+    } else if (userLang.startsWith('fr')) {
+      setLang('fr');
+    } else if (userLang.startsWith('de')) {
+      setLang('de');
+    } else if (userLang.startsWith('es')) {
+      setLang('es');
+    } else if (userLang.startsWith('it')) {
+      setLang('it');
+    } else if (userLang.startsWith('pt')) {
+      setLang('pt');
+    } else if (userLang.startsWith('ru')) {
+      setLang('ru');
+    } else if (userLang.startsWith('pl')) {
+      setLang('pl');
+    } else if (userLang.startsWith('cs')) {
+      setLang('cs');
+    } else if (userLang.startsWith('uk')) {
+      setLang('uk');
+    } else if (userLang.startsWith('tr')) {
+      setLang('tr');
+    } else if (userLang.startsWith('th')) {
+      setLang('th');
+    } else if (userLang.startsWith('vi')) {
+      setLang('vi');
+    } else if (userLang.startsWith('id')) {
+      setLang('id');
+    } else if (userLang.startsWith('en')) {
+      setLang('en');
+    } else if (userLang.startsWith('zh')) {
+      setLang('zh');
+    } else {
+      setLang('en');
+    }
+  });
+</script>
+
 </body>
 </html>
