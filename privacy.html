@@ -106,41 +106,39 @@
     top: calc(100% + 8px);
     right: 0;
     background: #14100c;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.95);
     padding: 8px;
-    min-width: 240px;
-    max-height: 380px;
+    grid-template-columns: repeat(2, 160px);
+    gap: 4px;
+    max-height: 480px;
     overflow-y: auto;
-    z-index: 100;
+    z-index: 2000;
     backdrop-filter: blur(16px);
   }
   .lang-dropdown-menu.show {
-    display: block;
+    display: grid;
     animation: fadeIn 0.2s ease;
   }
   .lang-option-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: 6px;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 4px;
     color: var(--dim);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s;
     text-align: left;
+    white-space: nowrap;
   }
-  .lang-option-item:hover {
-    background: rgba(223, 178, 86, 0.15);
+  .lang-option-item:hover, .lang-option-item.active {
+    background: rgba(223, 178, 86, 0.18);
     color: var(--gold-bright);
-  }
-  .lang-option-item.active {
-    background: rgba(223, 178, 86, 0.25);
-    color: var(--gold-bright);
-    font-weight: 800;
+    font-weight: 700;
   }
 
   /* Main Luxury Card */
