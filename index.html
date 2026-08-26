@@ -803,8 +803,12 @@
     @media (max-width: 700px) {
       html, body { overflow-x: hidden; }
       /* ① the nav sheds weight instead of overflowing */
-      .nav-container { padding: 10px 12px; gap: 8px; }
-      .nav-actions { gap: 6px; flex-shrink: 1; min-width: 0; }
+      /* Let the row WRAP instead of shaving pixels: the logo keeps line 1, the controls drop
+         to line 2 centred. Structurally cannot overflow at any phone width, and it survives a
+         longer language name (Bahasa Indonesia / Português) which pixel-shaving would not. */
+      .nav-container { padding: 8px 12px; gap: 6px; flex-wrap: wrap; justify-content: center; }
+      .logo-link { min-width: 0; }
+      .nav-actions { gap: 6px; flex: 1 1 auto; min-width: 0; justify-content: center; }
       /* The nav row needs 480px of children in a 386px viewport (logo 157 + music 50 +
          language 113 + Steam 149). Something has to go, and the Steam button is the one
          item already repeated three times further down the page — hero CTA, the Steam
@@ -822,7 +826,7 @@
       .features-list-grid, .about-tiles-grid { grid-template-columns: minmax(0, 1fr); }
       .pilgrim-showcase-stage, .about-detail-stage { grid-template-columns: minmax(0, 1fr); }
       /* hero: phone padding, stacked full-width buttons */
-      .hero { padding: 92px 16px 40px; gap: 26px; }
+      .hero { padding: 118px 16px 40px; gap: 26px; }   /* clears the now two-row nav */
       .title-banner-img { max-width: 290px; }
       .hero-desc { font-size: 14.5px; line-height: 1.75; }
       .hero-actions { flex-direction: column; gap: 12px; }
