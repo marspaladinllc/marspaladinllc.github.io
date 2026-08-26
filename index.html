@@ -20,9 +20,9 @@
   <style>
     :root {
       --bg-deep: #080605;
-      --bg-scroll: #18130e;
-      --bg-card: #201912;
-      --bg-card-hover: #2a2219;
+      --bg-scroll: #14100c;
+      --bg-card: #1c1611;
+      --bg-card-hover: #261f18;
       --gold: #dfb256;
       --gold-light: #fbe3a4;
       --gold-bright: #ffe89e;
@@ -32,8 +32,8 @@
       --ink: #f5efe6;
       --ink-dim: #b8ac9a;
       --ink-muted: #736856;
-      --silk-border: rgba(223, 178, 86, 0.35);
-      --silk-glow: 0 0 24px rgba(223, 178, 86, 0.18);
+      --silk-border: rgba(223, 178, 86, 0.3);
+      --silk-glow: 0 0 28px rgba(223, 178, 86, 0.16);
       --steam-blue: #66c0f4;
       --steam-gradient: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
     }
@@ -50,7 +50,7 @@
       position: relative;
     }
 
-    /* In-Game Cover Painting Backdrop */
+    /* Ambient Cover Background */
     .bg-mural {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -129,7 +129,7 @@
     .nav-tabs a {
       color: var(--ink-dim);
       text-decoration: none;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       padding: 6px 12px;
       border-radius: 4px;
@@ -357,87 +357,76 @@
     .hero-meta-row strong { color: var(--gold-light); }
 
     /* =====================================================================
-       GUIDE / 藏经阁 BOOKMARK SCROLL SYSTEM (精炼版：角色 · 玩法 · 关于)
+       CLEAN & ELEGANT SECTION DISPLAY (去除了厚重书签，采用高端雅致导航栏)
        ===================================================================== */
-    .scroll-guide-section {
+    .showcase-section {
       padding: 60px 24px 100px;
       position: relative;
       z-index: 1;
     }
-    .scroll-container {
+    .showcase-container {
       max-width: 1280px;
       margin: 0 auto;
     }
-    
-    /* Hanging Silk Ribbon Tabs */
-    .guide-ribbons-header {
+
+    /* Modern Luxury Navigation Pills Bar */
+    .section-nav-bar {
       display: flex;
-      align-items: flex-start;
+      justify-content: center;
       gap: 16px;
-      padding: 0 40px;
-      margin-bottom: -10px;
-      position: relative;
-      z-index: 10;
+      margin-bottom: 36px;
     }
-    .guide-ribbon {
-      width: 104px;
-      height: 144px;
-      background: url('assets/TabSilk.png') no-repeat center top / contain;
-      display: flex;
-      flex-direction: column;
+    .section-pill-btn {
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-start;
-      padding-top: 24px;
-      color: #dfd7c5;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 0.18em;
+      gap: 10px;
+      background: rgba(22, 17, 12, 0.85);
+      border: 1px solid var(--silk-border);
+      color: var(--ink-dim);
+      font-size: 16px;
+      font-weight: 800;
+      padding: 13px 32px;
+      border-radius: 30px;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      user-select: none;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7));
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
-    .guide-ribbon:hover {
-      transform: translateY(6px);
-      filter: drop-shadow(0 10px 16px rgba(223, 178, 86, 0.3));
+    .section-pill-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+      background: rgba(35, 27, 19, 0.95);
+    }
+    .section-pill-btn.active {
+      background: linear-gradient(135deg, rgba(223, 178, 86, 0.25) 0%, rgba(140, 99, 27, 0.35) 100%);
+      border-color: var(--gold);
       color: var(--gold-bright);
-    }
-    .guide-ribbon.active {
-      height: 172px;
-      background: url('assets/TabPaper.png') no-repeat center top / contain;
-      color: #261b09;
-      transform: translateY(12px);
-      filter: drop-shadow(0 12px 24px rgba(223, 178, 86, 0.45));
-    }
-    .guide-ribbon-text {
-      writing-mode: vertical-rl;
-      text-orientation: upright;
-      line-height: 1.2;
+      box-shadow: 0 0 24px rgba(223, 178, 86, 0.3);
+      transform: translateY(-3px);
     }
 
-    /* Silk Scroll Frame (大卷轴底托) */
-    .scroll-frame {
-      background: #15110d;
-      border: 2px solid var(--gold-dark);
-      border-radius: 18px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9), var(--silk-glow);
+    /* Main Content Frame */
+    .main-content-frame {
+      background: var(--bg-scroll);
+      border: 1px solid var(--silk-border);
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85), var(--silk-glow);
       position: relative;
       overflow: hidden;
-      padding-top: 20px;
+      padding: 44px 40px;
     }
-    .scroll-frame::before {
+    .main-content-frame::before {
       content: "";
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       background: url('assets/BoardSilk.png') repeat center / 400px;
-      opacity: 0.18;
+      opacity: 0.12;
       pointer-events: none;
     }
 
     /* Tab Content Pane */
     .tab-pane {
       display: none;
-      padding: 44px 40px;
       position: relative;
       z-index: 1;
       animation: fadeIn 0.3s ease;
@@ -738,9 +727,8 @@
       .title-banner-img { margin: 0 auto; }
       .hero-desc { margin: 0 auto 30px; }
       .hero-actions { justify-content: center; }
-      .guide-ribbons-header { padding: 0 10px; gap: 12px; justify-content: center; }
-      .guide-ribbon { width: 84px; height: 124px; font-size: 15px; }
-      .guide-ribbon.active { height: 146px; }
+      .section-nav-bar { flex-wrap: wrap; }
+      .section-pill-btn { padding: 10px 20px; font-size: 14px; }
       .pilgrim-showcase-stage { grid-template-columns: 1fr; text-align: center; }
       .pilgrim-details { text-align: center; }
       .pilgrim-name-row { justify-content: center; }
@@ -751,7 +739,7 @@
       .nav-tabs { display: none; }
     }
     @media (max-width: 600px) {
-      .guide-ribbon { width: 72px; height: 114px; font-size: 14px; }
+      .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
       .lang-menu { grid-template-columns: 1fr; }
     }
   </style>
@@ -774,9 +762,9 @@
       </a>
 
       <ul class="nav-tabs">
-        <li><a href="javascript:switchGuideTab(0)" id="navLinkChars">角色图鉴</a></li>
-        <li><a href="javascript:switchGuideTab(1)" id="navLinkRules">西行玩法</a></li>
-        <li><a href="javascript:switchGuideTab(2)" id="navLinkAbout">关于制作</a></li>
+        <li><a href="javascript:switchSection(0)" id="navLinkChars">八路行者</a></li>
+        <li><a href="javascript:switchSection(1)" id="navLinkRules">西行玩法</a></li>
+        <li><a href="javascript:switchSection(2)" id="navLinkAbout">关于创作</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -822,8 +810,8 @@
         <a href="https://store.steampowered.com/app/5029020/" target="_blank" rel="noopener" class="btn-hero-wishlist" id="heroWishlistBtn">
           ★ 在 Steam 上添加愿望单
         </a>
-        <a href="javascript:switchGuideTab(0)" class="btn-hero-secondary" id="heroExploreBtn">
-          翻阅藏经阁指南 ↓
+        <a href="javascript:switchSection(0)" class="btn-hero-secondary" id="heroExploreBtn">
+          探索行者与玩法 ↓
         </a>
       </div>
     </div>
@@ -847,26 +835,26 @@
   </section>
 
   <!-- =====================================================================
-       藏经阁 GUIDE SYSTEM (纯粹聚焦：角色 · 玩法 · 关于)
+       SHOWCASE SECTION (高端雅致现代导航栏)
        ===================================================================== -->
-  <section id="guide" class="scroll-guide-section">
-    <div class="scroll-container">
+  <section id="showcase" class="showcase-section">
+    <div class="showcase-container">
       
-      <!-- Hanging Silk Ribbon Tabs (游戏内原版丝绸挂坠书签) -->
-      <div class="guide-ribbons-header">
-        <div class="guide-ribbon active" onclick="switchGuideTab(0, this)">
-          <span class="guide-ribbon-text" id="ribbonTextChars">角 色</span>
-        </div>
-        <div class="guide-ribbon" onclick="switchGuideTab(1, this)">
-          <span class="guide-ribbon-text" id="ribbonTextRules">玩 法</span>
-        </div>
-        <div class="guide-ribbon" onclick="switchGuideTab(2, this)">
-          <span class="guide-ribbon-text" id="ribbonTextAbout">关 于</span>
-        </div>
+      <!-- Modern Luxury Navigation Pills Bar -->
+      <div class="section-nav-bar">
+        <button class="section-pill-btn active" onclick="switchSection(0, this)" id="pillBtnChars">
+          <span>♟️</span> <span id="pillTextChars">八路行者</span>
+        </button>
+        <button class="section-pill-btn" onclick="switchSection(1, this)" id="pillBtnRules">
+          <span>🎲</span> <span id="pillTextRules">西行玩法</span>
+        </button>
+        <button class="section-pill-btn" onclick="switchSection(2, this)" id="pillBtnAbout">
+          <span>📜</span> <span id="pillTextAbout">关于创作</span>
+        </button>
       </div>
 
-      <!-- Main Silk Scroll Frame -->
-      <div class="scroll-frame">
+      <!-- Main Content Silk Frame -->
+      <div class="main-content-frame">
 
         <!-- PANE 0: 角色 (8 Pilgrims Tokens & Abilities) -->
         <div id="pane-0" class="tab-pane active">
@@ -1030,17 +1018,17 @@
     const i18n = {
       zh: {
         flag: "🇨🇳", name: "简体中文", titleImg: "assets/TitleZh.png",
-        nav: { chars: "角色图鉴", rules: "西行玩法", about: "关于制作", wishlist: "★ Steam 愿望单" },
+        nav: { chars: "八路行者", rules: "西行玩法", about: "关于创作", wishlist: "★ Steam 愿望单" },
         hero: {
           tag: "🎲 1–8 人水墨国风桌游竞速 · 支持单机同屏 / 线上连线",
           desc: "还原儿时围坐桌前的西游记忆。1–8 人国风水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！",
           wishlist: "★ 在 Steam 上添加愿望单",
-          explore: "翻阅藏经阁指南 ↓",
+          explore: "探索行者与玩法 ↓",
           tags: ["🎲 聚会桌游", "⚔️ 策略博弈", "🖌️ 水墨写意", "🌐 18国语言同桌"],
           platform: "发售平台：<strong>Steam (PC & Mac)</strong>",
           release: "发售窗口：<strong>2026 年秋季</strong>"
         },
-        ribbons: { chars: "角 色", rules: "玩 法", about: "关 于" },
+        pills: { chars: "八路行者", rules: "西行玩法", about: "关于创作" },
         pilgrimsHeader: { title: "八位取经行者，各显神通", sub: "点击下方棋子，查看各行者的专属水墨立绘与绝技神通。" },
         featuresHeader: { title: "西行通鉴 · 玩法与模式", sub: "从纯粹的竞速掷骰到 19 旋钮的深度自定，每一次西行都有截然不同的博弈风味。" },
         feat1: { title: "🎲 见好就收，险中求胜", desc: "每回合前进后触发冲刺抉择：冲过安全点额外步数助你一飞冲天；冲砸了承受路途惩罚。终点前的最后冲刺，正是落后者的绝地反击机会！" },
@@ -1051,17 +1039,17 @@
 
       tc: {
         flag: "🇭🇰", name: "繁體中文", titleImg: "assets/TitleTC.png",
-        nav: { chars: "角色圖鑑", rules: "西行玩法", about: "關於製作", wishlist: "★ Steam 願望單" },
+        nav: { chars: "八路行者", rules: "西行玩法", about: "關於創作", wishlist: "★ Steam 願望單" },
         hero: {
           tag: "🎲 1–8 人水墨國風桌遊競速 · 支援單機同屏 / 線上連線",
           desc: "還原兒時圍坐桌前的西遊記憶。1–8 人國風水墨競速：步步是險阻，局局博心跳！一柄金箍棒掃清妖障，一顆衝刺骰絕境翻盤。無論獨自對弈還是好友歡聚，不到最後一格，勝負絕不見分曉！",
           wishlist: "★ 在 Steam 上添加願望單",
-          explore: "翻閱藏經閣指南 ↓",
+          explore: "探索行者與玩法 ↓",
           tags: ["🎲 聚會桌遊", "⚔️ 策略博弈", "🖌️ 水墨寫意", "🌐 18國語言同桌"],
           platform: "發售平台：<strong>Steam (PC & Mac)</strong>",
           release: "發售窗口：<strong>2026 年秋季</strong>"
         },
-        ribbons: { chars: "角 色", rules: "玩 法", about: "關 於" },
+        pills: { chars: "八路行者", rules: "西行玩法", about: "關於創作" },
         pilgrimsHeader: { title: "八位取經行者，各顯神通", sub: "點擊下方棋子，查看各行者的專屬水墨立繪與絕技神通。" },
         featuresHeader: { title: "西行通鑑 · 玩法與模式", sub: "從純粹的競速擲骰到 19 旋鈕的深度自訂，每一次西行都有截然不同的博弈風味。" },
         feat1: { title: "🎲 見好就收，險中求勝", desc: "每回合前進後觸發衝刺抉擇：衝過安全點額外步數助你一飛衝天；衝砸了承受路途懲罰。終點前的最後衝刺，正是落後者的絕地反擊機會！" },
@@ -1072,17 +1060,17 @@
 
       en: {
         flag: "🇺🇸", name: "English", titleImg: "assets/TitleEn.png",
-        nav: { chars: "Characters", rules: "Gameplay", about: "About", wishlist: "★ Wishlist on Steam" },
+        nav: { chars: "8 Pilgrims", rules: "Gameplay", about: "About", wishlist: "★ Wishlist on Steam" },
         hero: {
           tag: "🎲 1–8 Player Ink-Wash Party Board Game · Single-player & Online",
           desc: "Relive childhood board game memories with 1–8 players in a Journey-to-the-West ink-wash race! Every step brings peril, every roll tests your luck. From solo duels to multiplayer parties, victory is never settled until the very last tile!",
           wishlist: "★ Add to Steam Wishlist",
-          explore: "Explore Guide Scrolls ↓",
+          explore: "Explore Pilgrims & Modes ↓",
           tags: ["🎲 Party Board Game", "⚔️ PvP Strategy", "🖌️ Ink-Wash Art", "🌐 18 Languages"],
           platform: "Platform: <strong>Steam (PC & Mac)</strong>",
           release: "Release Window: <strong>Autumn 2026</strong>"
         },
-        ribbons: { chars: "ROSTER", rules: "RULES", about: "ABOUT" },
+        pills: { chars: "8 Pilgrims", rules: "Gameplay", about: "About" },
         pilgrimsHeader: { title: "Eight Pilgrims, Boundless Powers", sub: "Click any wooden token below to view unique ink-wash portraits and tactical abilities." },
         featuresHeader: { title: "Western Compendium · Rules & Modes", sub: "From pure classic races to 19 custom dials, every journey west brings fresh stakes and twists." },
         feat1: { title: "🎲 Push Your Luck, Turn the Tide", desc: "After each move, take a gamble on a second die! Clearing safe spots catapults you forward; busting triggers penalties. The final stretch to Thunderclap Summit gives trailing players their ultimate comeback chance!" },
@@ -1093,17 +1081,17 @@
 
       ja: {
         flag: "🇯🇵", name: "日本語", titleImg: "assets/TitleJA.png",
-        nav: { chars: "人物図鑑", rules: "遊び方", about: "制作秘話", wishlist: "★ ウィッシュリストに追加" },
+        nav: { chars: "八人の旅人", rules: "遊び方", about: "制作秘話", wishlist: "★ ウィッシュリストに追加" },
         hero: {
           tag: "🎲 1〜8人 水墨画風・西遊記ボードゲーム · ソロ＆オンライン対応",
           desc: "放課後に机を囲んだあの日の記憶が蘇る！1〜8人対応の水墨画風・西遊記レースゲーム。一歩ごとに罠が待ち受け、サイコロの一振りに心拍数が跳ね上がる！最後のマスに辿り着くまで、勝負の行方は誰にも分からない！",
           wishlist: "★ Steam ウィッシュリストに追加",
-          explore: "蔵経閣の巻物を見る ↓",
+          explore: "旅人とルールを見る ↓",
           tags: ["🎲 パーティーゲーム", "⚔️ 対戦ストラテジー", "🖌️ 水墨画風", "🌐 18言語対応"],
           platform: "対応機種：<strong>Steam (PC & Mac)</strong>",
           release: "配信予定：<strong>2026年 秋</strong>"
         },
-        ribbons: { chars: "人 物", rules: "遊 び", about: "制 作" },
+        pills: { chars: "八人の旅人", rules: "遊び方", about: "制作秘話" },
         pilgrimsHeader: { title: "個性豊かな八人の旅人たち", sub: "下の駒をクリックして、各キャラクターの水墨画イラストと固有能力を確認できます。" },
         featuresHeader: { title: "西行の心得 · ルールとモード", sub: "シンプルな競走から19個のカスタム設定まで、遊ぶたびに新しい駆け引きが楽しめます。" },
         feat1: { title: "🎲 引き際か、それとも勝負か？", desc: "安全目を越えればボーナスで一気に大跳躍！欲をかいて失敗すれば手痛いペナルティ。ゴール直前のラストスパートは、逆転勝利を狙う最大のチャンス！" },
@@ -1114,23 +1102,23 @@
 
       ko: {
         flag: "🇰🇷", name: "한국어", titleImg: "assets/TitleKO.png",
-        nav: { chars: "인물 도감", rules: "게임 규칙", about: "제작 비화", wishlist: "★ 찜하기" },
+        nav: { chars: "8인의 수행자", rules: "게임 규칙", about: "제작 비화", wishlist: "★ 찜하기" },
         hero: {
           tag: "🎲 1–8인 수묵화 서유기 보드 레이스 · 싱글 및 온라인 지원",
           desc: "어린 시절 친구들과 둘러앉아 즐기던 서유기 보드게임의 추억! 1–8인이 즐기는 동양 수묵화 레이스: 마지막 한 칸을 밟을 때까지 승부는 결코 끝나지 않습니다!",
           wishlist: "★ Steam 찜 목록에 추가",
-          explore: "가이드 두루마리 보기 ↓",
+          explore: "수행자와 규칙 보기 ↓",
           tags: ["🎲 파티 보드게임", "⚔️ 심리전 전략", "🖌️ 수묵화 아트", "🌐 18개 국어 지원"],
           platform: "플랫폼: <strong>Steam (PC & Mac)</strong>",
           release: "출시 예정: <strong>2026년 가을</strong>"
         },
-        ribbons: { chars: "인 물", rules: "규 칙", about: "비 화" },
+        pills: { chars: "8인의 수행자", rules: "게임 규칙", about: "제작 비화" },
         pilgrimsHeader: { title: "제각기 다른 신통력을 지닌 8인의 수행자", sub: "아래 목각 말을 클릭하여 각 수행자의 수묵화 일러스트와 고유 능력을 확인하세요." },
         featuresHeader: { title: "서행 통감 · 게임 규칙과 모드", sub: "클래식 레이스부터 19개의 심층 커스텀 노브까지, 매 판 새로운 재미를 선사합니다." },
         feat1: { title: "🎲 멈출 것인가, 모험할 것인가?", desc: "안전 칸을 넘기면 폭풍 질주, 무리하면 페널티! 결승점 앞의 마지막 질주는 꼴찌에게 주어지는 짜릿한 역전의 기회입니다." },
-        feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사위 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
+        feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사位 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
         feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모국어로 함께 즐길 수 있습니다." },
-        feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전力 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" }
+        feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" }
       }
     };
 
@@ -1405,7 +1393,7 @@
     // State
     let currentLang = 'zh';
     let currentPilgrim = 0;
-    let currentGuideTab = 0;
+    let currentSection = 0;
 
     function setLang(langCode) {
       if (!i18n[langCode]) langCode = 'en';
@@ -1433,10 +1421,10 @@
       document.getElementById('metaPlatform').innerHTML = data.hero.platform;
       document.getElementById('metaRelease').innerHTML = data.hero.release;
 
-      // Update Hanging Ribbons
-      document.getElementById('ribbonTextChars').textContent = data.ribbons.chars;
-      document.getElementById('ribbonTextRules').textContent = data.ribbons.rules;
-      document.getElementById('ribbonTextAbout').textContent = data.ribbons.about;
+      // Update Section Pills
+      document.getElementById('pillTextChars').textContent = data.pills.chars;
+      document.getElementById('pillTextRules').textContent = data.pills.rules;
+      document.getElementById('pillTextAbout').textContent = data.pills.about;
 
       // Headers
       document.getElementById('pilgrimsTitle').textContent = data.pilgrimsHeader.title;
@@ -1499,22 +1487,22 @@
       document.getElementById('skill2Desc').textContent = p.skill2Desc[lang] || p.skill2Desc['en'];
     }
 
-    function switchGuideTab(tabIdx, ribbonEl) {
-      currentGuideTab = tabIdx;
+    function switchSection(tabIdx, pillBtn) {
+      currentSection = tabIdx;
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.guide-ribbon').forEach(r => r.classList.remove('active'));
+      document.querySelectorAll('.section-pill-btn').forEach(r => r.classList.remove('active'));
 
       const targetPane = document.getElementById('pane-' + tabIdx);
       if (targetPane) targetPane.classList.add('active');
 
-      if (ribbonEl) {
-        ribbonEl.classList.add('active');
+      if (pillBtn) {
+        pillBtn.classList.add('active');
       } else {
-        const ribbons = document.querySelectorAll('.guide-ribbon');
-        if (ribbons[tabIdx]) ribbons[tabIdx].classList.add('active');
+        const pills = document.querySelectorAll('.section-pill-btn');
+        if (pills[tabIdx]) pills[tabIdx].classList.add('active');
       }
 
-      document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('showcase').scrollIntoView({ behavior: 'smooth' });
     }
 
     function switchAboutTile(idx, btn) {
