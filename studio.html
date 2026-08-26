@@ -304,31 +304,26 @@
     font-size: 15px;
   }
 
-  /* Game Portfolio Grid */
-  .games-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 28px;
-    margin-bottom: 60px;
-  }
-  .game-card {
+  /* Spotlight Single Game Showcase Card */
+  .spotlight-card {
     background: var(--bg-card);
     border: 1px solid var(--silk-border);
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), var(--silk-glow);
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    margin-bottom: 60px;
     transition: all 0.3s;
   }
-  .game-card:hover {
+  .spotlight-card:hover {
     border-color: var(--gold);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.9), var(--silk-glow);
+    transform: translateY(-3px);
   }
   .game-cover-box {
     width: 100%;
-    height: 240px;
+    height: 100%;
+    min-height: 320px;
     position: relative;
     overflow: hidden;
     background: #000;
@@ -339,54 +334,54 @@
     object-fit: cover;
     transition: transform 0.4s ease;
   }
-  .game-card:hover .game-cover-img {
-    transform: scale(1.04);
+  .spotlight-card:hover .game-cover-img {
+    transform: scale(1.03);
   }
   .game-body {
-    padding: 28px;
+    padding: 36px 40px;
     display: flex;
     flex-direction: column;
-    flex: 1;
     justify-content: space-between;
   }
   .game-tag {
-    font-size: 12.5px;
+    font-size: 13px;
     color: var(--gold);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .game-title {
-    font-size: 22px;
+    font-size: 26px;
     color: var(--gold-light);
-    font-weight: 800;
-    margin-bottom: 12px;
+    font-weight: 900;
+    margin-bottom: 14px;
+    line-height: 1.3;
   }
   .game-desc {
-    font-size: 14.5px;
+    font-size: 15px;
     color: var(--ink-dim);
-    line-height: 1.75;
-    margin-bottom: 20px;
+    line-height: 1.8;
+    margin-bottom: 22px;
   }
   .game-badges {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
   }
   .badge {
-    font-size: 12px;
+    font-size: 12.5px;
     background: rgba(223, 178, 86, 0.1);
     color: var(--gold-light);
-    padding: 4px 10px;
-    border-radius: 12px;
+    padding: 5px 12px;
+    border-radius: 14px;
     border: 1px solid rgba(223, 178, 86, 0.25);
     font-weight: 600;
   }
   .game-card-actions {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
@@ -466,7 +461,9 @@
   }
 
   @media (max-width: 900px) {
-    .games-grid { grid-template-columns: 1fr; }
+    .spotlight-card { grid-template-columns: 1fr; }
+    .game-cover-box { height: 260px; min-height: unset; }
+    .game-body { padding: 28px 20px; }
     .pillars-grid { grid-template-columns: 1fr; }
     .nav-menu-links { display: none; }
     .hero-headline { font-size: 28px; }
@@ -519,65 +516,38 @@
         Mars Paladin LLC is an independent game studio dedicated to creating culturally rich, beautifully styled, and globally connected games with pure heart and soul.
       </p>
       <div class="hero-actions">
-        <a href="#games" class="btn-primary" id="heroBtn1">Explore Games ↓</a>
+        <a href="#games" class="btn-primary" id="heroBtn1">Explore Game ↓</a>
         <a href="#contact" class="btn-outline" id="heroBtn2">Business Inquiries →</a>
       </div>
     </section>
 
-    <!-- Game Portfolio Section -->
+    <!-- Game Showcase Section (Spotlight Single Focus) -->
     <section id="games">
       <div class="section-header">
-        <h2 id="gamesHeader">🎮 Game Portfolio</h2>
-        <p id="gamesSub">Our flagship indie titles and upcoming projects crafted with passion</p>
+        <h2 id="gamesHeader">🎮 Featured Game</h2>
+        <p id="gamesSub">Our flagship indie title crafted with passion and dedication</p>
       </div>
 
-      <div class="games-grid">
-        <!-- Game 1: Westward Dash -->
-        <div class="game-card">
-          <div class="game-cover-box">
-            <img src="assets/capsule_en.jpg" alt="Westward Dash" class="game-cover-img" id="game1Cover">
-          </div>
-          <div class="game-body">
-            <div>
-              <div class="game-tag" id="game1Tag">Available on Steam · Ink-Wash Board Racer</div>
-              <h3 class="game-title" id="game1Title">Westward Dash</h3>
-              <p class="game-desc" id="game1Desc">
-                Relive the nostalgic joy of childhood tabletop racing. A 1–8 player ink-wash sprint where every turn is a gamble! Brandish the Golden Cudgel, roll the sprint die, and turn the tables in perilous demon trials. Features seamless cross-cultural multiplayer.
-              </p>
-              <div class="game-badges">
-                <span class="badge" id="game1Badge1">1–8 Players Co-op & PvP</span>
-                <span class="badge" id="game1Badge2">18 Languages Worldwide</span>
-                <span class="badge" id="game1Badge3">Live Pipa Soundtrack</span>
-              </div>
-            </div>
-            <div class="game-card-actions">
-              <a href="https://westwarddash.com" class="btn-primary" id="game1BtnSite" style="padding: 9px 20px; font-size:13.5px;">Official Website →</a>
-              <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-nav" id="game1BtnSteam">Steam Store Page →</a>
-            </div>
-          </div>
+      <div class="spotlight-card">
+        <div class="game-cover-box">
+          <img src="assets/capsule_en.jpg" alt="Westward Dash" class="game-cover-img" id="game1Cover">
         </div>
-
-        <!-- Game 2: Project Celestial (In Development) -->
-        <div class="game-card">
-          <div class="game-cover-box" style="background: radial-gradient(circle at center, #261b14 0%, #0d0a08 100%); display:flex; align-items:center; justify-content:center;">
-            <img src="assets/cover.png" alt="Project Celestial" class="game-cover-img" style="opacity: 0.65; filter: grayscale(30%);">
+        <div class="game-body">
+          <div>
+            <div class="game-tag" id="game1Tag">Available on Steam · Ink-Wash Board Racer</div>
+            <h3 class="game-title" id="game1Title">Westward Dash</h3>
+            <p class="game-desc" id="game1Desc">
+              Relive the nostalgic joy of childhood tabletop racing. A 1–8 player ink-wash sprint where every turn is a gamble! Brandish the Golden Cudgel, roll the sprint die, and turn the tables in perilous demon trials. Features seamless cross-cultural multiplayer.
+            </p>
+            <div class="game-badges">
+              <span class="badge" id="game1Badge1">1–8 Players Co-op & PvP</span>
+              <span class="badge" id="game1Badge2">18 Languages Worldwide</span>
+              <span class="badge" id="game1Badge3">Live Pipa Soundtrack</span>
+            </div>
           </div>
-          <div class="game-body">
-            <div>
-              <div class="game-tag" id="game2Tag" style="color: var(--ink-dim);">New Project · Tactical Roguelike Deckbuilder</div>
-              <h3 class="game-title" id="game2Title">Project Celestial (Upcoming)</h3>
-              <p class="game-desc" id="game2Desc">
-                An expanded tactical adventure exploring the deeper mythological lore of the demon realm. Deep strategic choices, dynamic encounters, and innovative card mechanics. Stay tuned for upcoming announcements!
-              </p>
-              <div class="game-badges">
-                <span class="badge" id="game2Badge1">In Development</span>
-                <span class="badge" id="game2Badge2">Tactical Roguelike</span>
-                <span class="badge" id="game2Badge3">Coming Soon</span>
-              </div>
-            </div>
-            <div class="game-card-actions">
-              <a href="mailto:support@marspaladin.com?subject=Project%20Celestial%20Inquiry" class="btn-outline" id="game2Btn" style="padding: 9px 20px; font-size:13.5px;">Stay Tuned</a>
-            </div>
+          <div class="game-card-actions">
+            <a href="https://westwarddash.com" class="btn-primary" id="game1BtnSite" style="padding: 10px 22px; font-size:14px;">Official Website →</a>
+            <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-nav" id="game1BtnSteam" style="padding: 10px 22px; font-size:14px;">Steam Store Page →</a>
           </div>
         </div>
       </div>
@@ -643,10 +613,10 @@
     "heroTag": "MARS PALADIN LLC · INDIE GAME STUDIO",
     "heroTitle": "Reimagining Legends with Timeless Play",
     "heroSub": "Mars Paladin LLC is an independent game studio dedicated to creating culturally rich, beautifully styled, and globally connected games with pure heart and soul.",
-    "heroBtn1": "Explore Games ↓",
+    "heroBtn1": "Explore Game ↓",
     "heroBtn2": "Business Inquiries →",
-    "gamesHeader": "🎮 Game Portfolio",
-    "gamesSub": "Our flagship indie titles and upcoming projects crafted with passion",
+    "gamesHeader": "🎮 Featured Game",
+    "gamesSub": "Our flagship indie title crafted with passion and dedication",
     "game1Title": "Westward Dash",
     "game1Tag": "Available on Steam · Ink-Wash Board Racer",
     "game1Desc": "Relive the nostalgic joy of childhood tabletop racing. A 1–8 player ink-wash sprint where every turn is a gamble! Brandish the Golden Cudgel, roll the sprint die, and turn the tables in perilous demon trials. Features seamless cross-cultural multiplayer.",
@@ -655,13 +625,6 @@
     "game1Badge3": "Live Pipa Soundtrack",
     "game1BtnSite": "Official Website →",
     "game1BtnSteam": "Steam Store Page →",
-    "game2Title": "Project Celestial (Upcoming)",
-    "game2Tag": "New Project · Tactical Roguelike Deckbuilder",
-    "game2Desc": "An expanded tactical adventure exploring the deeper mythological lore of the demon realm. Deep strategic choices, dynamic encounters, and innovative card mechanics. Stay tuned for upcoming announcements!",
-    "game2Badge1": "In Development",
-    "game2Badge2": "Tactical Roguelike",
-    "game2Badge3": "Coming Soon",
-    "game2Btn": "Stay Tuned",
     "aboutHeader": "🏛️ About Mars Paladin LLC",
     "aboutSub": "Pure Indie Spirit · Player-First Philosophy",
     "card1Title": "🎯 Player-First Integrity",
@@ -683,7 +646,7 @@
   "zh": {
     "flag": "🇨🇳",
     "name": "简体中文",
-    "navGames": "游戏矩阵",
+    "navGames": "游戏作品",
     "navAbout": "关于工作室",
     "navContact": "联系与合作",
     "navSteam": "★ Steam 开发者主页",
@@ -692,8 +655,8 @@
     "heroSub": "Mars Paladin 致力于打造兼具深厚文化底蕴、纯粹游戏机制与跨文化同乐体验的独立精品。让每一次出发，都是难忘的心跳冒险。",
     "heroBtn1": "探索游戏作品 ↓",
     "heroBtn2": "联系商务合作 →",
-    "gamesHeader": "🎮 游戏作品矩阵 (Game Portfolio)",
-    "gamesSub": "我们倾注全部热忱打磨的独立游戏作品与未来企划",
+    "gamesHeader": "🎮 核心游戏作品",
+    "gamesSub": "我们倾注全部热忱打磨的独立游戏大作",
     "game1Title": "Westward Dash / 齐天大冲刺",
     "game1Tag": "现已公布 · 经典国风水墨竞速棋",
     "game1Desc": "还原儿时围坐桌前的西游记忆。1–8 人水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！全面支持 18 种语言全球同桌。",
@@ -702,13 +665,6 @@
     "game1Badge3": "琵琶原声实录",
     "game1BtnSite": "访问官方网站 →",
     "game1BtnSteam": "Steam 商店页面 →",
-    "game2Title": "Project Celestial / 西行奇谭（筹备中）",
-    "game2Tag": "神秘新企划 · 战术卡牌构筑",
-    "game2Desc": "基于神话宇宙衍生的全新战术 Roguelike 构筑企划。更深度的策略分支、更宏大的西行妖界探索。企划正在紧锣密鼓研发中，敬请期待后续官方公告！",
-    "game2Badge1": "开发筹备中",
-    "game2Badge2": "战术 Roguelike",
-    "game2Badge3": "敬请期待",
-    "game2Btn": "关注最新动态",
     "aboutHeader": "🏛️ 关于 Mars Paladin LLC",
     "aboutSub": "纯粹的独立精神 · 尊重每一位玩家",
     "card1Title": "🎯 玩家体验至上",
@@ -730,7 +686,7 @@
   "tc": {
     "flag": "🇭🇰",
     "name": "繁體中文",
-    "navGames": "遊戲矩陣",
+    "navGames": "遊戲作品",
     "navAbout": "關於工作室",
     "navContact": "聯繫與合作",
     "navSteam": "★ Steam 開發者首頁",
@@ -739,8 +695,8 @@
     "heroSub": "Mars Paladin 致力於打造兼具深厚文化底蘊、純粹遊戲機制與跨文化同樂體驗的獨立精品。讓每一次出發，都是難忘的心跳冒險。",
     "heroBtn1": "探索遊戲作品 ↓",
     "heroBtn2": "聯繫商務合作 →",
-    "gamesHeader": "🎮 遊戲作品矩陣 (Game Portfolio)",
-    "gamesSub": "我們傾注全部熱忱打磨的獨立遊戲作品與未來企劃",
+    "gamesHeader": "🎮 核心遊戲作品",
+    "gamesSub": "我們傾注全部熱忱打磨的獨立遊戲大作",
     "game1Title": "Westward Dash / 齊天大衝刺",
     "game1Tag": "現已公布 · 經典國風水墨競速棋",
     "game1Desc": "還原兒時圍坐桌前的西遊記憶。1–8 人水墨競速：步步是險阻，局局博心跳！一柄金箍棒掃清妖障，一顆衝刺骰絕境翻盤。無論獨自對弈還是好友歡聚，不到最後一格，勝負絕不見分曉！全面支援 18 種語言全球同桌。",
@@ -749,13 +705,6 @@
     "game1Badge3": "琵琶原聲實錄",
     "game1BtnSite": "造訪官方網站 →",
     "game1BtnSteam": "Steam 商店頁面 →",
-    "game2Title": "Project Celestial / 西行奇譚（籌備中）",
-    "game2Tag": "神秘新企劃 · 戰術卡牌構築",
-    "game2Desc": "基於神話宇宙衍生的全新戰術 Roguelike 構築企劃。更深度的策略分支、更宏大的西行妖界探索。企劃正在緊鑼密鼓研發中，敬請期待後續官方公告！",
-    "game2Badge1": "開發籌備中",
-    "game2Badge2": "戰術 Roguelike",
-    "game2Badge3": "敬請期待",
-    "game2Btn": "關注最新動態",
     "aboutHeader": "🏛️ 關於 Mars Paladin LLC",
     "aboutSub": "純粹的獨立精神 · 尊重每一位玩家",
     "card1Title": "🎯 玩家體驗至上",
@@ -777,7 +726,7 @@
   "ja": {
     "flag": "🇯🇵",
     "name": "日本語",
-    "navGames": "ゲーム一覧",
+    "navGames": "ゲーム作品",
     "navAbout": "スタジオについて",
     "navContact": "お問い合わせ",
     "navSteam": "★ Steam 開発者ページ",
@@ -786,8 +735,8 @@
     "heroSub": "Mars Paladin は、豊かな文化と純粋なゲームメカニクス、世界中のプレイヤーをつなぐインディーゲームを制作しています。",
     "heroBtn1": "作品を見る ↓",
     "heroBtn2": "お問い合わせ →",
-    "gamesHeader": "🎮 ゲームタイトル (Game Portfolio)",
-    "gamesSub": "情熱を込めて制作されたインディータイトルと最新プロジェクト",
+    "gamesHeader": "🎮 注目タイトル",
+    "gamesSub": "情熱を込めて制作されたインディータイトル",
     "game1Title": "西遊記ダッシュ (Westward Dash)",
     "game1Tag": "Steam にて公開中 · 水墨画風すごろくレース",
     "game1Desc": "子どもの頃のボードゲームのワクワクを再現！1〜8人で楽しむ水墨画風レース。如意棒で妖怪を討ち払い、ダイスで大逆転！18言語に完全対応し、世界中のプレイヤーと同じテーブルで遊べます。",
@@ -796,13 +745,6 @@
     "game1Badge3": "琵琶生演奏サントラ",
     "game1BtnSite": "公式サイトを見る →",
     "game1BtnSteam": "Steam ストアへ →",
-    "game2Title": "Project Celestial (開発中)",
-    "game2Tag": "新作プロジェクト · 戦術デッキ構築ローグライク",
-    "game2Desc": "神話の世界をさらに深く掘り下げる戦術ローグライクプロジェクト。続報を楽しみにお待ちください！",
-    "game2Badge1": "現在開発中",
-    "game2Badge2": "戦術ローグライク",
-    "game2Badge3": "乞うご期待",
-    "game2Btn": "最新情報をチェック",
     "aboutHeader": "🏛️ Mars Paladin LLC について",
     "aboutSub": "純粋なインディースピリット · プレイヤーファースト",
     "card1Title": "🎯 プレイヤーファースト",
@@ -855,14 +797,6 @@
     document.getElementById('game1Badge3').textContent = data.game1Badge3;
     document.getElementById('game1BtnSite').textContent = data.game1BtnSite;
     document.getElementById('game1BtnSteam').textContent = data.game1BtnSteam;
-
-    document.getElementById('game2Title').textContent = data.game2Title;
-    document.getElementById('game2Tag').textContent = data.game2Tag;
-    document.getElementById('game2Desc').textContent = data.game2Desc;
-    document.getElementById('game2Badge1').textContent = data.game2Badge1;
-    document.getElementById('game2Badge2').textContent = data.game2Badge2;
-    document.getElementById('game2Badge3').textContent = data.game2Badge3;
-    document.getElementById('game2Btn').textContent = data.game2Btn;
 
     document.getElementById('aboutHeader').textContent = data.aboutHeader;
     document.getElementById('aboutSub').textContent = data.aboutSub;
