@@ -712,37 +712,24 @@
       background: rgba(10, 8, 6, 0.92);
       border: 1px solid var(--silk-border);
       border-radius: 14px;
-      padding: 24px 20px;
+      padding: 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75);
-      min-height: 340px;
+      min-height: 360px;
     }
     .about-stage-img {
       width: 100%;
-      max-height: 290px;
+      max-height: 340px;
       object-fit: contain;
-      margin-bottom: 16px;
-      filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.9));
+      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.9));
       transition: transform 0.3s ease;
     }
     .about-visual-box:hover .about-stage-img {
       transform: scale(1.03);
-    }
-    .about-visual-box h4 {
-      font-size: 17.5px;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-    .about-visual-box span {
-      font-size: 13.5px;
-      color: var(--gold);
-      display: block;
-      font-weight: 700;
     }
 
     .about-detail-text h3 {
@@ -1064,8 +1051,6 @@
           <div class="about-detail-stage">
             <div class="about-visual-box">
               <img id="aboutStageImg" src="assets/cover.png" alt="视觉插画" class="about-stage-img">
-              <h4 id="aboutBadgeTitle">经典西游童年桌游</h4>
-              <span id="aboutBadgeSub">Journey to the West Nostalgia</span>
             </div>
 
             <div class="about-detail-text">
@@ -1700,8 +1685,6 @@
       document.getElementById('aboutStageDesc1').textContent = item.desc1;
       document.getElementById('aboutStageDesc2').textContent = item.desc2;
       document.getElementById('aboutStageAuthor').textContent = item.author;
-      document.getElementById('aboutBadgeTitle').textContent = item.badgeTitle;
-      document.getElementById('aboutBadgeSub').textContent = item.badgeSub;
       document.getElementById('aboutStageImg').src = item.img;
     }
 
