@@ -765,6 +765,34 @@
     .footer-links a:hover { color: var(--gold); }
 
     /* Responsive */
+    /* Steam widget: the iframe is fixed-height by Steam's own CSS, so pin it and let the
+       silk card do the rounding. 190px fits the coming-soon layout with no inner scrollbar. */
+    .steam-widget { display: block; width: 100%; height: 190px; border: 0; background: #1b2838; }
+
+    /* ---- MOBILE PASS (08-26, user: bugs in phone browser) ----------------------------
+       The 992/600 queries reflowed the big grids but left the phone-sized hazards: an
+       8-token strip squeezed to 5 columns still gives ~40px cells inside a 320px screen,
+       the hero kept desktop padding, the language menu opened 2×160px = 320px wide (wider
+       than the viewport on a small phone), and nothing capped the body against sideways
+       scrolling. */
+    @media (max-width: 600px) {
+      html, body { overflow-x: hidden; }
+      .hero { padding: 96px 16px 40px; gap: 28px; }
+      .title-banner-img { max-width: 300px; }
+      .hero-desc { font-size: 14.5px; line-height: 1.75; }
+      .hero-actions { flex-direction: column; gap: 12px; }
+      .hero-actions > a { width: 100%; justify-content: center; text-align: center; }
+      .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 10px; }
+      .features-list-grid { grid-template-columns: 1fr; }
+      .about-tiles-grid { grid-template-columns: 1fr; }
+      .lang-menu { grid-template-columns: 1fr !important; width: calc(100vw - 32px); max-width: 320px; right: 8px; }
+      .section-nav-bar { gap: 8px; }
+      .section-pill-btn { padding: 8px 14px; font-size: 13px; }
+      .hero-meta-row { flex-direction: column; gap: 6px; align-items: center; }
+      .steam-widget { height: 190px; }
+      /* Anything that still insists on a desktop width gets reined in */
+      img, iframe { max-width: 100%; }
+    }
     @media (max-width: 992px) {
       .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
       .hero-content { text-align: center; }
@@ -869,9 +897,13 @@
       </div>
     </div>
 
-    <!-- Hero Capsule Showcase (中英两套图：简繁中用中，其余全用英) -->
+    <!-- Steam's OWN widget (user 08-26: use the steam embed instead, looks better) — it
+         renders the live capsule, price/coming-soon state and a real wishlist button, and it
+         updates itself the day the page goes public. Kept inside our silk frame; the tag row
+         below it stays because the widget doesn't carry our own pitch words. -->
     <div class="hero-capsule-card">
-      <img id="heroCapsuleImg" src="assets/capsule_zh.jpg" alt="Westward Dash" class="hero-capsule-img">
+      <iframe class="steam-widget" src="https://store.steampowered.com/widget/5029020/" frameborder="0"
+              title="Westward Dash on Steam" loading="lazy"></iframe>
       <div class="hero-capsule-info">
         <div class="hero-tags">
           <span class="tag-badge" id="tagBadge1">🎲 聚会桌游</span>
