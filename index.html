@@ -3967,7 +3967,10 @@
         const elContact = document.getElementById('footerContact');
         if (elContact) elContact.textContent = data.footer.contact;
         const elPrivacy = document.getElementById('footerPrivacy');
-        if (elPrivacy) elPrivacy.textContent = data.footer.privacy;
+        if (elPrivacy) {
+          elPrivacy.href = 'privacy.html?lang=' + langCode;
+          elPrivacy.textContent = data.footer.privacy;
+        }
         const elCopyright = document.getElementById('footerCopyright');
         if (elCopyright) {
           elCopyright.innerHTML = `&copy; 2026 Mars Paladin LLC. <span id="footerRights">${data.footer.rights}</span> ${data.footer.titleSuffix}`;
@@ -4075,47 +4078,51 @@
       img.src = src;
     });
 
-    // Auto-detect browser language & trigger audio autoplay
+    // Auto-detect browser language or query param & trigger audio autoplay
     window.addEventListener('DOMContentLoaded', () => {
-      const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
-        setLang('tc');
-      } else if (userLang.startsWith('ja')) {
-        setLang('ja');
-      } else if (userLang.startsWith('ko')) {
-        setLang('ko');
-      } else if (userLang.startsWith('fr')) {
-        setLang('fr');
-      } else if (userLang.startsWith('de')) {
-        setLang('de');
-      } else if (userLang.startsWith('es')) {
-        setLang('es');
-      } else if (userLang.startsWith('it')) {
-        setLang('it');
-      } else if (userLang.startsWith('pt')) {
-        setLang('pt');
-      } else if (userLang.startsWith('ru')) {
-        setLang('ru');
-      } else if (userLang.startsWith('pl')) {
-        setLang('pl');
-      } else if (userLang.startsWith('cs')) {
-        setLang('cs');
-      } else if (userLang.startsWith('uk')) {
-        setLang('uk');
-      } else if (userLang.startsWith('tr')) {
-        setLang('tr');
-      } else if (userLang.startsWith('th')) {
-        setLang('th');
-      } else if (userLang.startsWith('vi')) {
-        setLang('vi');
-      } else if (userLang.startsWith('id')) {
-        setLang('id');
-      } else if (userLang.startsWith('en')) {
-        setLang('en');
-      } else if (userLang.startsWith('zh')) {
-        setLang('zh');
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      if (urlLang && i18n[urlLang]) {
+        setLang(urlLang);
       } else {
-        setLang('en');
+        const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+          setLang('tc');
+        } else if (userLang.startsWith('ja')) {
+          setLang('ja');
+        } else if (userLang.startsWith('ko')) {
+          setLang('ko');
+        } else if (userLang.startsWith('fr')) {
+          setLang('fr');
+        } else if (userLang.startsWith('de')) {
+          setLang('de');
+        } else if (userLang.startsWith('es')) {
+          setLang('es');
+        } else if (userLang.startsWith('it')) {
+          setLang('it');
+        } else if (userLang.startsWith('pt')) {
+          setLang('pt');
+        } else if (userLang.startsWith('ru')) {
+          setLang('ru');
+        } else if (userLang.startsWith('pl')) {
+          setLang('pl');
+        } else if (userLang.startsWith('cs')) {
+          setLang('cs');
+        } else if (userLang.startsWith('uk')) {
+          setLang('uk');
+        } else if (userLang.startsWith('tr')) {
+          setLang('tr');
+        } else if (userLang.startsWith('th')) {
+          setLang('th');
+        } else if (userLang.startsWith('vi')) {
+          setLang('vi');
+        } else if (userLang.startsWith('id')) {
+          setLang('id');
+        } else if (userLang.startsWith('zh')) {
+          setLang('zh');
+        } else {
+          setLang('en');
+        }
       }
 
       initAutoplay();

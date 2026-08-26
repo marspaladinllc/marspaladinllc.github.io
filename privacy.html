@@ -1203,6 +1203,9 @@
     document.getElementById('footerSite').textContent = data.footerSite;
     document.getElementById('footerStore').textContent = data.footerStore;
 
+    document.getElementById('navBtnBack').href = "https://westwarddash.com/?lang=" + langCode;
+    document.getElementById('footerSite').href = "https://westwarddash.com/?lang=" + langCode;
+
     // Highlight active option in menu
     document.querySelectorAll('.lang-option-item').forEach(item => {
       const isSelected = item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + langCode + "'");
@@ -1222,47 +1225,51 @@
     document.getElementById('langMenu').classList.remove('show');
   });
 
-  // Auto-detect browser language on load
+  // Auto-detect browser language or read query param & fallback to English
   window.addEventListener('DOMContentLoaded', () => {
-    const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
-      setLang('tc');
-    } else if (userLang.startsWith('ja')) {
-      setLang('ja');
-    } else if (userLang.startsWith('ko')) {
-      setLang('ko');
-    } else if (userLang.startsWith('fr')) {
-      setLang('fr');
-    } else if (userLang.startsWith('de')) {
-      setLang('de');
-    } else if (userLang.startsWith('es')) {
-      setLang('es');
-    } else if (userLang.startsWith('it')) {
-      setLang('it');
-    } else if (userLang.startsWith('pt')) {
-      setLang('pt');
-    } else if (userLang.startsWith('ru')) {
-      setLang('ru');
-    } else if (userLang.startsWith('pl')) {
-      setLang('pl');
-    } else if (userLang.startsWith('cs')) {
-      setLang('cs');
-    } else if (userLang.startsWith('uk')) {
-      setLang('uk');
-    } else if (userLang.startsWith('tr')) {
-      setLang('tr');
-    } else if (userLang.startsWith('th')) {
-      setLang('th');
-    } else if (userLang.startsWith('vi')) {
-      setLang('vi');
-    } else if (userLang.startsWith('id')) {
-      setLang('id');
-    } else if (userLang.startsWith('en')) {
-      setLang('en');
-    } else if (userLang.startsWith('zh')) {
-      setLang('zh');
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && i18n[urlLang]) {
+      setLang(urlLang);
     } else {
-      setLang('en');
+      const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+        setLang('tc');
+      } else if (userLang.startsWith('ja')) {
+        setLang('ja');
+      } else if (userLang.startsWith('ko')) {
+        setLang('ko');
+      } else if (userLang.startsWith('fr')) {
+        setLang('fr');
+      } else if (userLang.startsWith('de')) {
+        setLang('de');
+      } else if (userLang.startsWith('es')) {
+        setLang('es');
+      } else if (userLang.startsWith('it')) {
+        setLang('it');
+      } else if (userLang.startsWith('pt')) {
+        setLang('pt');
+      } else if (userLang.startsWith('ru')) {
+        setLang('ru');
+      } else if (userLang.startsWith('pl')) {
+        setLang('pl');
+      } else if (userLang.startsWith('cs')) {
+        setLang('cs');
+      } else if (userLang.startsWith('uk')) {
+        setLang('uk');
+      } else if (userLang.startsWith('tr')) {
+        setLang('tr');
+      } else if (userLang.startsWith('th')) {
+        setLang('th');
+      } else if (userLang.startsWith('vi')) {
+        setLang('vi');
+      } else if (userLang.startsWith('id')) {
+        setLang('id');
+      } else if (userLang.startsWith('zh')) {
+        setLang('zh');
+      } else {
+        setLang('en');
+      }
     }
   });
 </script>
