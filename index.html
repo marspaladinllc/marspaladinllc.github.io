@@ -1034,30 +1034,7 @@
             </div>
           </div>
 
-          <!-- 18 Languages Instant Switcher Row -->
-          <div class="languages-quick-bar">
-            <div class="languages-quick-title">🌐 18 种语言同桌畅玩 · 点击任意语言一键预览</div>
-            <div class="flags-pills-row">
-              <button class="flag-pill active" onclick="setLang('zh')">🇨🇳 简体中文</button>
-              <button class="flag-pill" onclick="setLang('tc')">🇭🇰 繁體中文</button>
-              <button class="flag-pill" onclick="setLang('en')">🇺🇸 English</button>
-              <button class="flag-pill" onclick="setLang('ja')">🇯🇵 日本語</button>
-              <button class="flag-pill" onclick="setLang('ko')">🇰🇷 한국어</button>
-              <button class="flag-pill" onclick="setLang('fr')">🇫🇷 Français</button>
-              <button class="flag-pill" onclick="setLang('de')">🇩🇪 Deutsch</button>
-              <button class="flag-pill" onclick="setLang('es')">🇪🇸 Español</button>
-              <button class="flag-pill" onclick="setLang('it')">🇮🇹 Italiano</button>
-              <button class="flag-pill" onclick="setLang('pt')">🇧🇷 Português</button>
-              <button class="flag-pill" onclick="setLang('ru')">🇷🇺 Русский</button>
-              <button class="flag-pill" onclick="setLang('pl')">🇵🇱 Polski</button>
-              <button class="flag-pill" onclick="setLang('cs')">🇨🇿 Čeština</button>
-              <button class="flag-pill" onclick="setLang('uk')">🇺🇦 Українська</button>
-              <button class="flag-pill" onclick="setLang('tr')">🇹🇷 Türkçe</button>
-              <button class="flag-pill" onclick="setLang('th')">🇹🇭 ไทย</button>
-              <button class="flag-pill" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
-              <button class="flag-pill" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</button>
-            </div>
-          </div>
+
 
         </div>
 
@@ -1656,13 +1633,7 @@
         if (el) el.textContent = p.names[langCode] || p.names['en'];
       }
 
-      // Update Flags Pills Highlight
-      document.querySelectorAll('.flag-pill').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('onclick').includes("'" + langCode + "'")) {
-          btn.classList.add('active');
-        }
-      });
+
 
       // Refresh stage
       refreshPilgrimStage();
