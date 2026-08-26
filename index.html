@@ -791,11 +791,7 @@
         <span class="logo-main" id="navLogoMain">齐天大冲刺</span>
       </a>
 
-      <ul class="nav-tabs">
-        <li><a href="javascript:switchSection(0)" id="navLinkChars">八路行者</a></li>
-        <li><a href="javascript:switchSection(1)" id="navLinkRules">西行玩法</a></li>
-        <li><a href="javascript:switchSection(2)" id="navLinkAbout">关于创作</a></li>
-      </ul>
+
 
       <div class="nav-actions">
         <!-- Full 18 Languages Dropdown -->
@@ -1496,9 +1492,7 @@
       document.getElementById('currentLangFlag').textContent = data.flag;
       document.getElementById('currentLangName').textContent = data.name;
       document.getElementById('mainTitleBanner').src = data.titleImg;
-      document.getElementById('navLinkChars').textContent = data.nav.chars;
-      document.getElementById('navLinkRules').textContent = data.nav.rules;
-      document.getElementById('navLinkAbout').textContent = data.nav.about;
+
       document.getElementById('navWishlistBtn').textContent = data.nav.wishlist;
 
       // Update Hero
