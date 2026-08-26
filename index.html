@@ -12,6 +12,11 @@
   <meta property="og:image" content="https://westwarddash.com/assets/capsule_en.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westwarddash.com">
+  <link rel="canonical" href="https://westwarddash.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Westward Dash (齐天大冲刺)">
+  <meta name="twitter:description" content="A 1-8 player ink-wash Journey to the West party board game. Push your luck, break the demon gates, and read it all in your own language.">
+  <meta name="twitter:image" content="https://westwarddash.com/assets/capsule_en.jpg">
   <link rel="icon" type="image/png" href="assets/game_icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +32,7 @@
   <link rel="preload" as="image" href="assets/player_5.png">
   <link rel="preload" as="image" href="assets/player_6.png">
   <link rel="preload" as="image" href="assets/player_7.png">
-  <link rel="preload" as="image" href="assets/cover.png">
-  <link rel="preload" as="image" href="assets/Pipa.png">
-  <link rel="preload" as="image" href="assets/marspaladin_logo.png">
-  <link rel="preload" as="image" href="assets/thanks_wall.png">
+  <link rel="preload" as="image" href="assets/cover.jpg">
   
   <style>
     :root {
@@ -69,7 +71,7 @@
     .bg-mural {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: url('assets/cover.png') no-repeat center top / cover;
+      background: url('assets/cover.jpg') no-repeat center top / cover;
       opacity: 0.28;
       filter: saturate(0.85) contrast(1.1);
       pointer-events: none;
@@ -278,7 +280,7 @@
       font-weight: 700;
       margin-bottom: 20px;
     }
-    .title-banner-wrap {
+    .title-banner-wrap { margin: 0; padding: 0; font-size: 0; /* h1 since 08-26: the page had no heading at all */
       margin-bottom: 18px;
     }
     .title-banner-img {
@@ -847,7 +849,7 @@
 <body>
 
   <!-- Audio Element: Original Live Pipa Soundtrack from Game Demo -->
-  <audio id="bgmAudio" src="assets/bgm.mp3" loop preload="auto"></audio>
+  <audio id="bgmAudio" src="assets/bgm.mp3" loop preload="none"></audio>
 
   <!-- In-game Main Menu Cover Art Backdrop -->
   <div class="bg-mural"></div>
@@ -908,9 +910,9 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-tag" id="heroTag">🎲 1–8 人水墨国风桌游竞速 · 支持单机同屏 / 线上连线</div>
-      <div class="title-banner-wrap">
-        <img id="mainTitleBanner" src="assets/TitleZh.png" alt="Westward Dash" class="title-banner-img">
-      </div>
+      <h1 class="title-banner-wrap">
+        <img id="mainTitleBanner" src="assets/TitleZh.png" alt="Westward Dash (齐天大冲刺)" class="title-banner-img">
+      </h1>
       <p class="hero-desc" id="heroDesc">
         还原儿时围坐桌前的西游记忆。1–8 人国风水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！
       </p>
@@ -1111,11 +1113,11 @@
           <!-- About Showcase Stage: Image placed prominently on the Left, Story on the Right -->
           <div class="about-detail-stage">
             <div class="about-visual-box">
-              <img id="aboutStageImg0" src="assets/cover.png" alt="西游记" class="about-stage-img active" loading="eager">
-              <img id="aboutStageImg1" src="assets/Pipa.png" alt="琵琶原声" class="about-stage-img" loading="eager">
-              <img id="aboutStageImg2" src="assets/InkWash.png" alt="水墨画" class="about-stage-img" loading="eager">
-              <img id="aboutStageImg3" src="assets/marspaladin_logo.png" alt="独立创作" class="about-stage-img" loading="eager">
-              <img id="aboutStageImg4" src="assets/thanks_wall.png" alt="真情鸣谢" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg0" src="assets/cover.jpg" alt="西游记" class="about-stage-img active" loading="eager">
+              <img id="aboutStageImg1" src="assets/Pipa.jpg" alt="琵琶原声" class="about-stage-img" loading="lazy">
+              <img id="aboutStageImg2" src="assets/InkWash.jpg" alt="水墨画" class="about-stage-img" loading="lazy">
+              <img id="aboutStageImg3" src="assets/marspaladin_logo.jpg" alt="独立创作" class="about-stage-img" loading="lazy">
+              <img id="aboutStageImg4" src="assets/thanks_wall.jpg" alt="真情鸣谢" class="about-stage-img" loading="lazy">
             </div>
 
             <div class="about-detail-text">
@@ -3474,7 +3476,7 @@
 
     const aboutTilesData = [
       {
-            "img": "assets/cover.png",
+            "img": "assets/cover.jpg",
             "titles": {
                   "zh": "一张泛黄磨破的棋盘纸",
                   "tc": "一張泛黃磨破的棋盤紙",
@@ -3557,7 +3559,7 @@
             }
       },
       {
-            "img": "assets/Pipa.png",
+            "img": "assets/Pipa.jpg",
             "titles": {
                   "zh": "琵琶原声实录，真情伴奏",
                   "tc": "琵琶原聲實錄，真情伴奏",
@@ -3640,7 +3642,7 @@
             }
       },
       {
-            "img": "assets/InkWash.png",
+            "img": "assets/InkWash.jpg",
             "titles": {
                   "zh": "文房四宝，方寸水墨",
                   "tc": "文房四寶，方寸水墨",
@@ -3723,7 +3725,7 @@
             }
       },
       {
-            "img": "assets/marspaladin_logo.png",
+            "img": "assets/marspaladin_logo.jpg",
             "titles": {
                   "zh": "一人之力，AI 协作的独立作品",
                   "tc": "一人之力，AI 協作的獨立作品",
@@ -3806,7 +3808,7 @@
             }
       },
       {
-            "img": "assets/thanks_wall.png",
+            "img": "assets/thanks_wall.jpg",
             "titles": {
                   "zh": "谨以此作，献给同行之人",
                   "tc": "謹以此作，獻給同行之人",
@@ -3958,6 +3960,16 @@
     }
 
     function setLang(langCode) {
+      // The document's own language must follow the copy (08-26 audit: it was pinned at zh-CN
+      // in all eighteen). Screen readers pick pronunciation from this, and search engines
+      // index the page as whatever it claims to be.
+      try {
+        const htmlLang = {zh:'zh-CN',tc:'zh-TW',en:'en',ja:'ja',ko:'ko',fr:'fr',de:'de',es:'es',
+          pt:'pt',it:'it',ru:'ru',pl:'pl',cs:'cs',uk:'uk',tr:'tr',th:'th',vi:'vi',id:'id'}[langCode] || 'en';
+        document.documentElement.setAttribute('lang', htmlLang);
+        const ogl = document.querySelector('meta[property="og:locale"]');
+        if (ogl) ogl.setAttribute('content', htmlLang.replace('-','_'));
+      } catch (e) {}
       if (!i18n[langCode]) langCode = 'en';
       currentLang = langCode;
       const data = i18n[langCode];
@@ -4138,7 +4150,7 @@
       'assets/player_4.png', 'assets/player_5.png', 'assets/player_6.png', 'assets/player_7.png',
       'assets/token_0.png', 'assets/token_1.png', 'assets/token_2.png', 'assets/token_3.png',
       'assets/token_4.png', 'assets/token_5.png', 'assets/token_6.png', 'assets/token_7.png',
-      'assets/cover.png', 'assets/InkWash.png', 'assets/Pipa.png', 'assets/marspaladin_logo.png', 'assets/thanks_wall.png',
+      'assets/cover.jpg', 'assets/InkWash.jpg', 'assets/Pipa.jpg', 'assets/marspaladin_logo.jpg', 'assets/thanks_wall.jpg',
       'assets/capsule_zh.jpg', 'assets/capsule_en.jpg'
     ];
     ASSETS_TO_CACHE.forEach(src => {
