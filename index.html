@@ -9,9 +9,10 @@
   
   <meta property="og:title" content="Westward Dash (齐天大冲刺) — Official Website">
   <meta property="og:description" content="1–8 Player Ink-Wash Journey-to-the-West Party Board Game. 18 Languages supported. Wishlist now on Steam!">
-  <meta property="og:image" content="https://westwarddash.com/assets/main_capsule.jpg">
+  <meta property="og:image" content="https://westwarddash.com/assets/capsule_en.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westwarddash.com">
+  <link rel="icon" type="image/png" href="assets/game_icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,18 +94,17 @@
       gap: 12px;
       text-decoration: none;
     }
-    .logo-seal {
-      width: 38px; height: 38px;
-      background: var(--vermilion);
-      color: #fff;
-      font-weight: 900;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      box-shadow: 0 0 16px var(--vermilion-glow);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+    .logo-game-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 16px var(--silk-glow);
+      border: 1px solid var(--silk-border);
+      transition: transform 0.2s;
+    }
+    .logo-link:hover .logo-game-icon {
+      transform: scale(1.06);
     }
     .logo-text { display: flex; flex-direction: column; }
     .logo-main {
@@ -326,6 +326,7 @@
       display: block;
       aspect-ratio: 16/9;
       object-fit: cover;
+      transition: opacity 0.3s ease;
     }
     .hero-capsule-info {
       padding: 22px 24px;
@@ -792,7 +793,7 @@
   <header>
     <div class="nav-container">
       <a href="#" class="logo-link">
-        <div class="logo-seal">西</div>
+        <img src="assets/game_icon.png" alt="Logo" class="logo-game-icon">
         <div class="logo-text">
           <span class="logo-main" id="navLogoMain">齐天大冲刺</span>
           <span class="logo-sub">WESTWARD DASH</span>
@@ -863,9 +864,9 @@
       </div>
     </div>
 
-    <!-- Hero Capsule Showcase -->
+    <!-- Hero Capsule Showcase (中英两套图：简繁中用中，其余全用英) -->
     <div class="hero-capsule-card">
-      <img src="assets/main_capsule.jpg" alt="Westward Dash" class="hero-capsule-img">
+      <img id="heroCapsuleImg" src="assets/capsule_zh.jpg" alt="Westward Dash" class="hero-capsule-img">
       <div class="hero-capsule-info">
         <div class="hero-tags">
           <span class="tag-badge" id="tagBadge1">🎲 聚会桌游</span>
@@ -1374,7 +1375,7 @@
           ja: "『西遊記』の生みの親。その手にある筆は運命を紡ぎ、自ら描いた筋書きで盤上の波乱を操る。",
           ko: "서유기의 원작 작가. 붓끝 하나로 운명을 쥐락펴락하며 자신만의 이야기로 판을 지배합니다."
         },
-        skill1Title: { zh: "【绝技】妙笔生花", tc: "【絕技】妙筆生花", en: "【Skill】Author's Quill", ja: "【絶技】妙筆生花", ko: "【절기】묘필생화" },
+        skill1Title: { zh: "【绝技】妙笔生花", tc: "【絕技】妙筆生花", en: "【Skill】Author's Quill", ja: "【絶技】妙筆生花", ko: "【절기】묘필생化" },
         skill1Desc: {
           zh: "每隔数回合灵感涌现，随身自备法宝锦囊，运筹帷幄。",
           tc: "每隔數回合靈感湧現，隨身自備法寶錦囊，運籌帷幄。",
@@ -1416,7 +1417,7 @@
           tc: "在土地廟、神龕與祈福格獲得雙倍福報與補給收益。",
           en: "Earns doubled blessings and rewards whenever visiting shrine and altar cells.",
           ja: "祠や神殿のマスに止まった際、2倍の祝福やアイテム報酬を得られます。",
-          ko: "사당이나 제단 칸에 도달했을 때 2배의 축복과 보급품을 획득합니다."
+          ko: "사당이나 제단 칸에 도달했을 때 2倍의 축복과 보급품을 획득합니다."
         }
       },
       {
@@ -1476,7 +1477,7 @@
         author: "— Mars Paladin LLC",
         badgeTitle: "独立游戏工作室",
         badgeSub: "Independent Studio",
-        img: "assets/main_capsule.jpg"
+        img: "assets/capsule_zh.jpg"
       },
       {
         title: "谨以此作，献给同行之人",
@@ -1519,6 +1520,13 @@
       document.getElementById('tagBadge4').textContent = data.hero.tags[3];
       document.getElementById('metaPlatform').innerHTML = data.hero.platform;
       document.getElementById('metaRelease').innerHTML = data.hero.release;
+
+      // Update Right Capsule Image: 简中/繁中用中文图，其余全部用英文图
+      const isChinese = (langCode === 'zh' || langCode === 'tc');
+      const capsuleEl = document.getElementById('heroCapsuleImg');
+      if (capsuleEl) {
+        capsuleEl.src = isChinese ? 'assets/capsule_zh.jpg' : 'assets/capsule_en.jpg';
+      }
 
       // Update Section Pills
       document.getElementById('pillTextChars').textContent = data.pills.chars;
