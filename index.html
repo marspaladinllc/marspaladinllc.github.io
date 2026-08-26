@@ -667,7 +667,7 @@
       color: var(--gold-bright);
     }
 
-    /* About 4 Tiles Navigation & Stage */
+    /* About 4 Tiles Navigation & Stage (图片放大在左侧，故事叙述在右侧) */
     .about-tiles-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -699,47 +699,40 @@
       padding: 36px;
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
       display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 36px;
+      grid-template-columns: 380px 1fr;
+      gap: 40px;
       align-items: center;
     }
-    .about-detail-text h3 {
-      font-size: 26px;
-      font-weight: 900;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-    }
-    .about-detail-text p {
-      font-size: 15.5px;
-      color: var(--ink-dim);
-      line-height: 1.9;
-      margin-bottom: 16px;
-    }
-    .about-signature {
-      font-size: 16.5px;
-      font-weight: 800;
-      color: var(--gold);
-    }
-    .pipa-showcase-box {
-      background: rgba(10, 8, 6, 0.85);
+    .about-visual-box {
+      background: rgba(10, 8, 6, 0.9);
       border: 1px solid var(--silk-border);
       border-radius: 14px;
-      padding: 26px 18px;
+      padding: 24px 20px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     }
-    .pipa-img {
-      width: 130px;
-      height: auto;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.8));
+    .about-stage-img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85));
+      transition: transform 0.3s;
     }
-    .pipa-showcase-box h4 {
-      font-size: 16px;
+    .about-visual-box:hover .about-stage-img {
+      transform: scale(1.03);
+    }
+    .about-visual-box h4 {
+      font-size: 17px;
       font-weight: 800;
       color: var(--ink);
       margin-bottom: 4px;
     }
-    .pipa-showcase-box span {
+    .about-visual-box span {
       font-size: 13.5px;
       color: var(--gold);
       display: block;
@@ -753,9 +746,9 @@
       background: rgba(223, 178, 86, 0.15);
       border: 1px solid var(--gold);
       color: var(--gold-bright);
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.2s;
@@ -763,6 +756,26 @@
     .btn-pipa-play-card:hover {
       background: rgba(223, 178, 86, 0.3);
       transform: scale(1.04);
+    }
+
+    .about-detail-text h3 {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+    .about-detail-text p {
+      font-size: 15.5px;
+      color: var(--ink-dim);
+      line-height: 1.95;
+      margin-bottom: 16px;
+    }
+    .about-signature {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-top: 10px;
     }
 
     /* Footer */
@@ -805,7 +818,7 @@
       .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
       .features-list-grid { grid-template-columns: 1fr; }
       .about-tiles-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-detail-stage { grid-template-columns: 1fr; }
+      .about-detail-stage { grid-template-columns: 1fr; text-align: center; }
     }
     @media (max-width: 600px) {
       .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
@@ -1061,7 +1074,7 @@
 
         </div>
 
-        <!-- PANE 2: 关于 (About: 4 Sub-Tiles 游戏内完整原版内容) -->
+        <!-- PANE 2: 关于 (About: 4 Sub-Tiles 游戏内完整原版内容，图片放大在最左侧) -->
         <div id="pane-2" class="tab-pane">
           
           <div class="about-tiles-grid">
@@ -1083,7 +1096,17 @@
             </div>
           </div>
 
+          <!-- About Showcase Stage: Image placed prominently on the Left, Story on the Right -->
           <div class="about-detail-stage">
+            <div class="about-visual-box">
+              <img id="aboutStageImg" src="assets/cover.png" alt="视觉插画" class="about-stage-img">
+              <h4 id="aboutBadgeTitle">经典西游童年桌游</h4>
+              <span id="aboutBadgeSub">Journey to the West Nostalgia</span>
+              <button id="aboutPipaCardBtn" class="btn-pipa-play-card" onclick="toggleBgm(event)" style="display:none;">
+                <span id="cardPlayIcon">▶</span> <span id="cardPlayText">试听琵琶原声</span>
+              </button>
+            </div>
+
             <div class="about-detail-text">
               <h3 id="aboutStageTitle">一张泛黄磨破的棋盘纸</h3>
               <p id="aboutStageDesc1">
@@ -1093,14 +1116,6 @@
                 当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。很多年后，我凭着这份念想，把它亲手做成了电子游戏。
               </p>
               <div class="about-signature" id="aboutStageAuthor">— 逍遥子 (Mars Paladin)</div>
-            </div>
-            <div class="pipa-showcase-box">
-              <img id="aboutStageImg" src="assets/Pipa.png" alt="琵琶" class="pipa-img">
-              <h4 id="aboutBadgeTitle">原创琵琶实录原声</h4>
-              <span id="aboutBadgeSub">Performed by 灵如酱</span>
-              <button class="btn-pipa-play-card" onclick="toggleBgm(event)">
-                <span id="cardPlayIcon">▶</span> <span id="cardPlayText">试听琵琶原声</span>
-              </button>
             </div>
           </div>
 
@@ -1230,7 +1245,7 @@
         featuresHeader: { title: "서행 통감 · 게임 규칙과 모드", sub: "클래식 레이스부터 19개의 심층 커스텀 노브까지, 매 판 새로운 재미를 선사합니다." },
         feat1: { title: "🎲 멈출 것인가, 모험할 것인가?", desc: "안전 칸을 넘기면 폭풍 질주, 무리하면 페널티! 결승점 앞의 마지막 질주는 꼴찌에게 주어지는 짜릿한 역전의 기회입니다." },
         feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사위 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
-        feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모国어로 함께 즐길 수 있습니다." },
+        feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모국어로 함께 즐길 수 있습니다." },
         feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" }
       },
 
@@ -1498,7 +1513,8 @@
         author: "— 逍遥子 (Mars Paladin)",
         badgeTitle: "经典西游童年桌游",
         badgeSub: "Journey to the West Nostalgia",
-        img: "assets/cover.png"
+        img: "assets/cover.png",
+        hasAudioBtn: false
       },
       {
         title: "琵琶原声实录，真情伴奏",
@@ -1507,25 +1523,28 @@
         author: "— 灵如酱 & 逍遥子",
         badgeTitle: "原创琵琶实录原声",
         badgeSub: "Performed by 灵如酱",
-        img: "assets/Pipa.png"
+        img: "assets/Pipa.png",
+        hasAudioBtn: true
       },
       {
         title: "一人之力，AI 协作的独立作品",
         desc1: "“这是我凭一个人的力量在 AI 协助下完成的第一款独立作品。从代码架构、水墨美术打磨，到多语言本地化与网络联机系统，倾注了无数个日夜的打磨。”",
         desc2: "我想原汁原味地留住那份大家围坐在一起的心跳与欢笑，让每一次重新出发，都是一条截然不同的取经路。",
         author: "— Mars Paladin LLC",
-        badgeTitle: "独立游戏工作室",
-        badgeSub: "Independent Studio",
-        img: "assets/capsule_zh.jpg"
+        badgeTitle: "Mars Paladin LLC",
+        badgeSub: "Independent Game Studio",
+        img: "assets/marspaladin_logo.png",
+        hasAudioBtn: false
       },
       {
         title: "谨以此作，献给同行之人",
         desc1: "“谨以此作，献给年少时曾陪我一起掷骰子的人，以及每一个心中依然保留着纯真童心的大朋友。”",
         desc2: "无论你身在何方，无论你使用的是何种语言，愿这盘桌游能为你和身边的亲朋好友带来最纯粹的心跳与欢笑！",
         author: "— 逍遥子 (Mars Paladin)",
-        badgeTitle: "真情鸣谢与致敬",
+        badgeTitle: "18 种语言真情鸣谢",
         badgeSub: "Dedicated to all Players",
-        img: "assets/cover2.png"
+        img: "assets/thanks_wall.png",
+        hasAudioBtn: false
       }
     ];
 
@@ -1705,6 +1724,11 @@
       document.getElementById('aboutBadgeTitle').textContent = item.badgeTitle;
       document.getElementById('aboutBadgeSub').textContent = item.badgeSub;
       document.getElementById('aboutStageImg').src = item.img;
+
+      const audioBtn = document.getElementById('aboutPipaCardBtn');
+      if (audioBtn) {
+        audioBtn.style.display = item.hasAudioBtn ? 'inline-flex' : 'none';
+      }
     }
 
     // Auto-detect browser language & gentle user interaction audio unlock
