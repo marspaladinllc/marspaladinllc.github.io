@@ -769,30 +769,6 @@
        silk card do the rounding. 190px fits the coming-soon layout with no inner scrollbar. */
     .steam-widget { display: block; width: 100%; height: 190px; border: 0; background: #1b2838; }
 
-    /* ---- MOBILE PASS (08-26, user: bugs in phone browser) ----------------------------
-       The 992/600 queries reflowed the big grids but left the phone-sized hazards: an
-       8-token strip squeezed to 5 columns still gives ~40px cells inside a 320px screen,
-       the hero kept desktop padding, the language menu opened 2×160px = 320px wide (wider
-       than the viewport on a small phone), and nothing capped the body against sideways
-       scrolling. */
-    @media (max-width: 600px) {
-      html, body { overflow-x: hidden; }
-      .hero { padding: 96px 16px 40px; gap: 28px; }
-      .title-banner-img { max-width: 300px; }
-      .hero-desc { font-size: 14.5px; line-height: 1.75; }
-      .hero-actions { flex-direction: column; gap: 12px; }
-      .hero-actions > a { width: 100%; justify-content: center; text-align: center; }
-      .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 10px; }
-      .features-list-grid { grid-template-columns: 1fr; }
-      .about-tiles-grid { grid-template-columns: 1fr; }
-      .lang-menu { grid-template-columns: 1fr !important; width: calc(100vw - 32px); max-width: 320px; right: 8px; }
-      .section-nav-bar { gap: 8px; }
-      .section-pill-btn { padding: 8px 14px; font-size: 13px; }
-      .hero-meta-row { flex-direction: column; gap: 6px; align-items: center; }
-      .steam-widget { height: 190px; }
-      /* Anything that still insists on a desktop width gets reined in */
-      img, iframe { max-width: 100%; }
-    }
     @media (max-width: 992px) {
       .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
       .hero-content { text-align: center; }
@@ -813,6 +789,43 @@
       .tokens-selector-grid { grid-template-columns: repeat(5, 1fr); }
       .lang-menu { grid-template-columns: 1fr; }
       .btn-music-toggle span:last-child { display: none; }
+    }
+
+    /* ---- PHONE PASS (08-26, verified in Chrome at 386px) -------------------------------
+       Measured, not guessed. Two real defects at phone width:
+       ① .nav-actions ran to x=458 in a 386px viewport — the Steam button hung off the right
+          edge (the blue sliver in the user's screenshot). The nav row is nowrap by design,
+          so on a phone the row must SHED weight rather than push.
+       ② The token strip's columns were repeat(N, 1fr) — and 1fr means minmax(AUTO, 1fr),
+          whose auto floor is min-content, so "Wu Cheng'en" and "Patrol Imp" forced the track
+          wider than its share and the last tiles were clipped. minmax(0, 1fr) is the fix.
+       This block sits AFTER the older 600px query on purpose: same specificity, later wins. */
+    @media (max-width: 700px) {
+      html, body { overflow-x: hidden; }
+      /* ① the nav sheds weight instead of overflowing */
+      .nav-container { padding: 10px 12px; gap: 8px; }
+      .nav-actions { gap: 6px; flex-shrink: 1; min-width: 0; }
+      .btn-steam-nav { padding: 8px 10px; font-size: 12px; white-space: nowrap; }
+      .nav-brand-text { font-size: 15px; line-height: 1.15; }
+      .lang-selector-btn { padding: 7px 8px; font-size: 12px; }
+      /* ② every grid track may shrink below its longest word */
+      .tokens-selector-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 10px; }
+      .token-btn { padding: 8px 2px; min-width: 0; }
+      .token-label { font-size: 11px; line-height: 1.2; overflow-wrap: anywhere; }
+      .token-piece-img { max-width: 100%; height: auto; }
+      .features-list-grid, .about-tiles-grid { grid-template-columns: minmax(0, 1fr); }
+      .pilgrim-showcase-stage, .about-detail-stage { grid-template-columns: minmax(0, 1fr); }
+      /* hero: phone padding, stacked full-width buttons */
+      .hero { padding: 92px 16px 40px; gap: 26px; }
+      .title-banner-img { max-width: 290px; }
+      .hero-desc { font-size: 14.5px; line-height: 1.75; }
+      .hero-actions { flex-direction: column; gap: 12px; }
+      .hero-actions > a { width: 100%; justify-content: center; text-align: center; }
+      .hero-meta-row { flex-direction: column; gap: 6px; align-items: center; }
+      .section-nav-bar { gap: 8px; }
+      .section-pill-btn { padding: 8px 14px; font-size: 13px; }
+      .lang-menu { grid-template-columns: minmax(0, 1fr) !important; width: calc(100vw - 24px); max-width: 320px; right: 8px; }
+      img, iframe { max-width: 100%; }
     }
   </style>
 </head>

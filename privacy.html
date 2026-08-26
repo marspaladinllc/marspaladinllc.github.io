@@ -336,9 +336,11 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     html, body { overflow-x: hidden; }
-    .support-grid { grid-template-columns: 1fr !important; }
+    .support-grid { grid-template-columns: minmax(0, 1fr) !important; }
+    .nav-container { padding: 10px 12px; gap: 8px; }
+    .btn-steam-nav { padding: 8px 10px; font-size: 12px; }
     .email-highlight { flex-direction: column; gap: 12px; text-align: center; align-items: center; }
     .lang-menu { grid-template-columns: 1fr !important; width: calc(100vw - 32px); max-width: 320px; right: 8px; }
     img, iframe { max-width: 100%; }
