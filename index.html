@@ -805,7 +805,13 @@
       /* ① the nav sheds weight instead of overflowing */
       .nav-container { padding: 10px 12px; gap: 8px; }
       .nav-actions { gap: 6px; flex-shrink: 1; min-width: 0; }
-      .btn-steam-nav { padding: 8px 10px; font-size: 12px; white-space: nowrap; }
+      /* The nav row needs 480px of children in a 386px viewport (logo 157 + music 50 +
+         language 113 + Steam 149). Something has to go, and the Steam button is the one
+         item already repeated three times further down the page — hero CTA, the Steam
+         widget's own button, and the footer link. The language picker stays: an
+         eighteen-language game is judged on being able to switch. */
+      .btn-steam-nav { display: none; }
+      .btn-music-toggle { padding: 7px 9px; }
       .nav-brand-text { font-size: 15px; line-height: 1.15; }
       .lang-selector-btn { padding: 7px 8px; font-size: 12px; }
       /* ② every grid track may shrink below its longest word */
