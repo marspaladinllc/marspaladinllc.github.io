@@ -3,102 +3,351 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — Mars Paladin LLC</title>
-<meta name="description" content="Privacy policy for Mars Paladin LLC and Westward Dash (齐天大冲刺). The game collects no personal data.">
+<title>Privacy Policy, Support & Community — Mars Paladin LLC | Westward Dash</title>
+<meta name="description" content="Privacy Policy, Bug Reporting, Community Forum, and Player Feedback for Westward Dash (齐天大冲刺) by Mars Paladin LLC.">
+<link rel="icon" type="image/png" href="assets/game_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --ink: #e8e2d4;
-    --dim: #9a927f;
-    --ground: #16130e;
-    --panel: #201b13;
-    --gold: #d9a441;
-    --line: #3a3222;
+    --ink: #f5efe6;
+    --dim: #a89f8d;
+    --muted: #736856;
+    --ground: #0a0806;
+    --panel: #14100c;
+    --panel-hover: #1c1712;
+    --gold: #dfb256;
+    --gold-light: #fbe3a4;
+    --gold-dark: #8c631b;
+    --vermilion: #cf3a24;
+    --line: rgba(223, 178, 86, 0.28);
+    --glow: 0 0 24px rgba(223, 178, 86, 0.15);
+    --steam-gradient: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--ground);
     color: var(--ink);
-    font: 17px/1.7 Georgia, "Times New Roman", serif;
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    line-height: 1.8;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
+    justify-content: flex-start;
+    padding: 40px 20px 60px;
+    background-image: radial-gradient(circle at 50% 10%, rgba(223, 178, 86, 0.08) 0%, transparent 60%);
   }
-  main { max-width: 620px; width: 100%; }
+  main { max-width: 780px; width: 100%; }
+
+  .nav-back-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-light);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    background: rgba(223, 178, 86, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .btn-back:hover {
+    background: rgba(223, 178, 86, 0.2);
+    border-color: var(--gold);
+    transform: translateX(-3px);
+  }
+
   .card {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 56px 48px;
+    border-radius: 16px;
+    padding: 48px 44px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), var(--glow);
+    position: relative;
+    overflow: hidden;
   }
+
+  .header-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+  }
+  .header-icon {
+    width: 52px; height: 52px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    object-fit: cover;
+  }
+  .header-text { flex: 1; }
   .studio {
-    font-family: "Trebuchet MS", Verdana, sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--gold);
+    font-weight: 700;
   }
-  h1 { font-size: 32px; line-height: 1.2; margin: 18px 0 4px; text-wrap: balance; }
-  .updated { color: var(--dim); font-size: 14px; }
+  h1 {
+    font-size: 28px;
+    color: var(--gold-light);
+    line-height: 1.3;
+    margin-top: 4px;
+    font-weight: 900;
+  }
+  .updated { color: var(--dim); font-size: 13.5px; margin-top: 4px; }
+
+  /* Section Styling */
   h2 {
-    font-family: "Trebuchet MS", Verdana, sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--dim);
-    margin: 30px 0 8px;
+    font-size: 18px;
+    color: var(--gold-light);
+    margin: 32px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    border-left: 3px solid var(--gold);
+    padding-left: 10px;
   }
-  p { margin: 0 0 12px; }
-  p.lead { margin: 22px 0 0; }
-  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line); }
-  a:focus, a:hover { border-bottom-color: var(--gold); outline: none; }
-  .rule { height: 1px; background: var(--line); margin: 32px 0 4px; }
-  footer { margin-top: 22px; text-align: center; color: var(--dim); font-size: 13px; }
-  footer a { color: var(--dim); }
-  footer a:focus, footer a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-  @media (max-width: 520px) { .card { padding: 40px 26px; } h1 { font-size: 26px; } }
+  p { margin-bottom: 14px; font-size: 15.5px; color: var(--dim); line-height: 1.85; }
+  p strong { color: var(--ink); }
+
+  /* Interactive Cards (Support & Forum & Feedback) */
+  .support-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0 28px;
+  }
+  .support-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .support-card:hover {
+    border-color: var(--gold);
+    background: var(--panel-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  .support-card h3 {
+    font-size: 16px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .support-card p {
+    font-size: 13.5px;
+    color: var(--dim);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .support-action {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Buttons */
+  .btn-steam-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--steam-gradient);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.2s;
+  }
+  .btn-steam-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 117, 189, 0.6);
+  }
+
+  .email-highlight {
+    background: rgba(223, 178, 86, 0.12);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0;
+  }
+  .email-address {
+    font-family: 'Plus Jakarta Sans', monospace;
+    color: var(--gold-light);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(223, 178, 86, 0.3); transition: all 0.2s; }
+  a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  .rule { height: 1px; background: var(--line); margin: 36px 0 20px; }
+  footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  footer a { color: var(--dim); border-bottom: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    .card { padding: 30px 20px; }
+    .support-grid { grid-template-columns: 1fr; }
+    .header-box { flex-direction: column; text-align: center; }
+    .email-highlight { flex-direction: column; gap: 10px; text-align: center; }
+  }
 </style>
 </head>
 <body>
 <main>
+
+  <div class="nav-back-bar">
+    <a href="https://westwarddash.com" class="btn-back">← 返回官网 (Back to Official Site)</a>
+    <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-action">★ Steam 愿望单</a>
+  </div>
+
   <div class="card">
-    <div class="studio">Mars Paladin LLC</div>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated 28 July 2026</p>
+    
+    <div class="header-box">
+      <img src="assets/game_icon.png" alt="Westward Dash" class="header-icon">
+      <div class="header-text">
+        <div class="studio">Mars Paladin LLC</div>
+        <h1>Privacy Policy & Support (隐私政策与玩家服务)</h1>
+        <p class="updated">Last Updated: August 2026 · 《Westward Dash / 齐天大冲刺》</p>
+      </div>
+    </div>
 
-    <p class="lead"><strong>Westward Dash (齐天大冲刺) collects no personal data.</strong> The game
-    has no accounts, no analytics, no advertising, and no third-party tracking of any kind. It
-    makes no network requests to Mars Paladin LLC — we operate no servers and receive nothing
-    from your copy of the game.</p>
+    <!-- Quick Action Hub for Bugs, Forum & Feedback -->
+    <h2>🛠️ 玩家支持、问题反馈与社区交流 (Support, Bugs & Community)</h2>
+    <p>
+      我们非常重视每一位玩家的游玩体验！无论是遇到游戏 <strong>Bug、闪退崩溃、联机问题</strong>，还是希望提出<strong>玩法建议、撰写评测</strong>，欢迎随时通过以下方式与我们联系或加入社区讨论：
+    </p>
 
-    <h2>What stays on your device</h2>
-    <p>Save files, settings, player profiles, unlock progress and local game logs are written to
-    your own computer and stay there. Deleting the game's save folder removes them permanently.
-    We have no copy of them and no way to obtain one.</p>
+    <div class="support-grid">
+      <!-- Bug Report Card -->
+      <a href="mailto:support@marsparadin.com?subject=Westward%20Dash%20Bug%20Report" class="support-card">
+        <div>
+          <h3>🐛 举报问题 / 缺陷反馈</h3>
+          <p>遇到任何游戏 Bug、卡死或异常？欢迎发送邮件附上错误描述或截图，我们将第一时间排查修复。</p>
+        </div>
+        <div class="support-action">发送邮件 report →</div>
+      </a>
 
-    <h2>Playing through Steam</h2>
-    <p>If you play the Steam version, some features are provided by Valve rather than by us:
-    achievements, and online multiplayer, which connects players peer-to-peer through Steam's
-    networking. Using those features means Valve processes the data it needs to run them — such
-    as your Steam ID and which lobby you are in — under
-    <a href="https://store.steampowered.com/privacy_agreement/">Valve's privacy policy</a>. We do
-    not receive that data. Single-player works fully offline.</p>
+      <!-- Forum Card -->
+      <a href="https://steamcommunity.com/app/5029020/discussions/" target="_blank" class="support-card">
+        <div>
+          <h3>💬 Steam 官方讨论区 / Forum</h3>
+          <p>加入 Steam 官方社区论坛，与全球玩家一起交流行者绝技、分享自订房规，参与最新版本讨论。</p>
+        </div>
+        <div class="support-action">进入官方论坛 →</div>
+      </a>
 
-    <h2>Children</h2>
-    <p>Because the game collects nothing from anyone, it collects nothing from children.</p>
+      <!-- Review Card -->
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="support-card">
+        <div>
+          <h3>⭐ 玩家评测与反馈 / Reviews</h3>
+          <p>欢迎在 Steam 商店页面留下您的宝贵评测与 Feedback，您的每一条真诚建议都是我们持续打磨的动力！</p>
+        </div>
+        <div class="support-action">前往 Steam 商店 →</div>
+      </a>
 
-    <h2>Changes</h2>
-    <p>If a future update ever collects anything — an opt-in crash report, for example — this page
-    will be updated before that update ships, and the change will be disclosed in the game's Steam
-    store listing.</p>
+      <!-- Direct Contact Card -->
+      <a href="mailto:support@marsparadin.com" class="support-card">
+        <div>
+          <h3>✉️ 商务与综合支持</h3>
+          <p>媒体评测 Key 申请、多语言本地化建议或其他商务合作，均可直连工作室官方支持邮箱。</p>
+        </div>
+        <div class="support-action">support@marsparadin.com →</div>
+      </a>
+    </div>
 
-    <h2>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:support@marsparadin.com">support@marsparadin.com</a></p>
+    <div class="email-highlight">
+      <div>
+        <div style="font-size:12px; color:var(--dim); text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">Official Support Email</div>
+        <div class="email-address">support@marsparadin.com</div>
+      </div>
+      <a href="mailto:support@marsparadin.com" class="btn-steam-action" style="padding: 8px 18px; font-size:13px;">发邮件联系我们</a>
+    </div>
+
+    <!-- Official Privacy Policy -->
+    <h2>🔒 隐私保护声明 (Privacy Policy)</h2>
+    <p>
+      <strong>《Westward Dash》（齐天大冲刺）完全不收集任何个人隐私数据（Collects No Personal Data）。</strong>
+    </p>
+    <p>
+      游戏内部不设任何第三方数据追踪、不含任何广告插件、不收集设备指纹，也不进行任何外部数据分析。游戏客户端不会向 Mars Paladin LLC 发送任何包含个人身份信息的网络请求。
+    </p>
+
+    <h2>💾 本地数据与存档安全 (Local Device Storage)</h2>
+    <p>
+      您的游戏存档、游戏设置、角色解锁进度、本地成就与游戏运行日志仅保存在您自己的本地设备（PC / Mac）上，并通过 Steam 官方提供的 Steam Cloud 进行加密同步。删除本地游戏存档文件夹即可永久清除所有本地数据。我们没有您的存档副本，也无法获取您的本地数据。
+    </p>
+
+    <h2>🌐 Steam 平台联机与服务 (Steam Platform Integration)</h2>
+    <p>
+      当您使用 Steam 平台游玩时，在线多人对战（Peer-to-Peer P2P 联机）及成就系统由 Valve 官方底层网络提供支持。使用这些功能时，Valve 会根据其官方《<a href="https://store.steampowered.com/privacy_agreement/" target="_blank">Steam 隐私政策协议</a>》处理必要的联机数据（如 Steam ID、当前房间 Lobby 信息等）。Mars Paladin LLC 不会截留或存储您的 Steam 账号敏感数据。单人离线模式完全无需联网即可畅玩。
+    </p>
+
+    <h2>👶 未成年人保护 (Children's Privacy)</h2>
+    <p>
+      由于本游戏不收集任何用户的任何个人信息，因此绝不会收集或索取未成年人的个人数据。
+    </p>
+
+    <h2>📜 政策更新与联系 (Policy Changes & Contact)</h2>
+    <p>
+      若未来游戏更新引入任何需要用户知情的功能（例如可选的崩溃日志主动上报功能），我们将提前在本页面及 Steam 商店公告中予以明确说明并征得用户同意。
+    </p>
+    <p>
+      关于隐私政策、数据安全或游戏体验的任何疑问，请随时联系我们的官方技术支持团队：<br>
+      👉 <strong><a href="mailto:support@marsparadin.com">support@marsparadin.com</a></strong>
+    </p>
 
     <div class="rule"></div>
+    <p style="text-align: center; font-size: 13.5px; color: var(--muted); margin: 0;">
+      Mars Paladin LLC &middot; Westward Dash (齐天大冲刺) &middot; All Rights Reserved.
+    </p>
+
   </div>
-  <footer><a href="/">Mars Paladin LLC</a> &middot; &copy; 2026 Mars Paladin LLC. All rights reserved.</footer>
+
+  <footer>
+    <a href="https://westwarddash.com">Westward Dash Official Website</a> &middot; 
+    <a href="https://store.steampowered.com/app/5029020/" target="_blank">Steam Store Page</a> &middot; 
+    <a href="mailto:support@marsparadin.com">support@marsparadin.com</a>
+  </footer>
+
 </main>
 </body>
 </html>
