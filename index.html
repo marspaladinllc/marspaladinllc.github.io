@@ -1075,14 +1075,14 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (18-Language Dynamic Localization) -->
   <footer>
     <div class="footer-links">
-      <a href="https://store.steampowered.com/app/5029020/" target="_blank">Steam Store</a>
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerSteamStore">Steam 商店</a>
       <a href="mailto:support@marsparadin.com" id="footerContact">联系我们 (support@marsparadin.com)</a>
-      <a href="https://marspaladinllc.github.io/privacy.html" target="_blank" id="footerPrivacy">隐私政策 (Privacy)</a>
+      <a href="https://westwarddash.com/privacy.html" target="_blank" id="footerPrivacy">隐私政策与社区支持 (Privacy & Support)</a>
     </div>
-    <p>&copy; 2026 Mars Paladin LLC. <span id="footerRights">保留所有权利。</span>《Westward Dash / 齐天大冲刺》</p>
+    <p id="footerCopyright">&copy; 2026 Mars Paladin LLC. <span id="footerRights">保留所有权利。</span> 《齐天大冲刺》</p>
   </footer>
 
   <script>
@@ -1108,7 +1108,8 @@
         feat2: { title: "👹 十大妖王拦路，各怀绝技", desc: "三道险关守关妖王随机降临！有的逼你掷小，有的只认中庸，有的平局占优。白骨精更会连变两重化身——输了？那就重整旗鼓再走一趟！" },
         feat3: { title: "🌏 天涯若比邻，同桌各读母语", desc: "全面支持 18 种语言同桌畅玩！一键快速匹配全球玩家，或三两好友围坐一台电脑轮流掷骰，随时随地 1~8 人轻松开局，每个人读到的都是自己的母语。" },
         feat4: { title: "⚙️ 十九个旋钮，打造专属房规", desc: "经典竞速、冲刺博弈、气势滚雪球、蓄气腾云，更有 19 个深度旋钮的自定义模式，内置地狱西行、闪电局、抽一签等现成风味！" },
-        aboutTiles: ["西游记", "琵琶原声", "独立创作", "真情鸣谢"]
+        aboutTiles: ["西游记", "琵琶原声", "独立创作", "真情鸣谢"],
+        footer: {"steamStore": "Steam 商店", "contact": "联系我们 (support@marsparadin.com)", "privacy": "隐私政策与社区支持 (Privacy & Support)", "rights": "保留所有权利。", "titleSuffix": "《齐天大冲刺》"}
       },
 
       tc: {
@@ -1131,7 +1132,8 @@
         feat2: { title: "👹 十大妖王攔路，各懷絕技", desc: "三道險關守關妖王隨機降臨！有的逼你擲小，有的只認中庸，有的平局佔優。白骨精更會連變兩重化身——輸了？那就重整旗鼓再走一趟！" },
         feat3: { title: "🌏 天涯若比鄰，同桌各讀母語", desc: "全面支援 18 種語言同桌暢玩！一鍵快速配對全球玩家，或三兩好友圍坐一台電腦輪流擲骰，隨時隨地 1~8 人輕鬆開局，每個人讀到的都是自己的母語。" },
         feat4: { title: "⚙️ 十九個旋鈕，打造專屬房規", desc: "經典競速、衝刺博弈、氣勢滾雪球、蓄氣騰雲，更有 19 個深度旋鈕的自訂模式，內建地獄西行、閃電局、抽一籤等現成風味！" },
-        aboutTiles: ["西遊記", "琵琶原聲", "獨立創作", "真情鳴謝"]
+        aboutTiles: ["西遊記", "琵琶原聲", "獨立創作", "真情鳴謝"],
+        footer: {"steamStore": "Steam 商店", "contact": "聯繫我們 (support@marsparadin.com)", "privacy": "隱私政策與社區支援 (Privacy & Support)", "rights": "保留所有權利。", "titleSuffix": "《齊天大衝刺》"}
       },
 
       en: {
@@ -1154,7 +1156,8 @@
         feat2: { title: "👹 10 Mythical Demon Kings", desc: "Three perilous gates guarded by random demon lords who twist the dice rules. White Bone Demon even resurrects through two deceptive incarnations!" },
         feat3: { title: "🌏 18 Languages at One Table", desc: "Full native support for 18 languages! Quick matchmaking with worldwide players or local pass-around parties for 1–8 players, where everyone reads their native tongue." },
         feat4: { title: "⚙️ 19 Custom Dials & Presets", desc: "Classic Race, Push-Your-Luck, Momentum Snowball, Qi Surge, and a 19-dial Custom Mode with presets like Hell Road West, Blitz Run, and Draw a Lot!" },
-        aboutTiles: ["Journey to the West", "Live Pipa OST", "Solo Indie Dev", "Heartfelt Thanks"]
+        aboutTiles: ["Journey to the West", "Live Pipa OST", "Solo Indie Dev", "Heartfelt Thanks"],
+        footer: {"steamStore": "Steam Store", "contact": "Contact Us (support@marsparadin.com)", "privacy": "Privacy Policy & Support", "rights": "All rights reserved.", "titleSuffix": "《Westward Dash》"}
       },
 
       ja: {
@@ -1177,7 +1180,8 @@
         feat2: { title: "👹 立ちはだかる十柱の大妖怪", desc: "三つの難関には十大妖王がランダムで出現し、サイコロのルールを歪めます。白骨精は二度の変身で執拗に立ちふさがります！" },
         feat3: { title: "🌏 18言語で世界中の仲間と同卓", desc: "18言語に完全対応！世界中のプレイヤーと瞬時に対戦、または1台のPCを囲んで1〜8人で母国語のまま楽しめます。" },
         feat4: { title: "⚙️ 19のツマミで自由なハウスルール", desc: "王道レース、ハイリスクダッシュ、連勝ブースト、19のノブで設定できるカスタムモードを搭載！" },
-        aboutTiles: ["西遊記の記憶", "琵琶の生演奏", "個人インディー", "感謝と献辞"]
+        aboutTiles: ["西遊記の記憶", "琵琶の生演奏", "個人インディー", "感謝と献辞"],
+        footer: {"steamStore": "Steam ストア", "contact": "お問い合わせ (support@marsparadin.com)", "privacy": "プライバシーポリシー＆サポート", "rights": "All rights reserved. 無断転載を禁じます。", "titleSuffix": "《西遊記ダッシュ》"}
       },
 
       ko: {
@@ -1200,7 +1204,8 @@
         feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사위 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
         feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모국어로 함께 즐길 수 있습니다." },
         feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" },
-        aboutTiles: ["서유기 추억", "비파 실록", "1인 인디 개발", "진심 어린 감사"]
+        aboutTiles: ["서유기 추억", "비파 실록", "1인 인디 개발", "진심 어린 감사"],
+        footer: {"steamStore": "Steam 상점", "contact": "문의하기 (support@marsparadin.com)", "privacy": "개인정보 처리방침 및 지원", "rights": "모든 권리 보유.", "titleSuffix": "《서유 대질주》"}
       },
 
       fr: {
@@ -1223,7 +1228,8 @@
         feat2: { title: "👹 10 Rois Démons Mythiques", desc: "Trois Portes gardées par des Rois Démons qui tordent les règles des dés à leur avantage." },
         feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues pour jouer avec le monde entier dans votre langue maternelle." },
         feat4: { title: "⚙️ 19 Curseurs Personnalisés", desc: "Créez vos propres règles de maison avec 19 curseurs et des modes préconfigurés." },
-        aboutTiles: ["Pérégrination", "Pipa Vivante", "Création Solo", "Remerciements"]
+        aboutTiles: ["Pérégrination", "Pipa Vivante", "Création Solo", "Remerciements"],
+        footer: {"steamStore": "Boutique Steam", "contact": "Contactez-nous (support@marsparadin.com)", "privacy": "Politique de Confidentialité & Support", "rights": "Tous droits réservés.", "titleSuffix": "《Westward Dash》"}
       },
       
       de: {
@@ -1246,7 +1252,8 @@
         feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." },
         feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen – lokal oder online mit der Welt." },
         feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln für unvergessliche Spielabende." },
-        aboutTiles: ["Reise nach Westen", "Live-Pipa-OST", "Solo-Indie", "Danksagung"]
+        aboutTiles: ["Reise nach Westen", "Live-Pipa-OST", "Solo-Indie", "Danksagung"],
+        footer: {"steamStore": "Steam-Shop", "contact": "Kontakt (support@marsparadin.com)", "privacy": "Datenschutzerklärung & Support", "rights": "Alle Rechte vorbehalten.", "titleSuffix": "《Westward Dash》"}
       },
       
       es: {
@@ -1269,7 +1276,8 @@
         feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio." },
         feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas." },
         feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas." },
-        aboutTiles: ["Viaje al Oeste", "Pipa en Vivo", "Creación Indie", "Agradecimiento"]
+        aboutTiles: ["Viaje al Oeste", "Pipa en Vivo", "Creación Indie", "Agradecimiento"],
+        footer: {"steamStore": "Tienda de Steam", "contact": "Contáctanos (support@marsparadin.com)", "privacy": "Política de Privacidad y Soporte", "rights": "Todos los derechos reservados.", "titleSuffix": "《Westward Dash》"}
       },
       
       it: {
@@ -1292,7 +1300,8 @@
         feat2: { title: "👹 10 Re Demoni", desc: "Tre passi pericolosi difesi da possenti boss demoniaci." },
         feat3: { title: "🌏 18 Lingue allo Stesso Tavolo", desc: "Supporto nativo per 18 lingue per giocare con tutto il mondo." },
         feat4: { title: "⚙️ 19 Parametri Personalizzati", desc: "Crea le tue regole di casa ideali." },
-        aboutTiles: ["Viaggio in Occidente", "Pipa dal Vivo", "Sviluppo Solo", "Ringraziamenti"]
+        aboutTiles: ["Viaggio in Occidente", "Pipa dal Vivo", "Sviluppo Solo", "Ringraziamenti"],
+        footer: {"steamStore": "Negozio di Steam", "contact": "Contattaci (support@marsparadin.com)", "privacy": "Informativa sulla Privacy e Supporto", "rights": "Tutti i diritti riservati.", "titleSuffix": "《Westward Dash》"}
       },
       
       pt: {
@@ -1315,7 +1324,8 @@
         feat2: { title: "👹 10 Reis Demônios Míticos", desc: "Três passagens perigosas guardadas por chefes lendários." },
         feat3: { title: "🌏 18 Idiomas na Mesma Mesa", desc: "Suporte completo a 18 línguas." },
         feat4: { title: "⚙️ 19 Seletores Personalizados", desc: "Crie regras exclusivas para sua mesa de jogo." },
-        aboutTiles: ["Jornada ao Oeste", "Pipa ao Vivo", "Criação Solo", "Agradecimentos"]
+        aboutTiles: ["Jornada ao Oeste", "Pipa ao Vivo", "Criação Solo", "Agradecimentos"],
+        footer: {"steamStore": "Loja Steam", "contact": "Fale Conosco (support@marsparadin.com)", "privacy": "Política de Privacidade e Suporte", "rights": "Todos os direitos reservados.", "titleSuffix": "《Westward Dash》"}
       },
       
       ru: {
@@ -1338,7 +1348,8 @@
         feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов." },
         feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры со всем миром." },
         feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила." },
-        aboutTiles: ["Путешествие на Запад", "Живая пипа", "Инди-проект", "Благодарность"]
+        aboutTiles: ["Путешествие на Запад", "Живая пипа", "Инди-проект", "Благодарность"],
+        footer: {"steamStore": "Магазин Steam", "contact": "Связаться с нами (support@marsparadin.com)", "privacy": "Политика конфиденциальности и поддержка", "rights": "Все права защищены.", "titleSuffix": "《Бросок на Запад》"}
       },
       
       pl: {
@@ -1361,7 +1372,8 @@
         feat2: { title: "👹 10 Mitycznych Królów Demonów", desc: "Trzy niebezpieczne bramy strzeżone przez potężne demony." },
         feat3: { title: "🌏 18 Języków przy Jednym Stole", desc: "Graj z całym światem we własnym języku ojczystym." },
         feat4: { title: "⚙️ 19 Suwaków Własnych Zasad", desc: "Dostosuj reguły gry idealnie pod swoją ekipę." },
-        aboutTiles: ["Wędrówka na Zachód", "Pipa na Żywo", "Twórca Solo", "Podziękowania"]
+        aboutTiles: ["Wędrówka na Zachód", "Pipa na Żywo", "Twórca Solo", "Podziękowania"],
+        footer: {"steamStore": "Sklep Steam", "contact": "Kontakt (support@marsparadin.com)", "privacy": "Polityka Prywatności i Wsparcie", "rights": "Wszelkie prawa zastrzeżone.", "titleSuffix": "《Westward Dash》"}
       },
       
       cs: {
@@ -1384,7 +1396,8 @@
         feat2: { title: "👹 10 Mýtických Démonických Králů", desc: "Tři nebezpečné průsmyky hlídané mocnými démony." },
         feat3: { title: "🌏 18 Jazyků u Jednoho Stolu", desc: "Plná podpora 18 jazyků pro hraní s celým světem." },
         feat4: { title: "⚙️ 19 Vlastních Posuvníků", desc: "Vytvořte si vlastní domácí pravidla." },
-        aboutTiles: ["Putování na západ", "Živá Pipa", "Sólo Tvorba", "Poděkování"]
+        aboutTiles: ["Putování na západ", "Živá Pipa", "Sólo Tvorba", "Poděkování"],
+        footer: {"steamStore": "Obchod Steam", "contact": "Kontakt (support@marsparadin.com)", "privacy": "Zásady ochrany osobních údajů a podpora", "rights": "Všechna práva vyhrazena.", "titleSuffix": "《Westward Dash》"}
       },
       
       uk: {
@@ -1407,7 +1420,8 @@
         feat2: { title: "👹 10 Міфічних Царів Демонів", desc: "Три небезпечні застави охороняються владиками демонів." },
         feat3: { title: "🌏 18 Мов за Одним Столом", desc: "Повна підтримка 18 мов для гри з усім світом." },
         feat4: { title: "⚙️ 19 Власних Параметрів", desc: "Створюйте власні правила." },
-        aboutTiles: ["Подорож на Захід", "Жива піпа", "Соло-проєкт", "Подяка"]
+        aboutTiles: ["Подорож на Захід", "Жива піпа", "Соло-проєкт", "Подяка"],
+        footer: {"steamStore": "Магазин Steam", "contact": "Зв'язатися з нами (support@marsparadin.com)", "privacy": "Політика конфіденційності та підтримка", "rights": "Усі права захищені.", "titleSuffix": "《Кидок на Захід》"}
       },
       
       tr: {
@@ -1430,7 +1444,8 @@
         feat2: { title: "👹 10 Efsanevi İblis Kralı", desc: "Zar kurallarını büken güçlü bölüm sonu canavarları." },
         feat3: { title: "🌏 Aynı Masada 18 Dil Desteği", desc: "Tüm dünyayla kendi ana dilinizde oynayın." },
         feat4: { title: "⚙️ 19 Özel Kural Ayarı", desc: "Kendi masa kurallarınızı oluşturun." },
-        aboutTiles: ["Batıya Yolculuk", "Canlı Pipa", "Bağımsız Yapım", "Teşekkürler"]
+        aboutTiles: ["Batıya Yolculuk", "Canlı Pipa", "Bağımsız Yapım", "Teşekkürler"],
+        footer: {"steamStore": "Steam Mağazası", "contact": "İletişim (support@marsparadin.com)", "privacy": "Gizlilik Politikası ve Destek", "rights": "Tüm hakları saklıdır.", "titleSuffix": "《Westward Dash》"}
       },
       
       th: {
@@ -1453,7 +1468,8 @@
         feat2: { title: "👹 10 พญามารในตำนาน", desc: "สามด่านอันตรายที่มีราชาปีศาจคอยบิดเบือนกฎลูกเต๋า" },
         feat3: { title: "🌏 18 ภาษาในโต๊ะเดียวกัน", desc: "รองรับ 18 ภาษาให้ทุกคนสนุกไปด้วยกันในภาษาแม่" },
         feat4: { title: "⚙️ 19 ปุ่มปรับแต่งกฎเฉพาะตัว", desc: "สร้างกฎประจำบ้านของคุณเองได้อย่างอิสระ" },
-        aboutTiles: ["ความทรงจำไซอิ๋ว", "ดนตรีผีผาสด", "ผู้สร้างเดี่ยว", "คำขอบคุณ"]
+        aboutTiles: ["ความทรงจำไซอิ๋ว", "ดนตรีผีผาสด", "ผู้สร้างเดี่ยว", "คำขอบคุณ"],
+        footer: {"steamStore": "ร้านค้า Steam", "contact": "ติดต่อเรา (support@marsparadin.com)", "privacy": "นโยบายความเป็นส่วนตัวและการสนับสนุน", "rights": "สงวนลิขสิทธิ์ทั้งหมด", "titleSuffix": "《ตะลุยไซอิ๋ว》"}
       },
       
       vi: {
@@ -1476,7 +1492,8 @@
         feat2: { title: "👹 10 Yêu Vương Thần Thoại Chặn Đường", desc: "Ba ải hiểm trở trấn giữ bởi các đại yêu vương." },
         feat3: { title: "🌏 18 Ngôn Ngữ Cùng Bàn Chơi", desc: "Hỗ trợ 18 ngôn ngữ bản địa hóa hoàn chỉnh." },
         feat4: { title: "⚙️ 19 Tùy Chỉnh Luật Riêng", desc: "Tự do thiết lập phòng chơi độc nhất vô nhị." },
-        aboutTiles: ["Tây Du Ký Tuổi Thơ", "Tỳ Bà Trực Tiếp", "Tác Phẩm Độc Lập", "Lời Tri Ân"]
+        aboutTiles: ["Tây Du Ký Tuổi Thơ", "Tỳ Bà Trực Tiếp", "Tác Phẩm Độc Lập", "Lời Tri Ân"],
+        footer: {"steamStore": "Cửa Hàng Steam", "contact": "Liên Hệ (support@marsparadin.com)", "privacy": "Chính Sách Bảo Mật & Hỗ Trợ", "rights": "Bảo lưu mọi quyền.", "titleSuffix": "《Tây Du Đại Xung Phong》"}
       },
       
       id: {
@@ -1499,7 +1516,8 @@
         feat2: { title: "👹 10 Raja Iblis Legendaris", desc: "Tiga gerbang berbahaya yang dijaga oleh raja siluman sakti." },
         feat3: { title: "🌏 18 Bahasa di Satu Meja", desc: "Dukungan penuh 18 bahasa." },
         feat4: { title: "⚙️ 19 Tombol Pengaturan Khusus", desc: "Ciptakan aturan main khas meja Anda sendiri." },
-        aboutTiles: ["Perjalanan ke Barat", "Pipa Langsung", "Karya Solo Indie", "Terima Kasih"]
+        aboutTiles: ["Perjalanan ke Barat", "Pipa Langsung", "Karya Solo Indie", "Terima Kasih"],
+        footer: {"steamStore": "Toko Steam", "contact": "Hubungi Kami (support@marsparadin.com)", "privacy": "Kebijakan Privasi & Dukungan", "rights": "Hak cipta dilindungi undang-undang.", "titleSuffix": "《Westward Dash》"}
       }
     };
 
@@ -2330,6 +2348,20 @@
         const p = pilgrimsData[i];
         const el = document.getElementById('tokenLabel' + i);
         if (el) el.textContent = p.names[langCode] || p.names['en'];
+      }
+
+      // Update Footer Localization
+      if (data.footer) {
+        const elSteam = document.getElementById('footerSteamStore');
+        if (elSteam) elSteam.textContent = data.footer.steamStore;
+        const elContact = document.getElementById('footerContact');
+        if (elContact) elContact.textContent = data.footer.contact;
+        const elPrivacy = document.getElementById('footerPrivacy');
+        if (elPrivacy) elPrivacy.textContent = data.footer.privacy;
+        const elCopyright = document.getElementById('footerCopyright');
+        if (elCopyright) {
+          elCopyright.innerHTML = `&copy; 2026 Mars Paladin LLC. <span id="footerRights">${data.footer.rights}</span> ${data.footer.titleSuffix}`;
+        }
       }
 
       // Refresh Stages
