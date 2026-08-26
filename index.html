@@ -655,7 +655,7 @@
     /* About 4 Tiles Navigation & Stage (四项全部大图置于最左侧，故事在右侧，18 语完整本土化) */
     .about-tiles-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
       margin-bottom: 30px;
     }
@@ -776,13 +776,13 @@
       .pilgrim-showcase-stage { grid-template-columns: 1fr; text-align: center; }
       .pilgrim-details { text-align: center; }
       .pilgrim-name-row { justify-content: center; }
-      .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
+      .tokens-selector-grid { grid-template-columns: repeat(5, 1fr); }
       .features-list-grid { grid-template-columns: 1fr; }
       .about-tiles-grid { grid-template-columns: repeat(2, 1fr); }
       .about-detail-stage { grid-template-columns: 1fr; text-align: center; }
     }
     @media (max-width: 600px) {
-      .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
+      .tokens-selector-grid { grid-template-columns: repeat(5, 1fr); }
       .lang-menu { grid-template-columns: 1fr; }
       .btn-music-toggle span:last-child { display: none; }
     }
@@ -1026,16 +1026,20 @@
               <div class="about-tile-title" id="aboutTileTitle0">西游记</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(1, this)">
-              <div class="about-tile-icon">🪕</div>
-              <div class="about-tile-title" id="aboutTileTitle1">琵琶原声</div>
+              <div class="about-tile-icon">🖌️</div>
+              <div class="about-tile-title" id="aboutTileTitle1">水墨画</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(2, this)">
-              <div class="about-tile-icon">🎮</div>
-              <div class="about-tile-title" id="aboutTileTitle2">独立创作</div>
+              <div class="about-tile-icon">🪕</div>
+              <div class="about-tile-title" id="aboutTileTitle2">琵琶原声</div>
             </div>
             <div class="about-tile-btn" onclick="switchAboutTile(3, this)">
+              <div class="about-tile-icon">🎮</div>
+              <div class="about-tile-title" id="aboutTileTitle3">独立创作</div>
+            </div>
+            <div class="about-tile-btn" onclick="switchAboutTile(4, this)">
               <div class="about-tile-icon">🙏</div>
-              <div class="about-tile-title" id="aboutTileTitle3">真情鸣谢</div>
+              <div class="about-tile-title" id="aboutTileTitle4">真情鸣谢</div>
             </div>
           </div>
 
@@ -1043,9 +1047,10 @@
           <div class="about-detail-stage">
             <div class="about-visual-box">
               <img id="aboutStageImg0" src="assets/cover.png" alt="西游记" class="about-stage-img active" loading="eager">
-              <img id="aboutStageImg1" src="assets/Pipa.png" alt="琵琶原声" class="about-stage-img" loading="eager">
-              <img id="aboutStageImg2" src="assets/marspaladin_logo.png" alt="独立创作" class="about-stage-img" loading="eager">
-              <img id="aboutStageImg3" src="assets/thanks_wall.png" alt="真情鸣谢" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg1" src="assets/InkWash.png" alt="水墨画" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg2" src="assets/Pipa.png" alt="琵琶原声" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg3" src="assets/marspaladin_logo.png" alt="独立创作" class="about-stage-img" loading="eager">
+              <img id="aboutStageImg4" src="assets/thanks_wall.png" alt="真情鸣谢" class="about-stage-img" loading="eager">
             </div>
 
             <div class="about-detail-text">
@@ -1148,12 +1153,7 @@
       "title": "⚙️ 四种官方模式，外加随心定制",
       "desc": "喜欢纯粹竞速可选经典模式；追求心跳抉择可选博一程；连击让你连胜滚雪球、步步生风；蓄气则能让你积攒真气腾云驾雾。更有 19 个深度旋钮的【自定义模式】，还内置地狱西行、闪电局、抽一签三档现成风味，完全由你定制属于你们的专属“房规”！"
     },
-    "aboutTiles": [
-      "西游记",
-      "琵琶原声",
-      "独立创作",
-      "真情鸣谢"
-    ],
+    "aboutTiles": ["西游记", "水墨画", "琵琶原声", "独立创作", "真情鸣谢"],
     "footer": {
       "steamStore": "Steam 商店",
       "contact": "联系我们",
@@ -1217,12 +1217,7 @@
       "title": "⚙️ 四種官方模式，外加隨心自訂",
       "desc": "喜歡純粹競速可選經典模式；追求心跳抉擇可選博一程；連擊讓你連戰滾雪球、步步生風；蓄氣則能讓你積攢真氣騰雲駕霧。更有 19 個深度旋鈕的【自訂模式】，還內建地獄西行、閃電局、抽一籤三檔現成風味，完全由你打造屬於你們的專屬「房規」！"
     },
-    "aboutTiles": [
-      "西遊記",
-      "琵琶原聲",
-      "獨立創作",
-      "真情鳴謝"
-    ],
+    "aboutTiles": ["西遊記", "水墨畫", "琵琶原聲", "獨立創作", "真情鳴謝"],
     "footer": {
       "steamStore": "Steam 商店",
       "contact": "聯繫我們",
@@ -1286,12 +1281,7 @@
       "title": "⚙️ Four Official Modes — Plus Rules All Your Own",
       "desc": "For a pure race, pick Classic. For heartbeat decisions, pick One-shot. Streak snowballs your winning runs until every step has wind under it, and Charge lets you gather Qi and ride the clouds. Then there is Custom mode with 19 deep dials — shipping with three ready-made flavors, \"Hell Road West\", \"Blitz Run\" and \"Draw a Lot\" — so you can tune the exact house rules your table calls its own."
     },
-    "aboutTiles": [
-      "Journey to the West",
-      "Live Pipa OST",
-      "Solo Indie Dev",
-      "Heartfelt Thanks"
-    ],
+    "aboutTiles": ["Journey to the West", "Ink Wash Art", "Live Pipa OST", "Solo Indie Dev", "Heartfelt Thanks"],
     "footer": {
       "steamStore": "Steam Store",
       "contact": "Contact Us",
@@ -1355,12 +1345,7 @@
       "title": "⚙️ 公式モードは四つ、さらに思いのままのカスタム",
       "desc": "純粋なレースが好きならクラシックモード。胸の高鳴る決断を求めるなら「一発勝負」モード。「連撃」モードは勝ち続けるほど雪だるま式に勢いが増し、チャージモードは気を練り上げて雲に乗り、空を駆けます。さらに19個の奥深いつまみを備えた「カスタムモード」には、地獄の西行・電光石火・おみくじという三つの出来合いの味付けも内蔵——あなたたちだけの「ハウスルール」を、思いのままに仕立ててください！"
     },
-    "aboutTiles": [
-      "西遊記の記憶",
-      "琵琶の生演奏",
-      "個人インディー",
-      "感謝と献辞"
-    ],
+    "aboutTiles": ["西遊記の記憶", "水墨画の美", "琵琶の生演奏", "個人インディー", "感謝と献辞"],
     "footer": {
       "steamStore": "Steam ストア",
       "contact": "お問い合わせ",
@@ -1424,12 +1409,7 @@
       "title": "⚙️ 네 가지 공식 모드, 그리고 마음대로 커스텀",
       "desc": "순수한 레이스를 좋아한다면 클래식 모드, 심장 뛰는 선택을 원한다면 '한 방' 모드. '콤보' 모드는 이길수록 눈덩이처럼 기세가 붙고, 충전 모드는 기를 가득 모아 구름을 타고 날아오릅니다. 여기에 19개의 깊이 있는 다이얼을 갖춘 \"커스텀 모드\"에는 지옥의 서행, 번개 한 판, 제비뽑기 세 가지 기성 프리셋까지 내장 — 여러분만의 \"하우스 룰\"을 마음껏 빚어 보세요!"
     },
-    "aboutTiles": [
-      "서유기 추억",
-      "비파 실록",
-      "1인 인디 개발",
-      "진심 어린 감사"
-    ],
+    "aboutTiles": ["서유기의 기억", "수묵화의 미학", "비파 생연주", "1인 인디 개발", "진심 어린 감사"],
     "footer": {
       "steamStore": "Steam 상점",
       "contact": "문의하기",
@@ -1493,12 +1473,7 @@
       "title": "⚙️ Quatre modes officiels, plus un sur mesure",
       "desc": "Envie de course pure ? Mode Classique. De choix qui font battre le cœur ? Mode Coup de dés. Le mode Combo fait boule de neige à chaque victoire et vous donne des ailes ; le mode Charge vous laisse accumuler du Qi pour chevaucher les nuages. Et le mode Personnalisé, avec ses 19 manettes de réglage en profondeur, embarque trois recettes toutes prêtes — Enfer, Éclair et Au Sort — pour composer les « règles maison » de votre tablée !"
     },
-    "aboutTiles": [
-      "Pérégrination",
-      "Pipa Vivante",
-      "Création Solo",
-      "Remerciements"
-    ],
+    "aboutTiles": ["Pèlerinage vers l'Ouest", "Peinture au lavis", "Pipa authentique", "Création solo", "Remerciements"],
     "footer": {
       "steamStore": "Boutique Steam",
       "contact": "Contactez-nous",
@@ -1562,12 +1537,7 @@
       "title": "⚙️ Vier offizielle Modi, und dazu freies Schrauben",
       "desc": "Wer das pure Wettrennen liebt, wählt Klassisch; wer Entscheidungen mit Herzklopfen sucht, greift zu Alles oder nichts. Kombo lässt Siegesserien zum Schneeball anwachsen und gibt dir Rückenwind bei jedem Schritt; Qi-Ladung sammelt wahres Qi, bis du auf Wolken davonreitest. Und der Modus Eigene Regeln bietet 19 Stellschrauben in der Tiefe, dazu drei fertige Rezepte — Höllenweg, Blitzlauf und Losentscheid: Baut euch eure ganz eigenen „Hausregeln“!"
     },
-    "aboutTiles": [
-      "Reise nach Westen",
-      "Live-Pipa-OST",
-      "Solo-Indie",
-      "Danksagung"
-    ],
+    "aboutTiles": ["Die Reise nach Westen", "Tuschemalerei", "Live-Pipa-Soundtrack", "Solo-Entwicklung", "Danksagung"],
     "footer": {
       "steamStore": "Steam-Shop",
       "contact": "Kontakt",
@@ -1631,12 +1601,7 @@
       "title": "⚙️ Cuatro modos oficiales, y otro a tu medida",
       "desc": "¿Carrera pura? Modo Clásico. ¿Decisiones con el corazón en un puño? Todo o Nada. En el modo Combo, las victorias encadenadas crecen como bola de nieve y te dan alas; en Carga de Qi acumulas energía para surcar las nubes. Y el modo Personalizado, con 19 diales de profundidad, trae además tres sabores listos para jugar: Ruta Infernal, Relámpago y A Suertes. ¡Diseña las «reglas de la casa» exclusivas de tu grupo!"
     },
-    "aboutTiles": [
-      "Viaje al Oeste",
-      "Pipa en Vivo",
-      "Creación Indie",
-      "Agradecimiento"
-    ],
+    "aboutTiles": ["Viaje al Oeste", "Pintura a la tinta", "Banda sonora de pipa", "Desarrollo indie", "Agradecimientos"],
     "footer": {
       "steamStore": "Tienda de Steam",
       "contact": "Contáctanos",
@@ -1700,12 +1665,7 @@
       "title": "⚙️ Quattro modalità ufficiali, più una su misura",
       "desc": "Ami la corsa pura? Modalità Classica. Cerchi decisioni col cuore in gola? Un colpo solo. In modalità Combo le vittorie in serie fanno valanga e ti mettono le ali ai piedi; in modalità Carica accumuli Qi per cavalcare le nuvole. E la modalità Personalizzata, con 19 manopole di regolazione, include tre ricette già pronte — Via Infernale, Fulmine e Sorteggio. Componi le «regole della casa» tutte del vostro tavolo!"
     },
-    "aboutTiles": [
-      "Viaggio in Occidente",
-      "Pipa dal Vivo",
-      "Sviluppo Solo",
-      "Ringraziamenti"
-    ],
+    "aboutTiles": ["Viaggio in Occidente", "Pittura a inchiostro", "Colonna sonora pipa", "Sviluppo indie", "Ringraziamenti"],
     "footer": {
       "steamStore": "Negozio di Steam",
       "contact": "Contattaci",
@@ -1769,12 +1729,7 @@
       "title": "⚙️ Quatro modos oficiais — e mais um do seu jeito",
       "desc": "Prefere corrida pura? Modo Clássico. Decisões de coração acelerado? Tiro Único. No modo Combo, vitórias em sequência viram bola de neve e dão vento aos seus passos; no modo Carga, você acumula Qi para cavalgar as nuvens. E o modo Personalizado, com 19 controles de profundidade, ainda traz três receitas prontas — Rota Infernal, Relâmpago e Tirar a Sorte. Monte as \"regras da casa\" exclusivas do seu grupo!"
     },
-    "aboutTiles": [
-      "Jornada ao Oeste",
-      "Pipa ao Vivo",
-      "Criação Solo",
-      "Agradecimentos"
-    ],
+    "aboutTiles": ["Jornada ao Oeste", "Pintura a nanquim", "Trilha de pipa", "Desenvolvimento solo", "Agradecimentos"],
     "footer": {
       "steamStore": "Loja Steam",
       "contact": "Fale Conosco",
@@ -1838,12 +1793,7 @@
       "title": "⚙️ Четыре официальных режима — и свои правила в придачу",
       "desc": "Любите чистую гонку — берите «Классику»; жаждете решений на грани — режим «Один рывок»; «Комбо» раскручивает победные серии как снежный ком, а «Заряд Ци» копит истинную ци, чтобы вознестись на облаке. А ещё есть режим «Свои правила» с 19 глубокими регуляторами и тремя готовыми наборами — «Дорога в ад», «Молния», «Жеребьёвка». Соберите свод домашних правил, который будет только вашим!"
     },
-    "aboutTiles": [
-      "Путешествие на Запад",
-      "Живая пипа",
-      "Инди-проект",
-      "Благодарность"
-    ],
+    "aboutTiles": ["Путешествие на Запад", "Живопись тушью", "Живая лютня пипа", "Соло-разработка", "Благодарности"],
     "footer": {
       "steamStore": "Магазин Steam",
       "contact": "Связаться с нами",
@@ -1907,12 +1857,7 @@
       "title": "⚙️ Cztery oficjalne tryby i reguły szyte na miarę",
       "desc": "Lubisz czysty wyścig — wybierz tryb Klasyczny; szukasz decyzji na krawędzi — tryb „Jeden rzut”; „Kombo” rozkręca serie zwycięstw jak kulę śnieżną, a „Ładowanie Qi” pozwala gromadzić prawdziwe qi i wzbijać się na obłoki. Do tego tryb „Własny” z 19 pokrętłami głębokiej regulacji i trzema gotowymi smakami: „Droga Piekła”, „Błyskawica”, „Losowanie”. Stwórzcie własny, tylko wasz regulamin domowy!"
     },
-    "aboutTiles": [
-      "Wędrówka na Zachód",
-      "Pipa na Żywo",
-      "Twórca Solo",
-      "Podziękowania"
-    ],
+    "aboutTiles": ["Wyprawa na Zachód", "Malarstwo tuszem", "Muzyka z lutni pipa", "Projekt solowy", "Podziękowania"],
     "footer": {
       "steamStore": "Sklep Steam",
       "contact": "Kontakt",
@@ -1976,12 +1921,7 @@
       "title": "⚙️ Čtyři oficiální režimy a ladění podle chuti",
       "desc": "Máte rádi čistý závod? Zvolte Klasiku. Toužíte po rozhodnutích, při nichž buší srdce? Zkuste Jeden spurt. Kombo nechá vaše vítězné série nabalovat se jako sněhová koule, krok za krokem s větrem v zádech; Nabíjení Čchi vám dovolí střádat pravé čchi a vznést se na oblacích. A k tomu režim Vlastní s 19 podrobnými přepínači, včetně tří hotových receptů — Pekelná cesta, Blesk a Losování. Sestavte si vlastní „domácí pravidla“!"
     },
-    "aboutTiles": [
-      "Putování na západ",
-      "Živá Pipa",
-      "Sólo Tvorba",
-      "Poděkování"
-    ],
+    "aboutTiles": ["Cesta na západ", "Tušová malba", "Živá pipa", "Sólo vývoj", "Poděkování"],
     "footer": {
       "steamStore": "Obchod Steam",
       "contact": "Kontakt",
@@ -2045,12 +1985,7 @@
       "title": "⚙️ Чотири офіційні режими — і власні правила на додачу",
       "desc": "Любите чисті перегони — беріть «Класику»; прагнете рішень на межі — режим «Один кидок»; «Комбо» розкручує переможні серії, мов снігову кулю, а «Заряд Ці» накопичує істинну ці, щоб злетіти на хмарі. А ще є режим «Власний» із 19 глибокими регуляторами й трьома готовими наборами — «У пекло», «Блискавка», «Жереб». Складіть звід домашніх правил, який буде тільки вашим!"
     },
-    "aboutTiles": [
-      "Подорож на Захід",
-      "Жива піпа",
-      "Соло-проєкт",
-      "Подяка"
-    ],
+    "aboutTiles": ["Подорож на Захід", "Живопис тушшю", "Жива лютна піпа", "Соло-розробка", "Подяки"],
     "footer": {
       "steamStore": "Магазин Steam",
       "contact": "Зв'язатися з нами",
@@ -2114,12 +2049,7 @@
       "title": "⚙️ Dört resmî mod, üstüne gönlünce özelleştirme",
       "desc": "Saf yarış seviyorsan Klasik modu seç; yürek hoplatan kararlar istiyorsan \"Tek Atış\" modunu; \"Kombo\" galibiyet serilerini kartopu gibi büyütür, \"Ki Şarjı\" ise gerçek ki biriktirip bulutlara binmeni sağlar. Üstelik 19 derin ayar düğmeli \"Özel\" mod da var; içinde \"Cehennem\", \"Yıldırım\", \"Kura Çek\" adlı üç hazır tarif seni bekliyor. Kendi masanızın \"ev kurallarını\" tamamen kendiniz yazın!"
     },
-    "aboutTiles": [
-      "Batıya Yolculuk",
-      "Canlı Pipa",
-      "Bağımsız Yapım",
-      "Teşekkürler"
-    ],
+    "aboutTiles": ["Batı'ya Yolculuk", "Mürekkep Resmi", "Canlı Pipa Müziği", "Bağımsız Yapım", "Teşekkürler"],
     "footer": {
       "steamStore": "Steam Mağazası",
       "contact": "İletişim",
@@ -2183,12 +2113,7 @@
       "title": "⚙️ สี่โหมดหลักจากผู้พัฒนา บวกโหมดปรับแต่งได้ตามใจ",
       "desc": "ชอบแข่งความเร็วล้วน ๆ เลือกโหมดคลาสสิก อยากได้จังหวะตัดสินใจเร้าใจ เลือกโหมดลุยทีเดียว โหมดคอมโบให้ชัยชนะต่อเนื่องทบต้นดั่งหิมะกลิ้ง ยิ่งชนะยิ่งแรง ส่วนโหมดสะสมชี่ให้คุณเก็บพลังชี่ไว้เหาะขี่เมฆ และยังมีโหมดกำหนดเองพร้อมปุ่มปรับเชิงลึกถึง 19 จุด แถมสามสูตรสำเร็จติดเครื่องมาให้: เส้นทางนรก สายฟ้า และจับสลาก ให้คุณออกแบบ “กติกาประจำโต๊ะ” ของแก๊งคุณเองได้เต็มที่!"
     },
-    "aboutTiles": [
-      "ความทรงจำไซอิ๋ว",
-      "ดนตรีผีผาสด",
-      "ผู้สร้างเดี่ยว",
-      "คำขอบคุณ"
-    ],
+    "aboutTiles": ["ไซอิ๋วแดนประจิม", "ภาพวาดหมึกจีน", "ดนตรีสดผีผา", "ผลงานอินดี้เดี่ยว", "คำขอบคุณ"],
     "footer": {
       "steamStore": "ร้านค้า Steam",
       "contact": "ติดต่อเรา",
@@ -2252,12 +2177,7 @@
       "title": "⚙️ Bốn chế độ chính thức, thêm tùy chỉnh thỏa thích",
       "desc": "Thích đua tốc độ thuần túy, chọn chế độ Kinh Điển; mê những quyết định nghẹt thở, chọn Bứt Tốc; Liên Kích cho chuỗi thắng của bạn lăn cầu tuyết, càng đi càng hăng; Tích Khí lại cho bạn dồn chân khí để đằng vân giá vũ. Còn có chế độ Tùy Chỉnh với 19 núm tinh chỉnh chuyên sâu, kèm sẵn ba hương vị pha chế sẵn: Đường Địa Ngục, Chớp Nhoáng, Rút Thăm — hoàn toàn do bạn nhào nặn bộ “luật nhà” của riêng hội mình!"
     },
-    "aboutTiles": [
-      "Tây Du Ký Tuổi Thơ",
-      "Tỳ Bà Trực Tiếp",
-      "Tác Phẩm Độc Lập",
-      "Lời Tri Ân"
-    ],
+    "aboutTiles": ["Tây Du Ký", "Tranh Thủy Mặc", "Đàn Tỳ Bà thực thu", "Độc hành sáng tạo", "Tri ân chân thành"],
     "footer": {
       "steamStore": "Cửa Hàng Steam",
       "contact": "Liên Hệ",
@@ -2321,12 +2241,7 @@
       "title": "⚙️ Empat mode resmi, plus racikan sesukamu",
       "desc": "Suka balapan murni, pilih mode Klasik; mengejar keputusan yang memacu jantung, pilih Sekali Pukul; Kombo membuat rentetan kemenanganmu menggelinding bak bola salju, makin menang makin kencang; sedangkan Isi Qi membiarkanmu menabung Qi untuk melesat menunggang awan. Masih ada mode Kustom dengan 19 kenop pengaturan mendalam, lengkap dengan tiga racikan siap pakai: Jalan Neraka, Kilat, dan Cabut Undi — sepenuhnya terserah kamu meracik “aturan rumah” milik kalian sendiri!"
     },
-    "aboutTiles": [
-      "Perjalanan ke Barat",
-      "Pipa Langsung",
-      "Karya Solo Indie",
-      "Terima Kasih"
-    ],
+    "aboutTiles": ["Kisah Perjalanan ke Barat", "Lukisan Tinta", "Musik Pipa Langsung", "Pengembang Solo", "Terima Kasih"],
     "footer": {
       "steamStore": "Toko Steam",
       "contact": "Hubungi Kami",
@@ -3577,6 +3492,89 @@
         }
       },
       {
+      "img": "assets/InkWash.png",
+      "titles": {
+            "zh": "文房四宝，方寸水墨",
+            "tc": "文房四寶，方寸水墨",
+            "en": "Ink Wash Art & The Four Treasures",
+            "ja": "文房四宝と水墨画の美学",
+            "ko": "문방사우와 수묵화의 미학",
+            "fr": "L'art du lavis et les Quatre Trésors",
+            "de": "Tuschekunst & Die Vier Schätze",
+            "es": "Pintura a la tinta y los Cuatro Tesoros",
+            "it": "Arte dell'inchiostro e i Quattro Tesori",
+            "pt": "A arte do nanquim e os Quatro Tesouros",
+            "ru": "Живопись тушью и Четыре сокровища",
+            "pl": "Sztuka tuszu i Cztery Skarby",
+            "cs": "Tušová malba a Čtyři poklady",
+            "uk": "Мистецтво туші та Чотири скарби",
+            "tr": "Mürekkep Sanatı ve Dört Hazine",
+            "th": "ศิลปะหมึกจีนและสมบัติทั้งสี่",
+            "vi": "Nghệ thuật thủy mặc & Văn phòng tứ bảo",
+            "id": "Seni Lukis Tinta & Empat Harta"
+      },
+      "desc1": {
+            "zh": "“传统水墨画，根植于笔、墨、纸、砚文房四宝。执笔泼墨，水晕墨章于宣纸之上，研磨出千年的东方气韵。”",
+            "tc": "“傳統水墨畫，根植於筆、墨、紙、硯文房四寶。執筆潑墨，水暈墨章於宣紙之上，研磨出千年的東方氣韻。”",
+            "en": "“Rooted in the Four Treasures of the Study — brush, ink, paper, and inkstone — traditional Chinese ink wash art turns simple tools into timeless spirit.”",
+            "ja": "「伝統的な水墨画は、文房四宝（筆・墨・紙・硯）にその根を置いています。筆を執り墨を走らせ、宣紙の上に豊かな滲みを描き出すことで、千年の東洋の気韻を磨き出します。」",
+            "ko": "“전통 수묵화는 붓, 먹, 종이, 벼루의 문방사우에 그 뿌리를 두고 있습니다. 붓을 들어 먹을 흩뿌리고 화선지 위에 수묵의 농담을 그리며 천년의 동양적 기운을 담아냅니다.”",
+            "fr": "« Ancrée dans les Quatre Trésors du Lettré — pinceau, encre, papier et pierre à encre — la peinture traditionnelle au lavis transforme des outils simples en esprit intemporel. »",
+            "de": "„Verwurzelt in den Vier Schätzen des Gelehrtenzimmers – Pinsel, Tusche, Papier und Reibstein – verwandelt die traditionelle Tuschemalerei einfache Werkzeuge in zeitlosen Geist.“",
+            "es": "«Arraigada en los Cuatro Tesoros del Estudio — pincel, tinta, papel y piedra de tinta — la pintura tradicional convierte herramientas simples en espíritu atemporal.»",
+            "it": "«Radicata nei Quattro Tesori dello Studio — pennello, inchiostro, carta e pietra per macinare — l'arte tradizionale trasforma strumenti semplici in uno spirito senza tempo.»",
+            "pt": "«Enraizada nos Quatro Tesouros do Estúdio — pincel, tinta, papel e pedra de tinta — a arte tradicional transforma ferramentas simples em espírito atemporal.»",
+            "ru": "«Корнями уходит к «Четырём драгоценностям кабинета» — кисти, туши, бумаге и тушечнице. Традиционная живопись тушью превращает простые инструменты в вечный дух.»",
+            "pl": "«Zakorzenione w Czterech Skarbach Gabinetu Uczonego — pędzlu, tuszu, papierze i kamieniu do tuszu — tradycyjne malarstwo zamienia proste narzędzia w ponadczasowego ducha.»",
+            "cs": "«Zakořeněná ve čtyřech pokladech studovny – štětci, tuši, papíru a tušidlu – proměňuje tradiční tušová malba prosté nástroje v nadčasového ducha.»",
+            "uk": "«Корениться в «чотирьох скарбах кабінету» — пензлі, туші, папері та розтиральному камені. Традиційний живопис тушшю перетворює прості знаряддя на позачасовий дух.»",
+            "tr": "«Çalışma Odasının Dört Hazinesi'nde köklenir — fırça, mürekkep, kağıt ve mürekkep taşı — geleneksel mürekkep sanatı sıradan araçları zamansız bir ruha dönüştürür.»",
+            "th": "«หยั่งรากลึกจาก \"สมบัติทั้งสี่แห่งห้องหนังสือ\" - พู่กัน หมึก กระดาษ และแท่นฝนหมึก ศิลปะภาพวาดหมึกจีนเปลี่ยนเครื่องมือธรรมดาให้กลายเป็นจิตวิญญาณอันเป็นนิรันดร์»",
+            "vi": "“Bắt nguồn từ Văn Phòng Tứ Bảo — bút, mực, giấy, nghiên — nghệ thuật thủy mặc truyền thống biến những công cụ giản đơn thành tinh thần vượt thời gian.”",
+            "id": "«Berakar dari Empat Harta Ruang Belajar — kuas, tinta, kertas, dan batu tinta — seni lukis tinta mengubah alat sederhana menjadi jiwa abadi.»"
+      },
+      "desc2": {
+            "zh": "它讲究「墨分五色，计白当黑」，不求形似之工，但求神韵之达，于方寸之间演化出天地万象与西行奇境。",
+            "tc": "它講究「墨分五色，計白當黑」，不求形似之工，但求神韻之達，於方寸之間演化出天地萬象與西行奇境。",
+            "en": "Guided by water and defined by ink, it masters the \"five shades of ink\" and the poetic wisdom of negative space, capturing the soulful essence of the mythical journey upon the canvas.",
+            "ja": "「墨に五彩あり（墨分五色）」や「計白当黒（余白の美）」を重んじ、形の写実を超えて神韻の表現を極め、わずかな紙面の中に天地万象を紡ぎ出します。",
+            "ko": "묵분오색(墨分五色)과 계백당흑(計白當黑, 여백의 미)을 바탕으로, 겉모습의 정교함보다는 신운(神韻)의 경지를 추구하며 작은 공간 속에 천지만물을 펼쳐냅니다.",
+            "fr": "Guidée par l'eau et définie par l'encre, elle maîtrise les « cinq teintes de l'encre » et la sagesse poétique du vide, capturant l'essence même de l'épopée.",
+            "de": "Von Wasser geführt und von Tusche geformt, beherrscht sie die „fünf Schattierungen der Tusche“ und die Weisheit der Leerräume, um das beseelte Wesen des Weges einzufangen.",
+            "es": "Guiada por el agua y definida por la tinta, domina los «cinco matices de la tinta» y la sabiduría poética del espacio vacío.",
+            "it": "Guidata dall'acqua e definita dall'inchiostro, padroneggia le «cinque tonalità dell'inchiostro» e la saggezza poetica dello spazio vuoto.",
+            "pt": "Guiada pela água e definida pela tinta, domina os «cinco tons de tinta» e a sabedoria poética do espaço vazio.",
+            "ru": "Ведомая водой и очерченная тушью, она владеет «пятью оттенками туши» и поэтической мудростью пустого пространства.",
+            "pl": "Prowadzone wodą i określane tuszem, opanowuje „pięć odcieni tuszu” oraz poetycką mądrość pustej przestrzeni.",
+            "cs": "Vedena vodou a formována tuší, ovládá „pět odstínů tuše“ i básnickou moudrost prázdného prostoru.",
+            "uk": "Ведений водою і визначений тушшю, він володіє «п'ятьма відтінками туші» та поетичною мудрістю порожнечі.",
+            "tr": "Su ile yönlenip mürekkeple biçimlenir; \"mürekkebin beş tonu\"nda ve boş uzamın şiirsel bilgeliğinde ustalaşır.",
+            "th": "ด้วยน้ำเป็นผู้นำทางและหมึกเป็นผู้กำหนดรูป มันเชี่ยวชาญ \"หมึกห้าเฉดสี\" และปรัชญาบทกวีแห่งพื้นที่ว่าง",
+            "vi": "Lấy nước dẫn đường, lấy mực định hình, tinh thông \"mực chia năm sắc\" và cái khôn ngoan đầy chất thơ của khoảng trống.",
+            "id": "Dituntun oleh air dan dibentuk oleh tinta, menguasai \"lima corak tinta\" dan kearifan puitis ruang kosong."
+      },
+      "authors": {
+            "zh": "—— 逍遥子",
+            "tc": "—— 逍遙子",
+            "en": "— xiaoyaozi",
+            "ja": "— 逍遥子",
+            "ko": "— 소요자",
+            "fr": "— xiaoyaozi",
+            "de": "— xiaoyaozi",
+            "es": "— xiaoyaozi",
+            "it": "— xiaoyaozi",
+            "pt": "— xiaoyaozi",
+            "ru": "— xiaoyaozi",
+            "pl": "— xiaoyaozi",
+            "cs": "— xiaoyaozi",
+            "uk": "— xiaoyaozi",
+            "tr": "— xiaoyaozi",
+            "th": "— xiaoyaozi",
+            "vi": "— xiaoyaozi",
+            "id": "— xiaoyaozi"
+      }
+},
+      {
         img: "assets/Pipa.png",
         titles: {
           zh: "琵琶原声实录，真情伴奏",
@@ -4075,7 +4073,7 @@
       'assets/player_4.png', 'assets/player_5.png', 'assets/player_6.png', 'assets/player_7.png',
       'assets/token_0.png', 'assets/token_1.png', 'assets/token_2.png', 'assets/token_3.png',
       'assets/token_4.png', 'assets/token_5.png', 'assets/token_6.png', 'assets/token_7.png',
-      'assets/cover.png', 'assets/Pipa.png', 'assets/marspaladin_logo.png', 'assets/thanks_wall.png',
+      'assets/cover.png', 'assets/InkWash.png', 'assets/Pipa.png', 'assets/marspaladin_logo.png', 'assets/thanks_wall.png',
       'assets/capsule_zh.jpg', 'assets/capsule_en.jpg'
     ];
     ASSETS_TO_CACHE.forEach(src => {
