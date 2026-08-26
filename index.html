@@ -50,15 +50,21 @@
       position: relative;
     }
 
-    /* Ambient Hero Background with Ink-Wash Artwork */
+    /* In-Game Cover Painting Backdrop (游戏主界面真实水墨画原图) */
     .bg-mural {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('assets/cover.png') no-repeat center top / cover;
+      opacity: 0.28;
+      filter: saturate(0.85) contrast(1.1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-gradient-overlay {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 1100px;
-      background: url('assets/hero_bg.jpg') no-repeat center top / cover;
-      opacity: 0.32;
-      filter: saturate(0.8) contrast(1.15);
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      top: 0; left: 0; width: 100%; height: 1200px;
+      background: linear-gradient(to bottom, rgba(8,6,5,0.2) 0%, rgba(8,6,5,0.7) 60%, rgba(8,6,5,1) 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -760,8 +766,9 @@
 </head>
 <body>
 
-  <!-- Ambient Ink Background -->
+  <!-- In-game Main Menu Cover Art Backdrop -->
   <div class="bg-mural"></div>
+  <div class="bg-gradient-overlay"></div>
 
   <!-- Silk Navigation Bar -->
   <header>
@@ -1181,149 +1188,251 @@
           performed: "연주: 링루장"
         },
         press: { title: "크리에이터 & 미디어 지원", desc: "스트리머, 유튜버, 게임 전문 기자를 위한 고해상도 리소스 및 리뷰 키를 지원합니다." }
-      },
-
-      fr: {
-        flag: "🇫🇷", name: "Français", titleImg: "assets/TitleFR.png",
-        nav: { pilgrims: "8 Pèlerins", features: "Modes de Jeu", music: "Pipa en Direct", press: "Kit Presse", wishlist: "★ Liste de Souhaits" },
-        hero: {
-          tag: "🎲 Jeu de Plateau & Course à l'Encre pour 1 à 8 Joueurs · Solo & En Ligne",
-          desc: "1 à 8 joueurs dans une course trépidante à l'encre de Chine inspirée du Pèlerinage vers l'Ouest ! Chaque pas recèle un péril, chaque lancer de dé fait battre le cœur.",
-          wishlist: "★ Ajouter à la Liste de Souhaits Steam",
-          explore: "Explorer le Guide du Pavillon ↓",
-          tags: ["🎲 Jeu de Plateau", "⚔️ Stratégie PvP", "🖌️ Encre de Chine", "🌐 18 Langues"],
-          platform: "Plateforme : <strong>Steam (PC & Mac)</strong>",
-          release: "Sortie : <strong>Automne 2026</strong>"
-        },
-        tabs: { pilgrims: "8 Pions Pèlerins", features: "Règles & Modes", music: "Hommage au Pipa", press: "Kit Presse & Médias" },
-        pilgrimsHeader: { title: "Huit Pèlerins aux Pouvoirs Uniques", sub: "Cliquez sur un pion en bois ci-dessous pour découvrir son illustration à l'encre et ses pouvoirs." },
-        featuresHeader: { title: "Compendium de l'Ouest · Règles et Modes", sub: "De la course classique aux 19 curseurs personnalisés, chaque voyage offre de nouveaux défis." },
-        feat1: { title: "🎲 Tentez votre chance ou jouez la sécurité", desc: "Franchir les cases sécurisées vous propulse en avant, mais échouer entraîne de lourdes pénalités !" },
-        feat2: { title: "👹 Dix Rois Démons Mythiques", desc: "Trois portes périlleuses gardées par des rois démons qui tordent les règles des dés." },
-        feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues pour jouer avec le monde entier dans votre langue maternelle." },
-        feat4: { title: "⚙️ 19 Curseurs & Préréglages Personnalisés", desc: "Créez vos propres règles de maison avec 19 curseurs modulables." },
-        music: {
-          title: "Bande-son Enregistrée au Pipa",
-          desc1: "Les mélodies de pipa ont été enregistrées en direct par Lingrujiang, l'épouse de l'auteur.",
-          desc2: "Dédié à tous ceux qui ont partagé des lancers de dés autour d'une table.",
-          author: "— Xiaoyaozi (Mars Paladin)",
-          badge: "Enregistrement Authentique au Pipa",
-          performed: "Interprété par Lingrujiang"
-        },
-        press: { title: "Kit Presse & Créateurs", desc: "Créateurs de contenu, streamers et journalistes, contactez-nous pour obtenir des clés de test." }
-      },
-
-      de: {
-        flag: "🇩🇪", name: "Deutsch", titleImg: "assets/TitleDE.png",
-        nav: { pilgrims: "8 Pilger", features: "Spielmodi", music: "Live-Pipa", press: "Pressemappe", wishlist: "★ Wunschliste" },
-        hero: {
-          tag: "🎲 Tuschmalerei-Brettspiel-Wettrennen für 1–8 Spieler · Solo & Online",
-          desc: "Erlebe nostalgische Brettspiel-Erinnerungen für 1–8 Spieler im stimmungsvollen Tuschmalerei-Stil der Reise nach Westen! Bis zum letzten Feld ist nichts entschieden.",
-          wishlist: "★ Auf Steam zur Wunschliste hinzufügen",
-          explore: "Schriftrollen-Handbuch ansehen ↓",
-          tags: ["🎲 Partyspiel", "⚔️ PvP-Strategie", "🖌️ Tuschmalerei", "🌐 18 Sprachen"],
-          platform: "Plattform: <strong>Steam (PC & Mac)</strong>",
-          release: "Erscheinungstermin: <strong>Herbst 2026</strong>"
-        },
-        tabs: { pilgrims: "8 Pilger-Spielfiguren", features: "Regeln & Modi", music: "Live-Pipa-Hommage", press: "Pressemappe & Medien" },
-        pilgrimsHeader: { title: "Acht Pilger, unendliche Kräfte", sub: "Klicke auf eine Holzfigur, um Porträts und Fähigkeiten anzusehen." },
-        featuresHeader: { title: "Westliches Kompendium · Regeln & Modi", sub: "Vom klassischen Wettrennen bis zu 19 individuellen Reglern." },
-        feat1: { title: "🎲 Risiko oder Sicherheit?", desc: "Sichere Würfe katapultieren dich vorwärts; Fehltritte fordern ihren Tribut!" },
-        feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." },
-        feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen – lokal oder online mit der Welt." },
-        feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln für unvergessliche Spielabende." },
-        music: {
-          title: "Live eingespielter Pipa-Soundtrack",
-          desc1: "Alle Pipa-Hauptmelodien wurden von Lingrujiang, der Ehefrau des Autors, live eingespielt.",
-          desc2: "Allen gewidmet, die jemals gemeinsam am Tisch gewürfelt haben.",
-          author: "— Xiaoyaozi (Mars Paladin)",
-          badge: "Authentische Live-Pipa-Aufnahme",
-          performed: "Gespielt von Lingrujiang"
-        },
-        press: { title: "Pressemappe & Medienkontakt", desc: "Streamer, YouTuber und Journalisten können jederzeit Testmuster anfordern." }
-      },
-
-      es: {
-        flag: "🇪🇸", name: "Español", titleImg: "assets/TitleES.png",
-        nav: { pilgrims: "8 Peregrinos", features: "Modos de Juego", music: "Pipa en Vivo", press: "Kit de Prensa", wishlist: "★ Lista de Deseos" },
-        hero: {
-          tag: "🎲 Juego de Tablero y Carreras al Estilo Aguada para 1–8 Jugadores · Solo y Online",
-          desc: "¡Revive la emoción de los juegos de mesa de la infancia! Carreras de 1 a 8 jugadores con arte tradicional al estilo tinta china. ¡La victoria no se decide hasta la última casilla!",
-          wishlist: "★ Añadir a la Lista de Deseos de Steam",
-          explore: "Explorar la Guía del Pabellón ↓",
-          tags: ["🎲 Juego de Mesa", "⚔️ Estrategia PvP", "🖌️ Arte en Tinta", "🌐 18 Idiomas"],
-          platform: "Plataforma: <strong>Steam (PC & Mac)</strong>",
-          release: "Lanzamiento: <strong>Otoño de 2026</strong>"
-        },
-        tabs: { pilgrims: "8 Fichas de Peregrinos", features: "Reglas y Modos", music: "Homenaje de Pipa", press: "Kit de Prensa" },
-        pilgrimsHeader: { title: "Ocho Peregrinos con Poderes Únicos", sub: "Haz clic en cualquier ficha de madera para ver su retrato en tinta y sus habilidades." },
-        featuresHeader: { title: "Compendio del Oeste · Reglas y Modos", sub: "Desde carreras clásicas hasta 19 ajustes personalizados." },
-        feat1: { title: "🎲 ¿Asegurar o arriesgar?", desc: "Superar las casillas seguras te impulsa hacia adelante, ¡pero fallar conlleva duras penalizaciones!" },
-        feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio que distorsionan las tiradas." },
-        feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas para disfrutar con amigos de todo el mundo." },
-        feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas para partidas únicas." },
-        music: {
-          title: "Banda Sonora Grabada en Vivo con Pipa",
-          desc1: "Las melodías principales de pipa fueron interpretadas y grabadas en vivo por Lingrujiang, esposa del autor.",
-          desc2: "Dedicado a todos los que alguna vez compartieron una partida de dados con nosotros.",
-          author: "— Xiaoyaozi (Mars Paladin)",
-          badge: "Grabación Auténtica de Pipa en Vivo",
-          performed: "Interpretado por Lingrujiang"
-        },
-        press: { title: "Kit de Prensa y Creadores", desc: "Streamers, YouTubers y periodistas pueden contactarnos para obtener claves de prueba." }
-      },
-
-      ru: {
-        flag: "🇷🇺", name: "Русский", titleImg: "assets/TitleRU.png",
-        nav: { pilgrims: "8 Паломников", features: "Режимы игры", music: "Живая пипа", press: "Пресс-кит", wishlist: "★ В список желаемого" },
-        hero: {
-          tag: "🎲 Настольная гонка в стиле тушевой живописи для 1–8 игроков · Одиночная и онлайн",
-          desc: "Окунитесь в воспоминания детства с настольной гонкой по мотивам «Путешествия на Запад» для 1–8 игроков! Каждый бросок костей держит в напряжении до самой последней клетки!",
-          wishlist: "★ Добавить в список желаемого Steam",
-          explore: "Открыть свитки руководства ↓",
-          tags: ["🎲 Настольная игра", "⚔️ PvP-стратегия", "🖌️ Живопись тушью", "🌐 18 языков"],
-          platform: "Платформа: <strong>Steam (PC & Mac)</strong>",
-          release: "Выход: <strong>Осень 2026</strong>"
-        },
-        tabs: { pilgrims: "8 Фигурок паломников", features: "Правила и режимы", music: "Живая музыка пипы", press: "Пресс-кит и медиа" },
-        pilgrimsHeader: { title: "Восемь паломников с уникальными способностями", sub: "Нажмите на деревянную фигурку, чтобы просмотреть портрет тушью и навыки персонажа." },
-        featuresHeader: { title: "Западный свод · Правила и режимы", sub: "От классических гонок до 19 глубоких параметров настройки." },
-        feat1: { title: "🎲 Рискнуть или остановиться?", desc: "Успешный рывок продвигает далеко вперед, но неудача оборачивается штрафом!" },
-        feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов, искажающими правила костей." },
-        feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры с друзьями со всего мира на их родном языке." },
-        feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила для идеальных вечеров с друзьями." },
-        music: {
-          title: "Саундтрек, записанный на традиционной пипе",
-          desc1: "Все главные мелодии на пипе были исполнены и записаны вживую супругой автора, Линжуцзян.",
-          desc2: "Посвящается всем, кто когда-либо бросал кости за одним столом в детстве.",
-          author: "— Сяояоцзы (Mars Paladin)",
-          badge: "Аутентичная живая запись пипы",
-          performed: "Исполнитель: Линжуцзян"
-        },
-        press: { title: "Пресс-кит для создателей контента", desc: "Стримеры, видеоблогеры и журналисты могут связаться с нами для получения ключей." }
       }
     };
+
+    // Complete 8 Pilgrims Full Data (Multi-Language Supported)
+    const pilgrimsData = [
+      {
+        id: 0,
+        en: "MONKEY KING",
+        names: { zh: "孙悟空", tc: "孫悟空", en: "Monkey King", ja: "孫悟空", ko: "손오공" },
+        taglines: { zh: "火眼金睛 · 威震群妖", tc: "火眼金睛 · 威震群妖", en: "Dauntless Sage · Demon Bane", ja: "火眼金睛 · 妖魔を圧倒", ko: "화안금정 · 요괴를 제압" },
+        lores: {
+          zh: "一眼看破妖法，金箍棒横扫千军。自带对妖王战力加成，被直接攻击时强力还击，是西行路上一往无前的开路先锋。",
+          tc: "一眼看破妖法，金箍棒橫掃千軍。自帶對妖王戰力加成，被直接攻擊時強力還擊，是西行路上一往無前的開路先鋒。",
+          en: "Sees through all illusions with piercing golden eyes. Boasts built-in edge against demon lords and counter-attacks when assaulted.",
+          ja: "妖術を一目で見破り、如意棒で群がる敵を討ち払う。妖怪との勝負に強く、直接攻撃を受けると手痛い反撃を見舞う。",
+          ko: "요술을 한눈에 간파하고 여의봉으로 요괴를 쓸어버립니다. 요왕과의 대결에 유리하며 직접 공격을 받으면 강력하게 반격합니다."
+        },
+        skill1Title: { zh: "【绝技】威震群妖", tc: "【絕技】威震群妖", en: "【Skill】Dauntless Sage", ja: "【絶技】威震群妖", ko: "【절기】위진군요" },
+        skill1Desc: {
+          zh: "遭遇精怪与守关妖王时自动看破破绽，胜率天然拔高，绝不易在险关翻车。",
+          tc: "遭遇精怪與守關妖王時自動看破破綻，勝率天然拔高，絕不易在險關翻車。",
+          en: "Automatically exploits demon weaknesses at perils, significantly boosting victory odds against all bosses.",
+          ja: "道中の妖怪やボスの隙を突き、勝率が大幅に上昇して難関を突破しやすくなります。",
+          ko: "요괴 및 관문 요왕과의 조우 시 약점을 간파하여 승률이 대폭 상승합니다."
+        },
+        skill2Title: { zh: "【被动】一棒还击", tc: "【被動】一棒還擊", en: "【Passive】Counter Strike", ja: "【パッシブ】一撃の反撃", ko: "【패시브】일봉반격" },
+        skill2Desc: {
+          zh: "遭受对手直接攻击法宝或道具袭击时自动反震，将袭击者击退 2 格。",
+          tc: "遭受對手直接攻擊法寶或道具襲擊時自動反震，將襲擊者擊退 2 格。",
+          en: "When hit directly by an offensive relic or item, shocks the attacker and knocks them back 2 tiles.",
+          ja: "相手から直接攻撃の法宝やアイテムを受けた際、衝撃波で相手を2マス後退させます。",
+          ko: "상대방의 직접 공격 아이템이나 법보에 피격당할 시 공격자를 2칸 밀어냅니다."
+        }
+      },
+      {
+        id: 1,
+        en: "PIGSY",
+        names: { zh: "猪八戒", tc: "豬八戒", en: "Pigsy", ja: "猪八戒", ko: "저팔계" },
+        taglines: { zh: "逢宴必饱 · 大智若愚", tc: "逢宴必飽 · 大智若愚", en: "Glutton's Feast · Carefree Stride", ja: "宴会満腹 · 大智若愚", ko: "봉연필포 · 대지원우" },
+        lores: {
+          zh: "走到哪吃到哪，逢宴必多吃一口。看似步调懒散荒诞，却能在一次次饱腹与大快朵颐中化劣势为胜机。",
+          tc: "走到哪吃到哪，逢宴必多吃一口。看似步調懶散荒誕，卻能在一次次飽腹與大快朵頤中化劣勢為勝機。",
+          en: "Eats to his heart's content wherever he goes. Turns hearty banquets into extra momentum and shrugs off setbacks with thick skin.",
+          ja: "どこへ行っても食べ歩き、宴会があれば人一倍食べる。怠け者に見えて、満腹の力を借りて不利を覆す。",
+          ko: "발길 닿는 곳마다 배를 채우는 먹보. 느긋해 보이지만 잔치에서 얻은 기운으로 판세를 뒤집습니다."
+        },
+        skill1Title: { zh: "【绝技】逢宴必饱", tc: "【絕技】逢宴必飽", en: "【Skill】Glutton's Feast", ja: "【絶技】宴会満腹", ko: "【절기】봉연필포" },
+        skill1Desc: {
+          zh: "路过盛宴格与仙桃点位额外获得前进点数，吃得越多跑得越快。",
+          tc: "路過盛宴格與仙桃點位額外獲得前進點數，吃得越多跑得越快。",
+          en: "Gains bonus advance tiles when landing on or passing feast and peach cells.",
+          ja: "宴会や仙桃のマスを通過する際、追加の一歩を獲得して加速します。",
+          ko: "연회 칸이나 선도 복숭아 칸을 지날 때 추가 이동 보너스를 획득합니다."
+        },
+        skill2Title: { zh: "【被动】随遇而安", tc: "【被動】隨遇而安", en: "【Passive】Thick Skin", ja: "【パッシブ】能天気", ko: "【패시브】수우이안" },
+        skill2Desc: {
+          zh: "受部分路途险阻与后退事件影响大幅减轻，皮糙肉厚，百折不挠。",
+          tc: "受部分路途險阻與後退事件影響大幅減輕，皮糙肉厚，百折不撓。",
+          en: "Significantly cushions penalty setbacks from trail hazards and misfortune events.",
+          ja: "道のりの罠や後退イベントによる影響を大幅に軽減し、タフに進み続けます。",
+          ko: "도로의 험난한 함정이나 후퇴 이벤트로 인한 패널티를 크게 완화합니다."
+        }
+      },
+      {
+        id: 2,
+        en: "SANDY",
+        names: { zh: "沙僧", tc: "沙僧", en: "Sandy", ja: "沙悟浄", ko: "사오정" },
+        taglines: { zh: "负重前行 · 铁骨铮铮", tc: "負重前行 · 鐵骨錚錚", en: "Iron Porter · Unyielding Base", ja: "重荷前進 · 堅実無比", ko: "부중전행 · 철골정정" },
+        lores: {
+          zh: "挑着担子默默走在最前面。性情沉稳，总能扛下别人吃不消的重击，永远是整个队伍最坚如磐石的后盾。",
+          tc: "挑著擔子默默走在最前面。性情沉穩，總能扛下別人吃不消的重擊，永遠是整個隊伍最堅如磐石的後盾。",
+          en: "Quietly carries the heavy luggage. Incredibly steady and resilient, bouncing back stronger from harsh setbacks.",
+          ja: "重い荷物を背負い黙々と歩む。堅実で打たれ強く、仲間が耐えられない打撃も受け止める頼れる盾。",
+          ko: "묵묵히 짐을 메고 행렬을 이끕니다. 묵직하고 흔들림 없어 팀의 가장 든든한 버팀목이 됩니다."
+        },
+        skill1Title: { zh: "【绝技】负重前行", tc: "【絕技】負重前行", en: "【Skill】Iron Porter", ja: "【絶技】重荷前進", ko: "【절기】부중전행" },
+        skill1Desc: {
+          zh: "遭遇大退步或严重挫折时触发坚韧反弹，绝不一蹶不振。",
+          tc: "遭遇大退步或嚴重挫折時觸發堅韌反彈，絕不一蹶不振。",
+          en: "Whenever suffering severe setbacks or forced retreats, triggers a resolute counter-rebound forward.",
+          ja: "大きな後退や重い挫折に見舞われた際、粘り強い反動で前進を取り戻します。",
+          ko: "치명적인 후퇴나 큰 패널티를 겪을 때 불굴의 탄력으로 반등합니다."
+        },
+        skill2Title: { zh: "【被动】金身稳步", tc: "【被動】金身穩步", en: "【Passive】Indomitable Step", ja: "【パッシブ】金身の歩み", ko: "【패시브】금신온보" },
+        skill2Desc: {
+          zh: "步伐坚实稳健，对突发陷阱与路障具有极高抵抗力。",
+          tc: "步伐堅實穩健，對突發陷阱與路障具有極高抵抗力。",
+          en: "Possesses natural resilience against sudden hazard cells and roadblocks.",
+          ja: "一歩一歩が揺るぎなく、突発的な罠や障害物に対して高い耐性を発揮します。",
+          ko: "발걸음이 묵직하여 돌발 함정과 장애물에 높은 저항력을 발휘합니다."
+        }
+      },
+      {
+        id: 3,
+        en: "TRIPITAKA",
+        names: { zh: "唐僧", tc: "唐僧", en: "Tripitaka", ja: "三蔵法師", ko: "삼장법사" },
+        taglines: { zh: "佛光普照 · 慈悲为怀", tc: "佛光普照 · 慈悲為懷", en: "Holy Ward · Resilient Zen", ja: "佛光普照 · 慈悲の心", ko: "불광보조 · 자비위회" },
+        lores: {
+          zh: "即便遭遇险阻也能化险为夷，以坚韧的禅心稳步向西行进。袈裟在身，妖邪退避，逢凶化吉。",
+          tc: "即便遭遇險阻也能化險為夷，以堅韌的禪心穩步向西行進。袈裟在身，妖邪退避，逢凶化吉。",
+          en: "Turns disasters into blessings through steadfast Zen faith. The sacred kasaya wards off deadly strikes from evil spirits.",
+          ja: "どんな苦難にも動じず、揺るがぬ禅の心で西を目指す。袈裟をまとい、魔を退け福を招く。",
+          ko: "위기 속에서도 침착함을 잃지 않는 고결한 스님. 가사의 가호로 요괴의 위협을 물리칩니다."
+        },
+        skill1Title: { zh: "【绝技】袈裟护体", tc: "【絕技】袈裟護體", en: "【Skill】Holy Ward", ja: "【絶技】袈裟の加護", ko: "【절기】가사호체" },
+        skill1Desc: {
+          zh: "佛光护佑，抵挡一次致命的妖王重击或毁灭性负面状态。",
+          tc: "佛光護佑，抵擋一次致命的妖王重擊或毀滅性負面狀態。",
+          en: "Summons divine light to completely absorb a lethal boss strike or devastating negative effect.",
+          ja: "仏の光が体を包み込み、致命的な妖怪の一撃や危険なデバフを一度完全に無効化します。",
+          ko: "부처의 가호로 치명적인 요왕의 일격이나 파멸적인 디버프를 1회 막아냅니다."
+        },
+        skill2Title: { zh: "【被动】禅心向西", tc: "【被動】禪心向西", en: "【Passive】Zen Grace", ja: "【パッシブ】西への祈り", ko: "【패시브】선심향서" },
+        skill2Desc: {
+          zh: "身处后方梯队时获得额外行进福报，落后时更容易迎头赶上。",
+          tc: "身處後方梯隊時獲得額外行進福報，落後時更容易迎頭趕上。",
+          en: "Receives spiritual blessings and bonus stride when trailing in the back ranks.",
+          ja: "後方に遅れている時、仏の導きを受けて追加の前進ボーナスを得やすくなります。",
+          ko: "후방에 뒤처져 있을 때 은혜를 받아 선두를 추격하기 쉬워집니다."
+        }
+      },
+      {
+        id: 4,
+        en: "WHITE DRAGON HORSE",
+        names: { zh: "白龙马", tc: "白龍馬", en: "White Dragon Horse", ja: "白竜馬", ko: "백룡마" },
+        taglines: { zh: "龙驹腾跃 · 瞬息千里", tc: "龍駒騰躍 · 瞬息千里", en: "Dragon Gallop · Wind Rider", ja: "竜駒飛翔 · 瞬息千里", ko: "용구등약 · 순식천리" },
+        lores: {
+          zh: "西海龙王三太子化身，腾云驾雾，龙行天下。在开阔平原与顺风局中速度无可匹敌，能一跃跨越天堑。",
+          tc: "西海龍王三太子化身，騰雲駕霧，龍行天下。在開闊平原與順風局中速度無可匹敵，能一躍跨越天塹。",
+          en: "The transformed dragon prince of the West Sea. Blazes across plains like lightning and leaps over chasm perils with unmatched speed.",
+          ja: "西海竜王の三太子が変じた白馬。雲を呼び風を操り、平原や追い風の局面では圧倒的な走力を誇る。",
+          ko: "서해 용왕 셋째 태자의 화신. 거침없는 질주로 평원과 순풍에서 독보적인 기동력을 자랑합니다."
+        },
+        skill1Title: { zh: "【绝技】龙驹腾跃", tc: "【絕技】龍駒騰躍", en: "【Skill】Dragon Gallop", ja: "【絶技】竜駒飛翔", ko: "【절기】용구등약" },
+        skill1Desc: {
+          zh: "顺风与连胜时触发极速飞驰，直接跨越前方的恶劣地貌与险境。",
+          tc: "順風與連勝時觸發極速飛馳，直接跨越前方的話劣地貌與險境。",
+          en: "Triggers lightning dash during win streaks, flying directly over dangerous terrain tiles.",
+          ja: "連勝時や追い風に乗った際、前方の危険な地形や罠を飛び越えて激走します。",
+          ko: "연승이나 순풍 시 폭발적인 도약으로 험난한 지형을 단숨에 뛰어넘습니다."
+        },
+        skill2Title: { zh: "【被动】踏水无痕", tc: "【被動】踏水無痕", en: "【Passive】Water Stride", ja: "【パッシブ】水上疾走", ko: "【패시브】답수무흔" },
+        skill2Desc: {
+          zh: "免疫河流与泥泞等减速地貌，步履如风。",
+          tc: "免疫河流與泥濘等減速地貌，步履如風。",
+          en: "Completely immune to slow penalties on river, bog, and swamp cells.",
+          ja: "川や泥沼などの減速トラップを完全に無視し、風のように軽やかに駆け抜けます。",
+          ko: "강이나 진흙 등 감속을 유발하는 지형을 무시하고 신속하게 달립니다."
+        }
+      },
+      {
+        id: 5,
+        en: "WU CHENG'EN",
+        names: { zh: "吴承恩", tc: "吳承恩", en: "Wu Cheng'en", ja: "呉承恩", ko: "오승은" },
+        taglines: { zh: "妙笔生花 · 著书立说", tc: "妙筆生花 · 著書立說", en: "Author's Quill · Master Plotter", ja: "妙筆生花 · 奇書執筆", ko: "묘필생화 · 저서립설" },
+        lores: {
+          zh: "西游记原著之执笔者。手中墨笔翻转乾坤，随手写下的一笔奇遇，就能瞬间改写整盘桌游的宿命走向。",
+          tc: "西遊記原著之執筆者。手中墨筆翻轉乾坤，隨手寫下的一筆奇遇，就能瞬間改寫整盤桌遊的宿命走向。",
+          en: "The visionary master who penned Journey to the West. Alters destiny with ink and quill, turning the board into his own narrative.",
+          ja: "『西遊記』の生みの親。その手にある筆は運命を紡ぎ、自ら描いた筋書きで盤上の波乱を操る。",
+          ko: "서유기의 원작 작가. 붓끝 하나로 운명을 쥐락펴락하며 자신만의 이야기로 판을 지배합니다."
+        },
+        skill1Title: { zh: "【绝技】妙笔生花", tc: "【絕技】妙筆生花", en: "【Skill】Author's Quill", ja: "【絶技】妙筆生花", ko: "【절기】묘필생화" },
+        skill1Desc: {
+          zh: "每隔数回合灵感涌现，随身自备法宝锦囊，运筹帷幄。",
+          tc: "每隔數回合靈感湧現，隨身自備法寶錦囊，運籌帷幄。",
+          en: "Gains bursts of inspiration every few turns, continuously generating useful secret relics.",
+          ja: "数ターンごとに閃きが湧き、強力な錦嚢法宝を自給自足して戦略の幅を広げます。",
+          ko: "주기적으로 영감이 번뜩여 유용한 비책과 법보를 스스로 조달합니다."
+        },
+        skill2Title: { zh: "【被动】乾坤在握", tc: "【被動】乾坤在握", en: "【Passive】Plot Armor", ja: "【パッシブ】盤上の筋書き", ko: "【패시브】건곤재악" },
+        skill2Desc: {
+          zh: "开局享有更丰富的奇遇与法宝储备，擅长在复杂局面中破局。",
+          tc: "開局享有更豐富的奇遇與法寶儲備，擅長在複雜局面中破局。",
+          en: "Begins the match with extra relic reserves and flexibility in tight dice duels.",
+          ja: "開始時から豊富なアイテムを持ち、緊迫したダイス勝負でも柔軟に対応できます。",
+          ko: "시작부터 풍부한 자원을 지니고 출발하여 위기 상황에서 유연하게 대처합니다."
+        }
+      },
+      {
+        id: 6,
+        en: "EARTH GOD",
+        names: { zh: "土地公", tc: "土地公", en: "Earth God", ja: "土地神", ko: "토지신" },
+        taglines: { zh: "缩地成寸 · 地行神通", tc: "縮地成寸 · 地行神通", en: "Earth Shortcut · Spirit Guide", ja: "縮地成寸 · 地脈の主", ko: "축지성촌 · 지행신통" },
+        lores: {
+          zh: "掌管一方水土的小神仙。对西行路上的每一寸土地、每一条暗道都了如指掌，总能在绝境中钻出一条捷径。",
+          tc: "掌管一方水土的小神仙。對西行路上的每一寸土地、每一條暗道都了如指掌，總能在絕境中鑽出一條捷徑。",
+          en: "The humble guardian deity of the soil. Knows every secret burrow and mountain path, sneaking through shortcuts when trailing behind.",
+          ja: "その土地を知り尽くした仙人。隠し通路や地脈に精通し、絶体絶命のピンチでも抜け道を見つけ出す。",
+          ko: "서행길 구석구석을 꿰뚫고 있는 토착 신선. 벼랑 끝에서도 비밀 샛길을 찾아냅니다."
+        },
+        skill1Title: { zh: "【绝技】缩地成寸", tc: "【絕技】縮地成寸", en: "【Skill】Earth Shortcut", ja: "【絶技】縮地成寸", ko: "【절기】축지성촌" },
+        skill1Desc: {
+          zh: "身处落后梯队时有概率发现地脉秘道，直接抄近路大幅赶超大部队。",
+          tc: "身處落後梯隊時有概率發現地脈秘道，直接抄近路大幅趕超大部隊。",
+          en: "When trailing behind, uncovers secret underground passages to warp forward.",
+          ja: "遅れをとっている時、秘密の地下道を掘り当てて一気に先頭集団へ追いつきます。",
+          ko: "뒤처져 있을 때 지맥의 샛길을 발견하여 선두 그룹으로 단숨에 도약합니다."
+        },
+        skill2Title: { zh: "【被动】灵验庇佑", tc: "【被動】靈驗庇佑", en: "【Passive】Local Blessing", ja: "【パッシブ】祠の恵み", ko: "【패시브】영험비우" },
+        skill2Desc: {
+          zh: "在土地庙、神龛与祈福格获得双倍福报与补给收益。",
+          tc: "在土地廟、神龕與祈福格獲得雙倍福報與補給收益。",
+          en: "Earns doubled blessings and rewards whenever visiting shrine and altar cells.",
+          ja: "祠や神殿のマスに止まった際、2倍の祝福やアイテム報酬を得られます。",
+          ko: "사당이나 제단 칸에 도달했을 때 2배의 축복과 보급품을 획득합니다."
+        }
+      },
+      {
+        id: 7,
+        en: "LITTLE IMP",
+        names: { zh: "小钻风", tc: "小鑽風", en: "Little Imp", ja: "小鑽風", ko: "소찬풍" },
+        taglines: { zh: "巡山鸣锣 · 狐假虎威", tc: "巡山鳴鑼 · 狐假虎威", en: "Mountain Patrol · Cunning Scout", ja: "巡山鳴鑼 · 虎の威を借る", ko: "순산명라 · 호가호위" },
+        lores: {
+          zh: "大王叫我来巡山！敲起铜锣狐假虎威，虽然胆小却精明滑头，总能在妖王与行者的夹缝中偷生得利。",
+          tc: "大王叫我來巡山！敲起銅鑼狐假虎威，雖然膽小卻精明滑頭，總能在妖王與行者的夾縫中偷生得利。",
+          en: "Patrols the mountain banging his brass gong! Small and cowardly yet remarkably cunning at slipping past harsh boss retributions.",
+          ja: "「大王の命で山回り！」銅鑼を鳴らして威張り散らすが、要領よく妖怪と旅人の間をすり抜ける。",
+          ko: "징을 울리며 산을 순찰하는 꾀돌이 요괴. 겁은 많지만 기회주의적인 영민함으로 위기를 모면합니다."
+        },
+        skill1Title: { zh: "【绝技】巡山鸣锣", tc: "【絕技】巡山鳴鑼", en: "【Skill】Mountain Patrol", ja: "【絶技】巡山鳴鑼", ko: "【절기】순산명라" },
+        skill1Desc: {
+          zh: "敲响铜锣制造混乱，扰乱周围对手的前进步伐与掷骰节奏。",
+          tc: "敲響銅鑼製造混亂，擾亂周圍對手的前進步伐與擲骰節奏。",
+          en: "Bangs the loud patrol gong to sow confusion and disrupt nearby opponents' dice pace.",
+          ja: "銅鑼を打ち鳴らして周囲を混乱させ、近くの対戦相手の進行ペースを狂わせます。",
+          ko: "징을 울려 소란을 피우고 주변 경쟁자들의 이동 리듬을 흐트러뜨립니다."
+        },
+        skill2Title: { zh: "【被动】见机溜号", tc: "【被動】見機溜號", en: "【Passive】Scout's Dodge", ja: "【パッシブ】素早い逃げ足", ko: "【패시브】견기유호" },
+        skill2Desc: {
+          zh: "遭遇妖王或险关时脚底抹油，极易避开最严厉的惩罚打击。",
+          tc: "遭遇妖王或險關時腳底抹油，極易避開最嚴厲的懲罰打擊。",
+          en: "Scurries away at perils, easily slipping past catastrophic boss penalties.",
+          ja: "強大なボスや難関に遭遇した際、いち早く逃げ出して重いペナルティを回避します。",
+          ko: "위험한 관문이나 요왕을 마주쳤을 때 재빠르게 도망쳐 엄중한 처벌을 피합니다."
+        }
+      }
+    ];
 
     // Current state
     let currentLang = 'zh';
     let currentPilgrim = 0;
 
-    // Characters definition
-    const charNames = {
-      zh: ["孙悟空", "猪八戒", "沙僧", "唐僧", "白龙马", "吴承恩", "土地公", "小钻风"],
-      tc: ["孫悟空", "豬八戒", "沙僧", "唐僧", "白龍馬", "吳承恩", "土地公", "小鑽風"],
-      en: ["Monkey King", "Pigsy", "Sandy", "Tripitaka", "White Dragon Horse", "Wu Cheng'en", "Earth God", "Little Imp"],
-      ja: ["孫悟空", "猪八戒", "沙悟浄", "三蔵法師", "白竜馬", "呉承恩", "土地神", "小鑽風"],
-      ko: ["손오공", "저팔계", "사오정", "삼장법사", "백룡마", "오승은", "토지신", "소찬풍"],
-      fr: ["Roi Singe", "Pigsy", "Sandy", "Tripitaka", "Cheval-Dragon", "Wu Cheng'en", "Dieu du Sol", "Petit Démon"],
-      de: ["Affenkönig", "Pigsy", "Sandy", "Tripitaka", "Drachenpferd", "Wu Cheng'en", "Erdgott", "Kleiner Kobold"],
-      es: ["Rey Mono", "Pigsy", "Sandy", "Tripitaka", "Caballo Dragón", "Wu Cheng'en", "Dios de la Tierra", "Pequeño Imp"],
-      ru: ["Царь Обезьян", "Чжу Бацзе", "Шасэн", "Сюаньцзан", "Белый Дракон-Конь", "У Чэнъэнь", "Бог Земли", "Маленький Бес"]
-    };
-
     function setLang(langCode) {
       if (!i18n[langCode]) {
-        // Fallback to English for other languages
         langCode = 'en';
       }
       currentLang = langCode;
@@ -1386,10 +1495,10 @@
       document.getElementById('pressDesc').textContent = data.press.desc;
 
       // Update Token Labels
-      const names = charNames[langCode] || charNames['en'];
       for (let i = 0; i < 8; i++) {
+        const p = pilgrimsData[i];
         const el = document.getElementById('tokenLabel' + i);
-        if (el) el.textContent = names[i];
+        if (el) el.textContent = p.names[langCode] || p.names['en'];
       }
 
       // Refresh current pilgrim stage
@@ -1416,12 +1525,18 @@
     }
 
     function refreshPilgrimStage() {
-      const names = charNames[currentLang] || charNames['en'];
-      const enNames = ["MONKEY KING", "PIGSY", "SANDY", "TRIPITAKA", "DRAGON HORSE", "WU CHENG'EN", "EARTH GOD", "LITTLE IMP"];
-      
+      const p = pilgrimsData[currentPilgrim];
+      const lang = currentLang;
+
       document.getElementById('pilgrimPortrait').src = "assets/player_" + currentPilgrim + ".png";
-      document.getElementById('pilgrimCnName').textContent = names[currentPilgrim];
-      document.getElementById('pilgrimEnName').textContent = enNames[currentPilgrim];
+      document.getElementById('pilgrimCnName').textContent = p.names[lang] || p.names['en'];
+      document.getElementById('pilgrimEnName').textContent = p.en;
+      document.getElementById('pilgrimTagline').textContent = p.taglines[lang] || p.taglines['en'];
+      document.getElementById('pilgrimLore').textContent = p.lores[lang] || p.lores['en'];
+      document.getElementById('skill1Title').textContent = p.skill1Title[lang] || p.skill1Title['en'];
+      document.getElementById('skill1Desc').textContent = p.skill1Desc[lang] || p.skill1Desc['en'];
+      document.getElementById('skill2Title').textContent = p.skill2Title[lang] || p.skill2Title['en'];
+      document.getElementById('skill2Desc').textContent = p.skill2Desc[lang] || p.skill2Desc['en'];
     }
 
     function switchTab(tabId, tabEl) {
