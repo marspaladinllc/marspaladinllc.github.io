@@ -1072,8 +1072,19 @@
 
       </div>
 
-    </div>
-  </section>
+  <style>
+    .footer-studio-link {
+      color: var(--gold-light) !important;
+      text-decoration: none !important;
+      border-bottom: 1px dotted rgba(223, 178, 86, 0.4) !important;
+      transition: all 0.2s;
+    }
+    .footer-studio-link:hover {
+      color: var(--gold-bright) !important;
+      border-bottom-color: var(--gold) !important;
+      text-shadow: 0 0 10px rgba(223, 178, 86, 0.5);
+    }
+  </style>
 
   <!-- Footer (18-Language Dynamic Localization) -->
   <footer>
@@ -1082,7 +1093,7 @@
       <a href="mailto:support@marspaladin.com" id="footerContact">联系我们 (support@marspaladin.com)</a>
       <a href="https://westwarddash.com/privacy.html" target="_blank" id="footerPrivacy">隐私政策与社区支持 (Privacy & Support)</a>
     </div>
-    <p id="footerCopyright">&copy; 2026 Mars Paladin LLC. <span id="footerRights">保留所有权利。</span> 《齐天大冲刺》</p>
+    <p id="footerCopyright">&copy; 2026 <a href="https://marspaladin.com" target="_blank" class="footer-studio-link">Mars Paladin LLC</a>. <span id="footerRights">保留所有权利。</span> 《齐天大冲刺》</p>
   </footer>
 
   <script>
@@ -3973,7 +3984,7 @@
         }
         const elCopyright = document.getElementById('footerCopyright');
         if (elCopyright) {
-          elCopyright.innerHTML = `&copy; 2026 Mars Paladin LLC. <span id="footerRights">${data.footer.rights}</span> ${data.footer.titleSuffix}`;
+          elCopyright.innerHTML = `&copy; 2026 <a href="https://marspaladin.com" target="_blank" class="footer-studio-link">Mars Paladin LLC</a>. <span id="footerRights">${data.footer.rights}</span> ${data.footer.titleSuffix}`;
         }
       }
 
