@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mars Paladin LLC — Official Game Studio Portal</title>
+<meta name="description" content="Mars Paladin LLC is an independent game studio crafting innovative, culturally resonant, and globally connected indie titles including Westward Dash (齐天大冲刺).">
+<meta name="theme-color" content="#080605">
+
+<!-- Open Graph / Facebook / Discord -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://westwarddash.com/studio.html">
+<meta property="og:title" content="Mars Paladin LLC — Official Game Studio Portal">
+<meta property="og:description" content="Crafting timeless play & living legends. Discover our games portfolio including Westward Dash.">
+<meta property="og:image" content="https://westwarddash.com/assets/capsule_en.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mars Paladin LLC — Official Game Studio Portal">
+<meta name="twitter:description" content="Crafting timeless play & living legends. Discover our games portfolio including Westward Dash.">
+<meta name="twitter:image" content="https://westwarddash.com/assets/capsule_en.jpg">
+
+<link rel="icon" type="image/png" href="assets/game_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Noto+Serif+KR:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #f5efe6;
+    --ink-dim: #b8ac9a;
+    --ink-muted: #736856;
+    --bg-deep: #080605;
+    --bg-card: #14100c;
+    --bg-card-hover: #1e1812;
+    --gold: #dfb256;
+    --gold-light: #fbe3a4;
+    --gold-bright: #ffe89e;
+    --gold-dark: #8c631b;
+    --vermilion: #cf3a24;
+    --silk-border: rgba(223, 178, 86, 0.28);
+    --silk-glow: 0 0 24px rgba(223, 178, 86, 0.16);
+    --steam-blue: #1075bd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--ink);
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    line-height: 1.85;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(223, 178, 86, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 10% 40%, rgba(207, 58, 36, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 90% 70%, rgba(223, 178, 86, 0.05) 0%, transparent 50%);
+  }
+
+  /* Top Silk Navbar */
+  header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8, 6, 5, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--silk-border);
+  }
+  .nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand-logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid var(--silk-border);
+    object-fit: cover;
+  }
+  .brand-title-text {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .nav-menu-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .nav-link {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-link:hover {
+    color: var(--gold-bright);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Button Styles */
+  .btn-steam-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
+    color: #fff !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 800;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(16, 117, 189, 0.4);
+    transition: all 0.25s;
+  }
+  .btn-steam-nav:hover {
+    background: linear-gradient(135deg, #1b90e0 0%, #2bb0ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 117, 189, 0.6);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: #080605 !important;
+    padding: 12px 28px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none !important;
+    border: 1px solid var(--gold-bright);
+    box-shadow: 0 4px 16px rgba(223, 178, 86, 0.35);
+    transition: all 0.25s;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(223, 178, 86, 0.5);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 17, 12, 0.8);
+    color: var(--gold-light) !important;
+    padding: 12px 26px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none !important;
+    border: 1px solid var(--silk-border);
+    transition: all 0.25s;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(35, 27, 19, 0.95);
+    color: var(--gold-bright) !important;
+    transform: translateY(-2px);
+  }
+
+  /* 18-Language Dropdown Menu */
+  .lang-dropdown-wrap { position: relative; }
+  .lang-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(22, 17, 12, 0.9);
+    border: 1px solid var(--silk-border);
+    color: var(--gold-light);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .lang-dropdown-btn:hover {
+    border-color: var(--gold);
+    background: rgba(35, 27, 19, 0.95);
+    color: var(--gold-bright);
+  }
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #14100c;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.95);
+    display: none;
+    grid-template-columns: repeat(2, 160px);
+    padding: 8px;
+    gap: 4px;
+    z-index: 2000;
+    max-height: 480px;
+    overflow-y: auto;
+    backdrop-filter: blur(16px);
+  }
+  .lang-menu.show { display: grid; animation: fadeIn 0.2s ease; }
+  .lang-item {
+    padding: 7px 10px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+    white-space: nowrap;
+    text-align: left;
+  }
+  .lang-item:hover, .lang-item.active {
+    background: rgba(223, 178, 86, 0.18);
+    color: var(--gold-bright);
+    font-weight: 700;
+  }
+
+  /* Main Container */
+  main {
+    max-width: 1060px;
+    width: 100%;
+    padding: 40px 20px 80px;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 60px 20px 70px;
+  }
+  .hero-tagline {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .hero-headline {
+    font-size: 38px;
+    color: var(--gold-light);
+    line-height: 1.35;
+    font-weight: 900;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-dim);
+    max-width: 720px;
+    margin: 0 auto 32px;
+    line-height: 1.8;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Section Titles */
+  .section-header {
+    margin: 50px 0 30px;
+    text-align: center;
+  }
+  .section-header h2 {
+    font-size: 26px;
+    color: var(--gold-light);
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .section-header p {
+    color: var(--ink-dim);
+    font-size: 15px;
+  }
+
+  /* Game Portfolio Grid */
+  .games-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    margin-bottom: 60px;
+  }
+  .game-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silk-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+  }
+  .game-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.9), var(--silk-glow);
+  }
+  .game-cover-box {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .game-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .game-card:hover .game-cover-img {
+    transform: scale(1.04);
+  }
+  .game-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .game-tag {
+    font-size: 12.5px;
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .game-title {
+    font-size: 22px;
+    color: var(--gold-light);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .game-desc {
+    font-size: 14.5px;
+    color: var(--ink-dim);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+  .game-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .badge {
+    font-size: 12px;
+    background: rgba(223, 178, 86, 0.1);
+    color: var(--gold-light);
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(223, 178, 86, 0.25);
+    font-weight: 600;
+  }
+  .game-card-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* 3 Pillars Section */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  .pillar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--silk-border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    transition: all 0.25s;
+  }
+  .pillar-card:hover {
+    border-color: var(--gold);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+  }
+  .pillar-card h3 {
+    font-size: 17px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+  .pillar-card p {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+  }
+
+  /* Contact & Press Hub */
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--silk-border);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    margin-bottom: 50px;
+  }
+  .contact-email-val {
+    font-family: 'Plus Jakarta Sans', monospace;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin: 12px 0 24px;
+  }
+
+  /* Footer */
+  footer {
+    width: 100%;
+    border-top: 1px solid var(--silk-border);
+    padding: 30px 20px;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 13.5px;
+  }
+  .footer-links {
+    margin-bottom: 10px;
+  }
+  .footer-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: var(--gold-bright);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .games-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .nav-menu-links { display: none; }
+    .hero-headline { font-size: 28px; }
+  }
+
+  @media (max-width: 600px) {
+    .lang-menu {
+      grid-template-columns: 1fr;
+      right: 0;
+      width: min(280px, calc(100vw - 32px));
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Silk Navigation Bar -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo-box">
+        <img src="assets/game_icon.png" alt="Mars Paladin LLC" class="brand-logo-img">
+        <span class="brand-title-text">Mars Paladin</span>
+      </a>
+
+      <div class="nav-menu-links">
+        <a href="#games" class="nav-link" id="navGames">游戏矩阵</a>
+        <a href="#about" class="nav-link" id="navAbout">关于工作室</a>
+        <a href="#contact" class="nav-link" id="navContact">联系与合作</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- 18-Language Dropdown Selector -->
+        <div class="lang-dropdown-wrap">
+          <button id="langBtn" class="lang-dropdown-btn" onclick="toggleLangMenu(event)">
+            <span id="currentFlag">🇨🇳</span>
+            <span id="currentLangName">简体中文</span>
+            <span style="font-size:10px; opacity:0.7;">▼</span>
+          </button>
+          <div id="langMenu" class="lang-menu">
+            <div class="lang-item" onclick="setLang('zh')">🇨🇳 简体中文</div>
+            <div class="lang-item" onclick="setLang('tc')">🇭🇰 繁體中文</div>
+            <div class="lang-item" onclick="setLang('en')">🇺🇸 English</div>
+            <div class="lang-item" onclick="setLang('ja')">🇯🇵 日本語</div>
+            <div class="lang-item" onclick="setLang('ko')">🇰🇷 한국어</div>
+            <div class="lang-item" onclick="setLang('fr')">🇫🇷 Français</div>
+            <div class="lang-item" onclick="setLang('de')">🇩🇪 Deutsch</div>
+            <div class="lang-item" onclick="setLang('es')">🇪🇸 Español</div>
+            <div class="lang-item" onclick="setLang('pt')">🇧🇷 Português</div>
+            <div class="lang-item" onclick="setLang('it')">🇮🇹 Italiano</div>
+            <div class="lang-item" onclick="setLang('ru')">🇷🇺 Русский</div>
+            <div class="lang-item" onclick="setLang('pl')">🇵🇱 Polski</div>
+            <div class="lang-item" onclick="setLang('cs')">🇨🇿 Čeština</div>
+            <div class="lang-item" onclick="setLang('uk')">🇺🇦 Українська</div>
+            <div class="lang-item" onclick="setLang('tr')">🇹🇷 Türkçe</div>
+            <div class="lang-item" onclick="setLang('th')">🇹🇭 ไทย</div>
+            <div class="lang-item" onclick="setLang('vi')">🇻🇳 Tiếng Việt</div>
+            <div class="lang-item" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</div>
+          </div>
+        </div>
+
+        <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-nav" id="navSteam">★ Steam 开发者主页</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-tagline" id="heroTag">MARS PALADIN LLC · 独立游戏工作室</div>
+      <h1 class="hero-headline" id="heroTitle">以匠心重塑经典，用乐趣连接世界</h1>
+      <p class="hero-sub" id="heroSub">
+        Mars Paladin 致力于打造兼具深厚文化底蕴、纯粹游戏机制与跨文化同乐体验的独立精品。让每一次出发，都是难忘的心跳冒险。
+      </p>
+      <div class="hero-actions">
+        <a href="#games" class="btn-primary" id="heroBtn1">探索游戏作品 ↓</a>
+        <a href="#contact" class="btn-outline" id="heroBtn2">联系商务合作 →</a>
+      </div>
+    </section>
+
+    <!-- Game Portfolio Section -->
+    <section id="games">
+      <div class="section-header">
+        <h2 id="gamesHeader">🎮 游戏作品矩阵 (Game Portfolio)</h2>
+        <p id="gamesSub">我们倾注全部热忱打磨的独立游戏作品与未来企划</p>
+      </div>
+
+      <div class="games-grid">
+        <!-- Game 1: Westward Dash -->
+        <div class="game-card">
+          <div class="game-cover-box">
+            <img src="assets/capsule_zh.jpg" alt="Westward Dash" class="game-cover-img" id="game1Cover">
+          </div>
+          <div class="game-body">
+            <div>
+              <div class="game-tag" id="game1Tag">现已公布 · 经典国风水墨竞速棋</div>
+              <h3 class="game-title" id="game1Title">Westward Dash / 齐天大冲刺</h3>
+              <p class="game-desc" id="game1Desc">
+                还原儿时围坐桌前的西游记忆。1–8 人水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！全面支持 18 种语言全球同桌。
+              </p>
+              <div class="game-badges">
+                <span class="badge" id="game1Badge1">1–8 人联机 / 本地</span>
+                <span class="badge" id="game1Badge2">18 种语言全球畅玩</span>
+                <span class="badge" id="game1Badge3">琵琶原声实录</span>
+              </div>
+            </div>
+            <div class="game-card-actions">
+              <a href="https://westwarddash.com" class="btn-primary" id="game1BtnSite" style="padding: 9px 20px; font-size:13.5px;">访问官方网站 →</a>
+              <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-nav" id="game1BtnSteam">Steam 商店页面 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 2: Project Celestial (In Development) -->
+        <div class="game-card">
+          <div class="game-cover-box" style="background: radial-gradient(circle at center, #261b14 0%, #0d0a08 100%); display:flex; align-items:center; justify-content:center;">
+            <img src="assets/cover.png" alt="Project Celestial" class="game-cover-img" style="opacity: 0.65; filter: grayscale(30%);">
+          </div>
+          <div class="game-body">
+            <div>
+              <div class="game-tag" id="game2Tag" style="color: var(--ink-dim);">神秘新企划 · 战术卡牌构筑</div>
+              <h3 class="game-title" id="game2Title">Project Celestial / 西行奇谭（筹备中）</h3>
+              <p class="game-desc" id="game2Desc">
+                基于神话宇宙衍生的全新战术 Roguelike 构筑企划。更深度的策略分支、更宏大的西行妖界探索。企划正在紧锣密鼓研发中，敬请期待后续官方公告！
+              </p>
+              <div class="game-badges">
+                <span class="badge" id="game2Badge1">开发筹备中</span>
+                <span class="badge" id="game2Badge2">战术 Roguelike</span>
+                <span class="badge" id="game2Badge3">敬请期待</span>
+              </div>
+            </div>
+            <div class="game-card-actions">
+              <a href="mailto:support@marsparadin.com?subject=Project%20Celestial%20Inquiry" class="btn-outline" id="game2Btn" style="padding: 9px 20px; font-size:13.5px;">关注最新动态</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Pillars Section -->
+    <section id="about">
+      <div class="section-header">
+        <h2 id="aboutHeader">🏛️ 关于 Mars Paladin LLC</h2>
+        <p id="aboutSub">纯粹的独立精神 · 尊重每一位玩家</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3 id="card1Title">🎯 玩家体验至上</h3>
+          <p id="card1Desc">坚持 100% 零隐私数据收集、无内购数值干扰，专注还原最纯粹、最原汁原味的单机与联机聚会乐趣。</p>
+        </div>
+        <div class="pillar-card">
+          <h3 id="card2Title">🌏 全球无缝同乐</h3>
+          <p id="card2Desc">全线作品深度支持 18 种全球主要语言，让不同国家、不同母语的玩家能在同一张桌上尽情对弈交流。</p>
+        </div>
+        <div class="pillar-card">
+          <h3 id="card3Title">🎨 东方美学与原声</h3>
+          <p id="card3Desc">从灵动写意的水墨美术，到由家人亲手弹奏录制的实录琵琶原声，每一处细节都蕴含着独立开发者的真诚心意。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Press Section -->
+    <section id="contact">
+      <div class="contact-box">
+        <h2 id="contactHeader" style="color: var(--gold-light); font-size: 24px; font-weight: 900; margin-bottom: 8px;">✉️ 媒体中心、发行合作与支持</h2>
+        <p id="contactSub" style="color: var(--ink-dim); margin-bottom: 18px;">欢迎媒体评测、商务发行洽谈或玩家咨询</p>
+        <div id="contactBoxTitle" style="font-size: 13px; text-transform: uppercase; color: var(--gold); letter-spacing: 0.15em; font-weight: 800;">官方商务与客服支持邮箱</div>
+        <div class="contact-email-val">support@marsparadin.com</div>
+        <a href="mailto:support@marsparadin.com" class="btn-primary" id="contactBtn">发送邮件联系我们 →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Studio Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://westwarddash.com" id="footerMainSite">《齐天大冲刺》官网</a> &middot; 
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerSteam">Steam 商店</a> &middot; 
+      <a href="https://westwarddash.com/privacy.html" id="footerPrivacy">隐私政策与社区支持</a> &middot; 
+      <a href="mailto:support@marsparadin.com">support@marsparadin.com</a>
+    </div>
+    <p style="font-size: 13px; color: var(--ink-muted); margin-top: 6px;">
+      &copy; 2026 Mars Paladin LLC. <span id="footerRights">保留所有权利。</span>
+    </p>
+  </footer>
+
+<script>
+  const i18n = {
+  "zh": {
+    "flag": "🇨🇳",
+    "name": "简体中文",
+    "navGames": "游戏矩阵",
+    "navAbout": "关于工作室",
+    "navContact": "联系与合作",
+    "navSteam": "★ Steam 开发者主页",
+    "heroTag": "MARS PALADIN LLC · 独立游戏工作室",
+    "heroTitle": "以匠心重塑经典，用乐趣连接世界",
+    "heroSub": "Mars Paladin 致力于打造兼具深厚文化底蕴、纯粹游戏机制与跨文化同乐体验的独立精品。让每一次出发，都是难忘的心跳冒险。",
+    "heroBtn1": "探索游戏作品 ↓",
+    "heroBtn2": "联系商务合作 →",
+    "gamesHeader": "🎮 游戏作品矩阵 (Game Portfolio)",
+    "gamesSub": "我们倾注全部热忱打磨的独立游戏作品与未来企划",
+    "game1Title": "Westward Dash / 齐天大冲刺",
+    "game1Tag": "现已公布 · 经典国风水墨竞速棋",
+    "game1Desc": "还原儿时围坐桌前的西游记忆。1–8 人水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！全面支持 18 种语言全球同桌。",
+    "game1Badge1": "1–8 人联机 / 本地",
+    "game1Badge2": "18 种语言全球畅玩",
+    "game1Badge3": "琵琶原声实录",
+    "game1BtnSite": "访问官方网站 →",
+    "game1BtnSteam": "Steam 商店页面 →",
+    "game2Title": "Project Celestial / 西行奇谭（筹备中）",
+    "game2Tag": "神秘新企划 · 战术卡牌构筑",
+    "game2Desc": "基于神话宇宙衍生的全新战术 Roguelike 构筑企划。更深度的策略分支、更宏大的西行妖界探索。企划正在紧锣密鼓研发中，敬请期待后续官方公告！",
+    "game2Badge1": "开发筹备中",
+    "game2Badge2": "战术 Roguelike",
+    "game2Badge3": "敬请期待",
+    "game2Btn": "关注最新动态",
+    "aboutHeader": "🏛️ 关于 Mars Paladin LLC",
+    "aboutSub": "纯粹的独立精神 · 尊重每一位玩家",
+    "card1Title": "🎯 玩家体验至上",
+    "card1Desc": "坚持 100% 零隐私数据收集、无内购数值干扰，专注还原最纯粹、最原汁原味的单机与联机聚会乐趣。",
+    "card2Title": "🌏 全球无缝同乐",
+    "card2Desc": "全线作品深度支持 18 种全球主要语言，让不同国家、不同母语的玩家能在同一张桌上尽情对弈交流。",
+    "card3Title": "🎨 东方美学与原声",
+    "card3Desc": "从灵动写意的水墨美术，到由家人亲手弹奏录制的实录琵琶原声，每一处细节都蕴含着独立开发者的真诚心意。",
+    "contactHeader": "✉️ 媒体中心、发行合作与支持",
+    "contactSub": "欢迎媒体评测、商务发行洽谈或玩家咨询",
+    "contactBoxTitle": "官方商务与客服支持邮箱",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "发送邮件联系我们 →",
+    "footerRights": "保留所有权利。",
+    "footerPrivacy": "隐私政策与社区支持",
+    "footerMainSite": "《齐天大冲刺》官网",
+    "footerSteam": "Steam 商店"
+  },
+  "tc": {
+    "flag": "🇭🇰",
+    "name": "繁體中文",
+    "navGames": "遊戲矩陣",
+    "navAbout": "關於工作室",
+    "navContact": "聯繫與合作",
+    "navSteam": "★ Steam 開發者首頁",
+    "heroTag": "MARS PALADIN LLC · 獨立遊戲工作室",
+    "heroTitle": "以匠心重塑經典，用樂趣連接世界",
+    "heroSub": "Mars Paladin 致力於打造兼具深厚文化底蘊、純粹遊戲機制與跨文化同樂體驗的獨立精品。讓每一次出發，都是難忘的心跳冒險。",
+    "heroBtn1": "探索遊戲作品 ↓",
+    "heroBtn2": "聯繫商務合作 →",
+    "gamesHeader": "🎮 遊戲作品矩陣 (Game Portfolio)",
+    "gamesSub": "我們傾注全部熱忱打磨的獨立遊戲作品與未來企劃",
+    "game1Title": "Westward Dash / 齊天大衝刺",
+    "game1Tag": "現已公布 · 經典國風水墨競速棋",
+    "game1Desc": "還原兒時圍坐桌前的西遊記憶。1–8 人水墨競速：步步是險阻，局局博心跳！一柄金箍棒掃清妖障，一顆衝刺骰絕境翻盤。無論獨自對弈還是好友歡聚，不到最後一格，勝負絕不見分曉！全面支援 18 種語言全球同桌。",
+    "game1Badge1": "1–8 人連線 / 本地",
+    "game1Badge2": "18 種語言全球暢玩",
+    "game1Badge3": "琵琶原聲實錄",
+    "game1BtnSite": "造訪官方網站 →",
+    "game1BtnSteam": "Steam 商店頁面 →",
+    "game2Title": "Project Celestial / 西行奇譚（籌備中）",
+    "game2Tag": "神秘新企劃 · 戰術卡牌構築",
+    "game2Desc": "基於神話宇宙衍生的全新戰術 Roguelike 構築企劃。更深度的策略分支、更宏大的西行妖界探索。企劃正在緊鑼密鼓研發中，敬請期待後續官方公告！",
+    "game2Badge1": "開發籌備中",
+    "game2Badge2": "戰術 Roguelike",
+    "game2Badge3": "敬請期待",
+    "game2Btn": "關注最新動態",
+    "aboutHeader": "🏛️ 關於 Mars Paladin LLC",
+    "aboutSub": "純粹的獨立精神 · 尊重每一位玩家",
+    "card1Title": "🎯 玩家體驗至上",
+    "card1Desc": "堅持 100% 零隱私數據收集、無內購數值干擾，專注還原最純粹、最原汁原味的單機與連線聚會樂趣。",
+    "card2Title": "🌏 全球無縫同樂",
+    "card2Desc": "全線作品深度支援 18 種全球主要語言，讓不同國家、不同母語的玩家能在同一張桌上盡情對弈交流。",
+    "card3Title": "🎨 東方美學與原聲",
+    "card3Desc": "從靈動寫意的水墨美術，到由家人親手彈奏錄製的實錄琵琶原聲，每一處細節都蘊含著獨立開發者的真誠心意。",
+    "contactHeader": "✉️ 媒體中心、發行合作與支援",
+    "contactSub": "歡迎媒體評測、商務發行洽談或玩家諮詢",
+    "contactBoxTitle": "官方商務與客服支援郵箱",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "發送郵件聯繫我們 →",
+    "footerRights": "保留所有權利。",
+    "footerPrivacy": "隱私政策與社群支援",
+    "footerMainSite": "《齊天大衝刺》官網",
+    "footerSteam": "Steam 商店"
+  },
+  "en": {
+    "flag": "🇺🇸",
+    "name": "English",
+    "navGames": "Our Games",
+    "navAbout": "About Studio",
+    "navContact": "Press & Contact",
+    "navSteam": "★ Steam Developer Hub",
+    "heroTag": "MARS PALADIN LLC · INDIE GAME STUDIO",
+    "heroTitle": "Reimagining Legends with Timeless Play",
+    "heroSub": "Mars Paladin LLC is an independent game studio dedicated to creating culturally rich, beautifully styled, and globally connected games with pure heart and soul.",
+    "heroBtn1": "Explore Games ↓",
+    "heroBtn2": "Business Inquiries →",
+    "gamesHeader": "🎮 Game Portfolio",
+    "gamesSub": "Our flagship indie titles and upcoming projects crafted with passion",
+    "game1Title": "Westward Dash",
+    "game1Tag": "Available on Steam · Ink-Wash Board Racer",
+    "game1Desc": "Relive the nostalgic joy of childhood tabletop racing. A 1–8 player ink-wash sprint where every turn is a gamble! Brandish the Golden Cudgel, roll the sprint die, and turn the tables in perilous demon trials. Features seamless 18-language cross-cultural multiplayer.",
+    "game1Badge1": "1–8 Players Co-op & PvP",
+    "game1Badge2": "18 Languages Worldwide",
+    "game1Badge3": "Live Pipa Soundtrack",
+    "game1BtnSite": "Official Website →",
+    "game1BtnSteam": "Steam Store Page →",
+    "game2Title": "Project Celestial (Upcoming)",
+    "game2Tag": "New Project · Tactical Roguelike Deckbuilder",
+    "game2Desc": "An expanded tactical adventure exploring the deeper mythological lore of the demon realm. Deep strategic choices, dynamic encounters, and innovative card mechanics. Stay tuned for upcoming announcements!",
+    "game2Badge1": "In Development",
+    "game2Badge2": "Tactical Roguelike",
+    "game2Badge3": "Coming Soon",
+    "game2Btn": "Stay Tuned",
+    "aboutHeader": "🏛️ About Mars Paladin LLC",
+    "aboutSub": "Pure Indie Spirit · Player-First Philosophy",
+    "card1Title": "🎯 Player-First Integrity",
+    "card1Desc": "Strict zero-telemetry policy, no microtransactions or pay-to-win mechanics. Just pure, unforgettable gaming joy.",
+    "card2Title": "🌏 True Global Connection",
+    "card2Desc": "Full native localization across 18 languages ensures friends and strangers worldwide can play together in their own tongue.",
+    "card3Title": "🎨 Distinct Artistic Vision",
+    "card3Desc": "From sweeping ink-wash aesthetics to authentic live-recorded traditional Pipa melodies, crafted with genuine devotion.",
+    "contactHeader": "✉️ Press, Publishing & Support",
+    "contactSub": "For review keys, publishing opportunities, or general inquiries",
+    "contactBoxTitle": "Official Studio Support & Business Email",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "Send Us an Email →",
+    "footerRights": "All rights reserved.",
+    "footerPrivacy": "Privacy Policy & Support",
+    "footerMainSite": "Westward Dash Official Site",
+    "footerSteam": "Steam Store"
+  },
+  "ja": {
+    "flag": "🇯🇵",
+    "name": "日本語",
+    "navGames": "ゲーム一覧",
+    "navAbout": "スタジオについて",
+    "navContact": "お問い合わせ",
+    "navSteam": "★ Steam 開発者ページ",
+    "heroTag": "MARS PALADIN LLC · インディーゲームスタジオ",
+    "heroTitle": "職人技で創る、時代を超えた感動と楽しさ",
+    "heroSub": "Mars Paladin は、豊かな文化と純粋なゲームメカニクス、世界中のプレイヤーをつなぐインディーゲームを制作しています。",
+    "heroBtn1": "作品を見る ↓",
+    "heroBtn2": "お問い合わせ →",
+    "gamesHeader": "🎮 ゲームタイトル (Game Portfolio)",
+    "gamesSub": "情熱を込めて制作されたインディータイトルと最新プロジェクト",
+    "game1Title": "西遊記ダッシュ (Westward Dash)",
+    "game1Tag": "Steam にて公開中 · 水墨画風すごろくレース",
+    "game1Desc": "子どもの頃のボードゲームのワクワクを再現！1〜8人で楽しむ水墨画風レース。如意棒で妖怪を討ち払い、ダイスで大逆転！18言語に完全対応し、世界中のプレイヤーと同じテーブルで遊べます。",
+    "game1Badge1": "1–8人プレイ対応",
+    "game1Badge2": "世界18言語対応",
+    "game1Badge3": "琵琶生演奏サントラ",
+    "game1BtnSite": "公式サイトを見る →",
+    "game1BtnSteam": "Steam ストアへ →",
+    "game2Title": "Project Celestial (開発中)",
+    "game2Tag": "新作プロジェクト · 戦術デッキ構築ローグライク",
+    "game2Desc": "神話の世界をさらに深く掘り下げる戦術ローグライクプロジェクト。続報を楽しみにお待ちください！",
+    "game2Badge1": "現在開発中",
+    "game2Badge2": "戦術ローグライク",
+    "game2Badge3": "乞うご期待",
+    "game2Btn": "最新情報をチェック",
+    "aboutHeader": "🏛️ Mars Paladin LLC について",
+    "aboutSub": "純粋なインディースピリット · プレイヤーファースト",
+    "card1Title": "🎯 プレイヤーファースト",
+    "card1Desc": "個人情報の完全非収集、課金要素なしの純粋なゲーム体験をお届けします。",
+    "card2Title": "🌏 世界をつなぐ18言語",
+    "card2Desc": "すべての作品で18言語をフルサポートし、言葉の壁を越えて世界中のプレイヤーが楽しめます。",
+    "card3Title": "🎨 水墨美学と生演奏",
+    "card3Desc": "息をのむ水墨画のビジュアルと、家族の手で演奏された本物の琵琶の音色が旅を彩ります。",
+    "contactHeader": "✉️ プレスキット・提携・お問い合わせ",
+    "contactSub": "メディアレビュー、パブリッシングのご相談はこちら",
+    "contactBoxTitle": "公式サポート＆ビジネス窓口",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "メールでお問い合わせ →",
+    "footerRights": "All rights reserved. 無断転載を禁じます。",
+    "footerPrivacy": "プライバシーポリシー",
+    "footerMainSite": "『西遊記ダッシュ』公式サイト",
+    "footerSteam": "Steam ストア"
+  },
+  "ko": {
+    "flag": "🇰🇷",
+    "name": "한국어",
+    "navGames": "게임 목록",
+    "navAbout": "스튜디오 소개",
+    "navContact": "문의 및 협업",
+    "navSteam": "★ Steam 개발자 페이지",
+    "heroTag": "MARS PALADIN LLC · 인디 게임 스튜디오",
+    "heroTitle": "장인 정신으로 빚어내는 시대 초월의 즐거움",
+    "heroSub": "Mars Paladin은 깊은 문화적 감성과 순수한 게임성으로 전 세계 플레이어를 하나로 잇는 인디 게임을 제작합니다.",
+    "heroBtn1": "게임 살펴보기 ↓",
+    "heroBtn2": "비즈니스 문의 →",
+    "gamesHeader": "🎮 게임 포트폴리오 (Game Portfolio)",
+    "gamesSub": "열정을 담아 제작한 인디 타이틀과 새로운 프로젝트",
+    "game1Title": "서유 대질주 (Westward Dash)",
+    "game1Tag": "Steam 출시작 · 수묵화 보드 레이싱",
+    "game1Desc": "어린 시절 주사위를 굴리던 순수한 추억을 재현한 1~8인 수묵화 레이싱 게임. 18개 언어를 완벽 지원하여 전 세계 친구들과 함께 즐길 수 있습니다.",
+    "game1Badge1": "1~8인 멀티/로컬",
+    "game1Badge2": "글로벌 18개 언어",
+    "game1Badge3": "비파 실황 OST",
+    "game1BtnSite": "공식 웹사이트 바로가기 →",
+    "game1BtnSteam": "Steam 상점 바로가기 →",
+    "game2Title": "Project Celestial (개발 중)",
+    "game2Tag": "신규 프로젝트 · 덱빌딩 택티컬 로그라이크",
+    "game2Desc": "신화 세계관을 깊이 있게 탐험하는 차기 전략 로그라이크 프로젝트. 추후 공식 발표를 기대해 주세요!",
+    "game2Badge1": "개발 진행 중",
+    "game2Badge2": "택티컬 로그라이크",
+    "game2Badge3": "커밍순",
+    "game2Btn": "최신 소식 확인",
+    "aboutHeader": "🏛️ Mars Paladin LLC 소개",
+    "aboutSub": "순수한 인디 정신 · 플레이어 중심 철학",
+    "card1Title": "🎯 플레이어 중심",
+    "card1Desc": "개인정보 무수집, 확률형 과금 없는 100% 순수한 게임 플레이 본연의 재미를 추구합니다.",
+    "card2Title": "🌏 18개 언어 글로벌 지원",
+    "card2Desc": "전 세계 18개 주요 언어를 네이티브로 지원하여 누구나 모국어로 편안하게 플레이할 수 있습니다.",
+    "card3Title": "🎨 동양적 수묵 미학과 비파 사운드",
+    "card3Desc": "유려한 수묵화 그래픽과 직접 연주한 비파 선율이 빚어내는 독창적인 세계를 경험하세요.",
+    "contactHeader": "✉️ 미디어, 퍼블리싱 및 지원 문의",
+    "contactSub": "리뷰 키 신청, 비즈니스 협업 및 고객 지원",
+    "contactBoxTitle": "공식 비즈니스 및 지원 이메일",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "이메일 보내기 →",
+    "footerRights": "모든 권리 보유.",
+    "footerPrivacy": "개인정보 처리방침",
+    "footerMainSite": "서유 대질주 공식 사이트",
+    "footerSteam": "Steam 상점"
+  },
+  "fr": {
+    "flag": "🇫🇷",
+    "name": "Français",
+    "navGames": "Nos Jeux",
+    "navAbout": "À Propos",
+    "navContact": "Contact & Presse",
+    "navSteam": "★ Page Développeur Steam",
+    "heroTag": "MARS PALADIN LLC · STUDIO DE JEUX INDÉPENDANT",
+    "heroTitle": "Réinventer les Légendes avec Passion",
+    "heroSub": "Mars Paladin LLC est un studio indépendant créant des jeux soignés, immersifs et multilingues reliant les joueurs du monde entier.",
+    "heroBtn1": "Découvrir nos jeux ↓",
+    "heroBtn2": "Contact Pro →",
+    "gamesHeader": "🎮 Portfolio de Jeux",
+    "gamesSub": "Nos créations originales et futurs projets",
+    "game1Title": "Westward Dash",
+    "game1Tag": "Disponible sur Steam · Course sur Plateau Lavis",
+    "game1Desc": "Revivez la nostalgie des jeux de plateau d'enfance. Une course dynamique de 1 à 8 joueurs dans un somptueux univers en lavis traditionnel. Jouez en ligne dans 18 langues !",
+    "game1Badge1": "1–8 Joueurs Multijoueur",
+    "game1Badge2": "18 Langues Disponibles",
+    "game1Badge3": "Bande-son Pipa Réelle",
+    "game1BtnSite": "Site Officiel →",
+    "game1BtnSteam": "Page Steam →",
+    "game2Title": "Project Celestial (En cours)",
+    "game2Tag": "Nouveau Projet · Deckbuilder Tactique Roguelike",
+    "game2Desc": "Une aventure tactique approfondie explorant les mystères du royaume mythique. Restez connectés pour les prochaines annonces !",
+    "game2Badge1": "En Développement",
+    "game2Badge2": "Roguelike Tactique",
+    "game2Badge3": "Bientôt",
+    "game2Btn": "Suivre l'actualité",
+    "aboutHeader": "🏛️ À Propos de Mars Paladin LLC",
+    "aboutSub": "Esprit Indépendant · Priorité aux Joueurs",
+    "card1Title": "🎯 Respect du Joueur",
+    "card1Desc": "Zéro collecte de données personnelles, aucune microtransaction pay-to-win, juste du pur plaisir de jeu.",
+    "card2Title": "🌏 Connexion Globale 18 Langues",
+    "card2Desc": "Prise en charge native de 18 langues pour rassembler les joueurs du monde entier sur le même plateau.",
+    "card3Title": "🎨 Esthétique et Musique Vivante",
+    "card3Desc": "Une direction artistique à l'encre de Chine et des mélodies de pipa jouées en direct pour une immersion unique.",
+    "contactHeader": "✉️ Presse, Édition et Support",
+    "contactSub": "Demandes de clés presse, partenariats ou questions",
+    "contactBoxTitle": "E-mail Officiel Studio & Support",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "Nous contacter par e-mail →",
+    "footerRights": "Tous droits réservés.",
+    "footerPrivacy": "Politique de Confidentialité",
+    "footerMainSite": "Site Officiel Westward Dash",
+    "footerSteam": "Page Steam"
+  },
+  "de": {
+    "flag": "🇩🇪",
+    "name": "Deutsch",
+    "navGames": "Unsere Spiele",
+    "navAbout": "Über das Studio",
+    "navContact": "Kontakt & Presse",
+    "navSteam": "★ Steam Entwickler-Hub",
+    "heroTag": "MARS PALADIN LLC · INDIE-ENTWICKLERSTUDIO",
+    "heroTitle": "Legenden neu belebt mit zeitlosem Spielspaß",
+    "heroSub": "Mars Paladin LLC entwickelt unabhängige Spiele mit Seele, handgefertigter Kunst und nahtloser globaler Verbundenheit.",
+    "heroBtn1": "Spiele entdecken ↓",
+    "heroBtn2": "Geschäftliche Anfragen →",
+    "gamesHeader": "🎮 Spiele-Portfolio",
+    "gamesSub": "Unsere mit Leidenschaft entwickelten Titel und Projekte",
+    "game1Title": "Westward Dash",
+    "game1Tag": "Auf Steam erhältlich · Tuschemalerei-Brettspielrennen",
+    "game1Desc": "Die pure Nostalgie klassischer Brettspiele neu entfacht. Ein rasantes Rennen für 1–8 Spieler im traditionellen Tuschestufen-Stil. Spiele weltweit in 18 Sprachen!",
+    "game1Badge1": "1–8 Spieler Koop & PvP",
+    "game1Badge2": "18 Sprachen Weltweit",
+    "game1Badge3": "Live-Pipa-Soundtrack",
+    "game1BtnSite": "Offizielle Website →",
+    "game1BtnSteam": "Steam-Shopseite →",
+    "game2Title": "Project Celestial (In Arbeit)",
+    "game2Tag": "Neues Projekt · Taktischer Deckbau-Roguelike",
+    "game2Desc": "Ein tiefgründiges taktisches Abenteuer in der mythologischen Sagenwelt. Weitere Ankündigungen folgen in Kürze!",
+    "game2Badge1": "In Entwicklung",
+    "game2Badge2": "Taktik-Roguelike",
+    "game2Badge3": "Demnächst",
+    "game2Btn": "Auf dem Laufenden bleiben",
+    "aboutHeader": "🏛️ Über Mars Paladin LLC",
+    "aboutSub": "Echter Indie-Geist · Spieler an erster Stelle",
+    "card1Title": "🎯 Integrität & Transparenz",
+    "card1Desc": "Strikte Null-Datenerfassung, keine Mikrotransaktionen – unverfälschter Spielspaß steht an erster Stelle.",
+    "card2Title": "🌏 18 Sprachen Global",
+    "card2Desc": "Volle Lokalisierung in 18 Sprachen verbindet Spieler rund um den Globus an einem gemeinsamen Spieltisch.",
+    "card3Title": "🎨 Kunst & Akustik",
+    "card3Desc": "Einzigartige Tuschemalerei und ein handgespielter Pipa-Soundtrack verleihen jedem Werk eine unverwechselbare Seele.",
+    "contactHeader": "✉️ Presse, Publishing & Support",
+    "contactSub": "Für Presse-Keys, Kooperationen oder Support-Anfragen",
+    "contactBoxTitle": "Offizielle Studio- und Support-E-Mail",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "E-Mail senden →",
+    "footerRights": "Alle Rechte vorbehalten.",
+    "footerPrivacy": "Datenschutzerklärung",
+    "footerMainSite": "Westward Dash Offizielle Website",
+    "footerSteam": "Steam-Shop"
+  },
+  "es": {
+    "flag": "🇪🇸",
+    "name": "Español",
+    "navGames": "Juegos",
+    "navAbout": "El Estudio",
+    "navContact": "Prensa y Contacto",
+    "navSteam": "★ Página de Desarrollador Steam",
+    "heroTag": "MARS PALADIN LLC · ESTUDIO INDIE",
+    "heroTitle": "Reinventando Leyendas con Pasión y Diversión",
+    "heroSub": "Mars Paladin LLC es un estudio independiente dedicado a crear juegos visualmente cautivadores, culturalmente profundos y conectados globalmente.",
+    "heroBtn1": "Ver Juegos ↓",
+    "heroBtn2": "Contacto Profesional →",
+    "gamesHeader": "🎮 Catálogo de Juegos",
+    "gamesSub": "Nuestros títulos independientes y proyectos en desarrollo",
+    "game1Title": "Westward Dash",
+    "game1Tag": "Disponible en Steam · Carrera de Tablero al Aguada",
+    "game1Desc": "Revive la emoción nostálgica de las tardes de juegos de mesa. Carrera de 1 a 8 jugadores en un mundo de tinta china. ¡Multijugador sin fronteras en 18 idiomas!",
+    "game1Badge1": "1–8 Jugadores Coop y PvP",
+    "game1Badge2": "18 Idiomas Mundiales",
+    "game1Badge3": "Banda Sonora en Vivo",
+    "game1BtnSite": "Sitio Web Oficial →",
+    "game1BtnSteam": "Página en Steam →",
+    "game2Title": "Project Celestial (En desarrollo)",
+    "game2Tag": "Nuevo Proyecto · Roguelike Táctico de Cartas",
+    "game2Desc": "Una nueva aventura táctica que explora las profundidades del universo mitológico. ¡Próximamente más novedades!",
+    "game2Badge1": "En Desarrollo",
+    "game2Badge2": "Roguelike Táctico",
+    "game2Badge3": "Próximamente",
+    "game2Btn": "Seguir Novedades",
+    "aboutHeader": "🏛️ Sobre Mars Paladin LLC",
+    "aboutSub": "Espíritu Indie Puro · Jugador en Primer Lugar",
+    "card1Title": "🎯 Honestidad y Respeto",
+    "card1Desc": "Cero recopilación de datos privados, sin micropagos abusivos. Solo diversión pura e inolvidable.",
+    "card2Title": "🌏 18 Idiomas para Todo el Mundo",
+    "card2Desc": "Traducción completa en 18 idiomas para que amigos de cualquier rincón jueguen en su lengua materna.",
+    "card3Title": "🎨 Arte Oriental y Pipa en Vivo",
+    "card3Desc": "Tinta tradicional china y melodías de pipa grabadas en vivo con inmenso cariño familiar.",
+    "contactHeader": "✉️ Prensa, Publicación y Soporte",
+    "contactSub": "Para claves de análisis, acuerdos comerciales o ayuda",
+    "contactBoxTitle": "Correo Oficial del Estudio y Soporte",
+    "contactBoxEmail": "support@marsparadin.com",
+    "contactBtn": "Enviar Correo →",
+    "footerRights": "Todos los derechos reservados.",
+    "footerPrivacy": "Política de Privacidad",
+    "footerMainSite": "Sitio Oficial Westward Dash",
+    "footerSteam": "Tienda Steam"
+  }
+};
+
+  let currentLang = 'zh';
+
+  function setLang(langCode) {
+    if (!i18n[langCode]) langCode = 'en';
+    currentLang = langCode;
+    const data = i18n[langCode];
+
+    document.getElementById('currentFlag').textContent = data.flag;
+    document.getElementById('currentLangName').textContent = data.name;
+
+    document.getElementById('navGames').textContent = data.navGames;
+    document.getElementById('navAbout').textContent = data.navAbout;
+    document.getElementById('navContact').textContent = data.navContact;
+    document.getElementById('navSteam').textContent = data.navSteam;
+
+    document.getElementById('heroTag').textContent = data.heroTag;
+    document.getElementById('heroTitle').textContent = data.heroTitle;
+    document.getElementById('heroSub').textContent = data.heroSub;
+    document.getElementById('heroBtn1').textContent = data.heroBtn1;
+    document.getElementById('heroBtn2').textContent = data.heroBtn2;
+
+    document.getElementById('gamesHeader').textContent = data.gamesHeader;
+    document.getElementById('gamesSub').textContent = data.gamesSub;
+
+    document.getElementById('game1Title').textContent = data.game1Title;
+    document.getElementById('game1Tag').textContent = data.game1Tag;
+    document.getElementById('game1Desc').textContent = data.game1Desc;
+    document.getElementById('game1Badge1').textContent = data.game1Badge1;
+    document.getElementById('game1Badge2').textContent = data.game1Badge2;
+    document.getElementById('game1Badge3').textContent = data.game1Badge3;
+    document.getElementById('game1BtnSite').textContent = data.game1BtnSite;
+    document.getElementById('game1BtnSteam').textContent = data.game1BtnSteam;
+
+    document.getElementById('game2Title').textContent = data.game2Title;
+    document.getElementById('game2Tag').textContent = data.game2Tag;
+    document.getElementById('game2Desc').textContent = data.game2Desc;
+    document.getElementById('game2Badge1').textContent = data.game2Badge1;
+    document.getElementById('game2Badge2').textContent = data.game2Badge2;
+    document.getElementById('game2Badge3').textContent = data.game2Badge3;
+    document.getElementById('game2Btn').textContent = data.game2Btn;
+
+    document.getElementById('aboutHeader').textContent = data.aboutHeader;
+    document.getElementById('aboutSub').textContent = data.aboutSub;
+
+    document.getElementById('card1Title').textContent = data.card1Title;
+    document.getElementById('card1Desc').textContent = data.card1Desc;
+    document.getElementById('card2Title').textContent = data.card2Title;
+    document.getElementById('card2Desc').textContent = data.card2Desc;
+    document.getElementById('card3Title').textContent = data.card3Title;
+    document.getElementById('card3Desc').textContent = data.card3Desc;
+
+    document.getElementById('contactHeader').textContent = data.contactHeader;
+    document.getElementById('contactSub').textContent = data.contactSub;
+    document.getElementById('contactBoxTitle').textContent = data.contactBoxTitle;
+    document.getElementById('contactBtn').textContent = data.contactBtn;
+
+    document.getElementById('footerRights').textContent = data.footerRights;
+    document.getElementById('footerPrivacy').textContent = data.footerPrivacy;
+    document.getElementById('footerMainSite').textContent = data.footerMainSite;
+    document.getElementById('footerSteam').textContent = data.footerSteam;
+
+    // Localize game cover image
+    const cover = document.getElementById('game1Cover');
+    if (cover) {
+      cover.src = (langCode === 'zh' || langCode === 'tc') ? 'assets/capsule_zh.jpg' : 'assets/capsule_en.jpg';
+    }
+
+    // Update cross-page links
+    document.getElementById('game1BtnSite').href = "https://westwarddash.com/?lang=" + langCode;
+    document.getElementById('footerMainSite').href = "https://westwarddash.com/?lang=" + langCode;
+    document.getElementById('footerPrivacy').href = "https://westwarddash.com/privacy.html?lang=" + langCode;
+
+    // Highlight active option in menu
+    document.querySelectorAll('.lang-item').forEach(item => {
+      const isSelected = item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + langCode + "'");
+      item.classList.toggle('active', isSelected);
+    });
+
+    // Close menu
+    document.getElementById('langMenu').classList.remove('show');
+  }
+
+  function toggleLangMenu(e) {
+    e.stopPropagation();
+    document.getElementById('langMenu').classList.toggle('show');
+  }
+
+  document.addEventListener('click', () => {
+    document.getElementById('langMenu').classList.remove('show');
+  });
+
+  // Auto-detect browser language or read query param & fallback to English
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && i18n[urlLang]) {
+      setLang(urlLang);
+    } else {
+      const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+        setLang('tc');
+      } else if (userLang.startsWith('ja')) {
+        setLang('ja');
+      } else if (userLang.startsWith('ko')) {
+        setLang('ko');
+      } else if (userLang.startsWith('fr')) {
+        setLang('fr');
+      } else if (userLang.startsWith('de')) {
+        setLang('de');
+      } else if (userLang.startsWith('es')) {
+        setLang('es');
+      } else if (userLang.startsWith('zh')) {
+        setLang('zh');
+      } else {
+        setLang('en');
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
