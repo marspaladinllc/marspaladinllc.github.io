@@ -114,29 +114,47 @@
       line-height: 1;
       transition: all 0.2s ease;
     }
-    .nav-tabs {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      list-style: none;
-    }
-    .nav-tabs a {
-      color: var(--ink-dim);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .nav-tabs a:hover {
-      color: var(--gold-bright);
-      background: rgba(223, 178, 86, 0.1);
-    }
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    /* Music Player Button in Navbar */
+    .btn-music-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(22, 17, 12, 0.9);
+      border: 1px solid var(--silk-border);
+      color: var(--gold-light);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-music-toggle:hover {
+      border-color: var(--gold);
+      background: rgba(35, 27, 19, 0.95);
+      color: var(--gold-bright);
+    }
+    .btn-music-toggle.playing {
+      background: rgba(223, 178, 86, 0.18);
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(223, 178, 86, 0.35);
+      color: var(--gold-bright);
+    }
+    .music-icon-spin {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .btn-music-toggle.playing .music-icon-spin {
+      animation: gentleSpin 4s linear infinite;
+    }
+    @keyframes gentleSpin {
+      100% { transform: rotate(360deg); }
     }
 
     /* 18 Languages Dropdown Selector */
@@ -726,6 +744,25 @@
       color: var(--gold);
       display: block;
       font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .btn-pipa-play-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(223, 178, 86, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-pipa-play-card:hover {
+      background: rgba(223, 178, 86, 0.3);
+      transform: scale(1.04);
     }
 
     /* Footer */
@@ -769,15 +806,18 @@
       .features-list-grid { grid-template-columns: 1fr; }
       .about-tiles-grid { grid-template-columns: repeat(2, 1fr); }
       .about-detail-stage { grid-template-columns: 1fr; }
-      .nav-tabs { display: none; }
     }
     @media (max-width: 600px) {
       .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
       .lang-menu { grid-template-columns: 1fr; }
+      .btn-music-toggle span:last-child { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Audio Element: Original Live Pipa Soundtrack from Game Demo -->
+  <audio id="bgmAudio" src="assets/bgm.mp3" loop preload="auto"></audio>
 
   <!-- In-game Main Menu Cover Art Backdrop -->
   <div class="bg-mural"></div>
@@ -791,9 +831,13 @@
         <span class="logo-main" id="navLogoMain">齐天大冲刺</span>
       </a>
 
-
-
       <div class="nav-actions">
+        <!-- Live Pipa Background Music Toggle Button -->
+        <button id="musicToggleBtn" class="btn-music-toggle" onclick="toggleBgm(event)">
+          <span class="music-icon-spin">🪕</span>
+          <span id="musicBtnLabel">播放琵琶原声</span>
+        </button>
+
         <!-- Full 18 Languages Dropdown -->
         <div class="lang-dropdown-wrap">
           <button class="lang-dropdown-btn" onclick="toggleLangMenu(event)">
@@ -1054,6 +1098,9 @@
               <img id="aboutStageImg" src="assets/Pipa.png" alt="琵琶" class="pipa-img">
               <h4 id="aboutBadgeTitle">原创琵琶实录原声</h4>
               <span id="aboutBadgeSub">Performed by 灵如酱</span>
+              <button class="btn-pipa-play-card" onclick="toggleBgm(event)">
+                <span id="cardPlayIcon">▶</span> <span id="cardPlayText">试听琵琶原声</span>
+              </button>
             </div>
           </div>
 
@@ -1079,7 +1126,7 @@
     const i18n = {
       zh: {
         flag: "🇨🇳", name: "简体中文", gameTitle: "齐天大冲刺", titleImg: "assets/TitleZh.png",
-        nav: { chars: "八路行者", rules: "西行玩法", about: "关于创作", wishlist: "★ Steam 愿望单" },
+        nav: { wishlist: "★ Steam 愿望单" },
         hero: {
           tag: "🎲 1–8 人水墨国风桌游竞速 · 支持单机同屏 / 线上连线",
           desc: "还原儿时围坐桌前的西游记忆。1–8 人国风水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！",
@@ -1090,6 +1137,7 @@
           release: "发售窗口：<strong>2026 年秋季</strong>"
         },
         pills: { chars: "八路行者", rules: "西行玩法", about: "关于创作" },
+        music: { play: "播放琵琶原声", pause: "暂停琵琶原声", cardPlay: "试听琵琶原声", cardPause: "暂停播放" },
         pilgrimsHeader: { title: "八位取经行者，各显神通", sub: "点击下方棋子，查看各行者的专属水墨立绘与绝技神通。" },
         featuresHeader: { title: "西行通鉴 · 玩法与模式", sub: "从纯粹的竞速掷骰到 19 旋钮的深度自定，每一次西行都有截然不同的博弈风味。" },
         feat1: { title: "🎲 见好就收，险中求胜", desc: "每回合前进后触发冲刺抉择：冲过安全点额外步数助你一飞冲天；冲砸了承受路途惩罚。终点前的最后冲刺，正是落后者的绝地反击机会！" },
@@ -1100,7 +1148,7 @@
 
       tc: {
         flag: "🇭🇰", name: "繁體中文", gameTitle: "齊天大衝刺", titleImg: "assets/TitleTC.png",
-        nav: { chars: "八路行者", rules: "西行玩法", about: "關於創作", wishlist: "★ Steam 願望單" },
+        nav: { wishlist: "★ Steam 願望單" },
         hero: {
           tag: "🎲 1–8 人水墨國風桌遊競速 · 支援單機同屏 / 線上連線",
           desc: "還原兒時圍坐桌前的西遊記憶。1–8 人國風水墨競速：步步是險阻，局局博心跳！一柄金箍棒掃清妖障，一顆衝刺骰絕境翻盤。無論獨自對弈還是好友歡聚，不到最後一格，勝負絕不見分曉！",
@@ -1111,6 +1159,7 @@
           release: "發售窗口：<strong>2026 年秋季</strong>"
         },
         pills: { chars: "八路行者", rules: "西行玩法", about: "關於創作" },
+        music: { play: "播放琵琶原聲", pause: "暫停琵琶原聲", cardPlay: "試聽琵琶原聲", cardPause: "暫停播放" },
         pilgrimsHeader: { title: "八位取經行者，各顯神通", sub: "點擊下方棋子，查看各行者的專屬水墨立繪與絕技神通。" },
         featuresHeader: { title: "西行通鑑 · 玩法與模式", sub: "從純粹的競速擲骰到 19 旋鈕的深度自訂，每一次西行都有截然不同的博弈風味。" },
         feat1: { title: "🎲 見好就收，險中求勝", desc: "每回合前進後觸發衝刺抉擇：衝過安全點額外步數助你一飛衝天；衝砸了承受路途懲罰。終點前的最後衝刺，正是落後者的絕地反擊機會！" },
@@ -1121,7 +1170,7 @@
 
       en: {
         flag: "🇺🇸", name: "English", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleEn.png",
-        nav: { chars: "8 Pilgrims", rules: "Gameplay", about: "About", wishlist: "★ Wishlist on Steam" },
+        nav: { wishlist: "★ Wishlist on Steam" },
         hero: {
           tag: "🎲 1–8 Player Ink-Wash Party Board Game · Single-player & Online",
           desc: "Relive childhood board game memories with 1–8 players in a Journey-to-the-West ink-wash race! Every step brings peril, every roll tests your luck. From solo duels to multiplayer parties, victory is never settled until the very last tile!",
@@ -1132,6 +1181,7 @@
           release: "Release Window: <strong>Autumn 2026</strong>"
         },
         pills: { chars: "8 Pilgrims", rules: "Gameplay", about: "About" },
+        music: { play: "Play Pipa Music", pause: "Pause Pipa Music", cardPlay: "Listen to Pipa OST", cardPause: "Pause OST" },
         pilgrimsHeader: { title: "Eight Pilgrims, Boundless Powers", sub: "Click any wooden token below to view unique ink-wash portraits and tactical abilities." },
         featuresHeader: { title: "Western Compendium · Rules & Modes", sub: "From pure classic races to 19 custom dials, every journey west brings fresh stakes and twists." },
         feat1: { title: "🎲 Push Your Luck, Turn the Tide", desc: "After each move, take a gamble on a second die! Clearing safe spots catapults you forward; busting triggers penalties. The final stretch to Thunderclap Summit gives trailing players their ultimate comeback chance!" },
@@ -1142,7 +1192,7 @@
 
       ja: {
         flag: "🇯🇵", name: "日本語", gameTitle: "西遊記ダッシュ", titleImg: "assets/TitleJA.png",
-        nav: { chars: "八人の旅人", rules: "遊び方", about: "制作秘話", wishlist: "★ ウィッシュリストに追加" },
+        nav: { wishlist: "★ ウィッシュリストに追加" },
         hero: {
           tag: "🎲 1〜8人 水墨画風・西遊記ボードゲーム · ソロ＆オンライン対応",
           desc: "放課後に机を囲んだあの日の記憶が蘇る！1〜8人対応の水墨画風・西遊記レースゲーム。一歩ごとに罠が待ち受け、サイコロの一振りに心拍数が跳ね上がる！最後のマスに辿り着くまで、勝負の行方は誰にも分からない！",
@@ -1153,6 +1203,7 @@
           release: "配信予定：<strong>2026年 秋</strong>"
         },
         pills: { chars: "八人の旅人", rules: "遊び方", about: "制作秘話" },
+        music: { play: "琵琶BGMを再生", pause: "BGMを一時停止", cardPlay: "琵琶の音色を試聴", cardPause: "一時停止" },
         pilgrimsHeader: { title: "個性豊かな八人の旅人たち", sub: "下の駒をクリックして、各キャラクターの水墨画イラストと固有能力を確認できます。" },
         featuresHeader: { title: "西行の心得 · ルールとモード", sub: "シンプルな競走から19個のカスタム設定まで、遊ぶたびに新しい駆け引きが楽しめます。" },
         feat1: { title: "🎲 引き際か、それとも勝負か？", desc: "安全目を越えればボーナスで一気に大跳躍！欲をかいて失敗すれば手痛いペナルティ。ゴール直前のラストスパートは、逆転勝利を狙う最大のチャンス！" },
@@ -1163,7 +1214,7 @@
 
       ko: {
         flag: "🇰🇷", name: "한국어", gameTitle: "서유 대질주", titleImg: "assets/TitleKO.png",
-        nav: { chars: "8인의 수행자", rules: "게임 규칙", about: "제작 비화", wishlist: "★ 찜하기" },
+        nav: { wishlist: "★ 찜하기" },
         hero: {
           tag: "🎲 1–8인 수묵화 서유기 보드 레이스 · 싱글 및 온라인 지원",
           desc: "어린 시절 친구들과 둘러앉아 즐기던 서유기 보드게임의 추억! 1–8인이 즐기는 동양 수묵화 레이스: 마지막 한 칸을 밟을 때까지 승부는 결코 끝나지 않습니다!",
@@ -1174,39 +1225,40 @@
           release: "출시 예정: <strong>2026년 가을</strong>"
         },
         pills: { chars: "8인의 수행자", rules: "게임 규칙", about: "제작 비화" },
+        music: { play: "비파 OST 재생", pause: "비파 OST 일시정지", cardPlay: "비파 연주 듣기", cardPause: "일시정지" },
         pilgrimsHeader: { title: "제각기 다른 신통력을 지닌 8인의 수행자", sub: "아래 목각 말을 클릭하여 각 수행자의 수묵화 일러스트와 고유 능력을 확인하세요." },
         featuresHeader: { title: "서행 통감 · 게임 규칙과 모드", sub: "클래식 레이스부터 19개의 심층 커스텀 노브까지, 매 판 새로운 재미를 선사합니다." },
         feat1: { title: "🎲 멈출 것인가, 모험할 것인가?", desc: "안전 칸을 넘기면 폭풍 질주, 무리하면 페널티! 결승점 앞의 마지막 질주는 꼴찌에게 주어지는 짜릿한 역전의 기회입니다." },
         feat2: { title: "👹 앞길을 가로막는 10대 요왕", desc: "세 개의 관문마다 무작위로 등장하는 요왕들이 주사위 규칙을 왜곡합니다. 백골정은 두 번 변신하며 끈질기게 가로막습니다!" },
-        feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모국어로 함께 즐길 수 있습니다." },
+        feat3: { title: "🌏 18개 언어로 한자리에 모여 대결", desc: "18개 언어 완벽 지원! 전 세계 유저와 실시간 매칭하거나 한 대의 PC로 1~8명이 각자의 모国어로 함께 즐길 수 있습니다." },
         feat4: { title: "⚙️ 19개의 조절 노브로 나만의 하우스 룰", desc: "클래식, 전력 질주, 연승 스노우볼, 기 모으기 등 원하는 룰을 자유롭게 만들어 즐겨보세요!" }
       },
 
-      fr: { flag: "🇫🇷", name: "Français", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleFR.png", nav: { chars: "8 Pèlerins", rules: "Modes", about: "À Propos", wishlist: "★ Liste de Souhaits" }, hero: { tag: "🎲 Jeu de Plateau & Course à l'Encre pour 1–8 Joueurs · Solo & En Ligne", desc: "1 à 8 joueurs dans une course trépidante à l'encre de Chine inspirée du Pèlerinage vers l'Ouest ! Chaque pas recèle un péril, chaque lancer de dé fait battre le cœur.", wishlist: "★ Ajouter à la Liste de Souhaits Steam", explore: "Explorer les Pèlerins et Règles ↓", tags: ["🎲 Jeu de Plateau", "⚔️ Stratégie PvP", "🖌️ Encre de Chine", "🌐 18 Langues"], platform: "Plateforme : <strong>Steam (PC & Mac)</strong>", release: "Sortie : <strong>Automne 2026</strong>" }, pills: { chars: "8 Pèlerins", rules: "Modes", about: "À Propos" }, pilgrimsHeader: { title: "Huit Pèlerins aux Pouvoirs Uniques", sub: "Cliquez sur un pion en bois ci-dessous pour découvrir ses illustrations et pouvoirs." }, featuresHeader: { title: "Compendium de l'Ouest · Règles et Modes", sub: "De la course classique aux 19 curseurs personnalisés." }, feat1: { title: "🎲 Tentez votre chance", desc: "Franchir les cases sécurisées vous propulse en avant, mais échouer entraîne de lourdes pénalités !" }, feat2: { title: "👹 10 Rois Démons Mythiques", desc: "Trois portes périlleuses gardées par des rois démons qui tordent les règles des dés." }, feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues pour jouer avec le monde entier dans votre langue maternelle." }, feat4: { title: "⚙️ 19 Curseurs Personnalisés", desc: "Créez vos propres règles de maison avec 19 curseurs modulables." } },
+      fr: { flag: "🇫🇷", name: "Français", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleFR.png", nav: { wishlist: "★ Liste de Souhaits" }, hero: { tag: "🎲 Jeu de Plateau & Course à l'Encre pour 1–8 Joueurs · Solo & En Ligne", desc: "1 à 8 joueurs dans une course trépidante à l'encre de Chine inspirée du Pèlerinage vers l'Ouest !", wishlist: "★ Ajouter à la Liste de Souhaits Steam", explore: "Explorer les Pèlerins et Règles ↓", tags: ["🎲 Jeu de Plateau", "⚔️ Stratégie PvP", "🖌️ Encre de Chine", "🌐 18 Langues"], platform: "Plateforme : <strong>Steam (PC & Mac)</strong>", release: "Sortie : <strong>Automne 2026</strong>" }, pills: { chars: "8 Pèlerins", rules: "Modes", about: "À Propos" }, music: { play: "Musique Pipa", pause: "Pause", cardPlay: "Écouter la Pipa", cardPause: "Pause" }, pilgrimsHeader: { title: "Huit Pèlerins aux Pouvoirs Uniques", sub: "Cliquez sur un pion en bois ci-dessous pour découvrir ses pouvoirs." }, featuresHeader: { title: "Compendium de l'Ouest · Règles et Modes", sub: "De la course classique aux 19 curseurs personnalisés." }, feat1: { title: "🎲 Tentez votre chance", desc: "Franchir les cases sécurisées vous propulse en avant !" }, feat2: { title: "👹 10 Rois Démons Mythiques", desc: "Trois portes périlleuses gardées par des rois démons." }, feat3: { title: "🌏 18 Langues à la Même Table", desc: "Support natif complet de 18 langues." }, feat4: { title: "⚙️ 19 Curseurs Personnalisés", desc: "Créez vos propres règles de maison." } },
       
-      de: { flag: "🇩🇪", name: "Deutsch", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleDE.png", nav: { chars: "8 Pilger", rules: "Spielmodi", about: "Über das Spiel", wishlist: "★ Wunschliste" }, hero: { tag: "🎲 Tuschmalerei-Brettspiel für 1–8 Spieler · Solo & Online", desc: "Erlebe nostalgische Brettspiel-Erinnerungen für 1–8 Spieler im stimmungsvollen Tuschmalerei-Stil der Reise nach Westen! Bis zum letzten Feld ist nichts entschieden.", wishlist: "★ Auf Steam zur Wunschliste hinzufügen", explore: "Pilger & Regeln ansehen ↓", tags: ["🎲 Partyspiel", "⚔️ PvP-Strategie", "🖌️ Tuschmalerei", "🌐 18 Sprachen"], platform: "Plattform: <strong>Steam (PC & Mac)</strong>", release: "Erscheinungstermin: <strong>Herbst 2026</strong>" }, pills: { chars: "8 Pilger", rules: "Spielmodi", about: "Über das Spiel" }, pilgrimsHeader: { title: "Acht Pilger, unendliche Kräfte", sub: "Klicke auf eine Holzfigur, um Porträts und Fähigkeiten anzusehen." }, featuresHeader: { title: "Westliches Kompendium · Regeln & Modi", sub: "Vom klassischen Wettrennen bis zu 19 individuellen Reglern." }, feat1: { title: "🎲 Risiko oder Sicherheit?", desc: "Sichere Würfe katapultieren dich vorwärts; Fehltritte fordern ihren Tribut!" }, feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." }, feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen – lokal oder online mit der Welt." }, feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln für unvergessliche Spielabende." } },
+      de: { flag: "🇩🇪", name: "Deutsch", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleDE.png", nav: { wishlist: "★ Wunschliste" }, hero: { tag: "🎲 Tuschmalerei-Brettspiel für 1–8 Spieler · Solo & Online", desc: "Erlebe nostalgische Brettspiel-Erinnerungen für 1–8 Spieler im stimmungsvollen Tuschmalerei-Stil der Reise nach Westen!", wishlist: "★ Auf Steam zur Wunschliste hinzufügen", explore: "Pilger & Regeln ansehen ↓", tags: ["🎲 Partyspiel", "⚔️ PvP-Strategie", "🖌️ Tuschmalerei", "🌐 18 Sprachen"], platform: "Plattform: <strong>Steam (PC & Mac)</strong>", release: "Erscheinungstermin: <strong>Herbst 2026</strong>" }, pills: { chars: "8 Pilger", rules: "Spielmodi", about: "Über das Spiel" }, music: { play: "Pipa-Musik abspielen", pause: "Pause", cardPlay: "Pipa-Soundtrack anhören", cardPause: "Pause" }, pilgrimsHeader: { title: "Acht Pilger, unendliche Kräfte", sub: "Klicke auf eine Holzfigur, um Porträts und Fähigkeiten anzusehen." }, featuresHeader: { title: "Westliches Kompendium · Regeln & Modi", sub: "Vom klassischen Wettrennen bis zu 19 individuellen Reglern." }, feat1: { title: "🎲 Risiko oder Sicherheit?", desc: "Sichere Würfe katapultieren dich vorwärts!" }, feat2: { title: "👹 10 Mythische Dämonenkönige", desc: "Drei gefährliche Pässe werden von mächtigen Dämonen bewacht." }, feat3: { title: "🌏 18 Sprachen an einem Tisch", desc: "Volle Unterstützung für 18 Sprachen." }, feat4: { title: "⚙️ 19 Individuelle Regler", desc: "Erstelle deine ganz eigenen Hausregeln." } },
       
-      es: { flag: "🇪🇸", name: "Español", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleES.png", nav: { chars: "8 Peregrinos", rules: "Modos de Juego", about: "Acerca de", wishlist: "★ Lista de Deseos" }, hero: { tag: "🎲 Juego de Tablero al Estilo Aguada para 1–8 Jugadores · Solo y Online", desc: "¡Revive la emoción de los juegos de mesa de la infancia! Carreras de 1 a 8 jugadores con arte tradicional al estilo tinta china. ¡La victoria no se decide hasta la última casilla!", wishlist: "★ Añadir a la Lista de Deseos", explore: "Explorar Peregrinos y Modos ↓", tags: ["🎲 Juego de Mesa", "⚔️ Estrategia PvP", "🖌️ Arte en Tinta", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lanzamiento: <strong>Otoño de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Juego", about: "Acerca de" }, pilgrimsHeader: { title: "Ocho Peregrinos con Poderes Únicos", sub: "Haz clic en cualquier ficha de madera para ver su retrato en tinta y sus habilidades." }, featuresHeader: { title: "Compendio del Oeste · Reglas y Modos", sub: "Desde carreras clásicas hasta 19 ajustes personalizados." }, feat1: { title: "🎲 ¿Asegurar o arriesgar?", desc: "Superar las casillas seguras te impulsa hacia adelante, ¡pero fallar conlleva duras penalizaciones!" }, feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio que distorsionan las tiradas." }, feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas para disfrutar con amigos de todo el mundo." }, feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas para partidas únicas." } },
+      es: { flag: "🇪🇸", name: "Español", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleES.png", nav: { wishlist: "★ Lista de Deseos" }, hero: { tag: "🎲 Juego de Tablero al Estilo Aguada para 1–8 Jugadores · Solo y Online", desc: "¡Revive la emoción de los juegos de mesa de la infancia! Carreras de 1 a 8 jugadores con arte tradicional al estilo tinta china.", wishlist: "★ Añadir a la Lista de Deseos", explore: "Explorar Peregrinos y Modos ↓", tags: ["🎲 Juego de Mesa", "⚔️ Estrategia PvP", "🖌️ Arte en Tinta", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lanzamiento: <strong>Otoño de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Juego", about: "Acerca de" }, music: { play: "Reproducir Pipa BGM", pause: "Pausar", cardPlay: "Escuchar Pipa OST", cardPause: "Pausar" }, pilgrimsHeader: { title: "Ocho Peregrinos con Poderes Únicos", sub: "Haz clic en cualquier ficha de madera para ver su retrato en tinta." }, featuresHeader: { title: "Compendio del Oeste · Reglas y Modos", sub: "Desde carreras clásicas hasta 19 ajustes personalizados." }, feat1: { title: "🎲 ¿Asegurar o arriesgar?", desc: "Superar las casillas seguras te impulsa hacia adelante!" }, feat2: { title: "👹 Diez Reyes Demonio Míticos", desc: "Tres pasos peligrosos custodiados por reyes demonio." }, feat3: { title: "🌏 18 Idiomas en la Misma Mesa", desc: "Compatibilidad nativa con 18 idiomas." }, feat4: { title: "⚙️ 19 Ajustes Personalizados", desc: "Crea tus propias reglas personalizadas." } },
       
-      it: { flag: "🇮🇹", name: "Italiano", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleIT.png", nav: { chars: "8 Pellegrini", rules: "Modalità", about: "Informazioni", wishlist: "★ Wishlist" }, hero: { tag: "🎲 Gioco da Tavolo a Inchiostro per 1–8 Giocatori · Singolo e Online", desc: "Rivivi le memorie dei giochi da tavolo dell'infanzia con 1–8 giocatori in una corsa verso l'ovest dipinta a inchiostro!", wishlist: "★ Aggiungi alla Wishlist Steam", explore: "Esplora Pellegrini e Modalità ↓", tags: ["🎲 Gioco da Tavolo", "⚔️ Strategia", "🖌️ Inchiostro", "🌐 18 Lingue"], platform: "Piattaforma: <strong>Steam (PC & Mac)</strong>", release: "Uscita: <strong>Autunno 2026</strong>" }, pills: { chars: "8 Pellegrini", rules: "Modalità", about: "Informazioni" }, pilgrimsHeader: { title: "Otto Pellegrini, Poteri Infiniti", sub: "Clicca su una pedina di legno per vedere i dettagli." }, featuresHeader: { title: "Compendio dell'Ovest", sub: "Dalle corse classiche a 19 parametri personalizzabili." }, feat1: { title: "🎲 Tenta la sorte", desc: "Supera i punti sicuri o affronta le insidie del cammino!" }, feat2: { title: "👹 10 Re Demoni", desc: "Tre passi pericolosi difesi da possenti boss demoniaci." }, feat3: { title: "🌏 18 Lingue allo Stesso Tavolo", desc: "Supporto nativo per 18 lingue per giocare con tutto il mondo." }, feat4: { title: "⚙️ 19 Parametri Personalizzati", desc: "Crea le tue regole di casa ideali per ogni serata." } },
+      it: { flag: "🇮🇹", name: "Italiano", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleIT.png", nav: { wishlist: "★ Wishlist" }, hero: { tag: "🎲 Gioco da Tavolo a Inchiostro per 1–8 Giocatori · Singolo e Online", desc: "Rivivi le memorie dei giochi da tavolo dell'infanzia con 1–8 giocatori in una corsa verso l'ovest dipinta a inchiostro!", wishlist: "★ Aggiungi alla Wishlist Steam", explore: "Esplora Pellegrini e Modalità ↓", tags: ["🎲 Gioco da Tavolo", "⚔️ Strategia", "🖌️ Inchiostro", "🌐 18 Lingue"], platform: "Piattaforma: <strong>Steam (PC & Mac)</strong>", release: "Uscita: <strong>Autunno 2026</strong>" }, pills: { chars: "8 Pellegrini", rules: "Modalità", about: "Informazioni" }, music: { play: "Musica Pipa", pause: "Pausa", cardPlay: "Ascolta Pipa OST", cardPause: "Pausa" }, pilgrimsHeader: { title: "Otto Pellegrini, Poteri Infiniti", sub: "Clicca su una pedina di legno per vedere i dettagli." }, featuresHeader: { title: "Compendio dell'Ovest", sub: "Dalle corse classiche a 19 parametri personalizzabili." }, feat1: { title: "🎲 Tenta la sorte", desc: "Supera i punti sicuri o affronta le insidie del cammino!" }, feat2: { title: "👹 10 Re Demoni", desc: "Tre passi pericolosi difesi da possenti boss demoniaci." }, feat3: { title: "🌏 18 Lingue allo Stesso Tavolo", desc: "Supporto nativo per 18 lingue per giocare con tutto il mondo." }, feat4: { title: "⚙️ 19 Parametri Personalizzati", desc: "Crea le tue regole di casa ideali." } },
       
-      pt: { flag: "🇧🇷", name: "Português", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePT.png", nav: { chars: "8 Peregrinos", rules: "Modos de Jogo", about: "Sobre", wishlist: "★ Lista de Desejos" }, hero: { tag: "🎲 Jogo de Tabuleiro em Arte Nanquim para 1–8 Jogadores", desc: "Reviva a nostalgia dos jogos de tabuleiro de infância com 1 a 8 jogadores em uma eletrizante corrida ao estilo Jornada ao Oeste!", wishlist: "★ Adicionar à Lista de Desejos Steam", explore: "Explorar Peregrinos e Modos ↓", tags: ["🎲 Jogo de Tabuleiro", "⚔️ Estratégia", "🖌️ Arte Nanquim", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lançamento: <strong>Primavera de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Jogo", about: "Sobre" }, pilgrimsHeader: { title: "Oito Peregrinos com Habilidades Únicas", sub: "Clique em uma peça de madeira para ver os poderes." }, featuresHeader: { title: "Compêndio do Oeste", sub: "De corridas clássicas a 19 seletores personalizados." }, feat1: { title: "🎲 Arrisque ou Jogue Seguro", desc: "Avance com audácia para alcançar a vitória!" }, feat2: { title: "👹 10 Reis Demônios Míticos", desc: "Três passagens perigosas guardadas por chefes lendários." }, feat3: { title: "🌏 18 Idiomas na Mesma Mesa", desc: "Suporte completo a 18 línguas para jogar com amigos do mundo todo." }, feat4: { title: "⚙️ 19 Seletores Personalizados", desc: "Crie regras exclusivas para sua mesa de jogo." } },
+      pt: { flag: "🇧🇷", name: "Português", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePT.png", nav: { wishlist: "★ Lista de Desejos" }, hero: { tag: "🎲 Jogo de Tabuleiro em Arte Nanquim para 1–8 Jogadores", desc: "Reviva a nostalgia dos jogos de tabuleiro de infância com 1 a 8 jogadores em uma eletrizante corrida ao estilo Jornada ao Oeste!", wishlist: "★ Adicionar à Lista de Desejos Steam", explore: "Explorar Peregrinos e Modos ↓", tags: ["🎲 Jogo de Tabuleiro", "⚔️ Estratégia", "🖌️ Arte Nanquim", "🌐 18 Idiomas"], platform: "Plataforma: <strong>Steam (PC & Mac)</strong>", release: "Lançamento: <strong>Primavera de 2026</strong>" }, pills: { chars: "8 Peregrinos", rules: "Modos de Jogo", about: "Sobre" }, music: { play: "Tocar Música Pipa", pause: "Pausar", cardPlay: "Ouvir Trilha Pipa", cardPause: "Pausar" }, pilgrimsHeader: { title: "Oito Peregrinos com Habilidades Únicas", sub: "Clique em uma peça de madeira para ver os poderes." }, featuresHeader: { title: "Compêndio do Oeste", sub: "De corridas clássicas a 19 seletores personalizados." }, feat1: { title: "🎲 Arrisque ou Jogue Seguro", desc: "Avance com audácia para alcançar a vitória!" }, feat2: { title: "👹 10 Reis Demônios Míticos", desc: "Três passagens perigosas guardadas por chefes lendários." }, feat3: { title: "🌏 18 Idiomas na Mesma Mesa", desc: "Suporte completo a 18 línguas." }, feat4: { title: "⚙️ 19 Seletores Personalizados", desc: "Crie regras exclusivas para sua mesa de jogo." } },
       
-      ru: { flag: "🇷🇺", name: "Русский", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleRU.png", nav: { chars: "8 Паломников", rules: "Режимы игры", about: "Об игре", wishlist: "★ В список желаемого" }, hero: { tag: "🎲 Настольная гонка в стиле тушевой живописи для 1–8 игроков", desc: "Окунитесь в воспоминания детства с настольной гонкой по мотивам «Путешествия на Запад» для 1–8 игроков!", wishlist: "★ В список желаемого Steam", explore: "Паломники и правила ↓", tags: ["🎲 Настольная игра", "⚔️ PvP-стратегия", "🖌️ Живопись тушью", "🌐 18 языков"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Выход: <strong>Осень 2026</strong>" }, pills: { chars: "8 Паломников", rules: "Режимы игры", about: "Об игре" }, pilgrimsHeader: { title: "Восемь паломников с уникальными способностями", sub: "Нажмите на деревянную фигурку для просмотра навыков." }, featuresHeader: { title: "Западный свод · Правила и режимы", sub: "От классических гонок до 19 глубоких параметров настройки." }, feat1: { title: "🎲 Рискнуть или остановиться?", desc: "Успешный рывок продвигает далеко вперед!" }, feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов." }, feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры со всем миром." }, feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила." } },
+      ru: { flag: "🇷🇺", name: "Русский", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleRU.png", nav: { wishlist: "★ В список желаемого" }, hero: { tag: "🎲 Настольная гонка в стиле тушевой живописи для 1–8 игроков", desc: "Окунитесь в воспоминания детства с настольной гонкой по мотивам «Путешествия на Запад» для 1–8 игроков!", wishlist: "★ В список желаемого Steam", explore: "Паломники и правила ↓", tags: ["🎲 Настольная игра", "⚔️ PvP-стратегия", "🖌️ Живопись тушью", "🌐 18 языков"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Выход: <strong>Осень 2026</strong>" }, pills: { chars: "8 Паломников", rules: "Режимы игры", about: "Об игре" }, music: { play: "Включить музыку пипы", pause: "Пауза", cardPlay: "Слушать саундтрек", cardPause: "Пауза" }, pilgrimsHeader: { title: "Восемь паломников с уникальными способностями", sub: "Нажмите на деревянную фигурку для просмотра навыков." }, featuresHeader: { title: "Западный свод · Правила и режимы", sub: "От классических гонок до 19 глубоких параметров настройки." }, feat1: { title: "🎲 Рискнуть или остановиться?", desc: "Успешный рывок продвигает далеко вперед!" }, feat2: { title: "👹 10 легендарных королей демонов", desc: "Три опасные заставы охраняются владыками демонов." }, feat3: { title: "🌏 18 языков за одним столом", desc: "Полная поддержка 18 языков для игры со всем миром." }, feat4: { title: "⚙️ 19 настраиваемых параметров", desc: "Создавайте собственные домашние правила." } },
       
-      pl: { flag: "🇵🇱", name: "Polski", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePL.png", nav: { chars: "8 Pielgrzymów", rules: "Tryby Gry", about: "O Grze", wishlist: "★ Lista Życzeń" }, hero: { tag: "🎲 Gra planszowa w stylu tuszu dla 1–8 graczy · Solo i Online", desc: "Przeżyj wspomnienia z dzieciństwa w wyścigu planszowym dla 1–8 graczy w klimacie Wędrówki na Zachód!", wishlist: "★ Dodaj do Listy Życzeń Steam", explore: "Zobacz Pielgrzymów i Zasady ↓", tags: ["🎲 Gra Planszowa", "⚔️ Strategia", "🖌️ Tusz", "🌐 18 Języków"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Premiera: <strong>Jesień 2026</strong>" }, pills: { chars: "8 Pielgrzymów", rules: "Tryby Gry", about: "O Grze" }, pilgrimsHeader: { title: "Ośmiu Pielgrzymów o Niezwykłych Mocach", sub: "Kliknij drewniany pionek, aby poznać umiejętności." }, featuresHeader: { title: "Kompendium Zachodu", sub: "Od klasycznych wyścigów po 19 suwaków personalizacji." }, feat1: { title: "🎲 Zaryzykuj lub Graj Bezpiecznie", desc: "Pokonuj bezpieczne pola i pędź do przodu!" }, feat2: { title: "👹 10 Mitycznych Królów Demonów", desc: "Trzy niebezpieczne bramy strzeżone przez potężne demony." }, feat3: { title: "🌏 18 Języków przy Jednym Stole", desc: "Graj z całym światem we własnym języku ojczystym." }, feat4: { title: "⚙️ 19 Suwaków Własnych Zasad", desc: "Dostosuj reguły gry idealnie pod swoją ekipę." } },
+      pl: { flag: "🇵🇱", name: "Polski", gameTitle: "WESTWARD DASH", titleImg: "assets/TitlePL.png", nav: { wishlist: "★ Lista Życzeń" }, hero: { tag: "🎲 Gra planszowa w stylu tuszu dla 1–8 graczy · Solo i Online", desc: "Przeżyj wspomnienia z dzieciństwa w wyścigu planszowym dla 1–8 graczy w klimacie Wędrówki na Zachód!", wishlist: "★ Dodaj do Listy Życzeń Steam", explore: "Zobacz Pielgrzymów i Zasady ↓", tags: ["🎲 Gra Planszowa", "⚔️ Strategia", "🖌️ Tusz", "🌐 18 Języków"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Premiera: <strong>Jesień 2026</strong>" }, pills: { chars: "8 Pielgrzymów", rules: "Tryby Gry", about: "O Grze" }, music: { play: "Muzyka Pipa", pause: "Pauza", cardPlay: "Posłuchaj Pipa OST", cardPause: "Pauza" }, pilgrimsHeader: { title: "Ośmiu Pielgrzymów o Niezwykłych Mocach", sub: "Kliknij drewniany pionek, aby poznać umiejętności." }, featuresHeader: { title: "Kompendium Zachodu", sub: "Od klasycznych wyścigów po 19 suwaków personalizacji." }, feat1: { title: "🎲 Zaryzykuj lub Graj Bezpiecznie", desc: "Pokonuj bezpieczne pola i pędź do przodu!" }, feat2: { title: "👹 10 Mitycznych Królów Demonów", desc: "Trzy niebezpieczne bramy strzeżone przez potężne demony." }, feat3: { title: "🌏 18 Języków przy Jednym Stole", desc: "Graj z całym światem we własnym języku ojczystym." }, feat4: { title: "⚙️ 19 Suwaków Własnych Zasad", desc: "Dostosuj reguły gry idealnie pod swoją ekipę." } },
       
-      cs: { flag: "🇨🇿", name: "Čeština", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleCS.png", nav: { chars: "8 Poutníků", rules: "Herní Módy", about: "O Hře", wishlist: "★ Seznam Přání" }, hero: { tag: "🎲 Desková závodní hra v tušovém stylu pro 1–8 hráčů", desc: "Oživte vzpomínky na deskové hry z dětství v závodní tušové hře pro 1 až 8 hráčů inspirované Putováním na západ!", wishlist: "★ Přidat do Seznamu Přání Steam", explore: "Prozkoumat Poutníky a Pravidla ↓", tags: ["🎲 Desková Hra", "⚔️ Strategie", "🖌️ Tušová Malba", "🌐 18 Jazyků"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Vydání: <strong>Podzim 2026</strong>" }, pills: { chars: "8 Poutníků", rules: "Herní Módy", about: "O Hře" }, pilgrimsHeader: { title: "Osm Poutníků s Jedinečnými Schopnostmi", sub: "Klikněte na dřevěnou figurku pro zobrazení detailů." }, featuresHeader: { title: "Západní Kompendium", sub: "Od klasických závodů až po 19 vlastních nastavení." }, feat1: { title: "🎲 Riskujte nebo Hrajte na Jistotu", desc: "Bezpečné hody vás vynesou vpřed k vítězství!" }, feat2: { title: "👹 10 Mýtických Démonických Králů", desc: "Tři nebezpečné průsmyky hlídané mocnými démony." }, feat3: { title: "🌏 18 Jazyků u Jednoho Stolu", desc: "Plná podpora 18 jazyků pro hraní s celým světem." }, feat4: { title: "⚙️ 19 Vlastních Posuvníků", desc: "Vytvořte si vlastní domácí pravidla pro každou partii." } },
+      cs: { flag: "🇨🇿", name: "Čeština", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleCS.png", nav: { wishlist: "★ Seznam Přání" }, hero: { tag: "🎲 Desková závodní hra v tušovém stylu pro 1–8 hráčů", desc: "Oživte vzpomínky na deskové hry z dětství v závodní tušové hře pro 1 až 8 hráčů inspirované Putováním na západ!", wishlist: "★ Přidat do Seznamu Přání Steam", explore: "Prozkoumat Poutníky a Pravidla ↓", tags: ["🎲 Desková Hra", "⚔️ Strategie", "🖌️ Tušová Malba", "🌐 18 Jazyků"], platform: "Platforma: <strong>Steam (PC & Mac)</strong>", release: "Vydání: <strong>Podzim 2026</strong>" }, pills: { chars: "8 Poutníků", rules: "Herní Módy", about: "O Hře" }, music: { play: "Přehrát hudbu Pipa", pause: "Pozastavit", cardPlay: "Poslechnout Pipa OST", cardPause: "Pozastavit" }, pilgrimsHeader: { title: "Osm Poutníků s Jedinečnými Schopnostmi", sub: "Klikněte na dřevěnou figurku pro zobrazení detailů." }, featuresHeader: { title: "Západní Kompendium", sub: "Od klasických závodů až po 19 vlastních nastavení." }, feat1: { title: "🎲 Riskujte nebo Hrajte na Jistotu", desc: "Bezpečné hody vás vynesou vpřed k vítězství!" }, feat2: { title: "👹 10 Mýtických Démonických Králů", desc: "Tři nebezpečné průsmyky hlídané mocnými démony." }, feat3: { title: "🌏 18 Jazyků u Jednoho Stolu", desc: "Plná podpora 18 jazyků pro hraní s celým světem." }, feat4: { title: "⚙️ 19 Vlastních Posuvníků", desc: "Vytvořte si vlastní domácí pravidla." } },
       
-      uk: { flag: "🇺🇦", name: "Українська", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleUK.png", nav: { chars: "8 Паломників", rules: "Режими Гри", about: "Про Гру", wishlist: "★ Список Бажаного" }, hero: { tag: "🎲 Настільні перегони в тушовому стилі для 1–8 гравців", desc: "Пориньте у спогади дитинства з настільними перегонами за мотивами «Подорожі на Захід» для 1–8 гравців!", wishlist: "★ Додати до Списку Бажаного Steam", explore: "Переглянути Паломників і Правила ↓", tags: ["🎲 Настільна Гра", "⚔️ Стратегія", "🖌️ Туш", "🌐 18 Мов"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Реліз: <strong>Осінь 2026</strong>" }, pills: { chars: "8 Паломників", rules: "Режими Гри", about: "Про Гру" }, pilgrimsHeader: { title: "Вісім Паломників з Унікальними Здібностями", sub: "Натисніть на дерев'яну фігурку, щоб побачити навички." }, featuresHeader: { title: "Західне Зведення", sub: "Від класичних перегонів до 19 параметрів налаштування." }, feat1: { title: "🎲 Ризикнути чи Зупинитися?", desc: "Успішний ривок наближає вас до священної вершини!" }, feat2: { title: "👹 10 Міфічних Царів Демонів", desc: "Три небезпечні застави охороняються владиками демонів." }, feat3: { title: "🌏 18 Мов за Одним Столом", desc: "Повна підтримка 18 мов для гри з усім світом." }, feat4: { title: "⚙️ 19 Власних Параметрів", desc: "Створюйте власні правила для незабутніх вечорів." } },
+      uk: { flag: "🇺🇦", name: "Українська", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleUK.png", nav: { wishlist: "★ Список Бажаного" }, hero: { tag: "🎲 Настільні перегони в тушовому стилі для 1–8 гравців", desc: "Пориньте у спогади дитинства з настільними перегонами за мотивами «Подорожі на Захід» для 1–8 гравців!", wishlist: "★ Додати до Списку Бажаного Steam", explore: "Переглянути Паломників і Правила ↓", tags: ["🎲 Настільна Гра", "⚔️ Стратегія", "🖌️ Туш", "🌐 18 Мов"], platform: "Платформа: <strong>Steam (PC & Mac)</strong>", release: "Реліз: <strong>Осінь 2026</strong>" }, pills: { chars: "8 Паломників", rules: "Режими Гри", about: "Про Гру" }, music: { play: "Грати музику піпи", pause: "Пауза", cardPlay: "Слухати піпу OST", cardPause: "Пауза" }, pilgrimsHeader: { title: "Вісім Паломників з Унікальними Здібностями", sub: "Натисніть на дерев'яну фігурку, щоб побачити навички." }, featuresHeader: { title: "Західне Зведення", sub: "Від класичних перегонів до 19 параметрів налаштування." }, feat1: { title: "🎲 Ризикнути чи Зупинитися?", desc: "Успішний ривок наближає вас до священної вершини!" }, feat2: { title: "👹 10 Міфічних Царів Демонів", desc: "Три небезпечні застави охороняються владиками демонів." }, feat3: { title: "🌏 18 Мов за Одним Столом", desc: "Повна підтримка 18 мов для гри з усім світом." }, feat4: { title: "⚙️ 19 Власних Параметрів", desc: "Створюйте власні правила." } },
       
-      tr: { flag: "🇹🇷", name: "Türkçe", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTR.png", nav: { chars: "8 Yolcu", rules: "Oyun Modları", about: "Hakkında", wishlist: "★ İstek Listesi" }, hero: { tag: "🎲 1–8 Oyunculu Mürekkep Sanatı Masa Yarışı · Tek ve Çevrimiçi", desc: "Çocukluk kutu oyunu anılarınızı 1–8 oyuncuyla Batıya Yolculuk temalı geleneksel mürekkep yarışında yeniden yaşayın!", wishlist: "★ Steam İstek Listesine Ekle", explore: "Yolcuları ve Kuralları Keşfet ↓", tags: ["🎲 Kutu Oyunu", "⚔️ Strateji", "🖌️ Mürekkep Sanatı", "🌐 18 Dil"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Çıkış: <strong>Sonbahar 2026</strong>" }, pills: { chars: "8 Yolcu", rules: "Oyun Modları", about: "Hakkında" }, pilgrimsHeader: { title: "Benzersiz Güçlere Sahip Sekiz Yolcu", sub: "Yetenekleri görmek için ahşap taşlara tıklayın." }, featuresHeader: { title: "Batı Rehberi", sub: "Klasik yarıştan 19 özel ayara kadar sınırsız eğlence." }, feat1: { title: "🎲 Şansını Dene veya Güvenli Oyna", desc: "Güvenli adımları aşarak zafere doğru hızla koşun!" }, feat2: { title: "👹 10 Efsanevi İblis Kralı", desc: "Zar kurallarını büken güçlü bölüm sonu canavarları." }, feat3: { title: "🌏 Aynı Masada 18 Dil Desteği", desc: "Tüm dünyayla kendi ana dilinizde oynayın." }, feat4: { title: "⚙️ 19 Özel Kural Ayarı", desc: "Kendi masa kurallarınızı dilediğiniz gibi oluşturun." } },
+      tr: { flag: "🇹🇷", name: "Türkçe", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTR.png", nav: { wishlist: "★ İstek Listesi" }, hero: { tag: "🎲 1–8 Oyunculu Mürekkep Sanatı Masa Yarışı · Tek ve Çevrimiçi", desc: "Çocukluk kutu oyunu anılarınızı 1–8 oyuncuyla Batıya Yolculuk temalı geleneksel mürekkep yarışında yeniden yaşayın!", wishlist: "★ Steam İstek Listesine Ekle", explore: "Yolcuları ve Kuralları Keşfet ↓", tags: ["🎲 Kutu Oyunu", "⚔️ Strateji", "🖌️ Mürekkep Sanatı", "🌐 18 Dil"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Çıkış: <strong>Sonbahar 2026</strong>" }, pills: { chars: "8 Yolcu", rules: "Oyun Modları", about: "Hakkında" }, music: { play: "Pipa Müziğini Çal", pause: "Durdur", cardPlay: "Pipa Müziğini Dinle", cardPause: "Durdur" }, pilgrimsHeader: { title: "Benzersiz Güçlere Sahip Sekiz Yolcu", sub: "Yetenekleri görmek için ahşap taşlara tıklayın." }, featuresHeader: { title: "Batı Rehberi", sub: "Klasik yarıştan 19 özel ayara kadar sınırsız eğlence." }, feat1: { title: "🎲 Şansını Dene veya Güvenli Oyna", desc: "Güvenli adımları aşarak zafere doğru hızla koşun!" }, feat2: { title: "👹 10 Efsanevi İblis Kralı", desc: "Zar kurallarını büken güçlü bölüm sonu canavarları." }, feat3: { title: "🌏 Aynı Masada 18 Dil Desteği", desc: "Tüm dünyayla kendi ana dilinizde oynayın." }, feat4: { title: "⚙️ 19 Özel Kural Ayarı", desc: "Kendi masa kurallarınızı oluşturun." } },
       
-      th: { flag: "🇹🇭", name: "ไทย", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTH.png", nav: { chars: "8 ผู้แสวงบุญ", rules: "โหมดเกม", about: "เกี่ยวกับเกม", wishlist: "★ รายการสิ่งที่อยากได้" }, hero: { tag: "🎲 บอร์ดเกมแข่งวิ่งสไตล์ภาพวาดพู่กันจีนสำหรับ 1–8 คน", desc: "ย้อนรอยความทรงจำในวัยเด็กกับเกมกระดานไซอิ๋วสไตล์ภาพวาดพู่กันจีนสำหรับ 1-8 คน ทอยลูกเต๋าฝ่าด่านสู่อิสรภาพ!", wishlist: "★ เพิ่มในรายการสิ่งที่อยากได้ Steam", explore: "ดูตัวละครและกติกา ↓", tags: ["🎲 บอร์ดเกม", "⚔️ กลยุทธ์", "🖌️ พู่กันจีน", "🌐 18 ภาษา"], platform: "แพลตฟอร์ม: <strong>Steam (PC & Mac)</strong>", release: "กำหนดวางจำหน่าย: <strong>ฤดูใบไม้ร่วง 2026</strong>" }, pills: { chars: "8 ผู้แสวงบุญ", rules: "โหมดเกม", about: "เกี่ยวกับเกม" }, pilgrimsHeader: { title: "แปดผู้แสวงบุญพร้อมอิทธิฤทธิ์อันไร้ขอบเขต", sub: "คลิกที่ตัวหมากไม้เพื่อดูพลังพิเศษ" }, featuresHeader: { title: "คัมภีร์ตะวันตก", sub: "ตั้งแต่การแข่งขันคลาสสิกไปจนถึงการปรับแต่ง 19 แบบ" }, feat1: { title: "🎲 เสี่ยงโชคหรือพอแค่นี้?", desc: "ก้าวผ่านจุดปลอดภัยเพื่อพุ่งทะยานสู่ชัยชนะ!" }, feat2: { title: "👹 10 พญามารในตำนาน", desc: "สามด่านอันตรายที่มีราชาปีศาจคอยบิดเบือนกฎลูกเต๋า" }, feat3: { title: "🌏 18 ภาษาในโต๊ะเดียวกัน", desc: "รองรับ 18 ภาษาให้ทุกคนสนุกไปด้วยกันในภาษาแม่" }, feat4: { title: "⚙️ 19 ปุ่มปรับแต่งกฎเฉพาะตัว", desc: "สร้างกฎประจำบ้านของคุณเองได้อย่างอิสระ" } },
+      th: { flag: "🇹🇭", name: "ไทย", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleTH.png", nav: { wishlist: "★ รายการสิ่งที่อยากได้" }, hero: { tag: "🎲 บอร์ดเกมแข่งวิ่งสไตล์ภาพวาดพู่กันจีนสำหรับ 1–8 คน", desc: "ย้อนรอยความทรงจำในวัยเด็กกับเกมกระดานไซอิ๋วสไตล์ภาพวาดพู่กันจีนสำหรับ 1-8 คน!", wishlist: "★ เพิ่มในรายการสิ่งที่อยากได้ Steam", explore: "ดูตัวละครและกติกา ↓", tags: ["🎲 บอร์ดเกม", "⚔️ กลยุทธ์", "🖌️ พู่กันจีน", "🌐 18 ภาษา"], platform: "แพลตฟอร์ม: <strong>Steam (PC & Mac)</strong>", release: "กำหนดวางจำหน่าย: <strong>ฤดูใบไม้ร่วง 2026</strong>" }, pills: { chars: "8 ผู้แสวงบุญ", rules: "โหมดเกม", about: "เกี่ยวกับเกม" }, music: { play: "เล่นเพลงผีผา", pause: "หยุดชั่วคราว", cardPlay: "ฟังเพลงผีผา OST", cardPause: "หยุด" }, pilgrimsHeader: { title: "แปดผู้แสวงบุญพร้อมอิทธิฤทธิ์อันไร้ขอบเขต", sub: "คลิกที่ตัวหมากไม้เพื่อดูพลังพิเศษ" }, featuresHeader: { title: "คัมภีร์ตะวันตก", sub: "ตั้งแต่การแข่งขันคลาสสิกไปจนถึงการปรับแต่ง 19 แบบ" }, feat1: { title: "🎲 เสี่ยงโชคหรือพอแค่นี้?", desc: "ก้าวผ่านจุดปลอดภัยเพื่อพุ่งทะยานสู่ชัยชนะ!" }, feat2: { title: "👹 10 พญามารในตำนาน", desc: "สามด่านอันตรายที่มีราชาปีศาจคอยบิดเบือนกฎลูกเต๋า" }, feat3: { title: "🌏 18 ภาษาในโต๊ะเดียวกัน", desc: "รองรับ 18 ภาษาให้ทุกคนสนุกไปด้วยกันในภาษาแม่" }, feat4: { title: "⚙️ 19 ปุ่มปรับแต่งกฎเฉพาะตัว", desc: "สร้างกฎประจำบ้านของคุณเองได้อย่างอิสระ" } },
       
-      vi: { flag: "🇻🇳", name: "Tiếng Việt", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleVI.png", nav: { chars: "8 Hành Giả", rules: "Luật Chơi", about: "Giới Thiệu", wishlist: "★ Danh Sách Ước" }, hero: { tag: "🎲 Cờ Đua Thủy Mặc Tây Du Ký Cho 1–8 Người Chơi", desc: "Tái hiện ký ức tuổi thơ cùng 1–8 người chơi trong cuộc đua Tây Du Ký phong cách tranh thủy mặc sống động!", wishlist: "★ Thêm Vào Danh Sách Ước Steam", explore: "Khám Phá Nhân Vật & Luật Chơi ↓", tags: ["🎲 Cờ Bàn", "⚔️ Chiến Thuật", "🖌️ Thủy Mặc", "🌐 18 Ngôn Ngữ"], platform: "Nền tảng: <strong>Steam (PC & Mac)</strong>", release: "Phát hành: <strong>Mùa Thu 2026</strong>" }, pills: { chars: "8 Hành Giả", rules: "Luật Chơi", about: "Giới Thiệu" }, pilgrimsHeader: { title: "Tám Vị Hành Giả Với Thần Thông Quảng Đại", sub: "Nhấp vào quân cờ gỗ để xem tuyệt kỹ và cốt truyện." }, featuresHeader: { title: "Tây Hành Thông Giám", sub: "Từ đua tốc độ thuần túy đến 19 núm xoay tùy chỉnh sâu sắc." }, feat1: { title: "🎲 Thừa Thắng Xông Lên Hay Giữ An Toàn", desc: "Vượt qua ô an toàn để bứt tốc thần tốc về đích!" }, feat2: { title: "👹 10 Yêu Vương Thần Thoại Chặn Đường", desc: "Ba ải hiểm trở trấn giữ bởi các đại yêu vương bẻ cong xúc xắc." }, feat3: { title: "🌏 18 Ngôn Ngữ Cùng Bàn Chơi", desc: "Hỗ trợ 18 ngôn ngữ bản địa hóa hoàn chỉnh cho mọi người chơi." }, feat4: { title: "⚙️ 19 Tùy Chỉnh Luật Riêng", desc: "Tự do thiết lập phòng chơi độc nhất vô nhị của bạn." } },
+      vi: { flag: "🇻🇳", name: "Tiếng Việt", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleVI.png", nav: { wishlist: "★ Danh Sách Ước" }, hero: { tag: "🎲 Cờ Đua Thủy Mặc Tây Du Ký Cho 1–8 Người Chơi", desc: "Tái hiện ký ức tuổi thơ cùng 1–8 người chơi trong cuộc đua Tây Du Ký phong cách tranh thủy mặc sống động!", wishlist: "★ Thêm Vào Danh Sách Ước Steam", explore: "Khám Phá Nhân Vật & Luật Chơi ↓", tags: ["🎲 Cờ Bàn", "⚔️ Chiến Thuật", "🖌️ Thủy Mặc", "🌐 18 Ngôn Ngữ"], platform: "Nền tảng: <strong>Steam (PC & Mac)</strong>", release: "Phát hành: <strong>Mùa Thu 2026</strong>" }, pills: { chars: "8 Hành Giả", rules: "Luật Chơi", about: "Giới Thiệu" }, music: { play: "Phát Nhạc Tỳ Bà", pause: "Tạm Dừng", cardPlay: "Nghe Thử Nhạc Tỳ Bà", cardPause: "Tạm Dừng" }, pilgrimsHeader: { title: "Tám Vị Hành Giả Với Thần Thông Quảng Đại", sub: "Nhấp vào quân cờ gỗ để xem tuyệt kỹ và cốt truyện." }, featuresHeader: { title: "Tây Hành Thông Giám", sub: "Từ đua tốc độ thuần túy đến 19 núm xoay tùy chỉnh sâu sắc." }, feat1: { title: "🎲 Thừa Thắng Xông Lên Hay Giữ An Toàn", desc: "Vượt qua ô an toàn để bứt tốc thần tốc về đích!" }, feat2: { title: "👹 10 Yêu Vương Thần Thoại Chặn Đường", desc: "Ba ải hiểm trở trấn giữ bởi các đại yêu vương." }, feat3: { title: "🌏 18 Ngôn Ngữ Cùng Bàn Chơi", desc: "Hỗ trợ 18 ngôn ngữ bản địa hóa hoàn chỉnh." }, feat4: { title: "⚙️ 19 Tùy Chỉnh Luật Riêng", desc: "Tự do thiết lập phòng chơi độc nhất vô nhị." } },
       
-      id: { flag: "🇮🇩", name: "Bahasa Indonesia", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleID.png", nav: { chars: "8 Peziarah", rules: "Mode Permainan", about: "Tentang Game", wishlist: "★ Wishlist Steam" }, hero: { tag: "🎲 Balapan Papan Seni Tinta Lukis untuk 1–8 Pemain", desc: "Kenang kembali memori masa kecil bersama 1–8 pemain dalam balapan papan bertema Perjalanan ke Barat bergaya lukisan tinta!", wishlist: "★ Tambah ke Wishlist Steam", explore: "Jelajahi Peziarah & Mode ↓", tags: ["🎲 Permainan Papan", "⚔️ Strategi", "🖌️ Lukisan Tinta", "🌐 18 Bahasa"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Rilis: <strong>Musim Gugur 2026</strong>" }, pills: { chars: "8 Peziarah", rules: "Mode Permainan", about: "Tentang Game" }, pilgrimsHeader: { title: "Delapan Peziarah dengan Kesaktian Luar Biasa", sub: "Klik bidak kayu di bawah untuk melihat keahlian." }, featuresHeader: { title: "Kompendium Barat", sub: "Dari balapan klasik hingga 19 tombol penyesuaian aturan." }, feat1: { title: "🎲 Uji Keberuntungan atau Main Aman", desc: "Lewati titik aman untuk melesat cepat ke garis akhir!" }, feat2: { title: "👹 10 Raja Iblis Legendaris", desc: "Tiga gerbang berbahaya yang dijaga oleh raja siluman sakti." }, feat3: { title: "🌏 18 Bahasa di Satu Meja", desc: "Dukungan penuh 18 bahasa agar semua bisa bermain dalam bahasa ibu." }, feat4: { title: "⚙️ 19 Tombol Pengaturan Khusus", desc: "Ciptakan aturan main khas meja Anda sendiri." } }
+      id: { flag: "🇮🇩", name: "Bahasa Indonesia", gameTitle: "WESTWARD DASH", titleImg: "assets/TitleID.png", nav: { wishlist: "★ Wishlist Steam" }, hero: { tag: "🎲 Balapan Papan Seni Tinta Lukis untuk 1–8 Pemain", desc: "Kenang kembali memori masa kecil bersama 1–8 pemain dalam balapan papan bertema Perjalanan ke Barat bergaya lukisan tinta!", wishlist: "★ Tambah ke Wishlist Steam", explore: "Jelajahi Peziarah & Mode ↓", tags: ["🎲 Permainan Papan", "⚔️ Strategi", "🖌️ Lukisan Tinta", "🌐 18 Bahasa"], platform: "Platform: <strong>Steam (PC & Mac)</strong>", release: "Rilis: <strong>Musim Gugur 2026</strong>" }, pills: { chars: "8 Peziarah", rules: "Mode Permainan", about: "Tentang Game" }, music: { play: "Putar Musik Pipa", pause: "Jeda", cardPlay: "Dengarkan Pipa OST", cardPause: "Jeda" }, pilgrimsHeader: { title: "Delapan Peziarah dengan Kesaktian Luar Biasa", sub: "Klik bidak kayu di bawah untuk melihat keahlian." }, featuresHeader: { title: "Kompendium Barat", sub: "Dari balapan klasik hingga 19 tombol penyesuaian aturan." }, feat1: { title: "🎲 Uji Keberuntungan atau Main Aman", desc: "Lewati titik aman untuk melesat cepat ke garis akhir!" }, feat2: { title: "👹 10 Raja Iblis Legendaris", desc: "Tiga gerbang berbahaya yang dijaga oleh raja siluman sakti." }, feat3: { title: "🌏 18 Bahasa di Satu Meja", desc: "Dukungan penuh 18 bahasa." }, feat4: { title: "⚙️ 19 Tombol Pengaturan Khusus", desc: "Ciptakan aturan main khas meja Anda sendiri." } }
     };
 
     // Complete 8 Pilgrims Full Data
@@ -1339,7 +1391,7 @@
           zh: "顺风与连胜时触发极速飞驰，直接跨越前方的恶劣地貌与险境。",
           tc: "順風與連勝時觸發極速飛馳，直接跨越前方的話劣地貌與險境。",
           en: "Triggers lightning dash during win streaks, flying directly over dangerous terrain tiles.",
-          ja: "連勝時や追い風に乗った際、前方の危険な地形や罠を飛び越えて激走します。",
+          ja: "連勝時や追い風に乗った際、前方的危険な地形や罠を飛び越えて激走します。",
           ko: "연승이나 순풍 시 폭발적인 도약으로 험난한 지형을 단숨에 뛰어넘습니다."
         },
         skill2Title: { zh: "【被动】踏水无痕", tc: "【被動】踏水無痕", en: "【Passive】Water Stride", ja: "【パッシブ】水上疾走", ko: "【패시브】답수무흔" },
@@ -1481,19 +1533,54 @@
     let currentLang = 'zh';
     let currentPilgrim = 0;
     let currentSection = 0;
+    let isPlayingBgm = false;
+
+    function toggleBgm(e) {
+      if (e) e.stopPropagation();
+      const audio = document.getElementById('bgmAudio');
+      const btn = document.getElementById('musicToggleBtn');
+      const label = document.getElementById('musicBtnLabel');
+      const cardIcon = document.getElementById('cardPlayIcon');
+      const cardText = document.getElementById('cardPlayText');
+      const loc = (i18n[currentLang] || i18n['en']).music;
+
+      if (!isPlayingBgm) {
+        audio.play().then(() => {
+          isPlayingBgm = true;
+          btn.classList.add('playing');
+          label.textContent = loc.pause;
+          if (cardIcon) cardIcon.textContent = "⏸";
+          if (cardText) cardText.textContent = loc.cardPause;
+        }).catch(err => {
+          console.warn("Audio autoplay blocked, requires direct gesture", err);
+        });
+      } else {
+        audio.pause();
+        isPlayingBgm = false;
+        btn.classList.remove('playing');
+        label.textContent = loc.play;
+        if (cardIcon) cardIcon.textContent = "▶";
+        if (cardText) cardText.textContent = loc.cardPlay;
+      }
+    }
 
     function setLang(langCode) {
       if (!i18n[langCode]) langCode = 'en';
       currentLang = langCode;
       const data = i18n[langCode];
 
-      // Update Nav & Buttons (左上角游戏名字跟随当前语言动态切换，不再显示双语堆叠)
+      // Update Nav & Buttons
       document.getElementById('navLogoMain').textContent = data.gameTitle;
       document.getElementById('currentLangFlag').textContent = data.flag;
       document.getElementById('currentLangName').textContent = data.name;
       document.getElementById('mainTitleBanner').src = data.titleImg;
-
       document.getElementById('navWishlistBtn').textContent = data.nav.wishlist;
+
+      // Update Music Button Text
+      const musicLabel = document.getElementById('musicBtnLabel');
+      const cardText = document.getElementById('cardPlayText');
+      if (musicLabel) musicLabel.textContent = isPlayingBgm ? data.music.pause : data.music.play;
+      if (cardText) cardText.textContent = isPlayingBgm ? data.music.cardPause : data.music.cardPlay;
 
       // Update Hero
       document.getElementById('heroTag').textContent = data.hero.tag;
@@ -1507,7 +1594,7 @@
       document.getElementById('metaPlatform').innerHTML = data.hero.platform;
       document.getElementById('metaRelease').innerHTML = data.hero.release;
 
-      // Update Right Capsule Image: 简中/繁中用中文图，其余全部用英文图
+      // Update Right Capsule Image
       const isChinese = (langCode === 'zh' || langCode === 'tc');
       const capsuleEl = document.getElementById('heroCapsuleImg');
       if (capsuleEl) {
@@ -1620,7 +1707,7 @@
       document.getElementById('aboutStageImg').src = item.img;
     }
 
-    // Auto-detect browser language
+    // Auto-detect browser language & gentle user interaction audio unlock
     window.addEventListener('DOMContentLoaded', () => {
       const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
       if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
