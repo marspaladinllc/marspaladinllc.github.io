@@ -930,15 +930,13 @@
          updates itself the day the page goes public. Kept inside our silk frame; the tag row
          below it stays because the widget doesn't carry our own pitch words. -->
     <div class="hero-capsule-card">
-      <!-- ⚠ PAGE-PUBLIC DAY: swap the <img> below for the widget line underneath it. Verified
-           in Chrome 08-26: while the store page is still in review the widget renders a grey
-           "Error — Unable to load information about this item" box, so it CANNOT ship before
-           the page is visible. The moment Coming Soon goes public, delete the img and
-           uncomment the iframe — the widget then carries the live capsule + wishlist button.
+      <!-- Steam's own widget: live capsule, real wishlist button, self-updating. NOTE it
+           renders a grey "Unable to load information about this item" box until the store
+           page is public (verified in Chrome 08-26) — accepted on purpose (user: nobody is
+           checking the website until it is approved), so it is already in place the moment
+           Coming Soon goes live. If the page slips, this is the one thing to re-check. -->
       <iframe class="steam-widget" src="https://store.steampowered.com/widget/5029020/" frameborder="0"
               title="Westward Dash on Steam" loading="lazy"></iframe>
-      -->
-      <img id="heroCapsuleImg" src="assets/capsule_en.jpg" alt="Westward Dash" class="hero-capsule-img">
       <div class="hero-capsule-info">
         <div class="hero-tags">
           <span class="tag-badge" id="tagBadge1">🎲 聚会桌游</span>
