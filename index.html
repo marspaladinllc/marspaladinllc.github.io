@@ -50,7 +50,7 @@
       position: relative;
     }
 
-    /* In-Game Cover Painting Backdrop (游戏主界面真实水墨画原图) */
+    /* In-Game Cover Painting Backdrop */
     .bg-mural {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -123,15 +123,15 @@
     .nav-tabs {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       list-style: none;
     }
     .nav-tabs a {
       color: var(--ink-dim);
       text-decoration: none;
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 4px;
       transition: all 0.2s;
     }
@@ -357,7 +357,7 @@
     .hero-meta-row strong { color: var(--gold-light); }
 
     /* =====================================================================
-       GUIDE / 藏经阁 BOOKMARK SCROLL SYSTEM (沿用游戏内藏经阁原版设计)
+       GUIDE / 藏经阁 BOOKMARK SCROLL SYSTEM
        ===================================================================== */
     .scroll-guide-section {
       padding: 60px 24px 100px;
@@ -369,7 +369,7 @@
       margin: 0 auto;
     }
     
-    /* Hanging Silk Ribbons Bookmark Header (游戏内原版丝绸挂坠书签) */
+    /* Hanging Silk Ribbon Tabs (游戏内原版丝绸挂坠书签) */
     .guide-ribbons-header {
       display: flex;
       align-items: flex-start;
@@ -380,8 +380,8 @@
       z-index: 10;
     }
     .guide-ribbon {
-      width: 96px;
-      height: 140px;
+      width: 104px;
+      height: 144px;
       background: url('assets/TabSilk.png') no-repeat center top / contain;
       display: flex;
       flex-direction: column;
@@ -389,9 +389,9 @@
       justify-content: flex-start;
       padding-top: 24px;
       color: #dfd7c5;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
       user-select: none;
@@ -403,7 +403,7 @@
       color: var(--gold-bright);
     }
     .guide-ribbon.active {
-      height: 168px;
+      height: 172px;
       background: url('assets/TabPaper.png') no-repeat center top / contain;
       color: #261b09;
       transform: translateY(12px);
@@ -449,37 +449,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Sub Tabs (for Characters: 行者 vs 妖王) */
-    .sub-tabs-bar {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-    .sub-tab-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--silk-border);
-      color: var(--ink-dim);
-      padding: 8px 24px;
-      border-radius: 20px;
-      font-size: 14.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .sub-tab-btn:hover { color: var(--gold-light); border-color: var(--gold); }
-    .sub-tab-btn.active {
-      background: rgba(223, 178, 86, 0.2);
-      border-color: var(--gold);
-      color: var(--gold-bright);
-      box-shadow: 0 0 14px rgba(223, 178, 86, 0.3);
-    }
-
     /* Pilgrims Section */
     .pilgrims-header {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 30px;
+      margin: 0 auto 34px;
     }
     .pilgrims-title {
       font-size: 30px;
@@ -534,7 +508,7 @@
     }
     .token-btn:hover .token-piece-img { transform: scale(1.08); }
     .token-label {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--ink);
       letter-spacing: 0.04em;
@@ -623,53 +597,6 @@
       line-height: 1.6;
     }
 
-    /* Bosses Grid (妖王卡片) */
-    .bosses-showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .boss-card {
-      background: rgba(14, 11, 8, 0.85);
-      border: 1px solid var(--silk-border);
-      border-radius: 12px;
-      padding: 22px;
-      text-align: center;
-      transition: all 0.25s;
-    }
-    .boss-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
-    }
-    .boss-avatar-box {
-      width: 78px; height: 78px;
-      margin: 0 auto 12px;
-      border-radius: 50%;
-      border: 2px solid var(--border-gold);
-      overflow: hidden;
-      background: #000;
-    }
-    .boss-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .boss-card h3 {
-      font-size: 18px;
-      color: var(--gold-light);
-      margin-bottom: 4px;
-      font-weight: 800;
-    }
-    .boss-card span {
-      font-size: 12.5px;
-      color: var(--vermilion);
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    .boss-card p {
-      font-size: 13px;
-      color: var(--ink-dim);
-      line-height: 1.6;
-    }
-
     /* Gameplay Features & Rules */
     .features-list-grid {
       display: grid;
@@ -700,62 +627,7 @@
       line-height: 1.8;
     }
 
-    /* Scenery / Screenshots Gallery (场景卷轴) */
-    .scenery-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .scenery-thumb {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--silk-border);
-      aspect-ratio: 16/9;
-      background: #000;
-      cursor: pointer;
-      position: relative;
-    }
-    .scenery-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-    .scenery-thumb:hover img { transform: scale(1.06); }
-    .scenery-caption {
-      position: absolute;
-      bottom: 0; left: 0; width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      padding: 8px 12px;
-      font-size: 13px;
-      color: var(--gold-light);
-      font-weight: 700;
-    }
-
-    /* About & Culture (关于四大瓦片) */
-    .about-tiles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .about-tile-btn {
-      background: rgba(14, 11, 8, 0.85);
-      border: 1px solid var(--silk-border);
-      border-radius: 12px;
-      padding: 20px 14px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-    .about-tile-btn:hover, .about-tile-btn.active {
-      border-color: var(--gold);
-      background: rgba(35, 27, 19, 0.95);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(223, 178, 86, 0.25);
-    }
-    .about-tile-icon { font-size: 32px; margin-bottom: 8px; }
-    .about-tile-title { font-size: 15px; font-weight: 800; color: var(--gold-light); }
-
+    /* About & Music Tribute */
     .about-detail-stage {
       background: rgba(14, 11, 8, 0.85);
       border: 1px solid var(--silk-border);
@@ -783,6 +655,31 @@
       font-size: 16.5px;
       font-weight: 800;
       color: var(--gold);
+    }
+    .pipa-showcase-box {
+      background: rgba(10, 8, 6, 0.85);
+      border: 1px solid var(--silk-border);
+      border-radius: 14px;
+      padding: 26px 18px;
+      text-align: center;
+    }
+    .pipa-img {
+      width: 130px;
+      height: auto;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.8));
+    }
+    .pipa-showcase-box h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .pipa-showcase-box span {
+      font-size: 13.5px;
+      color: var(--gold);
+      display: block;
+      font-weight: 700;
     }
 
     /* Footer */
@@ -817,22 +714,19 @@
       .title-banner-img { margin: 0 auto; }
       .hero-desc { margin: 0 auto 30px; }
       .hero-actions { justify-content: center; }
-      .guide-ribbons-header { padding: 0 10px; gap: 8px; justify-content: center; }
-      .guide-ribbon { width: 72px; height: 120px; font-size: 14px; }
-      .guide-ribbon.active { height: 140px; }
+      .guide-ribbons-header { padding: 0 10px; gap: 12px; justify-content: center; }
+      .guide-ribbon { width: 84px; height: 124px; font-size: 15px; }
+      .guide-ribbon.active { height: 146px; }
       .pilgrim-showcase-stage { grid-template-columns: 1fr; text-align: center; }
       .pilgrim-details { text-align: center; }
       .pilgrim-name-row { justify-content: center; }
       .tokens-selector-grid { grid-template-columns: repeat(4, 1fr); }
       .features-list-grid { grid-template-columns: 1fr; }
-      .scenery-gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-tiles-grid { grid-template-columns: repeat(2, 1fr); }
       .about-detail-stage { grid-template-columns: 1fr; }
       .nav-tabs { display: none; }
     }
     @media (max-width: 600px) {
-      .scenery-gallery-grid { grid-template-columns: 1fr; }
-      .guide-ribbon { width: 62px; height: 110px; font-size: 13px; }
+      .guide-ribbon { width: 72px; height: 114px; font-size: 14px; }
       .lang-menu { grid-template-columns: 1fr; }
     }
   </style>
@@ -857,8 +751,7 @@
       <ul class="nav-tabs">
         <li><a href="javascript:switchGuideTab(0)" id="navLinkChars">角色图鉴</a></li>
         <li><a href="javascript:switchGuideTab(1)" id="navLinkRules">西行玩法</a></li>
-        <li><a href="javascript:switchGuideTab(2)" id="navLinkScenery">写意画卷</a></li>
-        <li><a href="javascript:switchGuideTab(3)" id="navLinkAbout">关于创作</a></li>
+        <li><a href="javascript:switchGuideTab(2)" id="navLinkAbout">关于制作</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -929,12 +822,12 @@
   </section>
 
   <!-- =====================================================================
-       藏经阁 GUIDE SYSTEM (原汁原味游戏内丝绸书签设计)
+       藏经阁 GUIDE SYSTEM (纯粹聚焦：角色 · 玩法 · 关于)
        ===================================================================== -->
   <section id="guide" class="scroll-guide-section">
     <div class="scroll-container">
       
-      <!-- Hanging Silk Ribbon Tabs (游戏内原汁原味挂坠丝绸书签) -->
+      <!-- Hanging Silk Ribbon Tabs (游戏内原版丝绸挂坠书签) -->
       <div class="guide-ribbons-header">
         <div class="guide-ribbon active" onclick="switchGuideTab(0, this)">
           <span class="guide-ribbon-text" id="ribbonTextChars">角 色</span>
@@ -943,9 +836,6 @@
           <span class="guide-ribbon-text" id="ribbonTextRules">玩 法</span>
         </div>
         <div class="guide-ribbon" onclick="switchGuideTab(2, this)">
-          <span class="guide-ribbon-text" id="ribbonTextScenery">场 景</span>
-        </div>
-        <div class="guide-ribbon" onclick="switchGuideTab(3, this)">
           <span class="guide-ribbon-text" id="ribbonTextAbout">关 于</span>
         </div>
       </div>
@@ -953,123 +843,80 @@
       <!-- Main Silk Scroll Frame -->
       <div class="scroll-frame">
 
-        <!-- PANE 0: 角色 (Characters & Demon Kings) -->
+        <!-- PANE 0: 角色 (8 Pilgrims Tokens & Abilities) -->
         <div id="pane-0" class="tab-pane active">
           
-          <div class="sub-tabs-bar">
-            <button class="sub-tab-btn active" onclick="switchCharSubTab('pilgrims', this)" id="subTabPilgrims">♟️ 八位取经行者</button>
-            <button class="sub-tab-btn" onclick="switchCharSubTab('bosses', this)" id="subTabBosses">👹 十大守关妖王</button>
+          <div class="pilgrims-header">
+            <h2 class="pilgrims-title" id="pilgrimsTitle">八位取经行者，各显神通</h2>
+            <p class="pilgrims-sub" id="pilgrimsSub">点击下方棋子，查看各行者的专属水墨立绘与绝技神通。</p>
           </div>
 
-          <!-- Sub-pane: 8 Pilgrims -->
-          <div id="subpane-pilgrims">
-            <div class="pilgrims-header">
-              <h2 class="pilgrims-title" id="pilgrimsTitle">八位取经行者，各显神通</h2>
-              <p class="pilgrims-sub" id="pilgrimsSub">点击下方棋子，查看各行者的专属水墨立绘与绝技神通。</p>
+          <!-- 8 Wooden Tokens Row -->
+          <div class="tokens-selector-grid">
+            <div class="token-btn active" onclick="selectPilgrim(0, this)">
+              <img src="assets/token_0.png" alt="孙悟空" class="token-piece-img">
+              <span class="token-label" id="tokenLabel0">孙悟空</span>
             </div>
-
-            <!-- 8 Wooden Tokens Row -->
-            <div class="tokens-selector-grid">
-              <div class="token-btn active" onclick="selectPilgrim(0, this)">
-                <img src="assets/token_0.png" alt="孙悟空" class="token-piece-img">
-                <span class="token-label" id="tokenLabel0">孙悟空</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(1, this)">
-                <img src="assets/token_1.png" alt="猪八戒" class="token-piece-img">
-                <span class="token-label" id="tokenLabel1">猪八戒</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(2, this)">
-                <img src="assets/token_2.png" alt="沙僧" class="token-piece-img">
-                <span class="token-label" id="tokenLabel2">沙僧</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(3, this)">
-                <img src="assets/token_3.png" alt="唐僧" class="token-piece-img">
-                <span class="token-label" id="tokenLabel3">唐僧</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(4, this)">
-                <img src="assets/token_4.png" alt="白龙马" class="token-piece-img">
-                <span class="token-label" id="tokenLabel4">白龙马</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(5, this)">
-                <img src="assets/token_5.png" alt="吴承恩" class="token-piece-img">
-                <span class="token-label" id="tokenLabel5">吴承恩</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(6, this)">
-                <img src="assets/token_6.png" alt="土地公" class="token-piece-img">
-                <span class="token-label" id="tokenLabel6">土地公</span>
-              </div>
-              <div class="token-btn" onclick="selectPilgrim(7, this)">
-                <img src="assets/token_7.png" alt="小钻风" class="token-piece-img">
-                <span class="token-label" id="tokenLabel7">小钻风</span>
-              </div>
+            <div class="token-btn" onclick="selectPilgrim(1, this)">
+              <img src="assets/token_1.png" alt="猪八戒" class="token-piece-img">
+              <span class="token-label" id="tokenLabel1">猪八戒</span>
             </div>
-
-            <!-- Detailed Active Pilgrim Showcase Stage -->
-            <div class="pilgrim-showcase-stage">
-              <div class="pilgrim-portrait-box">
-                <img id="pilgrimPortrait" src="assets/player_0.png" alt="立绘" class="pilgrim-portrait-img">
-              </div>
-              <div class="pilgrim-details">
-                <div class="pilgrim-name-row">
-                  <span id="pilgrimCnName" class="pilgrim-cn-name">孙悟空</span>
-                  <span id="pilgrimEnName" class="pilgrim-en-name">MONKEY KING</span>
-                </div>
-                <div id="pilgrimTagline" class="pilgrim-tagline">火眼金睛 · 威震群妖</div>
-                <p id="pilgrimLore" class="pilgrim-lore">
-                  一眼看破妖法，金箍棒横扫千军。自带对妖王战力加成，被直接攻击时强力还击，是西行路上一往无前的开路先锋。
-                </p>
-                <div class="pilgrim-skills-grid">
-                  <div class="skill-card">
-                    <h4 id="skill1Title">【绝技】威震群妖</h4>
-                    <p id="skill1Desc">遭遇精怪与妖王时自动看破破绽，胜率天然拔高，绝不易在险关翻车。</p>
-                  </div>
-                  <div class="skill-card">
-                    <h4 id="skill2Title">【被动】一棒还击</h4>
-                    <p id="skill2Desc">遭受对手直接攻击法宝时自动反震，将袭击者击退 2 格。</p>
-                  </div>
-                </div>
-              </div>
+            <div class="token-btn" onclick="selectPilgrim(2, this)">
+              <img src="assets/token_2.png" alt="沙僧" class="token-piece-img">
+              <span class="token-label" id="tokenLabel2">沙僧</span>
+            </div>
+            <div class="token-btn" onclick="selectPilgrim(3, this)">
+              <img src="assets/token_3.png" alt="唐僧" class="token-piece-img">
+              <span class="token-label" id="tokenLabel3">唐僧</span>
+            </div>
+            <div class="token-btn" onclick="selectPilgrim(4, this)">
+              <img src="assets/token_4.png" alt="白龙马" class="token-piece-img">
+              <span class="token-label" id="tokenLabel4">白龙马</span>
+            </div>
+            <div class="token-btn" onclick="selectPilgrim(5, this)">
+              <img src="assets/token_5.png" alt="吴承恩" class="token-piece-img">
+              <span class="token-label" id="tokenLabel5">吴承恩</span>
+            </div>
+            <div class="token-btn" onclick="selectPilgrim(6, this)">
+              <img src="assets/token_6.png" alt="土地公" class="token-piece-img">
+              <span class="token-label" id="tokenLabel6">土地公</span>
+            </div>
+            <div class="token-btn" onclick="selectPilgrim(7, this)">
+              <img src="assets/token_7.png" alt="小钻风" class="token-piece-img">
+              <span class="token-label" id="tokenLabel7">小钻风</span>
             </div>
           </div>
 
-          <!-- Sub-pane: 10 Demon Kings -->
-          <div id="subpane-bosses" style="display: none;">
-            <div class="pilgrims-header">
-              <h2 class="pilgrims-title" id="bossesTitle">十大守关妖王，扭曲规则</h2>
-              <p class="pilgrims-sub" id="bossesSub">三道险关守关将领随机降临，以独特的妖法规则与取经人正面斗法。</p>
+          <!-- Detailed Active Pilgrim Showcase Stage -->
+          <div class="pilgrim-showcase-stage">
+            <div class="pilgrim-portrait-box">
+              <img id="pilgrimPortrait" src="assets/player_0.png" alt="立绘" class="pilgrim-portrait-img">
             </div>
-
-            <div class="bosses-showcase-grid">
-              <div class="boss-card">
-                <div class="boss-avatar-box"><img src="assets/char_bones.png" alt="白骨精"></div>
-                <h3>白骨精</h3>
-                <span>三重化身 · 执念不绝</span>
-                <p>被打倒后还会连变村姑、老妇、老翁双重化身！是取经路上最难缠的死劫。</p>
+            <div class="pilgrim-details">
+              <div class="pilgrim-name-row">
+                <span id="pilgrimCnName" class="pilgrim-cn-name">孙悟空</span>
+                <span id="pilgrimEnName" class="pilgrim-en-name">MONKEY KING</span>
               </div>
-              <div class="boss-card">
-                <div class="boss-avatar-box"><img src="assets/cover2.png" alt="牛魔王"></div>
-                <h3>牛魔王</h3>
-                <span>大力蛮王 · 平手占优</span>
-                <p>力大无穷的混世魔王！正面斗法若是打成平手，判定依然为妖王获胜。</p>
-              </div>
-              <div class="boss-card">
-                <div class="boss-avatar-box"><img src="assets/cover.png" alt="狮驼岭三魔"></div>
-                <h3>狮驼岭三魔</h3>
-                <span>青狮白象大鹏 · 封禁法宝</span>
-                <p>妖气遮天蔽日，在险关直接封禁玩家法宝道具，逼你纯靠掷骰硬拼！</p>
-              </div>
-              <div class="boss-card">
-                <div class="boss-avatar-box"><img src="assets/main_capsule.jpg" alt="金角银角"></div>
-                <h3>金角银角</h3>
-                <span>紫金红葫芦 · 喊名强收</span>
-                <p>我叫你一声你敢应吗？掷出偶数即被葫芦吸入，直接后退领罚！</p>
+              <div id="pilgrimTagline" class="pilgrim-tagline">火眼金睛 · 威震群妖</div>
+              <p id="pilgrimLore" class="pilgrim-lore">
+                一眼看破妖法，金箍棒横扫千军。自带对妖王战力加成，被直接攻击时强力还击，是西行路上一往无前的开路先锋。
+              </p>
+              <div class="pilgrim-skills-grid">
+                <div class="skill-card">
+                  <h4 id="skill1Title">【绝技】威震群妖</h4>
+                  <p id="skill1Desc">遭遇精怪与妖王时自动看破破绽，胜率天然拔高，绝不易在险关翻车。</p>
+                </div>
+                <div class="skill-card">
+                  <h4 id="skill2Title">【被动】一棒还击</h4>
+                  <p id="skill2Desc">遭受对手直接攻击法宝时自动反震，将袭击者击退 2 格。</p>
+                </div>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- PANE 1: 玩法 (Modes, Dials & Board Cells) -->
+        <!-- PANE 1: 玩法 (Rules, Modes & Dials) -->
         <div id="pane-1" class="tab-pane">
           <div class="pilgrims-header">
             <h2 class="pilgrims-title" id="featuresTitle">西行通鉴 · 玩法与模式</h2>
@@ -1096,71 +943,16 @@
           </div>
         </div>
 
-        <!-- PANE 2: 场景 (Scenery Gallery) -->
+        <!-- PANE 2: 关于 (Pipa & Dev Story) -->
         <div id="pane-2" class="tab-pane">
-          <div class="pilgrims-header">
-            <h2 class="pilgrims-title" id="sceneryTitle">一卷水墨，贯穿始终</h2>
-            <p class="pilgrims-sub" id="scenerySub">笔墨、朱砂与宣纸交融，西行 100 格实景画卷带你步入流动写意的东方神话世界。</p>
-          </div>
-
-          <div class="scenery-gallery-grid">
-            <div class="scenery-thumb">
-              <img src="assets/ss1.jpg" alt="场景一">
-              <div class="scenery-caption">大唐初程 · 启程西行</div>
-            </div>
-            <div class="scenery-thumb">
-              <img src="assets/ss2.jpg" alt="场景二">
-              <div class="scenery-caption">黄风险境 · 妖王对弈</div>
-            </div>
-            <div class="scenery-thumb">
-              <img src="assets/ss3.jpg" alt="场景三">
-              <div class="scenery-caption">白骨妖窟 · 三打化身</div>
-            </div>
-            <div class="scenery-thumb">
-              <img src="assets/ss4.jpg" alt="场景四">
-              <div class="scenery-caption">雷音绝巅 · 最后一格</div>
-            </div>
-            <div class="scenery-thumb">
-              <img src="assets/ss5.jpg" alt="场景五">
-              <div class="scenery-caption">盛宴仙桃 · 步步博弈</div>
-            </div>
-            <div class="scenery-thumb">
-              <img src="assets/ss6.jpg" alt="场景六">
-              <div class="scenery-caption">西行通鉴 · 藏经阁图鉴</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PANE 3: 关于 (About: 西游记 · 琵琶实录 · 制作故事 · 鸣谢) -->
-        <div id="pane-3" class="tab-pane">
-          
-          <div class="about-tiles-grid">
-            <div class="about-tile-btn active" onclick="switchAboutTile(0, this)">
-              <div class="about-tile-icon">📜</div>
-              <div class="about-tile-title">西游记</div>
-            </div>
-            <div class="about-tile-btn" onclick="switchAboutTile(1, this)">
-              <div class="about-tile-icon">🪕</div>
-              <div class="about-tile-title">琵琶原声</div>
-            </div>
-            <div class="about-tile-btn" onclick="switchAboutTile(2, this)">
-              <div class="about-tile-icon">🎮</div>
-              <div class="about-tile-title">独立创作</div>
-            </div>
-            <div class="about-tile-btn" onclick="switchAboutTile(3, this)">
-              <div class="about-tile-icon">🙏</div>
-              <div class="about-tile-title">真情鸣谢</div>
-            </div>
-          </div>
-
           <div class="about-detail-stage">
             <div class="about-detail-text">
               <h3 id="aboutStageTitle">一张泛黄磨破的棋盘纸</h3>
               <p id="aboutStageDesc1">
-                “一张画着西游记的简陋图纸，放学后几个小伙伴围坐在桌前丢骰子，从第 1 格一路抢跑到第 100 格。路上有冷不丁跳出来的妖精一把将你打回原地，有驾着筋斗云腾空飞跃十几格的欢呼，也有被小鬼缠住动弹不得的懊恼。”
+                “一张画着西游记的简陋图纸，放学后几个小伙伴围坐在桌前丢骰子……当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。”
               </p>
               <p id="aboutStageDesc2">
-                当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。很多年后，我凭着这份念想，把它亲手做成了电子游戏。
+                游戏中所有悠扬动人的琵琶主旋律，全由作者妻子<strong>灵如酱</strong>亲自弹奏录制，并自学 AI 编曲完成。谨以此作，献给年少时曾陪我一起掷骰子的人。
               </p>
               <div class="about-signature" id="aboutStageAuthor">— 逍遥子 (Mars Paladin)</div>
             </div>
@@ -1170,7 +962,6 @@
               <span id="aboutBadgeSub">Performed by 灵如酱</span>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -1193,7 +984,7 @@
     const i18n = {
       zh: {
         flag: "🇨🇳", name: "简体中文", titleImg: "assets/TitleZh.png",
-        nav: { chars: "角色图鉴", rules: "西行玩法", scenery: "写意画卷", about: "关于创作", wishlist: "★ Steam 愿望单" },
+        nav: { chars: "角色图鉴", rules: "西行玩法", about: "关于制作", wishlist: "★ Steam 愿望单" },
         hero: {
           tag: "🎲 1–8 人水墨国风桌游竞速 · 支持单机同屏 / 线上连线",
           desc: "还原儿时围坐桌前的西游记忆。1–8 人国风水墨竞速：步步是险阻，局局博心跳！一柄金箍棒扫清妖障，一颗冲刺骰绝境翻盘。无论独自对弈还是好友欢聚，不到最后一格，胜负绝不见分晓！",
@@ -1203,7 +994,7 @@
           platform: "发售平台：<strong>Steam (PC & Mac)</strong>",
           release: "发售窗口：<strong>2026 年秋季</strong>"
         },
-        ribbons: { chars: "角 色", rules: "玩 法", scenery: "场 景", about: "关 于" },
+        ribbons: { chars: "角 色", rules: "玩 法", about: "关 于" },
         pilgrimsHeader: { title: "八位取经行者，各显神通", sub: "点击下方棋子，查看各行者的专属水墨立绘与绝技神通。" },
         featuresHeader: { title: "西行通鉴 · 玩法与模式", sub: "从纯粹的竞速掷骰到 19 旋钮的深度自定，每一次西行都有截然不同的博弈风味。" },
         feat1: { title: "🎲 见好就收，险中求胜", desc: "每回合前进后触发冲刺抉择：冲过安全点额外步数助你一飞冲天；冲砸了承受路途惩罚。终点前的最后冲刺，正是落后者的绝地反击机会！" },
@@ -1214,7 +1005,7 @@
 
       tc: {
         flag: "🇭🇰", name: "繁體中文", titleImg: "assets/TitleTC.png",
-        nav: { chars: "角色圖鑑", rules: "西行玩法", scenery: "寫意畫卷", about: "關於創作", wishlist: "★ Steam 願望單" },
+        nav: { chars: "角色圖鑑", rules: "西行玩法", about: "關於製作", wishlist: "★ Steam 願望單" },
         hero: {
           tag: "🎲 1–8 人水墨國風桌遊競速 · 支援單機同屏 / 線上連線",
           desc: "還原兒時圍坐桌前的西遊記憶。1–8 人國風水墨競速：步步是險阻，局局博心跳！一柄金箍棒掃清妖障，一顆衝刺骰絕境翻盤。無論獨自對弈還是好友歡聚，不到最後一格，勝負絕不見分曉！",
@@ -1224,7 +1015,7 @@
           platform: "發售平台：<strong>Steam (PC & Mac)</strong>",
           release: "發售窗口：<strong>2026 年秋季</strong>"
         },
-        ribbons: { chars: "角 色", rules: "玩 法", scenery: "場 景", about: "關 於" },
+        ribbons: { chars: "角 色", rules: "玩 法", about: "關 於" },
         pilgrimsHeader: { title: "八位取經行者，各顯神通", sub: "點擊下方棋子，查看各行者的專屬水墨立繪與絕技神通。" },
         featuresHeader: { title: "西行通鑑 · 玩法與模式", sub: "從純粹的競速擲骰到 19 旋鈕的深度自訂，每一次西行都有截然不同的博弈風味。" },
         feat1: { title: "🎲 見好就收，險中求勝", desc: "每回合前進後觸發衝刺抉擇：衝過安全點額外步數助你一飛衝天；衝砸了承受路途懲罰。終點前的最後衝刺，正是落後者的絕地反擊機會！" },
@@ -1235,7 +1026,7 @@
 
       en: {
         flag: "🇺🇸", name: "English", titleImg: "assets/TitleEn.png",
-        nav: { chars: "Characters", rules: "Rules & Modes", scenery: "Scenery", about: "About", wishlist: "★ Wishlist on Steam" },
+        nav: { chars: "Characters", rules: "Gameplay", about: "About", wishlist: "★ Wishlist on Steam" },
         hero: {
           tag: "🎲 1–8 Player Ink-Wash Party Board Game · Single-player & Online",
           desc: "Relive childhood board game memories with 1–8 players in a Journey-to-the-West ink-wash race! Every step brings peril, every roll tests your luck. From solo duels to multiplayer parties, victory is never settled until the very last tile!",
@@ -1245,7 +1036,7 @@
           platform: "Platform: <strong>Steam (PC & Mac)</strong>",
           release: "Release Window: <strong>Autumn 2026</strong>"
         },
-        ribbons: { chars: "ROSTER", rules: "RULES", scenery: "SCENES", about: "ABOUT" },
+        ribbons: { chars: "ROSTER", rules: "RULES", about: "ABOUT" },
         pilgrimsHeader: { title: "Eight Pilgrims, Boundless Powers", sub: "Click any wooden token below to view unique ink-wash portraits and tactical abilities." },
         featuresHeader: { title: "Western Compendium · Rules & Modes", sub: "From pure classic races to 19 custom dials, every journey west brings fresh stakes and twists." },
         feat1: { title: "🎲 Push Your Luck, Turn the Tide", desc: "After each move, take a gamble on a second die! Clearing safe spots catapults you forward; busting triggers penalties. The final stretch to Thunderclap Summit gives trailing players their ultimate comeback chance!" },
@@ -1256,7 +1047,7 @@
 
       ja: {
         flag: "🇯🇵", name: "日本語", titleImg: "assets/TitleJA.png",
-        nav: { chars: "人物図鑑", rules: "遊び方", scenery: "絵巻画廊", about: "制作秘話", wishlist: "★ ウィッシュリストに追加" },
+        nav: { chars: "人物図鑑", rules: "遊び方", about: "制作秘話", wishlist: "★ ウィッシュリストに追加" },
         hero: {
           tag: "🎲 1〜8人 水墨画風・西遊記ボードゲーム · ソロ＆オンライン対応",
           desc: "放課後に机を囲んだあの日の記憶が蘇る！1〜8人対応の水墨画風・西遊記レースゲーム。一歩ごとに罠が待ち受け、サイコロの一振りに心拍数が跳ね上がる！最後のマスに辿り着くまで、勝負の行方は誰にも分からない！",
@@ -1266,7 +1057,7 @@
           platform: "対応機種：<strong>Steam (PC & Mac)</strong>",
           release: "配信予定：<strong>2026年 秋</strong>"
         },
-        ribbons: { chars: "人 物", rules: "遊 び", scenery: "風 景", about: "制 作" },
+        ribbons: { chars: "人 物", rules: "遊 び", about: "制 作" },
         pilgrimsHeader: { title: "個性豊かな八人の旅人たち", sub: "下の駒をクリックして、各キャラクターの水墨画イラストと固有能力を確認できます。" },
         featuresHeader: { title: "西行の心得 · ルールとモード", sub: "シンプルな競走から19個のカスタム設定まで、遊ぶたびに新しい駆け引きが楽しめます。" },
         feat1: { title: "🎲 引き際か、それとも勝負か？", desc: "安全目を越えればボーナスで一気に大跳躍！欲をかいて失敗すれば手痛いペナルティ。ゴール直前のラストスパートは、逆転勝利を狙う最大のチャンス！" },
@@ -1277,7 +1068,7 @@
 
       ko: {
         flag: "🇰🇷", name: "한국어", titleImg: "assets/TitleKO.png",
-        nav: { chars: "인물 도감", rules: "게임 규칙", scenery: "수묵 화폭", about: "제작 비화", wishlist: "★ 찜하기" },
+        nav: { chars: "인물 도감", rules: "게임 규칙", about: "제작 비화", wishlist: "★ 찜하기" },
         hero: {
           tag: "🎲 1–8인 수묵화 서유기 보드 레이스 · 싱글 및 온라인 지원",
           desc: "어린 시절 친구들과 둘러앉아 즐기던 서유기 보드게임의 추억! 1–8인이 즐기는 동양 수묵화 레이스: 마지막 한 칸을 밟을 때까지 승부는 결코 끝나지 않습니다!",
@@ -1287,7 +1078,7 @@
           platform: "플랫폼: <strong>Steam (PC & Mac)</strong>",
           release: "출시 예정: <strong>2026년 가을</strong>"
         },
-        ribbons: { chars: "인 물", rules: "규 칙", scenery: "풍 경", about: "비 화" },
+        ribbons: { chars: "인 물", rules: "규 칙", about: "비 화" },
         pilgrimsHeader: { title: "제각기 다른 신통력을 지닌 8인의 수행자", sub: "아래 목각 말을 클릭하여 각 수행자의 수묵화 일러스트와 고유 능력을 확인하세요." },
         featuresHeader: { title: "서행 통감 · 게임 규칙과 모드", sub: "클래식 레이스부터 19개의 심층 커스텀 노브까지, 매 판 새로운 재미를 선사합니다." },
         feat1: { title: "🎲 멈출 것인가, 모험할 것인가?", desc: "안전 칸을 넘기면 폭풍 질주, 무리하면 페널티! 결승점 앞의 마지막 질주는 꼴찌에게 주어지는 짜릿한 역전의 기회입니다." },
@@ -1352,7 +1143,7 @@
           tc: "受部分路途險阻與後退事件影響大幅減輕，皮糙肉厚，百折不撓。",
           en: "Significantly cushions penalty setbacks from trail hazards and misfortune events.",
           ja: "道のりの罠や後退イベントによる影響を大幅に軽減し、タフに進み続けます。",
-          ko: "도로의 험난한 함정이나 후퇴 이벤트로 인한 패널티를 크게 완화합니다."
+          ko: "도로의 험난한 함정이나 후퇴 이벤트로 인한 패널提를 크게 완화합니다."
         }
       },
       {
@@ -1525,46 +1316,6 @@
       }
     ];
 
-    // About 4 Tiles Data (西游记 / 琵琶 / 制作 / 鸣谢)
-    const aboutTilesData = [
-      {
-        title: "一张泛黄磨破的棋盘纸",
-        desc1: "“一张画着西游记的简陋图纸，放学后几个小伙伴围坐在桌前丢骰子，从第 1 格一路抢跑到第 100 格。路上有冷不丁跳出来的妖精一把将你打回原地，有驾着筋斗云腾空飞跃十几格的欢呼，也有被小鬼缠住动弹不得的懊恼。”",
-        desc2: "当年那张泛黄磨破的棋盘纸早已不知所踪，但围着桌子丢骰子的那种纯粹的快乐，却在我的记忆里留了一辈子。很多年后，我凭着这份念想，把它亲手做成了电子游戏。",
-        author: "— 逍遥子 (Mars Paladin)",
-        badgeTitle: "经典西游童年桌游",
-        badgeSub: "Journey to the West Nostalgia",
-        img: "assets/cover.png"
-      },
-      {
-        title: "琵琶原声实录，真情伴奏",
-        desc1: "“游戏中你所能听到的所有悠扬动人的琵琶主旋律，全由我的妻子灵如酱亲自弹奏录制，并自学 AI 配合编曲完成。”",
-        desc2: "每一缕指尖拨动的琴弦声，都凝聚着我们对东方古典音乐与水墨神韵的热爱，希望这抹琴音能伴随你每一次的西行冒险。",
-        author: "— 灵如酱 & 逍遥子",
-        badgeTitle: "原创琵琶实录原声",
-        badgeSub: "Performed by 灵如酱",
-        img: "assets/Pipa.png"
-      },
-      {
-        title: "一人之力，AI 协作的独立作品",
-        desc1: "“这是我凭一个人的力量在 AI 协助下完成的第一款独立作品。从代码架构、水墨美术打磨，到多语言本地化与网络联机系统，倾注了无数个日夜的打磨。”",
-        desc2: "我想原汁原味地留住那份大家围坐在一起的心跳与欢笑，让每一次重新出发，都是一条截然不同的取经路。",
-        author: "— Mars Paladin LLC",
-        badgeTitle: "独立游戏工作室",
-        badgeSub: "Independent Studio",
-        img: "assets/main_capsule.jpg"
-      },
-      {
-        title: "谨以此作，献给同行之人",
-        desc1: "“谨以此作，献给年少时曾陪我一起掷骰子的人，以及每一个心中依然保留着纯真童心的大朋友。”",
-        desc2: "无论你身在何方，无论你使用的是何种语言，愿这盘桌游能为你和身边的亲朋好友带来最纯粹的心跳与欢笑！",
-        author: "— 逍遥子 (Mars Paladin)",
-        badgeTitle: "真情鸣谢与致敬",
-        badgeSub: "Dedicated to all Players",
-        img: "assets/cover2.png"
-      }
-    ];
-
     // State
     let currentLang = 'zh';
     let currentPilgrim = 0;
@@ -1581,7 +1332,6 @@
       document.getElementById('mainTitleBanner').src = data.titleImg;
       document.getElementById('navLinkChars').textContent = data.nav.chars;
       document.getElementById('navLinkRules').textContent = data.nav.rules;
-      document.getElementById('navLinkScenery').textContent = data.nav.scenery;
       document.getElementById('navLinkAbout').textContent = data.nav.about;
       document.getElementById('navWishlistBtn').textContent = data.nav.wishlist;
 
@@ -1600,7 +1350,6 @@
       // Update Hanging Ribbons
       document.getElementById('ribbonTextChars').textContent = data.ribbons.chars;
       document.getElementById('ribbonTextRules').textContent = data.ribbons.rules;
-      document.getElementById('ribbonTextScenery').textContent = data.ribbons.scenery;
       document.getElementById('ribbonTextAbout').textContent = data.ribbons.about;
 
       // Headers
@@ -1680,27 +1429,6 @@
       }
 
       document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function switchCharSubTab(sub, btn) {
-      document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('subpane-pilgrims').style.display = sub === 'pilgrims' ? 'block' : 'none';
-      document.getElementById('subpane-bosses').style.display = sub === 'bosses' ? 'block' : 'none';
-    }
-
-    function switchAboutTile(idx, btn) {
-      document.querySelectorAll('.about-tile-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const item = aboutTilesData[idx];
-      document.getElementById('aboutStageTitle').textContent = item.title;
-      document.getElementById('aboutStageDesc1').textContent = item.desc1;
-      document.getElementById('aboutStageDesc2').textContent = item.desc2;
-      document.getElementById('aboutStageAuthor').textContent = item.author;
-      document.getElementById('aboutBadgeTitle').textContent = item.badgeTitle;
-      document.getElementById('aboutBadgeSub').textContent = item.badgeSub;
-      document.getElementById('aboutStageImg').src = item.img;
     }
 
     // Auto-detect browser language
