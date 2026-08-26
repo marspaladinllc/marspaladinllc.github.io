@@ -3,8 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy, Bug Reporting & Player Support — Mars Paladin LLC</title>
-<meta name="description" content="Official Privacy Policy, Bug Reporting, Community Forum, and Player Feedback for Westward Dash (齐天大冲刺) by Mars Paladin LLC.">
+<title>Privacy Policy, Bug Reporting & Player Support — Westward Dash / Mars Paladin LLC</title>
+<meta name="description" content="Official Privacy Policy, Bug Reporting, Community Discussions Forum, and Player Review Feedback for Westward Dash (齐天大冲刺) by Mars Paladin LLC.">
+<meta name="theme-color" content="#080605">
+
+<!-- Open Graph / Facebook / Discord -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://westwarddash.com/privacy.html">
+<meta property="og:title" content="Privacy Policy & Player Support — Westward Dash">
+<meta property="og:description" content="Official Privacy Policy, Bug Reporting, Steam Forum & Player Feedback Hub for Westward Dash.">
+<meta property="og:image" content="https://westwarddash.com/assets/capsule_en.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy & Player Support — Westward Dash">
+<meta name="twitter:description" content="Official Privacy Policy, Bug Reporting, Steam Forum & Player Feedback Hub for Westward Dash.">
+<meta name="twitter:image" content="https://westwarddash.com/assets/capsule_en.jpg">
+
 <link rel="icon" type="image/png" href="assets/game_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,23 +28,25 @@
 <style>
   :root {
     --ink: #f5efe6;
-    --dim: #b8ac9a;
-    --muted: #736856;
-    --ground: #080605;
-    --panel: #14100c;
-    --panel-hover: #1e1812;
+    --ink-dim: #b8ac9a;
+    --ink-muted: #736856;
+    --bg-deep: #080605;
+    --bg-card: #14100c;
+    --bg-card-hover: #1e1812;
     --gold: #dfb256;
     --gold-light: #fbe3a4;
     --gold-bright: #ffe89e;
     --gold-dark: #8c631b;
     --vermilion: #cf3a24;
-    --line: rgba(223, 178, 86, 0.28);
-    --glow: 0 0 24px rgba(223, 178, 86, 0.16);
-    --steam-gradient: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
+    --silk-border: rgba(223, 178, 86, 0.28);
+    --silk-glow: 0 0 24px rgba(223, 178, 86, 0.16);
+    --steam-blue: #1075bd;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    background: var(--ground);
+    background: var(--bg-deep);
     color: var(--ink);
     font-family: 'Noto Serif SC', 'Georgia', serif;
     line-height: 1.85;
@@ -41,9 +58,10 @@
     padding: 30px 20px 60px;
     background-image: radial-gradient(circle at 50% 10%, rgba(223, 178, 86, 0.09) 0%, transparent 65%);
   }
+
   main { max-width: 820px; width: 100%; }
 
-  /* Top Navigation & Language Switcher Bar */
+  /* Top Navigation & Language Switcher Bar - Unified with index.html */
   .nav-back-bar {
     display: flex;
     justify-content: space-between;
@@ -56,6 +74,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
   }
   .btn-back {
     display: inline-flex;
@@ -63,45 +82,67 @@
     gap: 8px;
     color: var(--gold-light);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     padding: 8px 16px;
-    background: rgba(223, 178, 86, 0.08);
-    border: 1px solid var(--line);
+    background: rgba(22, 17, 12, 0.9);
+    border: 1px solid var(--silk-border);
     border-radius: 20px;
-    transition: all 0.2s;
+    transition: all 0.25s;
   }
   .btn-back:hover {
-    background: rgba(223, 178, 86, 0.2);
+    background: rgba(35, 27, 19, 0.95);
     border-color: var(--gold);
+    color: var(--gold-bright);
     transform: translateX(-2px);
   }
 
-  /* Language Selector Dropdown */
-  .lang-selector-box {
-    position: relative;
-  }
-  .lang-btn {
+  .btn-steam-nav {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(22, 17, 12, 0.85);
-    border: 1px solid var(--line);
-    color: var(--gold-light);
-    padding: 8px 16px;
+    background: linear-gradient(135deg, #1075bd 0%, #1b90e0 100%);
+    color: #fff !important;
+    padding: 8px 18px;
     border-radius: 20px;
-    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 800;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(16, 117, 189, 0.4);
+    transition: all 0.25s;
+  }
+  .btn-steam-nav:hover {
+    background: linear-gradient(135deg, #1b90e0 0%, #2bb0ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 117, 189, 0.6);
+  }
+
+  /* 18-Language Dropdown Menu - 100% UNIFIED with index.html */
+  .lang-dropdown-wrap {
+    position: relative;
+  }
+  .lang-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 17, 12, 0.9);
+    border: 1px solid var(--silk-border);
+    color: var(--gold-light);
+    padding: 8px 14px;
+    border-radius: 20px;
     font-size: 13.5px;
     font-weight: 700;
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: all 0.25s;
   }
-  .lang-btn:hover {
+  .lang-dropdown-btn:hover {
     border-color: var(--gold);
     background: rgba(35, 27, 19, 0.95);
+    color: var(--gold-bright);
     box-shadow: 0 0 16px rgba(223, 178, 86, 0.25);
   }
-  .lang-dropdown-menu {
-    display: none;
+  .lang-menu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -109,45 +150,45 @@
     border: 1px solid var(--gold);
     border-radius: 8px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.95);
-    padding: 8px;
+    display: none;
     grid-template-columns: repeat(2, 160px);
+    padding: 8px;
     gap: 4px;
+    z-index: 2000;
     max-height: 480px;
     overflow-y: auto;
-    z-index: 2000;
     backdrop-filter: blur(16px);
   }
-  .lang-dropdown-menu.show {
+  .lang-menu.show {
     display: grid;
     animation: fadeIn 0.2s ease;
   }
-  .lang-option-item {
+  .lang-item {
+    padding: 7px 10px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    border-radius: 4px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 7px 10px;
-    border-radius: 4px;
-    color: var(--dim);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
     transition: all 0.15s;
-    text-align: left;
     white-space: nowrap;
+    text-align: left;
   }
-  .lang-option-item:hover, .lang-option-item.active {
+  .lang-item:hover, .lang-item.active {
     background: rgba(223, 178, 86, 0.18);
     color: var(--gold-bright);
     font-weight: 700;
   }
 
-  /* Main Luxury Card */
+  /* Main Solid Card */
   .card {
-    background: var(--panel);
-    border: 1px solid var(--line);
+    background: var(--bg-card);
+    border: 1px solid var(--silk-border);
     border-radius: 16px;
     padding: 48px 44px;
-    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), var(--glow);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), var(--silk-glow);
     position: relative;
   }
 
@@ -156,13 +197,13 @@
     align-items: center;
     gap: 18px;
     margin-bottom: 24px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--silk-border);
     padding-bottom: 24px;
   }
   .header-icon {
     width: 60px; height: 60px;
     border-radius: 12px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--silk-border);
     object-fit: cover;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   }
@@ -182,7 +223,7 @@
     margin-top: 4px;
     font-weight: 900;
   }
-  .updated { color: var(--dim); font-size: 13.5px; margin-top: 4px; }
+  .updated { color: var(--ink-dim); font-size: 13.5px; margin-top: 4px; }
 
   /* Section Styling */
   h2 {
@@ -196,7 +237,7 @@
     border-left: 3px solid var(--gold);
     padding-left: 10px;
   }
-  p { margin-bottom: 14px; font-size: 15px; color: var(--dim); line-height: 1.85; }
+  p { margin-bottom: 14px; font-size: 15px; color: var(--ink-dim); line-height: 1.85; }
   p strong { color: var(--ink); }
 
   /* 4 Support & Feedback Cards */
@@ -208,7 +249,7 @@
   }
   .support-card {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--line);
+    border: 1px solid var(--silk-border);
     border-radius: 12px;
     padding: 20px;
     transition: all 0.25s;
@@ -220,7 +261,7 @@
   }
   .support-card:hover {
     border-color: var(--gold);
-    background: var(--panel-hover);
+    background: var(--bg-card-hover);
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   }
@@ -235,7 +276,7 @@
   }
   .support-card p {
     font-size: 13.5px;
-    color: var(--dim);
+    color: var(--ink-dim);
     margin-bottom: 12px;
     line-height: 1.6;
   }
@@ -248,29 +289,9 @@
     gap: 6px;
   }
 
-  /* Action Buttons */
-  .btn-steam-action {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--steam-gradient);
-    color: #fff !important;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 13.5px;
-    font-weight: 800;
-    text-decoration: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    transition: all 0.2s;
-  }
-  .btn-steam-action:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16, 117, 189, 0.6);
-  }
-
   .email-highlight {
-    background: rgba(223, 178, 86, 0.1);
-    border: 1px solid var(--line);
+    background: rgba(223, 178, 86, 0.09);
+    border: 1px solid var(--silk-border);
     border-radius: 10px;
     padding: 16px 20px;
     display: flex;
@@ -288,15 +309,27 @@
   a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(223, 178, 86, 0.3); transition: all 0.2s; }
   a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
 
-  .rule { height: 1px; background: var(--line); margin: 36px 0 20px; }
+  .rule { height: 1px; background: var(--silk-border); margin: 36px 0 20px; }
+
+  /* Footer Unified with index.html */
   footer {
-    margin-top: 24px;
+    margin-top: 28px;
     text-align: center;
-    color: var(--muted);
+    color: var(--ink-muted);
     font-size: 13.5px;
   }
-  footer a { color: var(--dim); border-bottom: none; }
-  footer a:hover { color: var(--gold); }
+  .footer-links {
+    margin-bottom: 8px;
+  }
+  .footer-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: var(--gold-bright);
+  }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(4px); }
@@ -309,45 +342,50 @@
     .header-box { flex-direction: column; text-align: center; }
     .email-highlight { flex-direction: column; gap: 10px; text-align: center; }
     .nav-back-bar { justify-content: center; }
+    .lang-menu {
+      grid-template-columns: 1fr;
+      right: 0;
+      width: min(280px, calc(100vw - 32px));
+    }
   }
 </style>
 </head>
 <body>
 <main>
 
-  <!-- Navigation Bar with 18-Language Switcher -->
+  <!-- Navigation Bar with Unified 18-Language Switcher -->
   <div class="nav-back-bar">
     <div class="nav-left-actions">
       <a href="https://westwarddash.com" class="btn-back" id="navBtnBack">← 返回官网</a>
-      <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-action" id="navBtnWishlist">★ Steam 愿望单</a>
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" class="btn-steam-nav" id="navBtnWishlist">★ Steam 愿望单</a>
     </div>
 
-    <!-- 18-Language Selector Dropdown -->
-    <div class="lang-selector-box">
-      <button class="lang-btn" onclick="toggleLangMenu(event)">
+    <!-- 18-Language Selector Dropdown (Unified Double-Column Grid) -->
+    <div class="lang-dropdown-wrap">
+      <button id="langBtn" class="lang-dropdown-btn" onclick="toggleLangMenu(event)">
         <span id="currentFlag">🇨🇳</span>
         <span id="currentLangName">简体中文</span>
-        <span>▼</span>
+        <span style="font-size:10px; opacity:0.7;">▼</span>
       </button>
-      <div class="lang-dropdown-menu" id="langMenu">
-        <div class="lang-option-item" onclick="setLang('zh')">🇨🇳 简体中文</div>
-        <div class="lang-option-item" onclick="setLang('tc')">🇭🇰 繁體中文</div>
-        <div class="lang-option-item" onclick="setLang('en')">🇺🇸 English</div>
-        <div class="lang-option-item" onclick="setLang('ja')">🇯🇵 日本語</div>
-        <div class="lang-option-item" onclick="setLang('ko')">🇰🇷 한국어</div>
-        <div class="lang-option-item" onclick="setLang('fr')">🇫🇷 Français</div>
-        <div class="lang-option-item" onclick="setLang('de')">🇩🇪 Deutsch</div>
-        <div class="lang-option-item" onclick="setLang('es')">🇪🇸 Español</div>
-        <div class="lang-option-item" onclick="setLang('pt')">🇧🇷 Português</div>
-        <div class="lang-option-item" onclick="setLang('it')">🇮🇹 Italiano</div>
-        <div class="lang-option-item" onclick="setLang('ru')">🇷🇺 Русский</div>
-        <div class="lang-option-item" onclick="setLang('pl')">🇵🇱 Polski</div>
-        <div class="lang-option-item" onclick="setLang('cs')">🇨🇿 Čeština</div>
-        <div class="lang-option-item" onclick="setLang('uk')">🇺🇦 Українська</div>
-        <div class="lang-option-item" onclick="setLang('tr')">🇹🇷 Türkçe</div>
-        <div class="lang-option-item" onclick="setLang('th')">🇹🇭 ไทย</div>
-        <div class="lang-option-item" onclick="setLang('vi')">🇻🇳 Tiếng Việt</div>
-        <div class="lang-option-item" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</div>
+      <div id="langMenu" class="lang-menu">
+        <div class="lang-item" onclick="setLang('zh')">🇨🇳 简体中文</div>
+        <div class="lang-item" onclick="setLang('tc')">🇭🇰 繁體中文</div>
+        <div class="lang-item" onclick="setLang('en')">🇺🇸 English</div>
+        <div class="lang-item" onclick="setLang('ja')">🇯🇵 日本語</div>
+        <div class="lang-item" onclick="setLang('ko')">🇰🇷 한국어</div>
+        <div class="lang-item" onclick="setLang('fr')">🇫🇷 Français</div>
+        <div class="lang-item" onclick="setLang('de')">🇩🇪 Deutsch</div>
+        <div class="lang-item" onclick="setLang('es')">🇪🇸 Español</div>
+        <div class="lang-item" onclick="setLang('pt')">🇧🇷 Português</div>
+        <div class="lang-item" onclick="setLang('it')">🇮🇹 Italiano</div>
+        <div class="lang-item" onclick="setLang('ru')">🇷🇺 Русский</div>
+        <div class="lang-item" onclick="setLang('pl')">🇵🇱 Polski</div>
+        <div class="lang-item" onclick="setLang('cs')">🇨🇿 Čeština</div>
+        <div class="lang-item" onclick="setLang('uk')">🇺🇦 Українська</div>
+        <div class="lang-item" onclick="setLang('tr')">🇹🇷 Türkçe</div>
+        <div class="lang-item" onclick="setLang('th')">🇹🇭 ไทย</div>
+        <div class="lang-item" onclick="setLang('vi')">🇻🇳 Tiếng Việt</div>
+        <div class="lang-item" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</div>
       </div>
     </div>
   </div>
@@ -409,10 +447,10 @@
 
     <div class="email-highlight">
       <div>
-        <div id="emailLabel" style="font-size:12px; color:var(--dim); text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">官方支持邮箱 (Support Email)</div>
+        <div id="emailLabel" style="font-size:12px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">官方支持邮箱 (Support Email)</div>
         <div class="email-address">support@marsparadin.com</div>
       </div>
-      <a href="mailto:support@marsparadin.com" class="btn-steam-action" id="emailAction" style="padding: 8px 18px; font-size:13px;">发邮件联系我们</a>
+      <a href="mailto:support@marsparadin.com" class="btn-steam-nav" id="emailAction" style="padding: 8px 18px; font-size:13px;">发邮件联系我们</a>
     </div>
 
     <!-- Official Privacy Policy Chapters -->
@@ -432,16 +470,19 @@
     <p id="sec5Content"></p>
 
     <div class="rule"></div>
-    <p style="text-align: center; font-size: 13.5px; color: var(--muted); margin: 0;">
+    <p style="text-align: center; font-size: 13.5px; color: var(--ink-muted); margin: 0;">
       Mars Paladin LLC &middot; Westward Dash &middot; <span id="footerRights">保留所有权利。</span>
     </p>
 
   </div>
 
   <footer>
-    <a href="https://westwarddash.com" id="footerSite">齐天大冲刺 官方网站</a> &middot; 
-    <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerStore">Steam 商店页面</a> &middot; 
-    <a href="mailto:support@marsparadin.com">support@marsparadin.com</a>
+    <div class="footer-links">
+      <a href="https://westwarddash.com" id="footerSite">齐天大冲刺 官方网站</a> &middot; 
+      <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerStore">Steam 商店页面</a> &middot; 
+      <a href="mailto:support@marsparadin.com">support@marsparadin.com</a>
+    </div>
+    <p style="font-size: 12.5px; color: var(--ink-muted); margin-top: 4px;">&copy; 2026 Mars Paladin LLC.</p>
   </footer>
 
 </main>
@@ -1196,7 +1237,7 @@
     document.getElementById('footerSite').href = "https://westwarddash.com/?lang=" + langCode;
 
     // Highlight active option in menu
-    document.querySelectorAll('.lang-option-item').forEach(item => {
+    document.querySelectorAll('.lang-item').forEach(item => {
       const isSelected = item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + langCode + "'");
       item.classList.toggle('active', isSelected);
     });
