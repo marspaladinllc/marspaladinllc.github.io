@@ -824,6 +824,11 @@
       .token-label { font-size: 11px; line-height: 1.2; overflow-wrap: anywhere; }
       .token-piece-img { max-width: 100%; height: auto; }
       .features-list-grid, .about-tiles-grid { grid-template-columns: minmax(0, 1fr); }
+      /* Anything laid out in a grid/flex track may shrink below its content on a 320px
+         phone (measured: .skill-card ran 35px past on an SE-class screen). min-width:0
+         removes the automatic min-content floor that flex/grid children carry by default. */
+      .skill-card, .skill-card h4, .skill-card p, .feature-item, .about-tile { min-width: 0; overflow-wrap: anywhere; }
+      .skill-card { padding: 12px 12px; }
       .pilgrim-showcase-stage, .about-detail-stage { grid-template-columns: minmax(0, 1fr); }
       /* hero: phone padding, stacked full-width buttons */
       .hero { padding: 118px 16px 40px; gap: 26px; }   /* clears the now two-row nav */
