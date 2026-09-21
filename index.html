@@ -767,6 +767,16 @@
     .footer-links a:hover { color: var(--gold); }
 
     /* Responsive */
+    .trailer-section { max-width: 1100px; margin: 0 auto; padding: 0 24px 56px; }
+    .trailer-frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--silk-border); border-radius: 14px;
+      overflow: hidden; cursor: pointer; background: #000; box-shadow: var(--silk-glow); }
+    .trailer-frame img, .trailer-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
+    .trailer-play { position: absolute; inset: 0; margin: auto; width: 88px; height: 88px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; padding-left: 6px; font-size: 34px; color: var(--gold-bright);
+      background: rgba(8, 6, 5, 0.72); border: 2px solid var(--gold); transition: transform .2s ease, background .2s ease; }
+    .trailer-frame:hover .trailer-play, .trailer-frame:focus-visible .trailer-play { transform: scale(1.08); background: rgba(207, 58, 36, 0.85); }
+    @media (max-width: 600px) { .trailer-section { padding: 0 14px 40px; } .trailer-play { width: 64px; height: 64px; font-size: 24px; } }
+
     /* Steam widget: the iframe is fixed-height by Steam's own CSS, so pin it and let the
        silk card do the rounding. 190px fits the coming-soon layout with no inner scrollbar. */
     .steam-widget { display: block; width: 100%; height: 190px; border: 0; background: #1b2838; }
@@ -948,9 +958,18 @@
         </div>
         <div class="hero-meta-row">
           <span id="metaPlatform">发售平台：<strong>Steam (PC & Mac)</strong></span>
-          <span id="metaRelease">发售窗口：<strong>2026 年秋季</strong></span>
+          <span id="metaRelease">发售日期：<strong>2026 年 10 月</strong></span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- TRAILER (09-20): poster first, the YouTube player only loads on click. 中文 voice for zh / tc, English voice
+       (with captions in the visitor's language) for everyone else. -->
+  <section class="trailer-section" aria-label="Trailer">
+    <div class="trailer-frame" id="trailerFrame" role="button" tabindex="0" aria-label="Play the trailer">
+      <img id="trailerPoster" src="https://i.ytimg.com/vi/Kfew24wI4MY/maxresdefault.jpg" alt="Westward Dash — Official Trailer" loading="lazy" decoding="async">
+      <span class="trailer-play" aria-hidden="true">&#9654;</span>
     </div>
   </section>
 
@@ -1155,6 +1174,7 @@
   <footer>
     <div class="footer-links">
       <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerSteamStore">Steam 商店</a>
+      <a href="https://www.youtube.com/@MarsPaladin" target="_blank" rel="noopener" id="footerYouTube">YouTube</a>
       <a href="mailto:support@marspaladin.com" id="footerContact">联系我们</a>
       <a href="https://westwarddash.com/privacy.html" target="_blank" id="footerPrivacy">隐私政策与支持</a>
     </div>
@@ -1185,7 +1205,7 @@
         "🌐 18国语言同桌"
       ],
       "platform": "发售平台：<strong>Steam (PC & Mac)</strong>",
-      "release": "发售窗口：<strong>2026 年秋季</strong>"
+      "release": "发售日期：<strong>2026 年 10 月</strong>"
     },
     "pills": {
       "chars": "八路行者",
@@ -1249,7 +1269,7 @@
         "🌐 18國語言同桌"
       ],
       "platform": "發售平台：<strong>Steam (PC & Mac)</strong>",
-      "release": "發售窗口：<strong>2026 年秋季</strong>"
+      "release": "發售日期：<strong>2026 年 10 月</strong>"
     },
     "pills": {
       "chars": "八路行者",
@@ -1313,7 +1333,7 @@
         "🌐 18 Languages"
       ],
       "platform": "Platform: <strong>Steam (PC & Mac)</strong>",
-      "release": "Release Window: <strong>Autumn 2026</strong>"
+      "release": "Release: <strong>October 2026</strong>"
     },
     "pills": {
       "chars": "8 Pilgrims",
@@ -1377,7 +1397,7 @@
         "🌐 18言語対応"
       ],
       "platform": "対応機種：<strong>Steam (PC & Mac)</strong>",
-      "release": "配信予定：<strong>2026年 秋</strong>"
+      "release": "配信予定：<strong>2026年10月</strong>"
     },
     "pills": {
       "chars": "八人の旅人",
@@ -1441,7 +1461,7 @@
         "🌐 18개 국어 지원"
       ],
       "platform": "플랫폼: <strong>Steam (PC & Mac)</strong>",
-      "release": "출시 예정: <strong>2026년 가을</strong>"
+      "release": "출시 예정: <strong>2026년 10월</strong>"
     },
     "pills": {
       "chars": "8인의 수행자",
@@ -1505,7 +1525,7 @@
         "🌐 18 Langues"
       ],
       "platform": "Plateforme : <strong>Steam (PC & Mac)</strong>",
-      "release": "Sortie : <strong>Automne 2026</strong>"
+      "release": "Sortie : <strong>Octobre 2026</strong>"
     },
     "pills": {
       "chars": "8 Pèlerins",
@@ -1569,7 +1589,7 @@
         "🌐 18 Sprachen"
       ],
       "platform": "Plattform: <strong>Steam (PC & Mac)</strong>",
-      "release": "Erscheinungstermin: <strong>Herbst 2026</strong>"
+      "release": "Erscheinungstermin: <strong>Oktober 2026</strong>"
     },
     "pills": {
       "chars": "8 Pilger",
@@ -1633,7 +1653,7 @@
         "🌐 18 Idiomas"
       ],
       "platform": "Plataforma: <strong>Steam (PC & Mac)</strong>",
-      "release": "Lanzamiento: <strong>Otoño de 2026</strong>"
+      "release": "Lanzamiento: <strong>Octubre de 2026</strong>"
     },
     "pills": {
       "chars": "8 Peregrinos",
@@ -1697,7 +1717,7 @@
         "🌐 18 Lingue"
       ],
       "platform": "Piattaforma: <strong>Steam (PC & Mac)</strong>",
-      "release": "Uscita: <strong>Autunno 2026</strong>"
+      "release": "Uscita: <strong>Ottobre 2026</strong>"
     },
     "pills": {
       "chars": "8 Pellegrini",
@@ -1761,7 +1781,7 @@
         "🌐 18 Idiomas"
       ],
       "platform": "Plataforma: <strong>Steam (PC & Mac)</strong>",
-      "release": "Lançamento: <strong>Primavera de 2026</strong>"
+      "release": "Lançamento: <strong>Outubro de 2026</strong>"
     },
     "pills": {
       "chars": "8 Peregrinos",
@@ -1825,7 +1845,7 @@
         "🌐 18 языков"
       ],
       "platform": "Платформа: <strong>Steam (PC & Mac)</strong>",
-      "release": "Выход: <strong>Осень 2026</strong>"
+      "release": "Выход: <strong>Октябрь 2026</strong>"
     },
     "pills": {
       "chars": "8 Паломников",
@@ -1889,7 +1909,7 @@
         "🌐 18 Języków"
       ],
       "platform": "Platforma: <strong>Steam (PC & Mac)</strong>",
-      "release": "Premiera: <strong>Jesień 2026</strong>"
+      "release": "Premiera: <strong>Październik 2026</strong>"
     },
     "pills": {
       "chars": "8 Pielgrzymów",
@@ -1953,7 +1973,7 @@
         "🌐 18 Jazyků"
       ],
       "platform": "Platforma: <strong>Steam (PC & Mac)</strong>",
-      "release": "Vydání: <strong>Podzim 2026</strong>"
+      "release": "Vydání: <strong>Říjen 2026</strong>"
     },
     "pills": {
       "chars": "8 Poutníků",
@@ -2017,7 +2037,7 @@
         "🌐 18 Мов"
       ],
       "platform": "Платформа: <strong>Steam (PC & Mac)</strong>",
-      "release": "Реліз: <strong>Осінь 2026</strong>"
+      "release": "Реліз: <strong>Жовтень 2026</strong>"
     },
     "pills": {
       "chars": "8 Паломників",
@@ -2081,7 +2101,7 @@
         "🌐 18 Dil"
       ],
       "platform": "Platform: <strong>Steam (PC & Mac)</strong>",
-      "release": "Çıkış: <strong>Sonbahar 2026</strong>"
+      "release": "Çıkış: <strong>Ekim 2026</strong>"
     },
     "pills": {
       "chars": "8 Yolcu",
@@ -2145,7 +2165,7 @@
         "🌐 18 ภาษา"
       ],
       "platform": "แพลตฟอร์ม: <strong>Steam (PC & Mac)</strong>",
-      "release": "กำหนดวางจำหน่าย: <strong>ฤดูใบไม้ร่วง 2026</strong>"
+      "release": "กำหนดวางจำหน่าย: <strong>ตุลาคม 2026</strong>"
     },
     "pills": {
       "chars": "8 ผู้แสวงบุญ",
@@ -2209,7 +2229,7 @@
         "🌐 18 Ngôn Ngữ"
       ],
       "platform": "Nền tảng: <strong>Steam (PC & Mac)</strong>",
-      "release": "Phát hành: <strong>Mùa Thu 2026</strong>"
+      "release": "Phát hành: <strong>Tháng 10 năm 2026</strong>"
     },
     "pills": {
       "chars": "8 Hành Giả",
@@ -2273,7 +2293,7 @@
         "🌐 18 Bahasa"
       ],
       "platform": "Platform: <strong>Steam (PC & Mac)</strong>",
-      "release": "Rilis: <strong>Musim Gugur 2026</strong>"
+      "release": "Rilis: <strong>Oktober 2026</strong>"
     },
     "pills": {
       "chars": "8 Peziarah",
@@ -3959,6 +3979,29 @@
       });
     }
 
+    // Trailer: which video, and which caption language to ask YouTube for.
+    const TRAILER_ZH = 'Kfew24wI4MY', TRAILER_EN = 'uRiPHB-f39k';
+    const TRAILER_CC = {tc:'zh-TW', ja:'ja', ko:'ko', fr:'fr', de:'de', es:'es', pt:'pt-BR', it:'it', ru:'ru', pl:'pl',
+                        cs:'cs', uk:'uk', tr:'tr', th:'th', vi:'vi', id:'id'};
+    function setTrailer(langCode) {
+      const frame = document.getElementById('trailerFrame'); if (!frame) return;
+      const id = (langCode === 'zh' || langCode === 'tc') ? TRAILER_ZH : TRAILER_EN;
+      frame.dataset.video = id; frame.dataset.cc = TRAILER_CC[langCode] || '';
+      // a language switch puts the poster back (also stops a playing video, which is what a viewer expects)
+      frame.innerHTML = '<img id="trailerPoster" src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" alt="Westward Dash — Official Trailer" loading="lazy" decoding="async"><span class="trailer-play" aria-hidden="true">&#9654;</span>';
+    }
+    function playTrailer() {
+      const frame = document.getElementById('trailerFrame'); if (!frame || frame.querySelector('iframe')) return;
+      const cc = frame.dataset.cc ? '&cc_load_policy=1&cc_lang_pref=' + frame.dataset.cc + '&hl=' + frame.dataset.cc : '';
+      frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + (frame.dataset.video || TRAILER_EN) + '?autoplay=1&rel=0' + cc +
+        '" title="Westward Dash — Official Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const frame = document.getElementById('trailerFrame'); if (!frame) return;
+      frame.addEventListener('click', playTrailer);
+      frame.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playTrailer(); } });
+    });
+
     function setLang(langCode) {
       // The document's own language must follow the copy (08-26 audit: it was pinned at zh-CN
       // in all eighteen). Screen readers pick pronunciation from this, and search engines
@@ -3973,6 +4016,7 @@
       if (!i18n[langCode]) langCode = 'en';
       currentLang = langCode;
       const data = i18n[langCode];
+      setTrailer(langCode);
 
       // Update Nav & Buttons (所有语言左上角专属名字)
       document.getElementById('navLogoMain').textContent = data.gameTitle;
