@@ -1256,6 +1256,11 @@
       var fc=document.getElementById('formCard');
       if (fc) fc.href = (langCode==='zh'||langCode==='tc') ? 'https://docs.google.com/forms/d/e/1FAIpQLSeud5E8KLhberbcI-sv_JEJLQZqiJml5CsPtLChrmCa9ZR3rQ/viewform' : 'https://docs.google.com/forms/d/e/1FAIpQLScZLZMF-knfTfUCkw_vlHAVNyl_Fifdv27cbO1Iv4lwXLU0zQ/viewform';
 
+    try {
+      const htmlLang = {zh:'zh-CN',tc:'zh-TW',en:'en',ja:'ja',ko:'ko',fr:'fr',de:'de',es:'es',
+        pt:'pt',it:'it',ru:'ru',pl:'pl',cs:'cs',uk:'uk',tr:'tr',th:'th',vi:'vi',id:'id'}[langCode] || 'en';
+      document.documentElement.setAttribute('lang', htmlLang);   // screen readers pick pronunciation from this
+    } catch (e) {}
     if (!i18n[langCode]) langCode = 'en';
     currentLang = langCode;
     const data = i18n[langCode];
@@ -1344,7 +1349,7 @@
       setLang(urlLang);
     } else {
       const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+      if (/^zh-(tw|hk|mo|hant)/.test(userLang)) {   // zh-Hant, zh-Hant-TW, zh-MO too
         setLang('tc');
       } else if (userLang.startsWith('ja')) {
         setLang('ja');

@@ -4105,8 +4105,13 @@
       // Update Token Labels
       for (let i = 0; i < 8; i++) {
         const p = pilgrimsData[i];
+        const name = p.names[langCode] || p.names['en'];
         const el = document.getElementById('tokenLabel' + i);
-        if (el) el.textContent = p.names[langCode] || p.names['en'];
+        if (el) el.textContent = name;
+        const tok = document.querySelectorAll('.token-piece-img')[i];
+        if (tok) tok.alt = name;
+        const por = document.getElementById('pilgrimPortrait' + i);
+        if (por) por.alt = name;
       }
 
       // Update Footer Localization
@@ -4235,7 +4240,7 @@
         setLang(urlLang);
       } else {
         const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-        if (userLang.startsWith('zh-tw') || userLang.startsWith('zh-hk')) {
+        if (/^zh-(tw|hk|mo|hant)/.test(userLang)) {   // zh-Hant, zh-Hant-TW, zh-MO too
           setLang('tc');
         } else if (userLang.startsWith('ja')) {
           setLang('ja');
