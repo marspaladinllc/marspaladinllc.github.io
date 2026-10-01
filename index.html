@@ -931,6 +931,12 @@
         <a href="https://store.steampowered.com/app/5029020/" target="_blank" rel="noopener" class="btn-hero-wishlist" id="heroWishlistBtn">
           ★ 在 Steam 上添加愿望单
         </a>
+        <a href="https://store.steampowered.com/app/5306260/" target="_blank" rel="noopener" class="btn-hero-secondary" id="heroDemoBtn">
+          ▶ Steam 免费试玩
+        </a>
+        <a href="https://marspaladin.itch.io/westward-dash-demo" target="_blank" rel="noopener" class="btn-hero-secondary" id="heroBrowserBtn">
+          🌐 浏览器直接玩
+        </a>
         <a href="javascript:switchSection(0)" class="btn-hero-secondary" id="heroExploreBtn">
           探索行者与玩法 ↓
         </a>
@@ -1173,6 +1179,8 @@
   <footer>
     <div class="footer-links">
       <a href="https://store.steampowered.com/app/5029020/" target="_blank" id="footerSteamStore">Steam 商店</a>
+      <a href="https://store.steampowered.com/app/5306260/" target="_blank" rel="noopener" id="footerDemo">Steam 免费试玩</a>
+      <a href="https://marspaladin.itch.io/westward-dash-demo" target="_blank" rel="noopener" id="footerItch">itch.io</a>
       <a href="https://www.youtube.com/@MarsPaladin" target="_blank" rel="noopener" id="footerYouTube">YouTube</a>
       <a href="https://discord.gg/e3FQ4UabsA" target="_blank" rel="noopener" id="footerDiscord">Discord</a>
       <a href="mailto:support@marspaladin.com" id="footerContact">联系我们</a>
@@ -1199,6 +1207,8 @@
       "wishlist": "★ 在 Steam 上添加愿望单",
       "explore": "探索行者与玩法 ↓",
       "discord": "加入 Discord 社区",
+      "demo": "▶ Steam 免费试玩",
+      "browser": "🌐 浏览器直接玩",
       "tags": [
         "🎲 聚会桌游",
         "⚔️ 策略博弈",
@@ -1244,6 +1254,7 @@
     "aboutTiles": ["西游记", "琵琶原声", "水墨画", "独立创作", "真情鸣谢"],
     "footer": {
       "steamStore": "Steam 商店",
+      "demo": "Steam 免费试玩",
       "contact": "联系我们",
       "privacy": "隐私政策与支持",
       "rights": "保留所有权利。",
@@ -1264,6 +1275,8 @@
       "wishlist": "★ 在 Steam 上添加願望單",
       "explore": "探索行者與玩法 ↓",
       "discord": "加入 Discord 社群",
+      "demo": "▶ Steam 免費試玩",
+      "browser": "🌐 瀏覽器直接玩",
       "tags": [
         "🎲 聚會桌遊",
         "⚔️ 策略博弈",
@@ -1309,6 +1322,7 @@
     "aboutTiles": ["西遊記", "琵琶原聲", "水墨畫", "獨立創作", "真情鳴謝"],
     "footer": {
       "steamStore": "Steam 商店",
+      "demo": "Steam 免費試玩",
       "contact": "聯繫我們",
       "privacy": "隱私政策與支援",
       "rights": "保留所有權利。",
@@ -1329,6 +1343,8 @@
       "wishlist": "★ Add to Steam Wishlist",
       "explore": "Explore Pilgrims & Modes ↓",
       "discord": "Join the Discord",
+      "demo": "▶ Free Demo on Steam",
+      "browser": "🌐 Play in Browser",
       "tags": [
         "🎲 Party Board Game",
         "⚔️ PvP Strategy",
@@ -1374,6 +1390,7 @@
     "aboutTiles": ["Journey to the West", "Live Pipa OST", "Ink Wash Art", "Solo Indie Dev", "Heartfelt Thanks"],
     "footer": {
       "steamStore": "Steam Store",
+      "demo": "Free Demo on Steam",
       "contact": "Contact Us",
       "privacy": "Privacy Policy & Support",
       "rights": "All rights reserved.",
@@ -3733,6 +3750,9 @@
       document.getElementById('heroWishlistBtn').textContent = data.hero.wishlist;
       document.getElementById('heroExploreBtn').textContent = data.hero.explore;
       document.getElementById('heroDiscordBtn').textContent = '💬 ' + data.hero.discord;
+      // Demo + browser-play buttons (10-01): 简体 / 繁體 / English; the other languages show the English until translated.
+      document.getElementById('heroDemoBtn').textContent = data.hero.demo || i18n.en.hero.demo;
+      document.getElementById('heroBrowserBtn').textContent = data.hero.browser || i18n.en.hero.browser;
       document.getElementById('tagBadge1').textContent = data.hero.tags[0];
       document.getElementById('tagBadge2').textContent = data.hero.tags[1];
       document.getElementById('tagBadge3').textContent = data.hero.tags[2];
@@ -3794,6 +3814,8 @@
       if (data.footer) {
         const elSteam = document.getElementById('footerSteamStore');
         if (elSteam) elSteam.textContent = data.footer.steamStore;
+        const elDemo = document.getElementById('footerDemo');
+        if (elDemo) elDemo.textContent = data.footer.demo || i18n.en.footer.demo;
         const elContact = document.getElementById('footerContact');
         if (elContact) elContact.textContent = data.footer.contact;
         const elPrivacy = document.getElementById('footerPrivacy');
