@@ -298,13 +298,18 @@
       margin-bottom: 34px;
       max-width: 600px;
     }
+    /* Five buttons on one grid (user 10-01: 大小不一 能不能弄好看点): the wishlist spans the top
+       row, then the two demo routes, then explore + Discord, every pair the same width. */
     .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 600px;
       margin-bottom: 28px;
     }
+    .hero-actions > a { justify-content: center; text-align: center; }
+    .hero-actions > #heroWishlistBtn { grid-column: 1 / -1; }
+    .hero-actions > .btn-hero-secondary { padding: 14px 18px; }
     .btn-hero-wishlist {
       display: inline-flex;
       align-items: center;
@@ -786,7 +791,7 @@
       .hero-content { text-align: center; }
       .title-banner-img { margin: 0 auto; }
       .hero-desc { margin: 0 auto 30px; }
-      .hero-actions { justify-content: center; }
+      .hero-actions { margin-left: auto; margin-right: auto; }
       .section-nav-bar { flex-wrap: wrap; }
       .section-pill-btn { padding: 10px 20px; font-size: 14px; }
       .pilgrim-showcase-stage { grid-template-columns: 1fr; text-align: center; }
@@ -846,7 +851,7 @@
       .hero { padding: 118px 16px 40px; gap: 26px; }   /* clears the now two-row nav */
       .title-banner-img { max-width: 290px; }
       .hero-desc { font-size: 14.5px; line-height: 1.75; }
-      .hero-actions { flex-direction: column; gap: 12px; }
+      .hero-actions { grid-template-columns: minmax(0, 1fr); gap: 12px; }
       .hero-actions > a { width: 100%; justify-content: center; text-align: center; }
       .hero-meta-row { flex-direction: column; gap: 6px; align-items: center; }
       .section-nav-bar { gap: 8px; }
